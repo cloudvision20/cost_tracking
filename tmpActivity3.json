@@ -1,0 +1,57 @@
+{
+    "activityDetails": {
+        "name": "PITSA",
+        "description": "Allow to clear all vegetation, Nipah & Nibong etc",
+        "process": [
+            {
+                "unit": "m2",
+                "quantity": 9000
+            }
+        ],
+        "duration": [
+            {
+                "unit": "month",
+                "quantity": 0.5
+            }
+        ]
+    },
+    "resources": [
+        {
+            "item": "Labour",
+            "details": [
+                {
+                    "rate": 15
+                }
+            ]
+        },
+        {
+            "item": "Machinery",
+            "details": [
+                {
+                    "type": "excavator",
+                    "model": "ex-010"
+                },
+                {
+                    "type": "excavator",
+                    "model": "ex-010"
+                },
+                {
+                    "type": "vehicle",
+                    "model": "ex-hilux01"
+                }
+            ]
+        },
+        {
+            "item": "Consumable",
+            "details": [
+                {
+                    "type": "vehicle",
+                    "model": "ex-hilux01",
+                    "consumable": "diesel",
+                    "tank": 1000
+                }
+            ]
+        }
+    ],
+    "workProgress": "0"
+}

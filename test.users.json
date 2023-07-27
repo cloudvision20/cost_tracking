@@ -1,0 +1,51 @@
+[{
+  "_id": {
+    "$oid": "64a36da9f061cd8cef98d758"
+  },
+  "username": "steve1",
+  "roles": {
+    "User": 2001
+  },
+  "password": "$2b$10$cE9c7hNYpJ8QareJXkMCYevqMLh2dUMFRhToV9ytSxB.Q81I6PG2m",
+  "__v": 0,
+  "refreshToken": ""
+},
+{
+  "_id": {
+    "$oid": "64a36f2a648bceb250cfd2d7"
+  },
+  "username": "beng",
+  "roles": {
+    "User": 2001,
+    "Editor": 1984,
+    "Admin": 5150
+  },
+  "password": "$2b$10$mkxJaLieo10xYxoiYUFrru6hWjLtfvuUCylCQlmKVplt30Xm/RcNO",
+  "__v": 0,
+  "refreshToken": ""
+},
+{
+  "_id": {
+    "$oid": "64a36fbae7ce4ce0a91e733b"
+  },
+  "username": "walt1",
+  "roles": {
+    "User": 2001,
+    "Editor": 1984,
+    "Admin": 5150
+  },
+  "password": "$2b$10$gE6mhHoS8QftS70zTyZCP.hodkcsLNnOC2ZgTo10tjzG9KutbMeWO",
+  "__v": 0,
+  "refreshToken": ""
+},
+{
+  "_id": {
+    "$oid": "64a370df1a1e27bc64c665fb"
+  },
+  "username": "Dave1",
+  "roles": {
+    "User": 2001
+  },
+  "password": "$2b$10$1RguJfA/OtNlbj3sztEI0e.e9e7djkyTiLOLS/VLSrxnegfygv0bW",
+  "__v": 0
+}]

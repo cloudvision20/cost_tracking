@@ -1,0 +1,20 @@
+{
+    "username": "beng",
+    "password": "Kong1234$",
+    "employeeId": "beng",
+    "employeeName": "Ong Kian Beng",
+    "contactInfo": [
+        {
+            "email": "kbenghk@gmail.com",
+            "phone": "60109720098",
+            "whatsapp": "60109720098",
+            "_id": false
+        }
+    ],
+    "roles": [
+        "Employee",
+        "Manager",
+        "Admin"
+    ],
+    "active": true
+}

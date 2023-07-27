@@ -1,0 +1,16 @@
+{
+    "employeeId": "beng",
+    "employeeName": "Ong Kian Beng",
+    "contactInfo": [
+        {
+            "email": "kbenghk@gmail.com",
+            "phone": "60109720098",
+            "whatsapp": "60109720098",
+            "_id": false
+        }
+    ],
+    "roles": [
+        "Employee"
+    ],
+    "active": true
+}

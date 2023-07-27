@@ -1,0 +1,22 @@
+[
+    {
+        "_id": "64befb0655e05b56141c5d99",
+        "employeeId": "beng",
+        "employeeName": "Ong Kian Beng",
+        "contactInfo": [
+            {
+                "email": "kbenghk@gmail.com",
+                "phone": "60109720098",
+                "whatsapp": "60109720098"
+            }
+        ],
+        "roles": [
+            "Employee",
+            "Manager"
+        ],
+        "active": true,
+        "createdAt": "2023-07-24T22:28:22.852Z",
+        "updatedAt": "2023-07-24T22:33:11.929Z",
+        "__v": 1
+    }
+]

@@ -1,0 +1,66 @@
+[
+    {
+        "_id": "64b4faa1f69783339dc2ab9d",
+        "activityDetails": {
+            "name": "PITSA",
+            "description": "Allow to clear all vegetation, Nipah & Nibong etc",
+            "process": [
+                {
+                    "unit": "m2",
+                    "quantity": 9000
+                }
+            ],
+            "duration": [
+                {
+                    "unit": "month",
+                    "quantity": 0.5
+                }
+            ]
+        },
+        "resources": [
+            {
+                "item": "Labour",
+                "details": [
+                    {
+                        "rate": 15
+                    }
+                ],
+                "_id": "64b4faa1f69783339dc2ab9e"
+            },
+            {
+                "item": "Machinery",
+                "details": [
+                    {
+                        "type": "excavator",
+                        "model": "ex-010"
+                    },
+                    {
+                        "type": "excavator",
+                        "model": "ex-010"
+                    },
+                    {
+                        "type": "vehicle",
+                        "model": "ex-hilux01"
+                    }
+                ],
+                "_id": "64b4faa1f69783339dc2ab9f"
+            },
+            {
+                "item": "Consumable",
+                "details": [
+                    {
+                        "type": "vehicle",
+                        "model": "ex-hilux01",
+                        "consumable": "diesel",
+                        "tank": 1000
+                    }
+                ],
+                "_id": "64b4faa1f69783339dc2aba0"
+            }
+        ],
+        "completed": false,
+        "createdAt": "2023-07-17T08:24:01.843Z",
+        "updatedAt": "2023-07-17T08:24:01.843Z",
+        "__v": 0
+    }
+]
