@@ -1,0 +1,10 @@
+PORT=3500
+
+ACCESS_TOKEN_SECRET=d482ec6bb7e2f05583b22da5d8ce9813f6d4e9107f9da9675568e295649e3390bb35b5314d7120fc5d2bf9677b872b2d8c2bf863eff8f3bfe8fa5a2f8
+76e52b2
+REFRESH_TOKEN_SECRET=fe0f6dded72a58fa55c339f54042361aab718362aaa3e0a94c4437c03aae72af510ded625c7984f555a7110d97e7414e982ca8cd8aba178a5b68a9e35
+c5c7591
+__DATABASE_URI=mongodb+srv://mongotut:testing123@cluster0.ojbjf0h.mongodb.net/TechnoteDB?retryWrites=true&w=majority
+DATABASE_URI=mongodb+srv://mongotut:testing123@cluster0.ojbjf0h.mongodb.net/CostTrackingDB?retryWrites=true&w=majority
+_DATABASE_URI=mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.10.0    
+new_DATABASE_URI=mongodb://127.0.0.1:27017/test

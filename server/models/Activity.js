@@ -3,38 +3,56 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const activitySchema = new mongoose.Schema(
     {
+        projectId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: false,
+            ref: 'Project'
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             required: false,
             ref: 'User'
         },
-        activityDetails:
-        {
-            name: {
-                type: String,
-                required: true
-            },
-            description: {
-                type: String,
-                required: true
-            },
-            process: [{
-                unit: { type: String },
-                quantity: { type: Number },
-                _id: false
-            }],
-            duration: [{
-                unit: { type: String },
-                quantity: { type: Number },
-                _id: false
-            }]
+        name: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        process: {
+            uom: { type: String },
+            quantity: { type: Number },
+        },
+        duration: {
+            uom: { type: String },
+            quantity: { type: Number },
+        },
+        totalHR: {
+            uom: { type: String },
+            amount: { type: Number },
+        },
+        totalEquipment: {
+            uom: { type: String },
+            amount: { type: Number },
+        },
+        totalConsumable: {
+            uom: { type: String },
+            amount: { type: Number },
         }
         ,
         resources: [
             {
-                item: { type: String },
-                details: [],
-                _id: false
+                type: { type: String },
+                details: { type: String },
+                job: { type: String },
+                costType: { type: String },
+                uom: { type: String },
+                rate: { type: Number },
+                qtyAssign: { type: Number },
+                remarks: { type: String },
+                assignment: [{ resourcesId: { type: String }, budget: { type: Number }, _id: false }]
             }
         ],
         completed: {

@@ -23,7 +23,7 @@ const getAllActivities = asyncHandler(async (req, res) => {
 // @access Private
 const createNewActivity = asyncHandler(async (req, res) => {
     // const { name, password, roles } = req.body
-    const { name } = req.body
+    const { name } = req.body.activityDetails
     // // Confirm data
     // if (!name || !password || !Array.isArray(roles) || !roles.length) {
     //     return res.status(400).json({ message: 'All fields are required' })
@@ -31,18 +31,18 @@ const createNewActivity = asyncHandler(async (req, res) => {
 
 
     // Check for duplicate name
-    // const dup = await Activity.find({ "activityDetails.name": name }).lean().exec()
-    // const dup0 = await Activity.find({ "activityDetails.duration.unit": "month" }).lean().exec()
-    // const duplicate = await Activity.findOne({ "activityDetails.name": name }).lean().exec()
-    // const dup2 = await Activity.find({ "resources.item": "Labour" }).lean().exec()
-    // const dup3 = await Activity.find().populate(
-    //     {
-    //         path: "activityDetails",
-    //         match: { name: name }
-    //     }
-    // ).lean().exec()
+    const dup = await Activity.find({ "activityDetails.name": name }).lean().exec()
+    const dup0 = await Activity.find({ "activityDetails.duration.unit": "month" }).lean().exec()
+    const duplicate = await Activity.findOne({ "activityDetails.name": name }).lean().exec()
+    const dup2 = await Activity.find({ "resources.item": "Labour" }).lean().exec()
+    const dup3 = await Activity.find().populate(
+        {
+            path: "activityDetails",
+            match: { name: name }
+        }
+    ).lean().exec()
 
-    const duplicate = await Activity.findOne({ name }).lean().exec()
+
 
     if (duplicate) {
         return res.status(409).json({ message: 'Duplicate name' })
@@ -66,48 +66,6 @@ const createNewActivity = asyncHandler(async (req, res) => {
 // @desc Update a activity
 // @route PATCH /activities
 // @access Private
-const updateActivityResources = asyncHandler(async (req, res) => {
-    //const { id, name, roles, active, password } = req.body
-    const _id = req.body._id
-    //const resources = req.body.resources
-
-    // Confirm data 
-    // if (!id || !name || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
-    //     return res.status(400).json({ message: 'All fields except password are required' })
-    // }
-
-    // Does the activity exist to update?
-    const activity = await Activity.findById(_id).exec()
-
-    if (!activity) {
-        return res.status(400).json({ message: 'Activity not found' })
-    }
-
-    // Check for duplicate 
-    // const duplicate = await Activity.findOne({ name }).lean().exec()
-    //const duplicate = await Activity.findOne({ "activityDetails.name": req_body.activityDetails.name }).lean().exec()
-
-    // Allow updates to the original activity 
-    // if (duplicate && duplicate?._id.toString() !== id) {
-    //     return res.status(409).json({ message: 'Duplicate name' })
-    // }
-
-    // activity.name = req_body.name
-    // activity.completed = req_body.completed
-    //const resource = await Activity.find({ "resources._id": resources._id }).lean().exec()
-    resources_ids = activity.resources.map(resources => resources._id)
-    //resources = resources.map(resource =>( ))
-    activity.resources = req.body.resources
-
-    // if (password) {
-    //     // Hash password 
-    //     activity.password = await bcrypt.hash(password, 10) // salt rounds 
-    // }
-
-    const updatedActivity = await activity.save()
-
-    res.json({ message: `${updatedActivity.name} updated` })
-})
 const updateActivity = asyncHandler(async (req, res) => {
     //const { id, name, roles, active, password } = req.body
     const _id = req.body._id
@@ -126,18 +84,16 @@ const updateActivity = asyncHandler(async (req, res) => {
     }
 
     // Check for duplicate 
-    const duplicate = await Activity.findOne({ name }).lean().exec()
-    //const duplicate = await Activity.findOne({ "activityDetails.name": req_body.activityDetails.name }).lean().exec()
+    //const duplicate = await Activity.findOne({ name }).lean().exec()
+    const duplicate = await Activity.findOne({ "activityDetails.name": req_body.activityDetails.name }).lean().exec()
 
     // Allow updates to the original activity 
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate name' })
     }
 
-    activity.name = req_body.name
-    activity.completed = req_body.completed
-
-    activity = req_body
+    activity.activityDetails.name = req_body.activityDetails.name
+    activity.completed = req_body.activityDetails.completed
 
     // if (password) {
     //     // Hash password 
@@ -146,7 +102,7 @@ const updateActivity = asyncHandler(async (req, res) => {
 
     const updatedActivity = await activity.save()
 
-    res.json({ message: `${updatedActivity.name} updated` })
+    res.json({ message: `${updatedActivity.activityDetails.name} updated` })
 })
 
 // @desc Delete a activity
@@ -175,7 +131,7 @@ const deleteActivity = asyncHandler(async (req, res) => {
 
     const result = await activity.deleteOne()
 
-    const reply = `Name ${result.name} with ID ${result._id} deleted`
+    const reply = `Name ${result.activityDetails.name} with ID ${result._id} deleted`
 
     res.json(reply)
 })
@@ -184,6 +140,5 @@ module.exports = {
     getAllActivities,
     createNewActivity,
     updateActivity,
-    deleteActivity,
-    updateActivityResources
+    deleteActivity
 }

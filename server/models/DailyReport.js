@@ -3,6 +3,11 @@ const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const dailyReportSchema = new mongoose.Schema(
     {
+        activityId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: false,
+            ref: 'Activity'
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,

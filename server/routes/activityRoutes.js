@@ -5,7 +5,7 @@ const activitysController = require('../controllers/activitiesController')
 router.route('/')
     .get(activitysController.getAllActivities)
     .post(activitysController.createNewActivity)
-    .patch(activitysController.updateActivity)
+    .patch(activitysController.updateActivityResources)
     .delete(activitysController.deleteActivity)
 
 module.exports = router
