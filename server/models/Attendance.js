@@ -3,19 +3,13 @@ const mongoose = require('mongoose')
 
 const attendanceSchema = new mongoose.Schema(
     {
-        username: {
-            type: String,
-            required: true
-        },
-        employeeId: {
-            type: String,
-            required: true
-        },
-        clockType: { String }, // IN/OUT
-        date: { String },
-        time: { String },
-        weekday: { String },
-        terminal: { String }
+        userId: { type: String, required: true },
+        employeeId: { type: String, required: true },
+        clockType: { type: String }, // IN/OUT
+        date: { type: String },
+        time: { type: String },
+        weekday: { type: String },
+        terminal: { type: String } // Login machine reference
     },
     {
         timestamps: true

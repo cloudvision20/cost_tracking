@@ -21,32 +21,32 @@ const getAllProjects = async (req, res) => {
 // @route POST /projects
 // @access Private
 const createNewProject = async (req, res) => {
-    const { projectId, projectName, roles, contactInfo } = req.body
+    const { userId, title } = req.body
 
     // Confirm data
-    if (!projectName || !projectId) {
+    if (!title || !userId) {
         return res.status(400).json({ message: 'All fields are required' })
     }
 
-    // Check for duplicate projectName
-    const duplicate = await Project.findOne({ projectName }).collation({ locale: 'en', strength: 2 }).lean().exec()
+    // Check for duplicate title
+    const duplicate = await Project.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
     if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate projectName' })
+        return res.status(409).json({ message: 'Duplicate title' })
     }
 
     // // Hash password 
     // const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
 
-    const projectObject = (!Array.isArray(roles) || !roles.length)
-        ? { projectId, projectName, contactInfo }
-        : { projectId, projectName, contactInfo, roles }
+    // const projectObject = (!Array.isArray(roles) || !roles.length)
+    //     ? { userId, title, contactInfo }
+    //     : { userId, title, contactInfo, roles }
 
     // Create and store new project 
-    const project = await Project.create(projectObject)
+    const project = await Project.create(req.body)
 
     if (project) { //created 
-        res.status(201).json({ message: `New project ${projectName} created` })
+        res.status(201).json({ message: `New project ${title} created` })
     } else {
         res.status(400).json({ message: 'Invalid project data received' })
     }
@@ -56,12 +56,12 @@ const createNewProject = async (req, res) => {
 // @route PATCH /projects
 // @access Private
 const updateProject = async (req, res) => {
-    const { id, projectId, projectName, roles, active } = req.body
-
-    // Confirm data 
-    if (!id || !projectId || !projectName || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
-        return res.status(400).json({ message: 'All fields except password are required' })
-    }
+    // const { id, projectId, title, roles, active } = req.body
+    const id = req.body._id
+    // // Confirm data 
+    // if (!id || !projectId || !title || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
+    //     return res.status(400).json({ message: 'All fields except password are required' })
+    // }
 
     // Does the project exist to update?
     const project = await Project.findById(id).exec()
@@ -71,17 +71,18 @@ const updateProject = async (req, res) => {
     }
 
     // Check for duplicate 
-    const duplicate = await Project.findOne({ projectName }).collation({ locale: 'en', strength: 2 }).lean().exec()
+    //const duplicate = await Project.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
     // Allow updates to the original project 
-    if (duplicate && duplicate?._id.toString() !== id) {
-        return res.status(409).json({ message: 'Duplicate projectName' })
-    }
-    project.projectId = projectId
-    project.projectName = projectName
-    project.contactInfo = req.body.contactInfo
-    project.roles = roles
-    project.active = active
+    // if (duplicate && duplicate?._id.toString() !== id) {
+    //     return res.status(409).json({ message: 'Duplicate title' })
+    // }
+    project.userId = req.body.userId
+    project.title = req.body.title
+    project.description = req.body.description
+    project.startDate = req.body.startDate
+    project.endDate = req.body.endDate
+    project.completed = req.body.completed
 
     // if (password) {
     //     // Hash password 
@@ -90,7 +91,7 @@ const updateProject = async (req, res) => {
 
     const updatedProject = await project.save()
 
-    res.json({ message: `${updatedProject.projectName} updated` })
+    res.json({ message: `${updatedProject.title} updated` })
 }
 
 // @desc Delete a project
@@ -119,7 +120,7 @@ const deleteProject = async (req, res) => {
 
     const result = await project.deleteOne()
 
-    const reply = `ProjectName ${result.projectName} with ID ${result._id} deleted`
+    const reply = `Title ${result.title} with ID ${result._id} deleted`
 
     res.json(reply)
 }

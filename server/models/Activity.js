@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const AutoIncrement = require('mongoose-sequence')(mongoose)
+//const AutoIncrement = require('mongoose-sequence')(mongoose)
 
 const activitySchema = new mongoose.Schema(
     {
@@ -8,11 +8,13 @@ const activitySchema = new mongoose.Schema(
             required: false,
             ref: 'Project'
         },
-        user: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             required: false,
             ref: 'User'
         },
+        startDate: { type: Date },
+        endDate: { type: Date },
         name: {
             type: String,
             required: true
@@ -63,19 +65,11 @@ const activitySchema = new mongoose.Schema(
             type: String,
             required: false
         }
-        // ,
-        // createdAt: Date,
-        // updatedAt: Date
     },
     {
         timestamps: true
     }
 )
-// activitySchema.plugin(AutoIncrement, {
-//     inc_field: 'ticket',
-//     id: 'ticketNums',
-//     start_seq: 500
-// })
 
 module.exports = mongoose.model('Activity', activitySchema)
 

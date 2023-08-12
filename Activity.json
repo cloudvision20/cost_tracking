@@ -1,0 +1,95 @@
+[
+    {
+        "_id": "64c74cb29a9f1104a6941937",
+        "name": "PITSA",
+        "description": "Allow to clear all vegetation, Nipah & Nibong etc",
+        "process": {
+            "uom": "m2",
+            "quantity": 9000
+        },
+        "duration": {
+            "uom": "month",
+            "quantity": 0.5
+        },
+        "resources": [
+            {
+                "type": "Labour",
+                "details": "",
+                "job": "Welder",
+                "costType": "hourly",
+                "uom": "rm",
+                "rate": 15,
+                "qtyAssign": 100,
+                "remarks": "",
+                "assignment": [
+                    {
+                        "resourcesId": "emp001",
+                        "budget": 10
+                    }
+                ],
+                "_id": "64c74cb29a9f1104a6941938"
+            },
+            {
+                "type": "Equipment",
+                "details": "excavator",
+                "job": "Earth Clearing",
+                "costType": "hourly",
+                "uom": "rm",
+                "rate": 100,
+                "qtyAssign": 1000,
+                "remarks": "",
+                "assignment": [
+                    {
+                        "resourcesId": "ex-010",
+                        "budget": 10
+                    },
+                    {
+                        "resourcesId": "ex-011",
+                        "budget": 10
+                    }
+                ],
+                "_id": "64c74cb29a9f1104a6941939"
+            },
+            {
+                "type": "Equipment",
+                "details": "vehicle",
+                "job": "Earth Clearing",
+                "costType": "hourly",
+                "uom": "rm",
+                "rate": 100,
+                "qtyAssign": 1000,
+                "remarks": "",
+                "assignment": [
+                    {
+                        "resourcesId": "ex-hilux01",
+                        "budget": 10
+                    }
+                ],
+                "_id": "64c74cb29a9f1104a694193a"
+            },
+            {
+                "type": "Consumable",
+                "details": "diesel",
+                "job": "Earth Clearing",
+                "costType": "volume",
+                "uom": "l",
+                "rate": 100,
+                "qtyAssign": 1000,
+                "remarks": "",
+                "assignment": [
+                    {
+                        "resourcesId": "ex-hilux01",
+                        "budget": 100
+                    }
+                ],
+                "_id": "64c74cb29a9f1104a694193b"
+            }
+        ],
+        "completed": false,
+        "workProgress": "0",
+        "createdAt": "2023-07-31T05:54:58.646Z",
+        "updatedAt": "2023-08-01T09:48:09.345Z",
+        "__v": 2,
+        "userId": "64c0a3409bb3abaaa39603b3"
+    }
+]

@@ -1,27 +1,34 @@
 const mongoose = require('mongoose')
 
 const projectSchema = new mongoose.Schema({
-    projectName: {
+    title: {
         type: String,
         required: true
+    },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'User'
     },
     description: {
         type: String,
         required: true
     },
-    contactInfo: [
+    startDate: { type: Date },
+    endDate: { type: Date },
+    budgetTotals: [{
+        budgetType: { type: String }, //HR, Equipment, Comsumables
+        uom: { type: String },
+        amount: { type: Number },
+        _id: false
+    }],
+    contacts: [
         {
-            email: String,
-            phone: String,
-            whatsapp: String,
+            userId: { type: mongoose.Schema.Types.ObjectId },
             _id: false
         }
     ],
-    roles: {
-        type: [String],
-        default: ["Employee"]
-    },
-    active: {
+    completed: {
         type: Boolean,
         default: true
     }

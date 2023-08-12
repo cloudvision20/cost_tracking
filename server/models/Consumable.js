@@ -7,11 +7,11 @@ const consumableSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        datetime: { Date },
-        type: { String },
-        model: { String },
-        unit: { String },
-        amount: { Number }
+        datetime: { type: Date },
+        type: { type: String },
+        model: { type: String },
+        unit: { type: String },
+        amount: { type: Number }
     },
     {
         timestamps: true
