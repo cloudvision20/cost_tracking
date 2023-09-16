@@ -12,14 +12,15 @@
     --INACTIVE: lightgray;
     --LINK-COLOR: blue;
     --LINK-COLOR-OLD: whitesmoke;
-    --LINK-HOVER: rgba(245, 245, 245, 0.9);
+    /* --LINK-HOVER: rgba(245, 245, 245, 0.9); */
+    --LINK-HOVER: rgba(110, 110, 110, 0.9);
     --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
     --STATUS-COMPLETE: limegreen;
     --STATUS-OPEN: firebrick;
     --TABLE-BGCOLOR: #FFF;
     --TABLE-COLOR: #000;
     --INPUT-INVALID: #F00;
-
+    --DR-BORDER-COLOR: blue;
 }
 
 /* || UTILITY CLASSES */
@@ -32,6 +33,18 @@
 }
 
 .errmsg a:any-link {
+    color: var(--ERROR);
+    text-decoration: underline;
+}
+.resmsg {
+    display: inline-block;
+    background-color: var(--ERROR-BACK);
+    color: var(--ERROR);
+    padding: 0.25em;
+    margin-bottom: 0.5em;
+}
+
+.resmsg a:any-link {
     color: var(--ERROR);
     text-decoration: underline;
 }
@@ -108,7 +121,18 @@ a:focus-visible {
     justify-content: flex-end;
     gap: 0.5em;
 }
-
+.ag-grid_div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    gap: 0.5em;
+    padding: 1px;
+}
+.ag-grid_button {
+    padding: 2px;
+    height: 70%;
+    font-size: 11px;
+}
 .dash-container {
     padding: 0.75em 0.5em 0.5em;
     flex-grow: 1;
@@ -149,7 +173,104 @@ td {
     border:0px;
     padding: 0px;
 }
+input {
+    padding: 0px;
+    width:100%;
+    border: 0px;
+    text-align: center;
+}
+.user-tip {
+    white-space: nowrap;
+    font-size: 10px;
+}
+.label-back {    
+    background-color :rgb(224, 224, 224);   
+    width:100%;
+}
+.grid_system div[class^="col"] {
+    border-top: 1px solid var(--DR-BORDER-COLOR);
+    border-right:1px solid var(--DR-BORDER-COLOR);
+    text-align: center;
+    padding: 0px;
+}
+.grid_system_no_border div[class^="col"] {
 
+    text-align: left;
+    padding: 0px;
+}
+.grid_system_container {
+    border-left:1px solid var(--DR-BORDER-COLOR);
+    border-right: 1px solid var(--DR-BORDER-COLOR);
+    border-bottom:1px solid var(--DR-BORDER-COLOR);
+}
+.grid_system_no_border {
+    width: 100%;
+    border: 0px;
+    padding: 0px;
+}
+.top_row  {
+    border-top: 0px solid var(--DR-BORDER-COLOR);
+    border-left: 0px solid var(--DR-BORDER-COLOR);
+    border-right: 1px solid var(--DR-BORDER-COLOR);
+    border-bottom: 1px solid var(--DR-BORDER-COLOR);
+     /* background: solid white; #e4dcdc; */
+     text-align: center;
+    padding: 0px;
+ }
+ .mid_row {
+     border-top: 0px solid var(--DR-BORDER-COLOR);
+     border-left: 0px solid var(--DR-BORDER-COLOR);
+     border-right: 1px solid var(--DR-BORDER-COLOR);
+     border-bottom: 1px solid var(--DR-BORDER-COLOR);
+     /* background: solid white; #e4dcdc; */
+     text-align: center;
+     padding: 0px;
+     margin: 0px;
+ }
+.bottom_row {
+    border-top: 0px solid var(--DR-BORDER-COLOR);
+    border-left: 0px solid var(--DR-BORDER-COLOR);
+    border-right: 1px solid var(--DR-BORDER-COLOR);
+    border-bottom: 0px solid var(--DR-BORDER-COLOR);
+    /* background: solid white; #e4dcdc; */
+    text-align: center;
+    padding:0px;    
+
+}
+.right_col {
+    border-top: 0px solid var(--DR-BORDER-COLOR);
+    border-left: 0px solid var(--DR-BORDER-COLOR);
+    border-right: 0px solid var(--DR-BORDER-COLOR);
+    border-bottom: 1px solid var(--DR-BORDER-COLOR);
+    /* background: solid white; #e4dcdc; */
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.left_col {
+    border-top: 0px solid var(--DR-BORDER-COLOR);
+    border-left: 0px solid var(--DR-BORDER-COLOR);
+    border-right: 1px solid var(--DR-BORDER-COLOR);
+    border-bottom: 0px solid var(--DR-BORDER-COLOR);
+    /* background: solid white; #e4dcdc; */
+    text-align: center;
+    padding: 0px;
+}
+.new_col {
+    border-top: 1px solid var(--DR-BORDER-COLOR);
+    border-left: 0px solid var(--DR-BORDER-COLOR);
+    border-right: 0px solid var(--DR-BORDER-COLOR);
+    border-bottom: 0px solid var(--DR-BORDER-COLOR);
+    /* background: solid white; #e4dcdc; */
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+test {
+    border-bottom: 1px solid var(--BORDER-COLOR);
+    border-spacing: 0px;
+    width: "100%";
+}
 /* input[type="date"]::-webkit-datetime-edit,
 input[type="date"]::-webkit-inner-spin-button,
 input[type="date"]::-webkit-clear-button {

@@ -10,9 +10,12 @@ import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
 // import EditDailyReportForm from '../dailyReports/EditDailyReportForm'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
+import "ag-grid-community/styles/ag-theme-balham.css";
 
 let rowId = 0
 let editedActivity = {}
+let errContent
+
 
 class BtnCellRenderer extends Component {
     constructor(props, Id) {
@@ -30,16 +33,19 @@ class BtnCellRenderer extends Component {
     render() {
         return (
             this.props.Id === "resources" ?
-                <div className="form-group dash-header__nav">
-                    <button className="btn btn-primary btn-sm" onClick={this.btnClickedHandler}>Assign</button>
-                    <button className="btn btn-danger btn-sm" onClick={this.btnDelClickedHandler}>Del</button>
+                <div className="form-group -dash-header__nav" style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }}>
+                    <button className="btn btn-primary btn-sm" style={{ padding: "2px", height: "70%", fontSize: "11px" }} onClick={this.btnClickedHandler}>Assign</button>
+                    <button className="btn btn-danger btn-sm" style={{ padding: "2px", height: "70%", fontSize: "11px" }} onClick={this.btnDelClickedHandler}>Del</button>
                 </div>
-
-                :
-                <div className="form-group dash-header__nav">
-                    {/* <button className="btn btn-primary btn-sm" onClick={this.btnClickedHandler}>Close</button> */}
-                    <button className="btn btn-danger btn-sm" onClick={this.btnDelClickedHandler}>Del</button>
-                </div>
+                : this.props.Id === "assign" ?
+                    <div className="form-group -dash-header__nav " style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }}>
+                        <button className="btn btn-danger btn-sm" style={{ padding: "2px", height: "70%", fontSize: "11px" }} onClick={this.btnDelClickedHandler}>Del</button>
+                    </div>
+                    :
+                    <div className="form-group " style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }}>
+                        <button className="btn btn-primary btn-xs" style={{ padding: "2px", height: "70%", fontSize: "11px" }} onClick={this.btnClickedHandler}>new</button>
+                        <button className="btn btn-danger btn-xs" style={{ padding: "2px", height: "70%", fontSize: "11px" }} onClick={this.btnDelClickedHandler}>edit</button>
+                    </div >
         )
     }
 }
@@ -53,7 +59,9 @@ const assignValueGetter = (params) => {
     return lst;
 };
 
-const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
+const EditActivityForm = ({ dailyReports, projects, activity, users }) => {
+
+    let errRef = useRef()
 
     const { isManager, isAdmin } = useAuth()
 
@@ -130,7 +138,7 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
             cellRendererParams: {
                 clicked: function (field) {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
-                    setAssignData(this.data.assignment)
+                    setRdAssignData(this.data.assignment)
                     setCurrResId(this.data.rowId)
                     document.getElementById("resourceDIV").style.display = "block";
                 }, delClicked: function () {
@@ -143,8 +151,8 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
     ]);
 
     const assignGridRef = useRef();
-    const assignmentData = { "resourceId": "", "budget": 0 }
-    const [assignData, setAssignData] = useState([assignmentData])
+    const assignData = { "resourceId": "", "budget": 0 }
+    const [rdAssignData, setRdAssignData] = useState([assignData])
     const [columnAssignDefs] = useState([
         { field: "resourcesId", width: 150, editable: true },
         { field: "budget", width: 150, editable: true },
@@ -186,6 +194,47 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
             },
         }
     ])
+
+
+    const dailyReportGridRef = useRef();
+    const dailyReportData = dailyReports.map(dailyReport => {
+        return ({
+            "status":
+                dailyReport.completed
+                    ? "Completed"
+                    : "Open",
+            "date": dateForPicker(dailyReport.reportDate),
+            "employee": dailyReport.userId.username,
+            "id": dailyReport._id
+        })
+    })
+
+
+    //const dailyReportData = { "status": "", "date": "", "employee": "" }
+    const [rdDailyReport, setRdDailyReport] = useState(dailyReportData)
+    const [columnDRDefs] = useState([
+        { field: "status", width: 150, editable: false },
+        { field: "date", width: 150, editable: false },
+        { field: "employee", width: 150, editable: false }
+        // ,
+        // {
+        //     field: "id",
+        //     headerName: 'Actions',
+        //     editable: false,
+        //     width: 150,
+        //     cellRenderer: BtnCellRenderer,
+        //     cellRendererParams: {
+        //         clicked: function (field) {
+
+        //             navigate(`/dash/dailyReports/new/${activity._id}`)
+        //         },
+        //         delClicked: function (field) {
+        //             navigate(`/dash/dailyReports/${field.value}`)
+        //         },
+        //         Id: "dailyReport"
+        //     },
+        // }
+    ])
     const [name, setName] = useState(activity.name)
     const [description, setDescription] = useState(activity.description)
     const [completed, setCompleted] = useState(activity.completed)
@@ -201,16 +250,9 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
     useEffect(() => {
 
         if (isSuccess || isDelSuccess) {
-            // setName('')
-            // setDescription('')
-            // setCompleted(false)
-            // setUserId('')
-            // setProjectId('')
-            // setProcessUOM('')
-            // setProcessQuantity('')
-            // setDurationUOM('')
-            // setDurationQuantity('')
-            // navigate('/dash/activities')
+            // errRef.className = "resmsg"
+            // isSuccess ? errContent = " Saved!"
+            //     : errContent = "Deleted!"
         }
 
     }, [isSuccess, isDelSuccess, navigate])
@@ -233,7 +275,14 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
         console.log('onCellValueChanged-rowData:' + JSON.stringify(rowData))
     }
     const onAssignValueChanged = (e) => {
-        console.log('onAssignValueChanged-assignData:' + JSON.stringify(assignData))
+        console.log('onAssignValueChanged-rdAssignData:' + JSON.stringify(rdAssignData))
+    }
+    const onDRValueChanged = (e) => {
+        console.log('onDRValueChanged-rdDailyReport:' + JSON.stringify(rdDailyReport))
+    }
+    const onDRRowDblClicked = (e) => {
+        console.log('onDRRowClicked-rdDailyReport:' + JSON.stringify(rdDailyReport))
+        navigate(`/dash/dailyReports/${e.data.id}`)
     }
 
     const onStartDateChanged = (e) => setStartDate(e.target.value)
@@ -259,19 +308,22 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
 
     const onNewAssignmentClicked = (e) => {
         e.preventDefault()
-        let newAssignData =
-            assignData ?
-                [...assignData, {
+        let newRdAssignData =
+            rdAssignData ?
+                [...rdAssignData, {
                     "resourcesId": "",
                     "budget": 0
                 }]
-                : [assignmentData]
+                : [assignData]
 
-        setAssignData(newAssignData)
-        console.log(JSON.stringify(newAssignData))
+        setRdAssignData(newRdAssignData)
+        console.log(JSON.stringify(newRdAssignData))
         //console.log(JSON.stringify(rowData))
     }
 
+    const onNewDailyReportClicked = (e) => {
+        navigate(`/dash/dailyReports/new/${activity._id}`)
+    }
     const onUpdateAssignmentClicked = (e) => {
         const otherRowData = rowData.filter((row) =>
             row.rowId !== currResId
@@ -285,14 +337,14 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
         setRowData([...otherRowData, dirtyRowData[0]])
         document.getElementById("resourceDIV").style.display = "none";
     }
-    const canSave = [activity.id].every(Boolean) && !isLoading
+    const canSave = [activity._id].every(Boolean) && !isLoading
 
     const onSaveActivityClicked = async (e) => {
         //e.preventDefault()
         let process = {}
         let duration = {}
         if (canSave) {
-            editedActivity._id = activity.id
+            editedActivity._id = activity._id
             editedActivity.name = name
             editedActivity.description = description
             editedActivity.startDate = startDate//dateFromDateString(startDate)
@@ -314,7 +366,7 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
     }
 
     const onDeleteActivityClicked = async () => {
-        await deleteActivity({ id: activity.id })
+        await deleteActivity({ id: activity._id })
     }
 
     const created = new Date(activity.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
@@ -341,7 +393,7 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
 
-    const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+    errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
     let deleteButton = null
     if (isManager || isAdmin) {
@@ -358,10 +410,10 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
 
     const content = (
         <>
-            <p className={errClass}>{errContent}</p>
+            <p ref={errRef} className={errClass}>{errContent}</p>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="panel">
-                    <h2>Edit Activity #{activity.name}</h2>
+                    <h4><b>Edit Activity #{activity.name}</b></h4>
                     <div className="form-group dash-header__nav">
                         <button
                             className="btn btn-primary"
@@ -374,126 +426,152 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
                         {deleteButton}
                     </div>
                 </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Name:</b></div>
-                    <div className="col-sm-2">
-                        <input
-                            className="form-control"
-                            id="activity-name"
-                            name="Name"
-                            type="text"
-                            placeholder="Name"
-                            autoComplete="off"
-                            value={name}
-                            onChange={onNameChanged}
-                        />
-                    </div>
+                <div className="container grid_system_no_border" style={{ borderLeft: "0px solid blue", borderBottom: "0px solid blue" }}>
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <div className="container-fluid" style={{ border: "0px" }}>
+                                <div className="form-group row">
+                                    <div className="col-sm-2"><b>Name:</b></div>
+                                    <div className="col-sm-4">
+                                        <input
+                                            className="form-control"
+                                            id="activity-name"
+                                            name="Name"
+                                            type="text"
+                                            placeholder="Name"
+                                            autoComplete="off"
+                                            value={name}
+                                            onChange={onNameChanged}
+                                        />
+                                    </div>
 
-                    <div className="col-sm"><b>Projects:</b></div>
-                    <div className="col-sm">
-                        <select
-                            id="userid"
-                            name="userid"
-                            className="form-control"
-                            value={projectId}
-                            onChange={onProjectIdChanged}
-                        >
-                            {prjOptions}
-                        </select>
-                    </div>
-                    <div className="col-sm"><b>Daily Diary:</b></div>
-                    <div className="col-sm-2">
-                        <p><Link to={`/dash/dailyReports/${dailyReporId}`}>Add New Daily Report</Link></p>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Description:</b></div>
-                    <div className="col-sm-6">
-                        <textarea
-                            className="form-control"
-                            id="activity-description"
-                            name="description"
-                            rows="4"
-                            value={description}
-                            onChange={onDescriptionChanged}
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Activity Process:</b></div>
-                    <div className="col-sm-3">
-                        <input
-                            className="form-control"
-                            id="process-unit"
-                            name="process-unit"
-                            type="text"
-                            placeholder="Process Unit"
-                            autoComplete="off"
-                            value={processUOM}
-                            onChange={onProcessUOMChanged}
-                        />
-                    </div>
-                    <div className="col-sm-3">
-                        <input
-                            className="form-control"
-                            id="process-quantity"
-                            name="process-quantity"
-                            type="text"
-                            placeholder="Process Quantity"
-                            autoComplete="off"
-                            value={processQuantity}
-                            onChange={onProcessQuantityChanged}
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Start / End Dates:</b></div>
-                    <div className="col-md-3" >
-                        <Form.Group controlId="startDate">
-                            <Form.Control
-                                type="date"
-                                value={startDate ? dateForPicker(startDate) : ''}
-                                placeholder={startDate ? dateForPicker(startDate) : "dd-mm-yyyy"}
-                                onChange={onStartDateChanged}
-                            />
-                        </Form.Group>
-                    </div>
-                    <div className="col-md-3">
-                        <Form.Group controlId="endDate">
-                            <Form.Control
-                                type="date"
-                                value={endDate ? dateForPicker(endDate) : ''}
-                                placeholder={endDate ? dateForPicker(endDate) : "dd-mm-yyyy"}
-                                onChange={onEndDateChanged}
-                            />
-                        </Form.Group>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Activity Duration:</b></div>
-                    <div className="col-sm-3">
-                        <input
-                            className="form-control"
-                            id="duration-unit"
-                            name="duration-unit"
-                            type="text"
-                            placeholder="Duration Unit"
-                            autoComplete="off"
-                            value={durationUOM}
-                            onChange={onDurationUOMChanged}
-                        />
-                    </div>
-                    <div className="col-sm-3">
-                        <input
-                            className="form-control"
-                            id="duration-quantity"
-                            name="duration-quantity"
-                            type="text"
-                            placeholder="Duration Quantity"
-                            autoComplete="off"
-                            value={durationQuantity}
-                            onChange={onDurationQuantityChanged}
-                        />
+                                    <div className="col-sm-2"><b>Projects:</b></div>
+                                    <div className="col-sm-4">
+                                        <select
+                                            id="userid"
+                                            name="userid"
+                                            className="form-control"
+                                            value={projectId}
+                                            onChange={onProjectIdChanged}
+                                        >
+                                            {prjOptions}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <div className="col-sm-2"><b>Description:</b></div>
+                                    <div className="col-sm-10">
+                                        <textarea
+                                            className="form-control"
+                                            id="activity-description"
+                                            name="description"
+                                            rows="4"
+                                            value={description}
+                                            onChange={onDescriptionChanged}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <div className="col-sm-2"><b>Activity Process:</b></div>
+                                    <div className="col-sm-5">
+                                        <input
+                                            className="form-control"
+                                            id="process-unit"
+                                            name="process-unit"
+                                            type="text"
+                                            placeholder="Process Unit"
+                                            autoComplete="off"
+                                            value={processUOM}
+                                            onChange={onProcessUOMChanged}
+                                        />
+                                    </div>
+                                    <div className="col-sm-5">
+                                        <input
+                                            className="form-control"
+                                            id="process-quantity"
+                                            name="process-quantity"
+                                            type="text"
+                                            placeholder="Process Quantity"
+                                            autoComplete="off"
+                                            value={processQuantity}
+                                            onChange={onProcessQuantityChanged}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <div className="col-sm-2"><b>Start / End Dates:</b></div>
+                                    <div className="col-md-5" >
+                                        <Form.Group controlId="startDate">
+                                            <Form.Control
+                                                type="date"
+                                                value={startDate ? dateForPicker(startDate) : ''}
+                                                placeholder={startDate ? dateForPicker(startDate) : "dd-mm-yyyy"}
+                                                onChange={onStartDateChanged}
+                                            />
+                                        </Form.Group>
+                                    </div>
+                                    <div className="col-md-5">
+                                        <Form.Group controlId="endDate">
+                                            <Form.Control
+                                                type="date"
+                                                value={endDate ? dateForPicker(endDate) : ''}
+                                                placeholder={endDate ? dateForPicker(endDate) : "dd-mm-yyyy"}
+                                                onChange={onEndDateChanged}
+                                            />
+                                        </Form.Group>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <div className="col-sm-2"><b>Activity Duration:</b></div>
+                                    <div className="col-sm-5">
+                                        <input
+                                            className="form-control"
+                                            id="duration-unit"
+                                            name="duration-unit"
+                                            type="text"
+                                            placeholder="Duration Unit"
+                                            autoComplete="off"
+                                            value={durationUOM}
+                                            onChange={onDurationUOMChanged}
+                                        />
+                                    </div>
+                                    <div className="col-sm-5">
+                                        <input
+                                            className="form-control"
+                                            id="duration-quantity"
+                                            name="duration-quantity"
+                                            type="text"
+                                            placeholder="Duration Quantity"
+                                            autoComplete="off"
+                                            value={durationQuantity}
+                                            onChange={onDurationQuantityChanged}
+                                        />
+                                    </div>
+                                </div>
+                            </div> {/* container-fluid */}
+                        </div>
+                        <div className="col-sm-6">
+                            <div className="container-fluid" style={{ border: "0px" }}>
+                                <div className="form-group row" style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }}>
+                                    <div className="col-sm-3"><b> Daily Dairy List:</b></div>
+                                    <div className="com-sm-2">
+                                        <button className="btn btn-primary btn-xs" style={{ padding: "2px", height: "80%", fontSize: "11px" }} onClick={onNewDailyReportClicked}>Add</button>
+                                    </div >
+                                </div>
+                                <div className="ag-theme-balham" style={{ height: 250, width: "100%" }}>
+                                    <AgGridReact
+                                        // class="ag-theme-alpine"
+                                        ref={dailyReportGridRef}
+                                        onCellValueChanged={onDRValueChanged}
+                                        onRowDoubleClicked={onDRRowDblClicked}
+                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                        defaultColDef={defaultColDef}
+                                        rowData={rdDailyReport}
+                                        columnDefs={columnDRDefs}>
+                                    </AgGridReact>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <br />
@@ -513,7 +591,7 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
                                 </button>
                             </div>
                             <div className="panel-body">
-                                <div className="ag-theme-alpine" style={{ height: 300, width: "100%" }}>
+                                <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
                                     <AgGridReact
                                         ref={resGridRef}
                                         onCellValueChanged={onCellValueChanged}
@@ -545,13 +623,13 @@ const EditActivityForm = ({ dailyReporId, projects, activity, users }) => {
                                 </button>
                             </div>
                             <div className="panel-body">
-                                <div className="ag-theme-alpine" style={{ height: 200, width: "100%" }}>
+                                <div className="ag-theme-balham" style={{ height: 200, width: "100%" }}>
                                     <AgGridReact
                                         ref={assignGridRef}
                                         onCellValueChanged={onAssignValueChanged}
                                         onGridReady={(event) => event.api.sizeColumnsToFit()}
                                         defaultColDef={defaultColDef}
-                                        rowData={assignData}
+                                        rowData={rdAssignData}
                                         columnDefs={columnAssignDefs}>
                                     </AgGridReact>
                                 </div>

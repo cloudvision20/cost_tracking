@@ -35,6 +35,14 @@ export const projectsApiSlice = apiSlice.injectEndpoints({
                 } else return [{ type: 'Project', id: 'LIST' }]
             }
         }),
+        getProjectById: builder.query({
+            query: (id) => ({
+                url: `/projects/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
         addNewProject: builder.mutation({
             query: initialProject => ({
                 url: '/projects',
@@ -74,6 +82,7 @@ export const projectsApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetProjectsQuery,
+    useGetProjectByIdQuery,
     useAddNewProjectMutation,
     useUpdateProjectMutation,
     useDeleteProjectMutation,

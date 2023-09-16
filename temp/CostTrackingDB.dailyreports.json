@@ -1,0 +1,365 @@
+[{
+  "_id": {
+    "$oid": "64dc500ba54631d449522816"
+  },
+  "activityId": {
+    "$oid": "64e0f3b2ecbaa145475119b6"
+  },
+  "userId": {
+    "$oid": "64c0a3409bb3abaaa39603b3"
+  },
+  "title": "",
+  "text": "",
+  "reportDate": {
+    "$date": "2023-08-16T00:00:00.000Z"
+  },
+  "reportDay": "Wednesday",
+  "manHour": {
+    "indirectPrev": 1,
+    "indirectTdy": 2,
+    "indirectCumm": 3,
+    "directPrev": 4,
+    "directTdy": 4,
+    "directCumm": 5,
+    "loading": [
+      {
+        "indirect": "1",
+        "indirectPax": 2,
+        "direct": "3",
+        "directPax": 4,
+        "direct1": "5",
+        "directPax1": 6,
+        "owner": "7",
+        "ownerPax": null,
+        "_id": {
+          "$oid": "64dc500ba54631d449522817"
+        }
+      },
+      {
+        "indirect": null,
+        "indirectPax": null,
+        "direct": null,
+        "directPax": null,
+        "direct1": null,
+        "directPax1": null,
+        "owner": null,
+        "ownerPax": null,
+        "_id": {
+          "$oid": "64dc500ba54631d449522818"
+        }
+      }
+    ],
+    "indirectTtl": 0,
+    "directTtl": 0,
+    "directTtl1": 0,
+    "ownerTtl": 0,
+    "pcSarawakians": 0,
+    "pcNonSarawakians": 0
+  },
+  "weatherChart": {
+    "raining": "r",
+    "driziling": "d",
+    "sunny": "s"
+  },
+  "meLoading": [
+    {
+      "load1": null,
+      "pax1": null,
+      "load2": null,
+      "pax2": null,
+      "load3": null,
+      "pax3": null,
+      "load4": null,
+      "pax4": null,
+      "load5": null,
+      "pax5": null,
+      "_id": {
+        "$oid": "64dc500ba54631d449522819"
+      }
+    }
+  ],
+  "meLoadingTtl": 0,
+  "safetyTbItem": "",
+  "safetyTbDesp": "",
+  "downTimeItem": "",
+  "downTimeDesp": "",
+  "conProgressItem": "",
+  "conProgressDesp": "",
+  "conProgressStatus": "",
+  "nextDayWPItem": "",
+  "nextDayWPDesp": "",
+  "nextDayWPRemarks": "",
+  "prjMaterialItem": "",
+  "prjMaterialDocNo": "",
+  "prjMaterialQty": null,
+  "prjMaterialStatus": "",
+  "aocItem": "",
+  "aocDesp": "",
+  "aocRemedialPlan": "",
+  "aocStatus": "",
+  "aocDtResolved": "",
+  "siteTechQItem": "",
+  "siteTechQIDesp": "",
+  "siteTechQIDtRaised": "",
+  "siteTechQIDtResolved": "",
+  "preparedBy": "",
+  "verifiedBy": "",
+  "acknowledgedBy": "",
+  "completed": false,
+  "createdAt": {
+    "$date": "2023-08-16T04:26:51.017Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-16T04:26:51.017Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64dcb13b3531f859a32a1994"
+  },
+  "activityId": {
+    "$oid": "64e0f3b2ecbaa145475119b6"
+  },
+  "userId": {
+    "$oid": "64c0a3409bb3abaaa39603b3"
+  },
+  "title": "",
+  "text": "",
+  "reportDate": {
+    "$date": "2023-08-16T00:00:00.000Z"
+  },
+  "reportDay": "Wednesday",
+  "manHour": {
+    "indirectPrev": 5,
+    "indirectTdy": 6,
+    "indirectCumm": 7,
+    "directPrev": 8,
+    "directTdy": 9,
+    "directCumm": 10,
+    "loading": [],
+    "indirectTtl": 1,
+    "directTtl": 2,
+    "directTtl1": 3,
+    "ownerTtl": 4,
+    "pcSarawakians": 33,
+    "pcNonSarawakians": 67
+  },
+  "weatherChart": {
+    "raining": "11",
+    "driziling": "12",
+    "sunny": "13"
+  },
+  "meLoading": [],
+  "meLoadingTtl": 0,
+  "safetyTbItem": "4.1",
+  "safetyTbDesp": "4.2",
+  "downTimeItem": "5.1",
+  "downTimeDesp": "5.2",
+  "conProgressItem": "6.1",
+  "conProgressDesp": "6.3",
+  "conProgressStatus": "6.3",
+  "nextDayWPItem": "7.1",
+  "nextDayWPDesp": "7.2",
+  "nextDayWPRemarks": "7.3",
+  "prjMaterialItem": "8.1",
+  "prjMaterialDocNo": "8.2",
+  "prjMaterialQty": 8.3,
+  "prjMaterialStatus": "8.4",
+  "aocItem": "9.1",
+  "aocDesp": "9.2",
+  "aocRemedialPlan": "9.3",
+  "aocStatus": "9.4",
+  "aocDtResolved": "9.5",
+  "siteTechQItem": "10.1",
+  "siteTechQIDesp": "10.2",
+  "siteTechQIDtRaised": "10.3",
+  "siteTechQIDtResolved": "10.4",
+  "preparedBy": "1",
+  "verifiedBy": "2",
+  "acknowledgedBy": "3",
+  "completed": false,
+  "createdAt": {
+    "$date": "2023-08-16T11:21:31.433Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-16T22:38:11.641Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "64dd4ac0eee59d06f9a6fe4c"
+  },
+  "activityId": {
+    "$oid": "64e0f3b2ecbaa145475119b6"
+  },
+  "userId": {
+    "$oid": "64c0a3409bb3abaaa39603b3"
+  },
+  "title": "",
+  "text": "",
+  "reportDate": {
+    "$date": "2023-08-17T00:00:00.000Z"
+  },
+  "reportDay": "Thursday",
+  "manHour": {
+    "indirectPrev": 1,
+    "indirectTdy": 2,
+    "indirectCumm": 3,
+    "directPrev": 4,
+    "directTdy": 5,
+    "directCumm": 6,
+    "loading": [
+      {
+        "indirect": " ",
+        "indirectPax": 2,
+        "direct": "3",
+        "directPax": 4,
+        "direct1": "5",
+        "directPax1": 6,
+        "owner": "7",
+        "ownerPax": 8,
+        "_id": {
+          "$oid": "64dd4f63eee59d06f9a70013"
+        }
+      }
+    ],
+    "indirectTtl": 1,
+    "directTtl": 2,
+    "directTtl1": 3,
+    "ownerTtl": 4,
+    "pcSarawakians": 67,
+    "pcNonSarawakians": 33
+  },
+  "weatherChart": {
+    "raining": "r",
+    "driziling": "d",
+    "sunny": "s"
+  },
+  "meLoading": [
+    {
+      "load1": "1",
+      "pax1": 2,
+      "load2": "3",
+      "pax2": 4,
+      "load3": "5",
+      "pax3": 6,
+      "load4": "7",
+      "pax4": 8,
+      "load5": "9",
+      "pax5": 10,
+      "_id": {
+        "$oid": "64dd4f63eee59d06f9a70014"
+      }
+    }
+  ],
+  "meLoadingTtl": 0,
+  "safetyTbItem": "41",
+  "safetyTbDesp": "42",
+  "downTimeItem": "51",
+  "downTimeDesp": "52",
+  "conProgressItem": "61",
+  "conProgressDesp": "62",
+  "conProgressStatus": "63",
+  "nextDayWPItem": "71",
+  "nextDayWPDesp": "72",
+  "nextDayWPRemarks": "73",
+  "prjMaterialItem": "81",
+  "prjMaterialDocNo": "82",
+  "prjMaterialQty": 83,
+  "prjMaterialStatus": "84",
+  "aocItem": "",
+  "aocDesp": "",
+  "aocRemedialPlan": "",
+  "aocStatus": "",
+  "aocDtResolved": "",
+  "siteTechQItem": "",
+  "siteTechQIDesp": "",
+  "siteTechQIDtRaised": "",
+  "siteTechQIDtResolved": "",
+  "preparedBy": "",
+  "verifiedBy": "",
+  "acknowledgedBy": "",
+  "completed": false,
+  "createdAt": {
+    "$date": "2023-08-16T22:16:32.349Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-16T22:36:19.236Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "64dd5044eee59d06f9a7004c"
+  },
+  "activityId": {
+    "$oid": "64e0f3b2ecbaa145475119b6"
+  },
+  "userId": {
+    "$oid": "64c0a3409bb3abaaa39603b3"
+  },
+  "title": "",
+  "text": "",
+  "reportDate": {
+    "$date": "2023-08-17T00:00:00.000Z"
+  },
+  "reportDay": "Thursday",
+  "manHour": {
+    "indirectPrev": 0,
+    "indirectTdy": 0,
+    "indirectCumm": 0,
+    "directPrev": 0,
+    "directTdy": 0,
+    "directCumm": 0,
+    "loading": [],
+    "indirectTtl": 0,
+    "directTtl": 0,
+    "directTtl1": 0,
+    "ownerTtl": 0,
+    "pcSarawakians": 0,
+    "pcNonSarawakians": 0
+  },
+  "weatherChart": {
+    "raining": "",
+    "driziling": "",
+    "sunny": ""
+  },
+  "meLoading": [],
+  "meLoadingTtl": 0,
+  "safetyTbItem": "",
+  "safetyTbDesp": "",
+  "downTimeItem": "",
+  "downTimeDesp": "",
+  "conProgressItem": "",
+  "conProgressDesp": "",
+  "conProgressStatus": "",
+  "nextDayWPItem": "",
+  "nextDayWPDesp": "",
+  "nextDayWPRemarks": "",
+  "prjMaterialItem": "",
+  "prjMaterialDocNo": "",
+  "prjMaterialQty": 0,
+  "prjMaterialStatus": "",
+  "aocItem": "",
+  "aocDesp": "",
+  "aocRemedialPlan": "",
+  "aocStatus": "",
+  "aocDtResolved": "",
+  "siteTechQItem": "",
+  "siteTechQIDesp": "",
+  "siteTechQIDtRaised": "",
+  "siteTechQIDtResolved": "",
+  "preparedBy": "",
+  "verifiedBy": "",
+  "acknowledgedBy": "",
+  "completed": false,
+  "createdAt": {
+    "$date": "2023-08-16T22:40:04.209Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-16T22:40:04.209Z"
+  },
+  "__v": 0
+}]

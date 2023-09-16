@@ -1,0 +1,153 @@
+            <div className="table table-responsive table-sm border">
+                <table className="table table-responsive table-sm" style={{ border: "1px", cellspacing: 0, cellpadding: 0, width: "100%" }}>
+
+                    <tbody>
+                        <tr>
+                            <td ><br /><br /><br /></td>
+                            <td style={{ textAlign: "center" }}><br /><b>DAILY PROGRESS REPORT</b><br /><br /></td>
+                            <td style={{ textAlign: "center" }} >logo</td>
+                            <td >Handle</td>
+                        </tr>
+                        <tr style={{ cellspacing: 0, cellpadding: 0, width: "100%" }}>
+                            <td colSpan="4" className="td" style={{ cellspacing: 0, cellpadding: 0, width: "100%" }}>
+
+                                {/* <div className="table table-responsive table-sm" style={{ padding: "0px" }}> */}
+                                <table className="" style={{ cellspacing: 0, cellpadding: 0, width: "100%" }} >
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+
+                                {/* </div> */}
+
+
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td scope="row">1</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>
+                                <table className="table-sm table-bordered border-primary" style={{ cellspacing: 0, cellpadding: 0, width: "100%" }} >
+                                    <tbody>
+                                        <tr>
+                                            <td scope="row">1</td>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td scope="row">2</td>
+                            <td>Jacob</td>
+                            <td>Tdornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <td scope="row">3</td>
+                            <td colSpan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+            <Container className="">
+                <Row className="border border-left-0 border-right-0 border-primary">
+                    <Col className="border border-top-0 border-bottom-0 border-primary"><br /> Col1 <br /><br /></Col>
+                    <Col className="">Col2</Col>
+                    <Col className="border border-top-0 border-bottom-0 border-primary ">Col3</Col>
+                </Row>
+            </Container>
+            <br />
+
+
+
+
+                        <div className="col-sm-6">
+                            <div className="grid_system_no_border" >
+                                <div className="row">
+                                    <div className="col-sm-3 mid_row">1.0</div>
+                                    <div className="col-sm-3 mid_row">2.0</div>
+                                    <div className="col-sm-3 mid_row">3.0</div>
+                                    <div className="col-sm-3">4.0</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-3 mid_row">1.0</div>
+                                    <div className="col-sm-3 mid_row">2.0</div>
+                                    <div className="col-sm-3 mid_row">3.0</div>
+                                    <div className="col-sm-3">4.0</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-3 mid_row">1.0</div>
+                                    <div className="col-sm-3 mid_row">2.0</div>
+                                    <div className="col-sm-3 mid_row">3.0</div>
+                                    <div className="col-sm-3">4.0</div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-3 bottom_row">1.0</div>
+                                    <div className="col-sm-3 bottom_row">2.0</div>
+                                    <div className="col-sm-3 bottom_row">3.0</div>
+                                    <div className="col-sm-3">4.0</div>
+                                </div>
+                            </div>
+                        </div>
+//**********************************************************************************************************************************
+
+            <br />
+            <div className="container grid_system " style={{ borderLeft: "1px solid blue", borderBottom: "1px solid blue" }}>
+                <div className="row">
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                    <div className="col-sm-1">.col-sm-1</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-3">.col-sm-3</div>
+                    <div className="col-sm-3">.col-sm-3</div>
+                    <div className="col-sm-3">.col-sm-3</div>
+                    <div className="col-sm-3">.col-sm-3</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-4">.col-sm-4</div>
+                    <div className="col-sm-4">.col-sm-4</div>
+                    <div className="col-sm-4">.col-sm-4</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-3">.col-sm-3</div>
+                    <div className="col-sm-3">.col-sm-3</div>
+                    <div className="col-sm-6">.col-sm-6</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-5">.col-sm-5</div>
+                    <div className="col-sm-7">.col-sm-7</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-6">.col-sm-6</div>
+                    <div className="col-sm-6">.col-sm-6</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">.col-sm-12</div>
+                </div>
+            </div>

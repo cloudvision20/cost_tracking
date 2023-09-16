@@ -24,22 +24,20 @@ const getActivityById = asyncHandler(async (req, res) => {
     const _id = req.params.id
     // Get activity by Id and return all the data for the options
 
-    // retrieve all Activity by Id and include usename corresponsing to userId
+    // retrieve Activity by Id and include usename corresponsing to userId
     let activity = await Activity.find({ "_id": _id }).populate({ path: 'userId', select: 'username' }).populate({ path: 'projectId' }).exec()
     let projects
     let users
-    let dailyReport
+    let dailyReports
 
     // If no activity 
     if (!activity?.length) {
         return res.status(400).json({ message: `Activity id: ${_id} not found` })
-    }
-    else {
+    } else {
         // options
         projects = await Project.find().lean()
         users = (await User.find().select("_id, username"))
-        dailyReport = await DailyReport.find({ "activityId": _id }).lean()
-
+        dailyReports = await DailyReport.find({ "activityId": _id }).populate({ path: 'userId', select: 'username' }).exec()
     }
 
     let response = {}
@@ -47,7 +45,7 @@ const getActivityById = asyncHandler(async (req, res) => {
     response.activity = activity
     response.projects = projects
     response.users = users
-    response.dailyReport = dailyReport
+    response.dailyReports = dailyReports
     res.json(response)
 })
 

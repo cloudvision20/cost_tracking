@@ -21,6 +21,8 @@ import DailyReportsList from './features/dailyReports/DailyReportsList'
 import EditDailyReport from './features/dailyReports/EditDailyReport'
 import NewDailyReport from './features/dailyReports/NewDailyReport'
 
+import AttendancesUpload from './features/files/AttendancesUpload'
+import FilesUpload from './features/files/FilesUpload'
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
 import RequireAuth from './features/auth/RequireAuth'
@@ -43,9 +45,17 @@ function App() {
         <Route element={<PersistLogin />}>
           <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
             <Route element={<Prefetch />}>
+              <Route path="files">
+                <Route index element={<FilesUpload />} />
+                <Route path="attendances" element={<AttendancesUpload />} />
+              </Route>
               <Route path="dash" element={<DashLayout />}>
-
+                <Route path="files">
+                  <Route index element={<FilesUpload />} />
+                  <Route path="attendances" element={<AttendancesUpload />} />
+                </Route>
                 <Route index element={<Welcome />} />
+
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
                   <Route path="users">
@@ -71,6 +81,7 @@ function App() {
                   <Route index element={<DailyReportsList />} />
                   <Route path=":id" element={<EditDailyReport />} />
                   <Route path="new" element={<NewDailyReport />} />
+                  <Route path="new/:activityId" element={<NewDailyReport />} />
                 </Route>
 
               </Route>{/* End Dash */}

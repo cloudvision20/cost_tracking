@@ -11,7 +11,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
 let rowId = 0
-let editedActivity = {}
+let eActivity = {}
 
 class BtnCellRenderer extends Component {
     constructor(props, Id) {
@@ -277,22 +277,22 @@ const NewActivityForm = ({ users }) => {
         let duration = {}
         e.preventDefault()
         if (canSave) {
-            editedActivity.name = name
-            editedActivity.description = description
-            editedActivity.startDate = startDate
-            editedActivity.endDate = endDate
-            editedActivity.completed = completed
-            editedActivity.userId = userId
+            eActivity.name = name
+            eActivity.description = description
+            eActivity.startDate = startDate
+            eActivity.endDate = endDate
+            eActivity.completed = completed
+            eActivity.userId = userId
             process.uom = processUOM
             process.quantity = processQuantity
-            editedActivity.process = process
+            eActivity.process = process
             duration.uom = durationUOM
             duration.quantity = durationQuantity
-            editedActivity.duration = duration
-            editedActivity.resources = rowData
-            console.log(editedActivity)
-            console.log(JSON.stringify(editedActivity))
-            await addNewActivity(editedActivity)
+            eActivity.duration = duration
+            eActivity.resources = rowData
+            console.log(eActivity)
+            console.log(JSON.stringify(eActivity))
+            await addNewActivity(eActivity)
         }
     }
 

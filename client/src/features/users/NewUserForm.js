@@ -92,8 +92,8 @@ const NewUserForm = () => {
 
             <form onSubmit={onSaveUserClicked}>
                 <div className="panel ">
-                    <h2>New User</h2>
-                    <div className="form-group form__action-buttons">
+                    <h4><b>New User</b></h4>
+                    <div className="form-group dash-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"
@@ -104,72 +104,81 @@ const NewUserForm = () => {
                         </button>
                     </div>
                 </div>
-                <div className="form-group col-md-4">
-                    <label htmlFor="username">
-                        Username: <span className="nowrap">[3-20 letters]</span></label>
-                    <input
-                        className="form-control"
-                        id="username"
-                        name="username"
-                        type="text"
-                        autoComplete="off"
-                        value={username}
-                        onChange={onUsernameChanged}
-                    />
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Employee Id:</b> </div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="employeeId"
+                            name="EmployeeId"
+                            type="text"
+                            autoComplete="off"
+                            value={employeeId}
+                            onChange={onEmployeeIdChanged}
+                        />
+                    </div>
                 </div>
-                <div className="form-group col-md-4">
-                    <label htmlFor="password">
-                        Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
-                    <input
-                        className="form-control"
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={password}
-                        onChange={onPasswordChanged}
-                    />
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Employee Name:</b> </div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="employeeName"
+                            name="EmployeeName"
+                            type="text"
+                            autoComplete="off"
+                            value={employeeName}
+                            onChange={onEmployeeNameChanged}
+                        />
+                    </div>
                 </div>
-                <div className="form-group col-md-4">
-                    <label htmlFor="employeeId">
-                        Employee Id: </label>
-                    <input
-                        className="form-control"
-                        id="employeeId"
-                        name="employeeId"
-                        type="text"
-                        autoComplete="off"
-                        value={employeeId}
-                        onChange={onEmployeeIdChanged}
-                    />
+
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Username:</b> <br /><span className="user-tip">[3-20 letters]</span>
+                    </div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="username"
+                            name="username"
+                            type="text"
+                            autoComplete="off"
+                            value={username}
+                            onChange={onUsernameChanged}
+                        />
+                    </div>
                 </div>
-                <div className="form-group col-md-4">
-                    <label htmlFor="employeeName">
-                        Employee Name: </label>
-                    <input
-                        className="form-control"
-                        id="employeeName"
-                        name="employeeName"
-                        type="text"
-                        autoComplete="off"
-                        value={employeeName}
-                        onChange={onEmployeeNameChanged}
-                    />
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Password:</b> <br /> <span className="user-tip">[empty = no change]</span><br /><span className="user-tip">  [4-12 chars incl. !@#$%]</span></div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="password"
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={onPasswordChanged}
+                        />
+                    </div>
                 </div>
-                <div className="form-group col-md-4">
-                    <label htmlFor="roles">
-                        ASSIGNED ROLES:</label>
-                    <select
-                        id="roles"
-                        name="roles"
-                        className="form-control"
-                        multiple={true}
-                        size="3"
-                        value={roles}
-                        onChange={onRolesChanged}
-                    >
-                        {options}
-                    </select>
+
+                <div className="form-group row">
+                    <div className="col-sm-2"><b> ASSIGNED ROLES:</b></div>
+                    <div className="col-sm-2">
+                        <select
+                            id="roles"
+                            name="roles"
+                            className="form-control"
+                            multiple={true}
+                            size="3"
+                            value={roles}
+                            onChange={onRolesChanged}
+                        >
+                            {options}
+                        </select>
+                    </div>
                 </div>
+
             </form>
         </>
     )

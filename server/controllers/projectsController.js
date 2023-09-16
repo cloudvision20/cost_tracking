@@ -1,5 +1,7 @@
 const Project = require('../models/Project')
-const Note = require('../models/DailyReport')
+const Activity = require('../models/Activity')
+const User = require('../models/User')
+const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 
 // @desc Get all projects
@@ -16,6 +18,37 @@ const getAllProjects = async (req, res) => {
 
     res.json(projects)
 }
+
+// @desc Get all projects
+// @route GET /projects
+// @access Private
+const getProjectById = asyncHandler(async (req, res) => {
+    const _id = req.params.id
+    // Get project by Id and return all the data for the options
+
+    // retrieve Project by Id and include usename corresponsing to userId
+    let project = await Project.find({ "_id": _id }).populate({ path: 'userId', select: 'username' }).exec()
+    let users
+    let activities
+
+    // If no project 
+    if (!project?.length) {
+        return res.status(400).json({ message: `Project id: ${_id} not found` })
+    } else {
+        // options
+        users = (await User.find().select("_id, username"))
+        activities = await Activity.find({ "projectId": _id }).populate({ path: 'userId', select: 'username' }).exec()
+    }
+
+    let response = {}
+
+    response.project = project
+    response.users = users
+    response.activities = activities
+    res.json(response)
+})
+
+
 
 // @desc Create new project
 // @route POST /projects
@@ -106,10 +139,10 @@ const deleteProject = async (req, res) => {
     }
 
     // Does the project still have assigned notes?
-    const note = await Note.findOne({ project: id }).lean().exec()
-    if (note) {
-        return res.status(400).json({ message: 'Project has assigned notes' })
-    }
+    // const note = await Note.findOne({ project: id }).lean().exec()
+    // if (note) {
+    //     return res.status(400).json({ message: 'Project has assigned notes' })
+    // }
 
     // Does the project exist to delete?
     const project = await Project.findById(id).exec()
@@ -127,6 +160,7 @@ const deleteProject = async (req, res) => {
 
 module.exports = {
     getAllProjects,
+    getProjectById,
     createNewProject,
     updateProject,
     deleteProject

@@ -31,7 +31,7 @@ const DailyReport = ({ dailyReportId }) => {
                 </td>
                 <td className="">{created}</td>
                 <td className="">{updated}</td>
-                <td className="">{dailyReport.title}</td>
+                <td className="">{dailyReport.activityId}</td>
                 <td className="">{dailyReport.username}</td>
 
                 <td className="">

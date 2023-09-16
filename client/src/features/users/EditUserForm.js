@@ -29,6 +29,8 @@ const EditUserForm = ({ user }) => {
     const [validUsername, setValidUsername] = useState(false)
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
+    const [employeeId, setEmployeeId] = useState(user.employeeId)
+    const [employeeName, setEmployeeName] = useState(user.employeeName)
     const [roles, setRoles] = useState(user.roles)
     const [active, setActive] = useState(user.active)
 
@@ -53,6 +55,8 @@ const EditUserForm = ({ user }) => {
 
     const onUsernameChanged = e => setUsername(e.target.value)
     const onPasswordChanged = e => setPassword(e.target.value)
+    const onEmployeeIdChanged = e => setEmployeeId(e.target.value)
+    const onEmployeeNameChanged = e => setEmployeeName(e.target.value)
 
     const onRolesChanged = e => {
         const values = Array.from(
@@ -66,9 +70,9 @@ const EditUserForm = ({ user }) => {
 
     const onSaveUserClicked = async (e) => {
         if (password) {
-            await updateUser({ id: user.id, username, password, roles, active })
+            await updateUser({ id: user.id, username, employeeId, employeeName, password, roles, active })
         } else {
-            await updateUser({ id: user.id, username, roles, active })
+            await updateUser({ id: user.id, username, employeeId, employeeName, roles, active })
         }
     }
 
@@ -107,8 +111,8 @@ const EditUserForm = ({ user }) => {
 
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="panel">
-                    <h2>Edit User</h2>
-                    <div className="form-group form__action-buttons">
+                    <h4><b>Edit User</b></h4>
+                    <div className="form-group  dash-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"
@@ -126,32 +130,68 @@ const EditUserForm = ({ user }) => {
                         </button>
                     </div>
                 </div>
-                <div className="form-group col-md-2">
-                    <label htmlFor="username">
-                        Username: <span className="nowrap">[3-20 letters]</span></label>
-                    <input
-                        className="form-control"
-                        id="username"
-                        name="username"
-                        type="text"
-                        autoComplete="off"
-                        value={username}
-                        onChange={onUsernameChanged}
-                    />
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Employee Id:</b> </div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="employeeId"
+                            name="EmployeeId"
+                            type="text"
+                            autoComplete="off"
+                            value={employeeId}
+                            onChange={onEmployeeIdChanged}
+                        />
+                    </div>
                 </div>
-                <div className="form-group col-md-2">
-                    <label htmlFor="password">
-                        Password: <span className="nowrap">[empty = no change]</span> <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
-                    <input
-                        className="form-control"
-                        id="password"
-                        name="password"
-                        type="password"
-                        value={password}
-                        onChange={onPasswordChanged}
-                    />
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Employee Name:</b> </div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="employeeName"
+                            name="EmployeeName"
+                            type="text"
+                            autoComplete="off"
+                            value={employeeName}
+                            onChange={onEmployeeNameChanged}
+                        />
+                    </div>
                 </div>
-                <div className="form-group col-md-2">
+
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Username:</b> <br /><span className="user-tip">[3-20 letters]</span>
+                    </div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="username"
+                            name="username"
+                            type="text"
+                            autoComplete="off"
+                            value={username}
+                            onChange={onUsernameChanged}
+                        />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <div className="col-sm-2"><b>Password:</b> <br /> <span className="user-tip">[empty = no change]</span><br /><span className="user-tip">  [4-12 chars incl. !@#$%]</span></div>
+                    <div className="col-sm-2">
+                        <input
+                            className="form-control"
+                            id="password"
+                            name="password"
+                            type="password"
+                            value={password}
+                            onChange={onPasswordChanged}
+                        />
+                    </div>
+                </div>
+
+
+
+
+                {/* <div className="form-group col-md-2">
                     <label className="form__label form__checkbox-container" htmlFor="user-active">
                         ACTIVE:
                         <input
@@ -163,22 +203,42 @@ const EditUserForm = ({ user }) => {
                             onChange={onActiveChanged}
                         />
                     </label>
+                </div> */}
+                <div className="form-group row">
+                    <div className="col-sm-2"> <b>ACTIVE:</b></div>
+                    <div className="col-sm-2 form-check">
+                        {/* <div className="form-check"> */}
+                        <input
+                            className="form-check-input"
+                            id="user-active"
+                            name="user-active"
+                            type="checkbox"
+                            checked={active}
+                            onChange={onActiveChanged}
+                        />
+                        {/* </div> */}
+                    </div>
                 </div>
-                <div className="form-group col-md-2">
-                    <label htmlFor="roles">
-                        ASSIGNED ROLES:</label>
-                    <select
-                        id="roles"
-                        name="roles"
-                        className="form-control"
-                        multiple={true}
-                        size="3"
-                        value={roles}
-                        onChange={onRolesChanged}
-                    >
-                        {options}
-                    </select>
+                <div className="form-group row">
+                    <div className="col-sm-2"><b> ASSIGNED ROLES:</b></div>
+                    <div className="col-sm-2">
+                        <select
+                            id="roles"
+                            name="roles"
+                            className="form-control"
+                            multiple={true}
+                            size="3"
+                            value={roles}
+                            onChange={onRolesChanged}
+                        >
+                            {options}
+                        </select>
+                    </div>
                 </div>
+
+
+
+
             </form>
         </>
     )

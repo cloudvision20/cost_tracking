@@ -3,7 +3,7 @@ const router = express.Router()
 const dailyReportsController = require('../controllers/dailyReportsController')
 const verifyJWT = require('../middleware/verifyJWT')
 
-router.use(verifyJWT)
+//router.use(verifyJWT)
 
 router.route('/')
     .get(dailyReportsController.getAllDailyReports)

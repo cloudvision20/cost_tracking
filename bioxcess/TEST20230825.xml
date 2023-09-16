@@ -1,0 +1,704 @@
+<xml xmlns:s='uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882'
+	xmlns:dt='uuid:C2F41010-65B3-11d1-A29F-00AA00C14882'
+	xmlns:rs='urn:schemas-microsoft-com:rowset'
+	xmlns:z='#RowsetSchema'>
+<s:Schema id='RowsetSchema'>
+	<s:ElementType name='row' content='eltOnly' rs:updatable='true'>
+		<s:AttributeType name='c0' rs:name='Employee No' rs:number='1' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c1' rs:name='Employee Name' rs:number='2' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c2' rs:name='Trans Date' rs:number='3' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c3' rs:name='Post Date' rs:number='4' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Date' rs:number='5' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c5' rs:name='Day Code' rs:number='6' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c6' rs:name='Day Type' rs:number='7' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Weekday' rs:number='8' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Holiday' rs:number='9' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Schedule' rs:number='10' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c10' rs:name='In 1' rs:number='11' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c11' rs:name='Out 1' rs:number='12' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c12' rs:name='In 2' rs:number='13' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c13' rs:name='Out 2' rs:number='14' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c14' rs:name='In 3' rs:number='15' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c15' rs:name='Out 3' rs:number='16' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c16' rs:name='In 4' rs:number='17' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c17' rs:name='Out 4' rs:number='18' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c18' rs:name='In 5' rs:number='19' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c19' rs:name='Out 5' rs:number='20' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Work' rs:number='21' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c21' rs:name='Exit Pass' rs:number='22' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Overtime' rs:number='23' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Short' rs:number='24' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c24' rs:name='No Of Workday' rs:number='25' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c25' rs:name='OT Hrs Approved' rs:number='26' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c26' rs:name='OT Code' rs:number='27' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c27' rs:name='Leave Type' rs:number='28' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c28' rs:name='----' rs:number='29' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:extends type='rs:rowbase'/>
+	</s:ElementType>
+</s:Schema>
+<rs:data>
+	<rs:insert>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:41' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:42' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:40' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:29' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='24' c1='HAMIDON WAHAP' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:44' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:32' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:26' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:28' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='08-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:32' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:07' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.12' Short='0.00' c24='1.000' c25='0.12' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:29' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:31' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:31' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:46' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='3' c1='ROSLI SARBINI' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:39' c11='07:46' c12='17:00' c13='' c14='' c15='' c16='' c17='' c18='' c19=''
+			 Work='8.00' c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='01-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.05' Short='0.00' c24='1.000' c25='0.05' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:30' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:26' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:48' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='08-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:51' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:04' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.07' Short='0.00' c24='1.000' c25='0.07' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:47' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:41' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:41' c11='16:06' c12='17:00' c13='' c14='' c15='' c16='' c17='' c18='' c19=''
+			 Work='8.00' c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:31' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:45' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:40' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='31' c1='WARREN' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:42' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:42' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='08-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:21' c11='17:05' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.08' Short='0.00' c24='1.000' c25='0.08' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:42' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:40' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='09:00' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='7.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='0.875' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:29' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:29' c11='12:10' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='4.17'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='0.521' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='33' c1='SABERI ABDULLAH' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:45' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='01-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:04' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.07' Short='0.00' c24='1.000' c25='0.07' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='08-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:25' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:05' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.08' Short='0.00' c24='1.000' c25='0.08' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:32' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:37' c11='15:21' c12='15:25' c13='17:01' c14='' c15='' c16='' c17='' c18='' c19=''
+			 Work='8.00' c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:37' c11='11:52' c12='17:00' c13='' c14='' c15='' c16='' c17='' c18='' c19=''
+			 Work='8.00' c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:28' c11='17:24' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.40' Short='0.00' c24='1.000' c25='0.4' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:22' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='5' c1='KOH PEK SIONG' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:32' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='01-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:22' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:41' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='08-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:05' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.08' Short='0.00' c24='1.000' c25='0.08' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='09-07-2023' c5='' c6='RESTDAY' Weekday='Sunday'
+			 Holiday='' Schedule='0' c10='07:34' c11='12:39' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='4.65'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='0.581' c25='0' c26='HW20' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:25' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.05' Short='0.00' c24='1.000' c25='0.05' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:30' c11='17:07' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.12' Short='0.00' c24='1.000' c25='0.12' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.05' Short='0.00' c24='1.000' c25='0.05' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:25' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:28' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:35' c11='14:57' c12='17:03' c13='' c14='' c15='' c16='' c17='' c18='' c19=''
+			 Work='8.00' c21='0.000' Overtime='0.05' Short='0.00' c24='1.000' c25='0.05' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:06' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.10' Short='0.00' c24='1.000' c25='0.1' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='22-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.05' Short='0.00' c24='1.000' c25='0.05' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:24' c11='17:06' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.10' Short='0.00' c24='1.000' c25='0.1' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:05' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.08' Short='0.00' c24='1.000' c25='0.08' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:17' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:23' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:29' c11='17:06' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.10' Short='0.00' c24='1.000' c25='0.1' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:19' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='30-07-2023' c5='' c6='RESTDAY' Weekday='Sunday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW20' c27='' c28=''/>
+		<z:row c0='94' c1='USNI' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:25' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='01-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:46' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:52' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:14' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:46' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:49' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:48' c11='17:26' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.43' Short='0.00' c24='1.000' c25='0.43' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:12' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:17' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:39' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:49' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:54' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:27' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:45' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:25' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:50' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:06' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='95' c1='LAI CHEN ANN' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:06' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='01-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='03-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:30' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='04-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:30' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='05-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='06-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:42' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='07-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='08-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:05' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.08' Short='0.00' c24='1.000' c25='0.08' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='09-07-2023' c5='' c6='RESTDAY' Weekday='Sunday'
+			 Holiday='' Schedule='0' c10='07:34' c11='12:39' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='4.65'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='0.581' c25='0' c26='HW20' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='10-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='11-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='12-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:30' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='13-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:32' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='14-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='15-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='17-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:38' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='20-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:35' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='25-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:41' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.05' Short='0.00' c24='1.000' c25='0.05' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='26-07-2023' c5='' c6='WORKDAY' Weekday='Wednesday'
+			 Holiday='' Schedule='0' c10='07:40' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:34' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:36' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='30-07-2023' c5='' c6='RESTDAY' Weekday='Sunday'
+			 Holiday='' Schedule='0' c10='07:33' c11='17:03' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW20' c27='' c28=''/>
+		<z:row c0='96' c1='RIDO' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:20' c11='17:01' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.02' Short='0.00' c24='1.000' c25='0.02' c26='HW15' c27='' c28=''/>
+		<z:row c0='97' c1='JONATHAN' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:18' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='97' c1='JONATHAN' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:05' c11='17:02' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.03' Short='0.00' c24='1.000' c25='0.03' c26='HW15' c27='' c28=''/>
+		<z:row c0='97' c1='JONATHAN' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:22' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='97' c1='JONATHAN' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='97' c1='JONATHAN' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:16' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='97' c1='JONATHAN' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:01' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='98' c1='SUHAIDI' c2='25-08-2023' c3='25-08-2023' Date='18-07-2023' c5='' c6='WORKDAY' Weekday='Tuesday'
+			 Holiday='' Schedule='0' c10='07:18' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='98' c1='SUHAIDI' c2='25-08-2023' c3='25-08-2023' Date='27-07-2023' c5='' c6='WORKDAY' Weekday='Thursday'
+			 Holiday='' Schedule='0' c10='07:22' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='98' c1='SUHAIDI' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='98' c1='SUHAIDI' c2='25-08-2023' c3='25-08-2023' Date='29-07-2023' c5='' c6='WORKDAY' Weekday='Saturday'
+			 Holiday='' Schedule='0' c10='07:16' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='98' c1='SUHAIDI' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:03' c11='17:00' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.00' Short='0.00' c24='1.000' c25='0' c26='HW15' c27='' c28=''/>
+		<z:row c0='99' c1='MAGDALANE' c2='25-08-2023' c3='25-08-2023' Date='21-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:37' c11='17:14' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.23' Short='0.00' c24='1.000' c25='0.23' c26='HW15' c27='' c28=''/>
+		<z:row c0='99' c1='MAGDALANE' c2='25-08-2023' c3='25-08-2023' Date='24-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:26' c11='17:23' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.38' Short='0.00' c24='1.000' c25='0.38' c26='HW15' c27='' c28=''/>
+		<z:row c0='99' c1='MAGDALANE' c2='25-08-2023' c3='25-08-2023' Date='28-07-2023' c5='' c6='WORKDAY' Weekday='Friday'
+			 Holiday='' Schedule='0' c10='07:43' c11='17:06' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.10' Short='0.00' c24='1.000' c25='0.1' c26='HW15' c27='' c28=''/>
+		<z:row c0='99' c1='MAGDALANE' c2='25-08-2023' c3='25-08-2023' Date='31-07-2023' c5='' c6='WORKDAY' Weekday='Monday'
+			 Holiday='' Schedule='0' c10='07:29' c11='17:17' c12='' c13='' c14='' c15='' c16='' c17='' c18='' c19='' Work='8.00'
+			 c21='0.000' Overtime='0.28' Short='0.00' c24='1.000' c25='0.28' c26='HW15' c27='' c28=''/>
+	</rs:insert>
+</rs:data>
+</xml>

@@ -48,7 +48,7 @@ const DailyReportsList = () => {
                         <th scope="col" className="">Status</th>
                         <th scope="col" className="">Created</th>
                         <th scope="col" className="">Updated</th>
-                        <th scope="col" className="">Title</th>
+                        <th scope="col" className="">ActivityId</th>
                         <th scope="col" className="">Owner</th>
                         <th scope="col" className="">Edit</th>
                     </tr>

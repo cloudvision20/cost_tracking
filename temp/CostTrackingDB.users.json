@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "64c0a3409bb3abaaa39603b3"
+  },
+  "username": "beng",
+  "password": "$2b$10$9zb2r67oe8qC0g8SIIxydeHSLsfVS7ckSCtp39UsnVTuxjOfQzUVq",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin"
+  ],
+  "active": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c13a5bc89234bb1b5d13ec"
+  },
+  "username": "dave",
+  "password": "$2b$10$H2eZn1wbiKO0zSkCSgd.ze9tYRHbFZnW7eCwpcpMTYiKBluzqgTU.",
+  "employeeId": "dave01",
+  "employeeName": "Dave ",
+  "contactInfo": [],
+  "roles": [
+    "Employee"
+  ],
+  "active": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c76e149a9f1104a69419b3"
+  },
+  "username": "ben",
+  "password": "$2b$10$Y5PTknYBSYlNNSeDWSUEUuie3keOMKekeQLavLCrHsRevygJpMN6q",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin"
+  ],
+  "active": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64c83a309a9f1104a6941a61"
+  },
+  "username": "b",
+  "password": "$2b$10$LkUHVWkFKrtimNQAaOgyxuA7IzIeh1iX2ojjGDoUtDMb1BnBhiRKq",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin"
+  ],
+  "active": true,
+  "__v": 0
+}]

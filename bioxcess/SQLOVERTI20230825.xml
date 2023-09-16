@@ -1,0 +1,36 @@
+<xml xmlns:s='uuid:BDC6E3F0-6DA3-11d1-A2A3-00AA00C14882'
+	xmlns:dt='uuid:C2F41010-65B3-11d1-A29F-00AA00C14882'
+	xmlns:rs='urn:schemas-microsoft-com:rowset'
+	xmlns:z='#RowsetSchema'>
+<s:Schema id='RowsetSchema'>
+	<s:ElementType name='row' content='eltOnly' rs:updatable='true'>
+		<s:AttributeType name='c0' rs:name='Trans Date' rs:number='1' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c1' rs:name='Post Date' rs:number='2' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c2' rs:name='Payroll ID' rs:number='3' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Project' rs:number='4' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='Job' rs:number='5' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c5' rs:name='OT Code' rs:number='6' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:AttributeType name='c6' rs:name='OT Hrs Approved' rs:number='7' rs:write='true'>
+			<s:datatype dt:type='string' dt:maxLength='255' rs:precision='0' rs:maybenull='false'/>
+		</s:AttributeType>
+		<s:extends type='rs:rowbase'/>
+	</s:ElementType>
+</s:Schema>
+<rs:data>
+	<rs:insert>
+		<z:row c0='25-08-2023' c1='25-08-2023' c2='' Project='' Job='' c5='HW15' c6='5.05'/>
+	</rs:insert>
+</rs:data>
+</xml>

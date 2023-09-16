@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { useUpdateProjectMutation, useDeleteProjectMutation } from "./projectsApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,10 +10,10 @@ import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-
+let rowId = 0
 let editProject = {}
 
-const EditProjectForm = ({ project, users }) => {
+const EditProjectForm = ({ activities, project, users }) => {
 
     const { isManager, isAdmin } = useAuth()
 
@@ -31,6 +31,34 @@ const EditProjectForm = ({ project, users }) => {
     }] = useDeleteProjectMutation()
 
     const navigate = useNavigate()
+
+    const defaultColDef = useMemo(() => {
+        return {
+            flex: 1,
+            resizable: true,
+            editable: true,
+            width: 50,
+        };
+    }, []);
+
+    const data = Array.from(activities).map((activity, index) => ({
+        "Status": activity.completed ? "Completed" : "Open",
+        "name": activity.name,
+        "description": activity.description,
+        "username": activity.userId.username,
+        "_id": activity._id,
+        "rowId": activity._id
+    }))
+    const activitiesRef = useRef();
+    const [rowData, setRowData] = useState(data)
+    const [columnDefs] = useState([
+
+        { field: "Status", editable: false },
+        { field: "name", editable: false },
+        { field: "description", editable: false },
+        { field: "username", editable: false }
+
+    ]);
 
     const [title, setTitle] = useState(project.title)
     const [description, setDescription] = useState(project.description)
@@ -61,12 +89,35 @@ const EditProjectForm = ({ project, users }) => {
     const onStartDateChanged = (e) => setStartDate(e.target.value)
     const onEndDateChanged = (e) => setEndDate(e.target.value)
 
-    const canSave = [title, description, userId].every(Boolean) && !isLoading
+
+    const onCellValueChanged = (e) => {
+        console.log('onCellValueChanged-rowData:' + JSON.stringify(rowData))
+    }
+    const onRowDblClicked = (e) => {
+        console.log('onRowClicked-activity:' + JSON.stringify(rowData))
+        navigate(`/dash/activities/${e.data._id}`)
+    }
+    const onNewActivityClicked = (e) => {
+        e.preventDefault()
+        rowId = rowId + 1
+        let newRowData = [...rowData, {
+            "Status": null,
+            "name": null,
+            "description": null,
+            "username": null,
+
+            "rowId": 'new' + rowId.toString()
+        }]
+        setRowData(newRowData)
+        console.log(JSON.stringify(newRowData))
+    }
+
+    const canSave = [userId].every(Boolean) && !isLoading
 
     const onSaveProjectClicked = async (e) => {
         //e.preventDefault()
         if (canSave) {
-            editProject._id = project.id
+            editProject._id = project._id
             editProject.title = title
             editProject.description = description
             editProject.completed = completed
@@ -83,7 +134,7 @@ const EditProjectForm = ({ project, users }) => {
     }
 
     const onDeleteProjectClicked = async () => {
-        await deleteProject({ id: project.id })
+        await deleteProject({ id: project._id })
     }
 
     const created = new Date(project.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
@@ -190,6 +241,41 @@ const EditProjectForm = ({ project, users }) => {
                         </Form.Group>
                     </div>
                 </div>
+
+                <div className="panel-heading"><b>Activities</b></div>
+                <div className="container-sm">
+
+                    <div className="panel-group">
+                        <div className="panel panel-default">
+                            <div className="form-group  dash-header__nav">
+                                <button
+                                    className="btn btn-primary"
+                                    title="New Resources"
+                                    onClick={onNewActivityClicked}
+                                >
+                                    Add Activities
+                                </button>
+                            </div>
+                            <div className="panel-body">
+                                <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
+                                    <AgGridReact
+                                        ref={activitiesRef}
+                                        onCellValueChanged={onCellValueChanged}
+                                        onRowDoubleClicked={onRowDblClicked}
+                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                        defaultColDef={defaultColDef}
+                                        rowData={rowData}
+                                        columnDefs={columnDefs}>
+                                    </AgGridReact>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
                 <div className="panel panel-info">
 
                     <div className="form-group row">

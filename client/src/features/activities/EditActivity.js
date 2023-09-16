@@ -26,7 +26,7 @@ const EditActivity = () => {
                 return <p className="errmsg">No access</p>
             }
         }
-        content = <EditActivityForm dailyReporId={res.dailyReport[0]._id} projects={res.projects} activity={res.activity[0]} users={res.users} />
+        content = <EditActivityForm dailyReports={res.dailyReports} projects={res.projects} activity={res.activity[0]} users={res.users} />
 
     }
 

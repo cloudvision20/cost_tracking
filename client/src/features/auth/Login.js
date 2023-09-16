@@ -72,7 +72,7 @@ const Login = () => {
     const content = (
         <section>
             <div className="container">
-                <div id="loginbox" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div id="loginbox" style={{ marginTop: "50px", textAlign: "left" }} className="mainbox col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2">
                     <div className="panel panel-info">
                         {/* <div className="panel-heading">
                             <div className="panel-title">Sign In</div>
@@ -90,10 +90,11 @@ const Login = () => {
 
                                 <form id="loginform" className="form-horizontal" >
 
-                                    <div style={{ marginBottom: "25px" }} className="input-group">
+                                    <div style={{ marginBottom: "25px" }} className="input-group col-sm-2">
                                         <span style={{ marginRight: "20px" }} className="input-group-addon"><FontAwesomeIcon icon={faUser} /></span>
                                         <input
                                             className="form-control"
+                                            style={{ textAlign: "left" }}
                                             type="text"
                                             id="username"
                                             placeholder="username"
@@ -110,10 +111,11 @@ const Login = () => {
                                         />
                                     </div>
 
-                                    <div style={{ marginBottom: "25px" }} className="input-group">
+                                    <div style={{ marginBottom: "25px" }} className="input-group  col-sm-2">
                                         <span style={{ marginRight: "20px" }} className="input-group-addon"><FontAwesomeIcon icon={faLock} /></span>
                                         <input
                                             className="form-control"
+                                            style={{ textAlign: "left" }}
                                             type="password"
                                             id="password"
                                             placeholder="password"
@@ -131,34 +133,37 @@ const Login = () => {
 
                                     {/* <button className="form__submit-button">Sign In</button> */}
                                     <div style={{ marginTop: "10px" }} className="form-group">
-                                        <div className="col-sm-12 controls">
+                                        <div className="col-sm-12 controls dash-header__nav">
                                             {/* <a id="btn-login" onClick={handleSubmit} className="btn btn-success">Login  </a> */}
                                             <button type="button" className="btn btn-primary" onClick={handleSubmit} >Sign In</button>
-
                                         </div>
                                     </div>
 
+                                    <br /> <br />
 
-                                    <div className="input-group">
-                                        <div className="checkbox">
-                                            <label>
-                                                <input
-                                                    type="checkbox"
-                                                    id="persist"
-                                                    onChange={handleToggle}
-                                                    checked={persist}
-                                                />
-                                                Trust This Device
-                                            </label>
-
-                                        </div>
-                                    </div>
                                 </form>
-
                             </div>
                         </div>
                         <footer>
-                            <Link to="/">Back to Home</Link>
+                            <div className="form-group">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <p>Trust This Device</p>
+                                    </div>
+                                    <div className="checkbox col-2">
+                                        <input
+                                            type="checkbox"
+                                            id="persist"
+                                            onChange={handleToggle}
+                                            checked={persist}
+                                        />
+                                    </div>
+                                </div>
+                                <div className='row'>
+                                    <Link to="/">Back to Home</Link>
+                                </div>
+                            </div>
+
                         </footer>
                     </div>
                 </div>

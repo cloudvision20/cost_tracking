@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import EditProjectForm from './EditProjectForm'
-import { useGetProjectsQuery } from './projectsApiSlice'
-import { useGetUsersQuery } from '../users/usersApiSlice'
+import { useGetProjectByIdQuery, useGetProjectsQuery } from './projectsApiSlice'
+
 import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 import useTitle from '../../hooks/useTitle'
@@ -13,34 +13,23 @@ const EditProject = () => {
 
     const { username, isManager, isAdmin } = useAuth()
 
-    const { project } = useGetProjectsQuery("projectsList", {
-        selectFromResult: ({ data }) => ({
-            project: data?.entities[id]
-        }),
-    })
-    // const { projects } = useGetProjectsQuery("projectsList", {
-    //     selectFromResult: ({ data }) => ({
-    //         projects: data?.ids.map(id => data?.entities[id])
-    //     }),
-    // })
-    // const project = projects.filter((product) => product._id === id)[0]
+    const { data: res, isSuccess } = useGetProjectByIdQuery(id);
 
-    const { users } = useGetUsersQuery("usersList", {
-        selectFromResult: ({ data }) => ({
-            users: data?.ids.map(id => data?.entities[id])
-        }),
-    })
+    let content
 
-    if (!project || !users?.length) return <PulseLoader color={"#FFF"} />
+    if (isSuccess) {
+
+        if (!res.project || !res.users?.length) return <PulseLoader color={"#FFF"} />
 
 
-    if (!isManager && !isAdmin) {
-        if (project.username !== username) {
-            return <p className="errmsg">No access</p>
+        if (!isManager && !isAdmin) {
+            if (res.project.username !== username) {
+                return <p className="errmsg">No access</p>
+            }
         }
-    }
 
-    const content = <EditProjectForm project={project} users={users} />
+        content = <EditProjectForm activities={res.activities} project={res.project[0]} users={res.users} />
+    }
 
     return content
 }

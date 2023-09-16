@@ -11,8 +11,8 @@ const corsOptions = require('./config/corsOptions')
 const connectDB = require('./config/dbConn')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
-
-console.log(process.env.NODE_ENV)
+global.__basedir = __dirname;
+//console.log(process.env.NODE_ENV)
 
 connectDB()
 
@@ -32,6 +32,7 @@ app.use('/users', require('./routes/userRoutes'))
 app.use('/projects', require('./routes/projectRoutes'))
 app.use('/dailyReports', require('./routes/dailyReportRoutes'))
 app.use('/activities', require('./routes/activityRoutes'))
+app.use('/files', require('./routes/filesRoutes'))
 
 app.all('*', (req, res) => {
     res.status(404)

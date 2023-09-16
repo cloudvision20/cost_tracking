@@ -1,0 +1,83 @@
+{
+    "activityId": "64d4b9d83cc90acbe9562313",
+    "userId": "64c0a3409bb3abaaa39603b3",
+    "title": "",
+    "text": "",
+    "reportDate": "2023-08-16",
+    "reportDay": "Wednesday",
+    "manHour": {
+        "indirectPrev": 0,
+        "indirectTdy": 0,
+        "indirectCumm": 0,
+        "directPrev": 0,
+        "directTdy": 0,
+        "directCumm": 0,
+        "loading": [
+            {
+                "indirect": null,
+                "indirectPax": null,
+                "direct": null,
+                "directPax": null,
+                "direct1": null,
+                "directPax1": null,
+                "owner": null,
+                "ownerPax": null,
+                "rowId": 0,
+                "isDirty": false
+            }
+        ],
+        "indirectTtl": 0,
+        "directTtl": 0,
+        "directTtl1": 0,
+        "ownerTtl": 0,
+        "pcSarawakians": 0,
+        "pcNonSarawakians": 0
+    },
+    "weatherChart": {
+        "raining": "",
+        "driziling": "",
+        "sunny": ""
+    },
+    "meLoading": [
+        {
+            "load1": null,
+            "pax1": null,
+            "load2": null,
+            "pax2": null,
+            "load3": null,
+            "pax3": null,
+            "load4": null,
+            "pax4": null,
+            "load5": null,
+            "pax5": null
+        }
+    ],
+    "meLoadingTtl": 0,
+    "safetyTbItem": "",
+    "safetyTbDesp": "",
+    "downTimeItem": "",
+    "downTimeDesp": "",
+    "conProgressItem": "",
+    "conProgressDesp": "",
+    "conProgressStatus": "",
+    "nextDayWPItem": "",
+    "nextDayWPDesp": "",
+    "nextDayWPRemarks": "",
+    "prjMaterialItem": "",
+    "prjMaterialDocNo": "",
+    "prjMaterialQty": "",
+    "prjMaterialStatus": "",
+    "aocItem": "",
+    "aocDesp": "",
+    "aocRemedialPlan": "",
+    "aocStatus": "",
+    "aocDtResolved": "",
+    "siteTechQItem": "",
+    "siteTechQIDesp": "",
+    "siteTechQIDtRaised": "",
+    "siteTechQIDtResolved": "",
+    "preparedBy": "",
+    "verifiedBy": "",
+    "acknowledgedBy": "",
+    "completed": false
+}
