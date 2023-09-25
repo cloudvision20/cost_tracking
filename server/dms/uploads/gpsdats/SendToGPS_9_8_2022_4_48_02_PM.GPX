@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx xmlns="http://www.topografix.com/GPX/1/1" version="1.1" creator="ExpertGPS 8.10 (Send to Garmin GPSMAP 66s)" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wptx1="http://www.garmin.com/xmlschemas/WaypointExtension/v1" xmlns:gpxx="http://www.garmin.com/xmlschemas/GpxExtensions/v3" xmlns:gpxtpx="http://www.garmin.com/xmlschemas/TrackPointExtension/v1" xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.topografix.com/GPX/gpx_style/0/2 http://www.topografix.com/GPX/gpx_style/0/2/gpx_style.xsd http://www.topografix.com/GPX/gpx_overlay/0/4 http://www.topografix.com/GPX/gpx_overlay/0/4/gpx_overlay.xsd http://www.topografix.com/GPX/gpx_modified/0/1 http://www.topografix.com/GPX/gpx_modified/0/1/gpx_modified.xsd http://www.topografix.com/GPX/Private/TopoGrafix/0/4 http://www.topografix.com/GPX/Private/TopoGrafix/0/4/topografix.xsd http://www.garmin.com/xmlschemas/WaypointExtension/v1 https://www8.garmin.com/xmlschemas/WaypointExtensionv1.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 https://www8.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 https://www8.garmin.com/xmlschemas/TrackPointExtensionv1.xsd">
+<wpt lat="1.74259958" lon="111.14788696">
+<time>2022-08-09T07:52:18.353Z</time>
+<name>CR1</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>CR1</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.74790584" lon="111.15074083">
+<time>2022-08-09T07:52:47.561Z</time>
+<name>CR2</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>CR2</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.72142294" lon="111.16623327">
+<time>2022-08-09T07:58:50.313Z</time>
+<name>PP5</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP5</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.72352280" lon="111.17841586">
+<time>2022-08-09T07:57:25.281Z</time>
+<name>PP6</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP6</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.75652516" lon="111.09853374">
+<time>2022-08-09T07:22:58.603Z</time>
+<name>PP1</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP1</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.74392483" lon="111.12061637">
+<time>2022-08-09T07:23:29.074Z</time>
+<name>PP2</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP2</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.73261591" lon="111.13954874">
+<time>2022-08-09T07:24:29.331Z</time>
+<name>PP3</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP3</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.72581972" lon="111.15253331">
+<time>2022-08-09T07:25:07.769Z</time>
+<name>PP4</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP4</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+<wpt lat="1.72117567" lon="111.17976042">
+<time>2022-08-09T07:26:24.818Z</time>
+<name>PP7</name>
+<sym>Navaid, Red</sym>
+<type>Navaid, Red</type>
+<extensions>
+<time xmlns="http://www.topografix.com/GPX/gpx_modified/0/1">2022-08-09T08:29:44.654Z</time>
+<label xmlns="http://www.topografix.com/GPX/gpx_overlay/0/4">
+<label_text>PP7</label_text>
+<text xmlns="http://www.topografix.com/GPX/gpx_style/0/2">
+<font>
+<size>4.763</size>
+</font>
+</text>
+</label>
+</extensions>
+</wpt>
+</gpx>

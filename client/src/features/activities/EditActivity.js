@@ -11,7 +11,7 @@ const EditActivity = () => {
 
     const { id } = useParams()
 
-    const { username, isManager, isAdmin } = useAuth()
+    const { userid, username, isManager, isAdmin } = useAuth()
 
     const { data: res, isSuccess } = useGetActivityByIdQuery(id);
 

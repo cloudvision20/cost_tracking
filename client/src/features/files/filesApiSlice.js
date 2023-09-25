@@ -4,6 +4,7 @@ import {
 } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
 
+
 const filesAdapter = createEntityAdapter({
     sortComparer: (a, b) => (a.completed === b.completed) ? 0 : a.completed ? 1 : -1
 })
@@ -42,7 +43,11 @@ export const filesApiSlice = apiSlice.injectEndpoints({
                 return {
                     url: '/files',
                     method: 'POST',
+                    headers: {
+                        'Content-Type': 'multipart/form-data;'
+                    },
                     body,
+                    formData: true,
                 }
             },
         }),
@@ -55,13 +60,35 @@ export const filesApiSlice = apiSlice.injectEndpoints({
             })
         }),
         uploadAttendances: builder.mutation({
+            query: (file) => {
+                const body = new FormData();
+                body.append('Content-Type', file.type);
+                body.append('file', file);
+                body.append('userid', file.userid)
+
+                return {
+                    url: '/files/attendances',
+                    method: 'POST',
+                    body,
+                }
+            },
+        }),
+        getGPSDats: builder.query({
+            query: () => ({
+                url: '/files/gpsdats',
+                // validateStatus: (response, result) => {
+                //     return response.status === 200 && !result.isError
+                // },
+            })
+        }),
+        uploadGPSDats: builder.mutation({
             query: file => {
                 const body = new FormData();
                 body.append('Content-Type', file.type);
                 body.append('file', file);
 
                 return {
-                    url: '/files/attendances',
+                    url: '/files/gpsdats',
                     method: 'POST',
                     body,
                 }
@@ -76,4 +103,6 @@ export const {
     useUploadMutation,
     useGetAttendancesQuery,
     useUploadAttendancesMutation,
+    useGetGPSDatsQuery,
+    useUploadGPSDatsMutation,
 } = filesApiSlice

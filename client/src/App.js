@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Public from './components/Public'
 import Login from './features/auth/Login';
-import DashLayout from './components/DashLayout'
+import DashLayout from './components/dash/DashLayout'
 import Welcome from './features/auth/Welcome'
 
 import UsersList from './features/users/UsersList'
@@ -22,6 +22,7 @@ import EditDailyReport from './features/dailyReports/EditDailyReport'
 import NewDailyReport from './features/dailyReports/NewDailyReport'
 
 import AttendancesUpload from './features/files/AttendancesUpload'
+import GPSDatsUpload from './features/files/GPSDatsUpload'
 import FilesUpload from './features/files/FilesUpload'
 import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
@@ -48,11 +49,13 @@ function App() {
               <Route path="files">
                 <Route index element={<FilesUpload />} />
                 <Route path="attendances" element={<AttendancesUpload />} />
+                <Route path="gpsdats" element={<GPSDatsUpload />} />
               </Route>
               <Route path="dash" element={<DashLayout />}>
                 <Route path="files">
                   <Route index element={<FilesUpload />} />
                   <Route path="attendances" element={<AttendancesUpload />} />
+                  <Route path="gpsdats" element={<GPSDatsUpload />} />
                 </Route>
                 <Route index element={<Welcome />} />
 

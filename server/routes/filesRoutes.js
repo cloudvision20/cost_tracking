@@ -17,11 +17,11 @@ router.route('/attendances/:name')
     .get(filesController.download)
     .delete(filesController.remove)
 
-router.route('/gpsdat')
+router.route('/gpsdats')
     .get(filesController.getListFiles)
     .post(filesController.upload)
 
-router.route('/gpsdat/:name')
+router.route('/gpsdats/:name')
     .get(filesController.download)
     .delete(filesController.remove)
 

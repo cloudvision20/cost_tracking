@@ -1,9 +1,6 @@
+const uploadFile = require("../middleware/fileUtil");
 const fs = require("fs");
 const { filePath, baseUrl } = require('../config/filePath')
-const csv = require('fast-csv');
-const mongoose = require('mongoose')
-const Attendance = require("../models/Attendance")
-
 const getPath = (req, res) => {
     let directoryPath = __basedir + filePath;
     let base_Url = ''
@@ -62,59 +59,53 @@ const getFileInfos = (req, res, files) => {
     return fileInfos
 }
 
-const importAttendance = async (file) => {
-    let attendances = [];
-    csv.parseString(file.data.toString(), {
-        headers: true,
-        ignoreEmpty: true
-    }).on("data", function (data) {
-        data['_id'] = new mongoose.Types.ObjectId();
-        data['userId'] = file.userid;
-
-        attendances.push(data);
-    }).on("end", function () {
-        Attendance.create(attendances, function (err, documents) {
-            if (err) throw err;
-        });
-        console.log(attendances.length + ' attendances transactions have been successfully imported.')
-    });
-}
-
-
 const upload = async (req, res) => {
-    let uploadPath;
-    let results;
-    getPath(req, res)
-    if (!req.files || Object.keys(req.files).length === 0) {
-        res.status(400).send('No files were uploaded.');
-        return;
-    }
+    req.filePath = filePath
+    try {
+        await uploadFile(req, res);
 
-    let file = req.files.file;
-    file.userid = req.body.userid
-    switch (req.path) {
-        case '/attendances':
-            results = await importAttendance(file);
-            break;
-        case '/gpsdats':
-            ext = 'gpx'
-            break;
-        default:
-            ext = 'any'
-            break;
-    }
-
-    uploadPath = req.directoryPath + file.name
-    file.mv(uploadPath, function (err) {
-        if (err) {
-            return res.status(500).send(err);
+        if (req.file == undefined) {
+            return res.status(400).send({
+                message: "Please upload a file!",
+                status: "fail"
+            });
         }
 
-        res.send('File uploaded to ' + uploadPath);
-    });
+        getPath(req, res)
+        fs.readdir(req.directoryPath, { withFileTypes: true }, function (err, files) {
+            let fileInfos = []
+            if (err) {
+                res.status(200).send({
+                    message: "Uploaded the file successfully: " + req.file.originalname + " however Unable to scan files!",
+                    fileInfos: fileInfos,
+                    status: "success"
+                });
+            } else {
+                fileInfos = getFileInfos(req, res, files)
+                res.status(200).send({
+                    message: "Uploaded the file successfully: " + req.file.originalname,
+                    fileInfos: fileInfos,
+                    status: "success"
+                });
+            }
+        });
+
+    } catch (err) {
+        console.log(err);
+
+        if (err.code == "LIMIT_FILE_SIZE") {
+            return res.status(500).send({
+                message: "File size cannot be larger than 2MB!",
+                status: "fail"
+            });
+        }
+
+        res.status(500).send({
+            message: `Could not upload the file: ${req.file.originalname}. ${err}`,
+            status: "fail"
+        });
+    }
 };
-
-
 
 const getListFiles = async (req, res) => {
     getPath(req, res)

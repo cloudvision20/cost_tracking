@@ -1,10 +1,8 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
-import { useGetAttendancesQuery, useUploadAttendancesMutation } from "./filesApiSlice";
-import useAuth from "../../hooks/useAuth"
+import { useGetGPSDatsQuery, useUploadGPSDatsMutation } from "./filesApiSlice";
 
-const AttendancesUpload = () => {
+const GPSDatsUpload = () => {
     let fileInfos = []
-    const { userid, username, isManager, isAdmin } = useAuth()
     const [selectedFiles, setSelectedFiles] = useState('')
     const [currentFile, setCurrentFile] = useState('')
     const [progress, setProgress] = useState(0)
@@ -12,19 +10,19 @@ const AttendancesUpload = () => {
     const [success, setSuccess] = useState(false)
 
     const onChangeSelectFile = (e) => setSelectedFiles(e.target.files)
-    const { data: file_Infos } = useGetAttendancesQuery()
+    const { data: file_Infos } = useGetGPSDatsQuery()
 
     fileInfos = file_Infos
 
 
-    const [uploadAttendances] = useUploadAttendancesMutation()
+    const [uploadGPSDats] = useUploadGPSDatsMutation()
 
     const upload = async () => {
         let currFile = selectedFiles[0];
-        currFile.userid = userid
+
         setProgress(0)
         setCurrentFile(currFile)
-        const f = await uploadAttendances(currFile)
+        const f = await uploadGPSDats(currFile)
         if (f.data.status === "success") {
             //setFileInfos(f.data.fileInfos)
             fileInfos = f.data.fileInfos
@@ -67,7 +65,7 @@ const AttendancesUpload = () => {
                 disabled={!selectedFiles}
                 onClick={upload}
             >
-                import attendances
+                import GPS data
             </button>
 
             <div className="alert alert-light" role="alert">
@@ -89,4 +87,4 @@ const AttendancesUpload = () => {
     );
     // }
 }
-export default AttendancesUpload
+export default GPSDatsUpload

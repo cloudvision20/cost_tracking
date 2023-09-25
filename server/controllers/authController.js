@@ -26,6 +26,7 @@ const login = async (req, res) => {
         {
             "UserInfo": {
                 "username": foundUser.username,
+                "userid": foundUser.id,
                 "roles": foundUser.roles
             }
         },
@@ -75,6 +76,7 @@ const refresh = (req, res) => {
                 {
                     "UserInfo": {
                         "username": foundUser.username,
+                        "userid": foundUser.id,
                         "roles": foundUser.roles
                     }
                 },

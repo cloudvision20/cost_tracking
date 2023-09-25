@@ -3,12 +3,15 @@ const mongoose = require('mongoose')
 
 const attendanceSchema = new mongoose.Schema(
     {
+        //"Employee No","Employee Name","Date","Weekday","Time","DateTime","IO Status","Device ID"
         userId: { type: String, required: true },
-        employeeId: { type: String, required: true },
-        clockType: { type: String }, // IN/OUT
-        date: { type: String },
-        time: { type: String },
-        weekday: { type: String },
+        employeeId: { type: String, required: true }, //"Employee No"
+        employeeName: { type: String, required: true }, //"Employee Name"
+        clockType: { type: String }, // "IO Status"
+        date: { type: String },//"Date"
+        time: { type: String }, //"Time"
+        weekday: { type: String },//"Weekday"
+        datetime: { type: String }, //DateTime
         terminal: { type: String } // Login machine reference
     },
     {

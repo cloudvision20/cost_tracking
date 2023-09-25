@@ -13,7 +13,7 @@ const mongoose = require('mongoose')
 const PORT = process.env.PORT || 3500
 global.__basedir = __dirname;
 //console.log(process.env.NODE_ENV)
-const fileUpload = require('express-fileupload');
+//var fileUpload = require('express-fileupload');
 connectDB()
 
 app.use(logger)
@@ -32,7 +32,7 @@ app.use('/users', require('./routes/userRoutes'))
 app.use('/projects', require('./routes/projectRoutes'))
 app.use('/dailyReports', require('./routes/dailyReportRoutes'))
 app.use('/activities', require('./routes/activityRoutes'))
-app.use(fileUpload());
+//app.use(fileUpload());
 app.use('/files', require('./routes/filesRoutes'))
 
 app.all('*', (req, res) => {
