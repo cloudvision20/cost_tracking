@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const activitysController = require('../controllers/activitiesController')
+const activitiesController = require('../controllers/activitiesController')
 
 router.route('/')
-    .get(activitysController.getAllActivities)
-    .post(activitysController.createNewActivity)
-    .patch(activitysController.updateActivity)
-    .delete(activitysController.deleteActivity)
+    .get(activitiesController.getAllActivities)
+    .post(activitiesController.createNewActivity)
+    .patch(activitiesController.updateActivity)
+    .delete(activitiesController.deleteActivity)
 router.route('/:id')
-    .get(activitysController.getActivityById)
+    .get(activitiesController.getActivityById)
 module.exports = router

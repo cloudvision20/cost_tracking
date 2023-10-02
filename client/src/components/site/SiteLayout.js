@@ -1,16 +1,16 @@
 import { Outlet } from 'react-router-dom'
-import DashHeader from './SiteHeader'
-import DashFooter from './SiteFooter'
+import SiteHeader from './SiteHeader'
+import SiteFooter from './SiteFooter'
 
-const DashLayout = () => {
+const SiteLayout = () => {
     return (
         <>
-            <DashHeader />
-            <div className="container-xl dash-container">
+            <SiteHeader />
+            <div className="container-xl site-container">
                 <Outlet />
             </div>
-            <DashFooter />
+            <SiteFooter />
         </>
     )
 }
-export default DashLayout
+export default SiteLayout

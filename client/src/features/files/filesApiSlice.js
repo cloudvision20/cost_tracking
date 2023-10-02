@@ -15,24 +15,7 @@ export const filesApiSlice = apiSlice.injectEndpoints({
         getFiles: builder.query({
             query: () => ({
                 url: '/files',
-                // validateStatus: (response, result) => {
-                //     return response.status === 200 && !result.isError
-                // },
             })
-        }),
-
-        addNewFile: builder.mutation({
-            query: initialFile => ({
-                url: '/files',
-                method: 'POST',
-                body: {
-                    ...initialFile,
-                },
-                formData: true,
-            }),
-            invalidatesTags: [
-                { type: 'File', id: "LIST" }
-            ]
         }),
         upload: builder.mutation({
             query: file => {
@@ -54,9 +37,6 @@ export const filesApiSlice = apiSlice.injectEndpoints({
         getAttendances: builder.query({
             query: () => ({
                 url: '/files/attendances',
-                // validateStatus: (response, result) => {
-                //     return response.status === 200 && !result.isError
-                // },
             })
         }),
         uploadAttendances: builder.mutation({
@@ -76,9 +56,6 @@ export const filesApiSlice = apiSlice.injectEndpoints({
         getGPSDats: builder.query({
             query: () => ({
                 url: '/files/gpsdats',
-                // validateStatus: (response, result) => {
-                //     return response.status === 200 && !result.isError
-                // },
             })
         }),
         uploadGPSDats: builder.mutation({
@@ -86,7 +63,7 @@ export const filesApiSlice = apiSlice.injectEndpoints({
                 const body = new FormData();
                 body.append('Content-Type', file.type);
                 body.append('file', file);
-
+                body.append('userid', file.userid)
                 return {
                     url: '/files/gpsdats',
                     method: 'POST',
@@ -99,7 +76,6 @@ export const filesApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetFilesQuery,
-    useAddNewFileMutation,
     useUploadMutation,
     useGetAttendancesQuery,
     useUploadAttendancesMutation,

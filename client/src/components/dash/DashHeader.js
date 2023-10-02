@@ -194,15 +194,15 @@ const DashHeader = () => {
         </button>
     )
 
-    const bstableButton = (
-        <button
-            className="btn btn-primary"
-            title="BSTable"
-            onClick={() => navigate('/dash/bstable')}>
-            {/* <FontAwesomeIcon icon={faTable} /> */}
-            BSTable testing
-        </button>
-    )
+    // const bstableButton = (
+    //     <button
+    //         className="btn btn-primary"
+    //         title="BSTable"
+    //         onClick={() => navigate('/dash/bstable')}>
+    //         {/* <FontAwesomeIcon icon={faTable} /> */}
+    //         BSTable testing
+    //     </button>
+    // )
     const backButton = (
         <button
             className="btn btn-primary"

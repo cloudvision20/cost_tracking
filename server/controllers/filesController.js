@@ -64,7 +64,16 @@ const getFileInfos = (req, res, files) => {
 
 const importAttendance = async (file) => {
     let attendances = [];
-    csv.parseString(file.data.toString(), {
+    fileContent = file.data.toString()
+    fileContent = fileContent.replace('Employee No', 'employeeId')
+    fileContent = fileContent.replace('Employee Name', 'employeeName')
+    fileContent = fileContent.replace('Date', 'date')
+    fileContent = fileContent.replace('Weekday', 'weekday')
+    fileContent = fileContent.replace('Time', 'time')
+    fileContent = fileContent.replace('DateTime', 'datetime')
+    fileContent = fileContent.replace('IO Status', 'clockType')
+    fileContent = fileContent.replace('Device ID', 'terminal')
+    csv.parseString(fileContent, {
         headers: true,
         ignoreEmpty: true
     }).on("data", function (data) {
@@ -132,8 +141,7 @@ const getListFiles = async (req, res) => {
 
 const download = (req, res) => {
     getPath(req, res)
-    //let fileInfos = [];
-    //let base_Url = req.base_Url
+
     let directoryPath = req.directoryPath
     const fileName = req.params.name;
     //const directoryPath = __basedir + file_Path;
@@ -149,8 +157,7 @@ const download = (req, res) => {
 
 const remove = (req, res) => {
     getPath(req, res)
-    // let fileInfos = [];
-    // let base_Url = req.base_Url
+
     let directoryPath = req.directoryPath
     const fileName = req.params.name;
     //const directoryPath = __basedir + filePath;

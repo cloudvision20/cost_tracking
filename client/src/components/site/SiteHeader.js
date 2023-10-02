@@ -2,29 +2,22 @@ import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faArrowCircleLeft,
-    faFileInvoiceDollar,
-    faClipboard,
-    faClipboardList,
-    faRectangleList,
-    faFileCirclePlus,
-    faFilePen,
-    faUserGear,
-    faUserPlus,
-    faRightFromBracket,
-    faTable
 } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 
-const DASH_REGEX = /^\/dash(\/)?$/
-const DAILY_REPORTS_REGEX = /^\/dash\/dailyReports(\/)?$/
-const ACTIVITIES_REGEX = /^\/dash\/activities(\/)?$/
-const PROJECTS_REGEX = /^\/dash\/projects(\/)?$/
-const USERS_REGEX = /^\/dash\/users(\/)?$/
+const SITE_REGEX = /^\/site(\/)?$/
+const FILES_REGEX = /^\/site\/files\/dailyReports(\/)?$/
 
-const DashHeader = () => {
+const DAILY_REPORTS_REGEX = /^\/site\/dailyReports(\/)?$/
+
+const CONSUMABLES_REGEX = /^\/site\/consumables(\/)?$/
+const GPSDATS_REGEX = /^\/site\/files\/gpsdats(\/)?$/
+//const USERS_REGEX = /^\/site\/users(\/)?$/
+
+const SiteHeader = () => {
     const { isManager, isAdmin } = useAuth()
 
     const navigate = useNavigate()
@@ -41,147 +34,157 @@ const DashHeader = () => {
         if (isSuccess) navigate('/')
     }, [isSuccess, navigate])
 
-    const onNewDailyReportClicked = () => navigate('/dash/dailyReports/new')
-    const onDailyReportsClicked = () => navigate('/dash/dailyReports')
+    const onConsumablesClicked = () => navigate('/site/consumables')
+    const onNewConsumableClicked = () => navigate('/site/Consumables/new')
+    const onFilesClicked = () => navigate('/site/files')
+    const onAttendancesClicked = () => navigate('/site/files/attendances')
+    const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
 
-    const onNewActivityClicked = () => navigate('/dash/activities/new')
-    const onActivitiesClicked = () => navigate('/dash/activities')
-
-    const onNewProjectClicked = () => navigate('/dash/projects/new')
-    const onProjectsClicked = () => navigate('/dash/projects')
-
-    const onNewUserClicked = () => navigate('/dash/users/new')
-    const onUsersClicked = () => navigate('/dash/users')
+    // const onNewUserClicked = () => navigate('/site/users/new')
+    // const onUsersClicked = () => navigate('/site/users')
 
 
-    let dashClass = null
-    if (!DASH_REGEX.test(pathname) && !DAILY_REPORTS_REGEX.test(pathname)
-        && !ACTIVITIES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)
-        && !PROJECTS_REGEX.test(pathname)) {
-        dashClass = "dash-header__container--small"
+    let siteClass = null
+    if (!SITE_REGEX.test(pathname) && !CONSUMABLES_REGEX.test(pathname)
+        && !GPSDATS_REGEX.test(pathname)) {
+        siteClass = "site-header__container--small"
     }
 
-    let newDailyReportButton = null
-    if (DAILY_REPORTS_REGEX.test(pathname)) {
-        newDailyReportButton = (
+    let consumablesButton = null
+    // if (CONSUMABLES_REGEX.test(pathname)) {
+    consumablesButton = (
+        <button
+            className="btn btn-primary"
+            title="Consumables"
+            onClick={onConsumablesClicked}
+        >
+            {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
+            Consumables
+        </button>
+    )
+    // }
+
+    let newConsumableButton = null
+    // if (USERS_REGEX.test(pathname)) {
+    newConsumableButton = (
+        <button
+            className="btn btn-primary"
+            title="New Consumabler"
+            onClick={onNewConsumableClicked}
+        >
+            {/* <FontAwesomeIcon icon={faUserPlus} /> */}
+            New Consumable
+        </button>
+    )
+    // }
+
+    let filesButton = null
+    // if (FILES_REGEX.test(pathname)) {
+    //if (!CONSUMABLES_REGEX.test(pathname) && pathname.includes('/site')) {
+    filesButton = (
+        <button
+            className="btn btn-primary"
+            title="Files"
+            onClick={onFilesClicked}
+        >
+            {/* <FontAwesomeIcon icon={faClipboardList} /> */}
+            Files
+        </button>
+    )
+    // }
+
+    let attendancesButton = null
+    if (GPSDATS_REGEX.test(pathname)) {
+        attendancesButton = (
             <button
                 className="btn btn-primary"
-                title="New Daily Report"
-                onClick={onNewDailyReportClicked}
+                title="Attendances"
+                onClick={onAttendancesClicked}
             >
                 {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
-                New Daily Report
+                Attendances
             </button>
         )
     }
 
-    let dailyReportsButton = null
-    if (DASH_REGEX.test(pathname)) {
-        //if (!DAILY_REPORTS_REGEX.test(pathname) && pathname.includes('/dash')) {
-        dailyReportsButton = (
+    let gpsdatsButton = null
+    if (SITE_REGEX.test(pathname)) {
+        //if (!GPSDATS_REGEX.test(pathname) && pathname.includes('/site')) {
+        gpsdatsButton = (
             <button
                 className="btn btn-primary"
-                title="DailyReports"
-                onClick={onDailyReportsClicked}
-            >
-                {/* <FontAwesomeIcon icon={faClipboardList} /> */}
-                Daily Reports
-            </button>
-        )
-    }
-
-    let newActivityButton = null
-    if (ACTIVITIES_REGEX.test(pathname)) {
-        newActivityButton = (
-            <button
-                className="btn btn-primary"
-                title="New Activity"
-                onClick={onNewActivityClicked}
-            >
-                {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
-                New Activity
-            </button>
-        )
-    }
-
-    let activitiesButton = null
-    if (DASH_REGEX.test(pathname)) {
-        //if (!ACTIVITIES_REGEX.test(pathname) && pathname.includes('/dash')) {
-        activitiesButton = (
-            <button
-                className="btn btn-primary"
-                title="Activities"
-                onClick={onActivitiesClicked}
+                title="Gps data"
+                onClick={onGpsdatsClicked}
             >
                 {/* <FontAwesomeIcon icon={faRectangleList} /> */}
-                Activities
+                GPS Data
             </button>
         )
     }
 
 
-    let newProjectButton = null
-    if (PROJECTS_REGEX.test(pathname)) {
-        newProjectButton = (
-            <button
-                className="btn btn-primary"
-                title="New Project"
-                onClick={onNewProjectClicked}
-            >
-                {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
-                New Project
-            </button>
-        )
-    }
+    // let newProjectButton = null
+    // if (PROJECTS_REGEX.test(pathname)) {
+    //     newProjectButton = (
+    //         <button
+    //             className="btn btn-primary"
+    //             title="New Project"
+    //             onClick={onNewProjectClicked}
+    //         >
+    //             {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
+    //             New Project
+    //         </button>
+    //     )
+    // }
 
-    let projectsButton = null
-    if (isManager || isAdmin) {
-        if (DASH_REGEX.test(pathname)) {
-            //if (!PROJECTS_REGEX.test(pathname) && pathname.includes('/dash')) {
-            projectsButton = (
-                <button
-                    className="btn btn-primary"
-                    title="Projects"
-                    onClick={onProjectsClicked}
-                >
-                    {/* <FontAwesomeIcon icon={faFileInvoiceDollar} /> */}
-                    Projects
-                </button>
-            )
-        }
-    }
+    // let projectsButton = null
+    // if (isManager || isAdmin) {
+    //     if (SITE_REGEX.test(pathname)) {
+    //         //if (!PROJECTS_REGEX.test(pathname) && pathname.includes('/site')) {
+    //         projectsButton = (
+    //             <button
+    //                 className="btn btn-primary"
+    //                 title="Projects"
+    //                 onClick={onProjectsClicked}
+    //             >
+    //                 {/* <FontAwesomeIcon icon={faFileInvoiceDollar} /> */}
+    //                 Projects
+    //             </button>
+    //         )
+    //     }
+    // }
 
 
-    let newUserButton = null
-    if (USERS_REGEX.test(pathname)) {
-        newUserButton = (
-            <button
-                className="btn btn-primary"
-                title="New User"
-                onClick={onNewUserClicked}
-            >
-                {/* <FontAwesomeIcon icon={faUserPlus} /> */}
-                New User
-            </button>
-        )
-    }
+    // let newUserButton = null
+    // if (USERS_REGEX.test(pathname)) {
+    //     newUserButton = (
+    //         <button
+    //             className="btn btn-primary"
+    //             title="New User"
+    //             onClick={onNewUserClicked}
+    //         >
+    //             {/* <FontAwesomeIcon icon={faUserPlus} /> */}
+    //             New User
+    //         </button>
+    //     )
+    // }
 
-    let usersButton = null
-    if (isManager || isAdmin) {
-        if (DASH_REGEX.test(pathname)) {
-            //if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
-            usersButton = (
-                <button
-                    className="btn btn-primary"
-                    title="Users"
-                    onClick={onUsersClicked}
-                >
-                    {/* <FontAwesomeIcon icon={faUserGear} /> */}
-                    Users
-                </button>
-            )
-        }
-    }
+    // let usersButton = null
+    // if (isManager || isAdmin) {
+    //     if (SITE_REGEX.test(pathname)) {
+    //         //if (!USERS_REGEX.test(pathname) && pathname.includes('/site')) {
+    //         usersButton = (
+    //             <button
+    //                 className="btn btn-primary"
+    //                 title="Users"
+    //                 onClick={onUsersClicked}
+    //             >
+    //                 {/* <FontAwesomeIcon icon={faUserGear} /> */}
+    //                 Users
+    //             </button>
+    //         )
+    //     }
+    // }
 
     const logoutButton = (
         <button
@@ -194,15 +197,15 @@ const DashHeader = () => {
         </button>
     )
 
-    const bstableButton = (
-        <button
-            className="btn btn-primary"
-            title="BSTable"
-            onClick={() => navigate('/dash/bstable')}>
-            {/* <FontAwesomeIcon icon={faTable} /> */}
-            BSTable testing
-        </button>
-    )
+    // const bstableButton = (
+    //     <button
+    //         className="btn btn-primary"
+    //         title="BSTable"
+    //         onClick={() => navigate('/site/bstable')}>
+    //         {/* <FontAwesomeIcon icon={faTable} /> */}
+    //         BSTable testing
+    //     </button>
+    // )
     const backButton = (
         <button
             className="btn btn-primary"
@@ -220,14 +223,11 @@ const DashHeader = () => {
         buttonContent = (
             <>
                 {backButton}
-                {newProjectButton}
-                {projectsButton}
-                {newActivityButton}
-                {activitiesButton}
-                {newDailyReportButton}
-                {dailyReportsButton}
-                {newUserButton}
-                {usersButton}
+                {attendancesButton}
+                {gpsdatsButton}
+                {newConsumableButton}
+                {consumablesButton}
+                {filesButton}
 
                 {logoutButton}
             </>
@@ -238,13 +238,13 @@ const DashHeader = () => {
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <header className="dash-header">
-                <div className={`container-xl dash-header__container`}>
-                    {/* ${dashClass}`}> */}
-                    <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/dash">
+            <header className="site-header">
+                <div className={`container-xl site-header__container`}>
+                    {/* ${siteClass}`}> */}
+                    <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/site">
                         <h1 >Cost Tracking --- {pathname}</h1>
                     </Link>
-                    <nav className="dash-header__nav">
+                    <nav className="site-header__nav">
                         {buttonContent}
                     </nav>
                 </div>
@@ -254,4 +254,4 @@ const DashHeader = () => {
 
     return content
 }
-export default DashHeader
+export default SiteHeader

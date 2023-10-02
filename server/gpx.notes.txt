@@ -1,0 +1,5 @@
+https://www.manuelkruisz.com/blog/posts/gpx-maps-
+https://www.npmjs.com/package/gpxparser
+https://github.com/Luuka/GPXParser.js#readme
+https://www.topografix.com/gpx_sample_files.asp
+https://www.topografix.com/gpx.asp

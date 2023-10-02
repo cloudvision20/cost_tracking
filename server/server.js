@@ -32,6 +32,7 @@ app.use('/users', require('./routes/userRoutes'))
 app.use('/projects', require('./routes/projectRoutes'))
 app.use('/dailyReports', require('./routes/dailyReportRoutes'))
 app.use('/activities', require('./routes/activityRoutes'))
+app.use('/consumables', require('./routes/consumableRoutes'))
 app.use(fileUpload());
 app.use('/files', require('./routes/filesRoutes'))
 

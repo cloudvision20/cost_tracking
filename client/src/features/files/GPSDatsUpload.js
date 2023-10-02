@@ -1,8 +1,10 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { useGetGPSDatsQuery, useUploadGPSDatsMutation } from "./filesApiSlice";
+import useAuth from "../../hooks/useAuth"
 
 const GPSDatsUpload = () => {
     let fileInfos = []
+    const { userid } = useAuth()
     const [selectedFiles, setSelectedFiles] = useState('')
     const [currentFile, setCurrentFile] = useState('')
     const [progress, setProgress] = useState(0)
@@ -19,7 +21,7 @@ const GPSDatsUpload = () => {
 
     const upload = async () => {
         let currFile = selectedFiles[0];
-
+        currFile.userid = userid
         setProgress(0)
         setCurrentFile(currFile)
         const f = await uploadGPSDats(currFile)

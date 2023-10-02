@@ -5,6 +5,8 @@ import { setCredentials } from './authSlice'
 import { useLoginMutation } from './authApiSlice'
 import usePersist from '../../hooks/usePersist'
 import useTitle from '../../hooks/useTitle'
+//import useAuth from '../../hooks/useAuth'
+import jwtDecode from 'jwt-decode'
 import PulseLoader from 'react-spinners/PulseLoader'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -21,7 +23,6 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [errMsg, setErrMsg] = useState('')
     const [persist, setPersist] = usePersist()
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -38,12 +39,25 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        let decoded
         try {
-            const { accessToken } = await login({ username, password }).unwrap()
-            dispatch(setCredentials({ accessToken }))
             setUsername('')
             setPassword('')
-            navigate('/dash')
+            const { accessToken } = await login({ username, password }).unwrap()
+            dispatch(setCredentials({ accessToken }))
+            try {
+                decoded = await jwtDecode(accessToken)
+            } catch (err) {
+                console.log(err.message)
+            }
+
+            if (decoded.UserInfo.roles.includes('Site')) {
+                navigate(`/site`)
+            } else {
+                navigate(`/dash`)
+            }
+
+
         } catch (err) {
             if (!err.status) {
                 setErrMsg('No Server Response');

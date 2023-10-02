@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 //const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-const consumableSchema = new mongoose.Schema(
+const expensesSchema = new mongoose.Schema(
     {
         employeeId: {
             type: String,
@@ -24,18 +24,17 @@ const consumableSchema = new mongoose.Schema(
         },
         datetime: { type: Date }, // date time of transaction
         type: { type: String },
-        details: { type: String },
-        job: { type: String },
         terminal: { type: String },//?
         unit: { type: String },
         amtType: { type: String }, // IN / OUT , Start / End?
         amount: { type: Number },
         fileInfo: { type: String },
+
     },
     {
         timestamps: true
     }
 )
 
-module.exports = mongoose.model('Consumable', consumableSchema)
+module.exports = mongoose.model('Expenses', expensesSchema)
 

@@ -31,6 +31,13 @@ import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
 
+import ConsumablesList from './features/consumables/ConsumablesList'
+import EditConsumable from './features/consumables/EditConsumable'
+import NewConsumableForm from './features/consumables/NewConsumableForm'
+
+import SiteLayout from './components/site/SiteLayout'
+import SiteWelcome from './features/auth/SiteWelcome'
+
 function App() {
   useTitle('Cost Tracking')
 
@@ -51,14 +58,30 @@ function App() {
                 <Route path="attendances" element={<AttendancesUpload />} />
                 <Route path="gpsdats" element={<GPSDatsUpload />} />
               </Route>
-              <Route path="dash" element={<DashLayout />}>
+
+              <Route path="site" element={<SiteLayout />}>
+                <Route index element={<SiteWelcome />} />
+                <Route path="consumables">
+                  <Route index element={<ConsumablesList />} />
+                  <Route path=":id" element={<EditConsumable />} />
+                  <Route path="new" element={<NewConsumableForm />} />
+                </Route>
                 <Route path="files">
                   <Route index element={<FilesUpload />} />
                   <Route path="attendances" element={<AttendancesUpload />} />
                   <Route path="gpsdats" element={<GPSDatsUpload />} />
                 </Route>
+              </Route>
+
+              <Route path="dash" element={<DashLayout />}>
+
                 <Route index element={<Welcome />} />
 
+                <Route path="consumables">
+                  <Route index element={<ConsumablesList />} />
+                  <Route path=":id" element={<EditConsumable />} />
+                  <Route path="new" element={<NewConsumableForm />} />
+                </Route>
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
                   <Route path="users">

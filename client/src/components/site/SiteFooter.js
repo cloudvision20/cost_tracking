@@ -3,17 +3,17 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, useLocation } from 'react-router-dom'
 import useAuth from "../../hooks/useAuth"
 
-const DashFooter = () => {
+const SiteFooter = () => {
 
     const { username, status } = useAuth()
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
-    const onGoHomeClicked = () => navigate('/dash')
+    const onGoHomeClicked = () => navigate('/site')
 
     let goHomeButton = null
-    if (pathname !== '/dash') {
+    if (pathname !== '/site') {
         goHomeButton = (
             <button
                 className="btn btn-primary"
@@ -26,7 +26,7 @@ const DashFooter = () => {
     }
 
     const content = (
-        <footer className="dash-footer">
+        <footer className="site-footer">
             {goHomeButton}
             <p>Current User: {username}</p>
             <p>Status: {status}</p>
@@ -34,4 +34,4 @@ const DashFooter = () => {
     )
     return content
 }
-export default DashFooter
+export default SiteFooter

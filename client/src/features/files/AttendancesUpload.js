@@ -4,7 +4,7 @@ import useAuth from "../../hooks/useAuth"
 
 const AttendancesUpload = () => {
     let fileInfos = []
-    const { userid, username, isManager, isAdmin } = useAuth()
+    const { userid } = useAuth()
     const [selectedFiles, setSelectedFiles] = useState('')
     const [currentFile, setCurrentFile] = useState('')
     const [progress, setProgress] = useState(0)
