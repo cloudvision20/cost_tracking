@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faArrowCircleLeft,
-} from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import useAuth from '../../hooks/useAuth'
@@ -242,7 +240,7 @@ const SiteHeader = () => {
                 <div className={`container-xl site-header__container`}>
                     {/* ${siteClass}`}> */}
                     <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/site">
-                        <h1 >Cost Tracking --- {pathname}</h1>
+                        <span style={{ fontSize: '18px' }}>Cost Tracking </span> <span >--- {pathname}</span>
                     </Link>
                     <nav className="site-header__nav">
                         {buttonContent}

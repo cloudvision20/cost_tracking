@@ -33,7 +33,7 @@ const getConsumableById = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: `Consumable id: ${_id} not found` })
     } else {
         // options
-        activities = await Activity.find().lean()
+        activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": "emp001" })).exec()
         //users = (await User.find().select("_id, username"))
         //dailyReports = await DailyReport.find({ "consumableId": _id }).populate({ path: 'userId', select: 'username' }).exec()
     }
@@ -46,6 +46,32 @@ const getConsumableById = asyncHandler(async (req, res) => {
     res.json(response)
 })
 
+
+const getConsumableByActivityId = asyncHandler(async (req, res) => {
+    const _id = req.params.id
+    // Get consumable by Id and return all the data for the options
+
+    // retrieve Consumable by Id and include usename corresponsing to userId
+    let consumable = await Consumable.find({ "_id": _id }).populate({ path: 'userId' }).exec()
+    let activities
+
+    // If no consumable 
+    if (!consumable?.length) {
+        return res.status(400).json({ message: `Consumable id: ${_id} not found` })
+    } else {
+        // options
+        activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": "emp001" })).exec()
+        //users = (await User.find().select("_id, username"))
+        //dailyReports = await DailyReport.find({ "consumableId": _id }).populate({ path: 'userId', select: 'username' }).exec()
+    }
+
+    let response = {}
+
+    response.consumable = consumable
+    response.activities = activities
+
+    res.json(response)
+})
 // @desc Create new consumable
 // @route POST /consumables
 // @access Private
