@@ -240,7 +240,9 @@ const SiteHeader = () => {
                 <div className={`container-xl site-header__container`}>
                     {/* ${siteClass}`}> */}
                     <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/site">
-                        <span style={{ fontSize: '18px' }}>Cost Tracking </span> <span >--- {pathname}</span>
+                        <div><span style={{ fontSize: '18px' }}> <b>Cost Tracking</b></span> <span >--- {pathname}</span>
+<div>activity info</div>
+</div>
                     </Link>
                     <nav className="site-header__nav">
                         {buttonContent}
