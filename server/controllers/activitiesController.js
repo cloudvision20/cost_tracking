@@ -49,6 +49,38 @@ const getActivityById = asyncHandler(async (req, res) => {
     res.json(response)
 })
 
+const getActivityByUserId = asyncHandler(async (req, res) => {
+    const _id = req.params.id
+    // Get activity by Id and return all the data for the options
+
+    // retrieve Activity by Id and include usename corresponsing to userId
+    //let activity = await Activity.find({ "_id": _id }).populate({ path: 'userId', select: 'username' }).populate({ path: 'projectId' }).exec()
+    let activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": req.params.id })).exec()
+    // let projects
+    // let users
+    // let dailyReports
+
+    // If no activity 
+    // if (!activity?.length) {
+    //     return res.status(400).json({ message: `Activity id: ${_id} not found` })
+    // } else {
+    //     // options
+    //     projects = await Project.find().lean()
+    //     users = (await User.find().select("_id, username"))
+    //     dailyReports = await DailyReport.find({ "activityId": _id }).populate({ path: 'userId', select: 'username' }).exec()
+    //     activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": "emp001" })).exec()
+    // }
+
+    // let response = {}
+
+    // response.activity = activity
+    // response.projects = projects
+    // response.users = users
+    // response.dailyReports = dailyReports
+    res.json(activities)
+})
+
+
 // @desc Create new activity
 // @route POST /activities
 // @access Private
@@ -139,6 +171,7 @@ const deleteActivity = asyncHandler(async (req, res) => {
 module.exports = {
     getAllActivities,
     getActivityById,
+    getActivityByUserId,
     createNewActivity,
     updateActivity,
     deleteActivity

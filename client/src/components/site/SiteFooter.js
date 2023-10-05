@@ -1,37 +1,25 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faHouse } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate, useLocation } from 'react-router-dom'
+import SiteFooterForm from './SiteFooterForm'
+//import { useGetActivitiesByUserIdQuery } from './../../features/activities/activitiesApiSlice'
 import useAuth from "../../hooks/useAuth"
+import useActvitiesByUser from '../../hooks/useActvitiesByUser'
 
 const SiteFooter = () => {
 
-    const { username, status } = useAuth()
+  // const { id } = useParams()
 
-    const navigate = useNavigate()
-    const { pathname } = useLocation()
 
-    const onGoHomeClicked = () => navigate('/site')
+  const { userid, username, status } = useAuth()
+  //const { data: res, isSuccess } = useGetActivitiesByUserIdQuery(userid);
+  const { activities, isSuccess } = useActvitiesByUser(userid)
+  let content
 
-    let goHomeButton = null
-    if (pathname !== '/site') {
-        goHomeButton = (
-            <button
-                className="btn btn-primary"
-                title="Home"
-                onClick={onGoHomeClicked}
-            >
-                <FontAwesomeIcon icon={faHouse} />
-            </button>
-        )
-    }
+  if (isSuccess) {
 
-    const content = (
-        <footer className="site-footer">
-            {goHomeButton}
-            <p>Current User: {username}</p>
-            <p>Status: {status}</p>
-        </footer>
-    )
-    return content
+    content = <SiteFooterForm userid={userid} username={username} status={status} activities={activities[0]} />
+
+  }
+
+
+  return content
 }
 export default SiteFooter

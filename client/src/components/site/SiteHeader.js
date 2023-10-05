@@ -1,33 +1,25 @@
-
 import SiteHeaderForm from './SiteHeaderForm'
 import useTitle from "../../hooks/useTitle"
-
+//import { useGetActivitiesByUserIdQuery } from './../../features/activities/activitiesApiSlice'
+import useAuth from "../../hooks/useAuth"
+import useActvitiesByUser from '../../hooks/useActvitiesByUser'
 
 const SiteHeader = () => {
-    useTitle('Site Page')
+  useTitle('Site Page')
 
-   // const { id } = useParams()
+  const { userid, username, status, isManager, isAdmin } = useAuth()
+  //const { data: res, isSuccess } = useGetActivitiesByUserIdQuery(userid);
+  const { activities, isSuccess } = useActvitiesByUser(userid)
 
-   
+  let content
 
-    //const { data: res, isSuccess } = useGetActivityByIdQuery(id);
+  if (isSuccess) {
 
-    let content
+    content = <SiteHeaderForm isManager={isManager} isAdmin={isAdmin} userid={userid} username={username} status={status} activities={activities[0]} />
 
-  //  if (isSuccess) {
+  }
 
-       // if (!res.activity || !res.users?.length) return <PulseLoader color={"#FFF"} />
 
-       // if (!isManager && !isAdmin) {
-       //     if (res.activity.userId.username !== username) {
-       //         return <p className="errmsg">No access</p>
-        //    }
-        //}
-        content = <SiteHeaderForm />
-       
-   // }
-
-  
-    return content
+  return content
 }
 export default SiteHeader

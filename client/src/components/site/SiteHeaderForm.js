@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
-import useAuth from '../../hooks/useAuth'
+//import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 
 const SITE_REGEX = /^\/site(\/)?$/
@@ -14,9 +14,10 @@ const DAILY_REPORTS_REGEX = /^\/site\/dailyReports(\/)?$/
 const CONSUMABLES_REGEX = /^\/site\/consumables(\/)?$/
 const GPSDATS_REGEX = /^\/site\/files\/gpsdats(\/)?$/
 //const USERS_REGEX = /^\/site\/users(\/)?$/
+const btnStyle = { padding: "3px", height: "90%", fontSize: "14px" }
 
 const SiteHeader = () => {
-    const { isManager, isAdmin } = useAuth()
+    // const { isManager, isAdmin } = useAuth()
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -53,6 +54,7 @@ const SiteHeader = () => {
     consumablesButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="Consumables"
             onClick={onConsumablesClicked}
         >
@@ -67,6 +69,7 @@ const SiteHeader = () => {
     newConsumableButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="New Consumabler"
             onClick={onNewConsumableClicked}
         >
@@ -82,6 +85,7 @@ const SiteHeader = () => {
     filesButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="Files"
             onClick={onFilesClicked}
         >
@@ -96,6 +100,7 @@ const SiteHeader = () => {
         attendancesButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="Attendances"
                 onClick={onAttendancesClicked}
             >
@@ -111,6 +116,7 @@ const SiteHeader = () => {
         gpsdatsButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="Gps data"
                 onClick={onGpsdatsClicked}
             >
@@ -120,73 +126,10 @@ const SiteHeader = () => {
         )
     }
 
-
-    // let newProjectButton = null
-    // if (PROJECTS_REGEX.test(pathname)) {
-    //     newProjectButton = (
-    //         <button
-    //             className="btn btn-primary"
-    //             title="New Project"
-    //             onClick={onNewProjectClicked}
-    //         >
-    //             {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
-    //             New Project
-    //         </button>
-    //     )
-    // }
-
-    // let projectsButton = null
-    // if (isManager || isAdmin) {
-    //     if (SITE_REGEX.test(pathname)) {
-    //         //if (!PROJECTS_REGEX.test(pathname) && pathname.includes('/site')) {
-    //         projectsButton = (
-    //             <button
-    //                 className="btn btn-primary"
-    //                 title="Projects"
-    //                 onClick={onProjectsClicked}
-    //             >
-    //                 {/* <FontAwesomeIcon icon={faFileInvoiceDollar} /> */}
-    //                 Projects
-    //             </button>
-    //         )
-    //     }
-    // }
-
-
-    // let newUserButton = null
-    // if (USERS_REGEX.test(pathname)) {
-    //     newUserButton = (
-    //         <button
-    //             className="btn btn-primary"
-    //             title="New User"
-    //             onClick={onNewUserClicked}
-    //         >
-    //             {/* <FontAwesomeIcon icon={faUserPlus} /> */}
-    //             New User
-    //         </button>
-    //     )
-    // }
-
-    // let usersButton = null
-    // if (isManager || isAdmin) {
-    //     if (SITE_REGEX.test(pathname)) {
-    //         //if (!USERS_REGEX.test(pathname) && pathname.includes('/site')) {
-    //         usersButton = (
-    //             <button
-    //                 className="btn btn-primary"
-    //                 title="Users"
-    //                 onClick={onUsersClicked}
-    //             >
-    //                 {/* <FontAwesomeIcon icon={faUserGear} /> */}
-    //                 Users
-    //             </button>
-    //         )
-    //     }
-    // }
-
     const logoutButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="Logout"
             onClick={sendLogout}
         >
@@ -195,18 +138,10 @@ const SiteHeader = () => {
         </button>
     )
 
-    // const bstableButton = (
-    //     <button
-    //         className="btn btn-primary"
-    //         title="BSTable"
-    //         onClick={() => navigate('/site/bstable')}>
-    //         {/* <FontAwesomeIcon icon={faTable} /> */}
-    //         BSTable testing
-    //     </button>
-    // )
     const backButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="Back"
             onClick={() => navigate(-1)}>
             <FontAwesomeIcon icon={faArrowCircleLeft} />
@@ -240,9 +175,9 @@ const SiteHeader = () => {
                 <div className={`container-xl site-header__container`}>
                     {/* ${siteClass}`}> */}
                     <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/site">
-                        <div><span style={{ fontSize: '18px' }}> <b>Cost Tracking</b></span> <span >--- {pathname}</span>
-<div>activity info</div>
-</div>
+                        <div><span style={{ fontSize: '20px' }}> <b>Cost Tracking</b></span> <span >--- {pathname}</span>
+                            {/* <div>activity info</div> */}
+                        </div>
                     </Link>
                     <nav className="site-header__nav">
                         {buttonContent}

@@ -1,18 +1,6 @@
 import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faArrowCircleLeft,
-    faFileInvoiceDollar,
-    faClipboard,
-    faClipboardList,
-    faRectangleList,
-    faFileCirclePlus,
-    faFilePen,
-    faUserGear,
-    faUserPlus,
-    faRightFromBracket,
-    faTable
-} from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleLeft, faFileInvoiceDollar, faClipboard, faClipboardList, faRectangleList, faFileCirclePlus, faFilePen, faUserGear, faUserPlus, faRightFromBracket, faTable } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import useAuth from '../../hooks/useAuth'
@@ -23,6 +11,7 @@ const DAILY_REPORTS_REGEX = /^\/dash\/dailyReports(\/)?$/
 const ACTIVITIES_REGEX = /^\/dash\/activities(\/)?$/
 const PROJECTS_REGEX = /^\/dash\/projects(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
+const btnStyle = { padding: "3px", height: "90%", fontSize: "14px" }
 
 const DashHeader = () => {
     const { isManager, isAdmin } = useAuth()
@@ -66,6 +55,7 @@ const DashHeader = () => {
         newDailyReportButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="New Daily Report"
                 onClick={onNewDailyReportClicked}
             >
@@ -81,6 +71,7 @@ const DashHeader = () => {
         dailyReportsButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="DailyReports"
                 onClick={onDailyReportsClicked}
             >
@@ -95,6 +86,7 @@ const DashHeader = () => {
         newActivityButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="New Activity"
                 onClick={onNewActivityClicked}
             >
@@ -110,6 +102,7 @@ const DashHeader = () => {
         activitiesButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="Activities"
                 onClick={onActivitiesClicked}
             >
@@ -125,6 +118,7 @@ const DashHeader = () => {
         newProjectButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="New Project"
                 onClick={onNewProjectClicked}
             >
@@ -141,6 +135,7 @@ const DashHeader = () => {
             projectsButton = (
                 <button
                     className="btn btn-primary"
+                    style={btnStyle}
                     title="Projects"
                     onClick={onProjectsClicked}
                 >
@@ -157,6 +152,7 @@ const DashHeader = () => {
         newUserButton = (
             <button
                 className="btn btn-primary"
+                style={btnStyle}
                 title="New User"
                 onClick={onNewUserClicked}
             >
@@ -173,6 +169,7 @@ const DashHeader = () => {
             usersButton = (
                 <button
                     className="btn btn-primary"
+                    style={btnStyle}
                     title="Users"
                     onClick={onUsersClicked}
                 >
@@ -186,6 +183,7 @@ const DashHeader = () => {
     const logoutButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="Logout"
             onClick={sendLogout}
         >
@@ -194,18 +192,10 @@ const DashHeader = () => {
         </button>
     )
 
-    // const bstableButton = (
-    //     <button
-    //         className="btn btn-primary"
-    //         title="BSTable"
-    //         onClick={() => navigate('/dash/bstable')}>
-    //         {/* <FontAwesomeIcon icon={faTable} /> */}
-    //         BSTable testing
-    //     </button>
-    // )
     const backButton = (
         <button
             className="btn btn-primary"
+            style={btnStyle}
             title="Back"
             onClick={() => navigate(-1)}>
             <FontAwesomeIcon icon={faArrowCircleLeft} />
@@ -228,7 +218,6 @@ const DashHeader = () => {
                 {dailyReportsButton}
                 {newUserButton}
                 {usersButton}
-
                 {logoutButton}
             </>
         )
@@ -240,9 +229,9 @@ const DashHeader = () => {
 
             <header className="dash-header">
                 <div className={`container-xl dash-header__container`}>
-                    {/* ${dashClass}`}> */}
                     <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/dash">
-                        <h1 >Cost Tracking --- {pathname}</h1>
+                        <div><span style={{ fontSize: '20px' }}> <b>Cost Tracking</b></span> <span >--- {pathname}</span>
+                        </div>
                     </Link>
                     <nav className="dash-header__nav">
                         {buttonContent}

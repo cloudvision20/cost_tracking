@@ -1,0 +1,2 @@
+Notes
+activities.map( a => a.re = a.resources.filter( (r) => r.type =='Labour'))

@@ -7,6 +7,11 @@ router.route('/')
     .post(activitiesController.createNewActivity)
     .patch(activitiesController.updateActivity)
     .delete(activitiesController.deleteActivity)
+
 router.route('/:id')
     .get(activitiesController.getActivityById)
+
+router.route('/userid/:id')
+    .get(activitiesController.getActivityByUserId)
+
 module.exports = router

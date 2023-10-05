@@ -139,13 +139,13 @@ a:focus-visible {
 }
 
 .dash-footer {
-    font-size: 1rem;
+    font-size: 0.875rem;
     position: sticky;
     bottom: 0;
     z-index: 1;
     color: var(--FGCOLOR);
     background-color: var(--BGCOLOR);
-    padding: 0.5em;
+    padding: 0.25em;
     border-top: 1px solid var(--BORDER-COLOR);
     display: flex;
     flex-flow: row nowrap;
@@ -154,7 +154,7 @@ a:focus-visible {
 }
 
 .dash-footer__button {
-    font-size: 1rem;
+    font-size: 0.875rem;
     width: auto;
     height: auto;
 }
@@ -213,7 +213,7 @@ a:focus-visible {
 }
 
 .site-footer {
-    font-size: 1rem;
+    font-size: 0.875rem;
     position: sticky;
     bottom: 0;
     z-index: 1;
@@ -228,7 +228,7 @@ a:focus-visible {
 }
 
 .site-footer__button {
-    font-size: 1rem;
+    font-size: 0.875rem;
     width: auto;
     height: auto;
 }
