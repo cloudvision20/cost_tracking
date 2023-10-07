@@ -9,7 +9,7 @@ const activitiesAdapter = createEntityAdapter({
 })
 
 const initialState = activitiesAdapter.getInitialState()
-let loaded
+
 export const activitiesApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
         getActivities: builder.query({
