@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
-import SiteHeader from './SiteHeader'
-import SiteFooter from './SiteFooter'
-import useAuth from "../../hooks/useAuth"
+import SiteHeader from '../SiteHeader'
+import SiteFooter from '../SiteFooter'
+import useAuth from "../../../hooks/useAuth"
 //import useActvitiesByUser from '../../hooks/useActvitiesByUser'
-import ActivitiesContext from '../../context/ActivitiesContext'
-import { useGetActivitiesByUserIdQuery } from '../../features/activities/activitiesApiSlice' //'../features/activities/activitiesApiSlice'
+import ActivitiesContext from '../../../context/ActivitiesContext'
+import { useGetActivitiesByUserIdQuery } from '../../../features/activities/activitiesApiSlice' //'../features/activities/activitiesApiSlice'
 
 
 const SiteLayout = () => {

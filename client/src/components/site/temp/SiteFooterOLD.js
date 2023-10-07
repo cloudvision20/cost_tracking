@@ -1,9 +1,9 @@
-import SiteFooterForm from './SiteFooterForm'
+import SiteFooterForm from '../SiteFooterForm'
 //import { useGetActivitiesByUserIdQuery } from './../../features/activities/activitiesApiSlice'
-import useAuth from "../../hooks/useAuth"
+import useAuth from "../../../hooks/useAuth"
 //import useActvitiesByUser from '../../hooks/useActvitiesByUser'
 import { useContext } from "react"
-import ActivitiesContext from '../../context/ActivitiesContext'
+import ActivitiesContext from '../../../context/ActivitiesContext'
 const SiteFooter = () => {
 
     // const { id } = useParams()

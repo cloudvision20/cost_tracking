@@ -1,8 +1,8 @@
-import SiteHeaderForm from './SiteHeaderForm'
-import useTitle from "../../hooks/useTitle"
+import SiteHeaderForm from '../SiteHeaderForm'
+import useTitle from "../../../hooks/useTitle"
 //import { useGetActivitiesByUserIdQuery } from './../../features/activities/activitiesApiSlice'
-import useAuth from "../../hooks/useAuth"
-import useActvitiesByUser from '../../hooks/useActvitiesByUser'
+import useAuth from "../../../hooks/useAuth"
+import useActvitiesByUser from '../../../hooks/useActvitiesByUser'
 
 const SiteHeader = () => {
   useTitle('Site Page')
