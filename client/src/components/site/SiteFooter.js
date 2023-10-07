@@ -1,19 +1,15 @@
 import SiteFooterForm from './SiteFooterForm'
-//import { useGetActivitiesByUserIdQuery } from './../../features/activities/activitiesApiSlice'
 import useAuth from "../../hooks/useAuth"
-import useActvitiesByUser from '../../hooks/useActvitiesByUser'
+import { useSelector } from 'react-redux'
+import { selectActivity } from './siteSlice'
 
 const SiteFooter = () => {
 
-  // const { id } = useParams()
-
-
+  const activities = useSelector(selectActivity)
   const { userid, username, status } = useAuth()
-  //const { data: res, isSuccess } = useGetActivitiesByUserIdQuery(userid);
-  const { activities, isSuccess } = useActvitiesByUser(userid)
   let content
 
-  if (isSuccess) {
+  if (activities) {
 
     content = <SiteFooterForm userid={userid} username={username} status={status} activities={activities[0]} />
 

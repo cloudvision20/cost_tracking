@@ -5,8 +5,8 @@ const siteSlice = createSlice({
     initialState: { activity: null },
     reducers: {
         setActivity: (state, action) => {
-            const { curActivity } = action.payload
-            state.activity = curActivity
+            const { activities } = action.payload
+            state.activity = activities
         },
         logOut: (state, action) => {
             state.activity = null

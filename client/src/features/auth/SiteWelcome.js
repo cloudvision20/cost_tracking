@@ -3,38 +3,40 @@ import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
 import { useEffect, useState, useContext } from "react"
 //import ActivitiesContext from '../../context/ActivitiesContext'
-
+import { useSelector } from 'react-redux'
+import { selectActivity } from '../../components/site/siteSlice'
 const Welcome = () => {
 
     const { username, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
     const [currentActivity, setCurrentActivity] = useState('')
+    const activities = useSelector(selectActivity)
     //const { activities } = useContext(ActivitiesContext)
 
 
-    // const onActivitiesChanged = e => {
-    //     const values = Array.from(
-    //         e.target.selectedOptions,
-    //         (option) => option.value
-    //     )
-    //     setCurrentActivity(values)
-    // }
-    // let options
-    // useEffect(() => {
-    //     setCurrentActivity(activities[0]._id)
-    // }, []);
-    // if (activities) {
+    const onActivitiesChanged = e => {
+        const values = Array.from(
+            e.target.selectedOptions,
+            (option) => option.value
+        )
+        setCurrentActivity(values)
+    }
+    let options
+    useEffect(() => {
+        //setCurrentActivity(activities[0]._id)
+    }, []);
+    if (activities) {
 
-    //     options = activities.map(activity => {
-    //         return (
-    //             <option
-    //                 key={activity._id}
-    //                 value={activity.name}
+        options = activities.map(activity => {
+            return (
+                <option
+                    key={activity._id}
+                    value={activity.name}
 
-    //             > {activity.name}</option >
-    //         )
-    //     });
-    // }
+                > {activity.name}</option >
+            )
+        });
+    }
 
     const date = new Date()
     const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
@@ -46,12 +48,13 @@ const Welcome = () => {
                     <p>{today}</p>
 
                     <h3>Welcome {username}!</h3>
-                    {(location === 'Site')
+                    {(location === 'Site' && activities?.length > 1)
                         &&
                         <>
                             <p><Link to="/site/consumables">Consumable List</Link></p>
                             <p><Link to="/site/consumables/new">New Consumable</Link></p>
-                            {/* <div className="form-group row">
+
+                            <div className="form-group row">
                                 <div className="col-sm-2"><b> Activities:</b></div>
                                 <div className="col-sm-6">
                                     <select
@@ -66,10 +69,23 @@ const Welcome = () => {
                                         {options}
                                     </select>
                                 </div>
-                            </div> */}
+                            </div>
                         </>
                     }
+                    {(location === 'Site' && activities?.length === 1)
+                        &&
+                        <>
+                            <p><Link to="/site/consumables">Consumable List</Link></p>
+                            <p><Link to="/site/consumables/new">New Consumable</Link></p>
 
+                            <div className="form-group row">
+                                <div className="col-sm-4"><b> Activities:</b></div>
+                                <div className="col-sm-6"> {activities[0].name}
+
+                                </div>
+                            </div>
+                        </>
+                    }
                     {(location === 'HQ' || isManager || isAdmin)
                         &&
                         <>
