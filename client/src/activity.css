@@ -11,7 +11,7 @@
     --ERROR-BACK: lightpink;
     --INACTIVE: lightgray;
     --LINK-COLOR: blue;
-    --LINK-COLOR-OLD: whitesmoke;
+    --LINK-COLOR-DARK-BG: whitesmoke;
     /* --LINK-HOVER: rgba(245, 245, 245, 0.9); */
     --LINK-HOVER: rgba(110, 110, 110, 0.9);
     --NOTE-BGCOLOR: hsla(240, 64%, 27%, 0.65);
@@ -70,6 +70,7 @@ a {
 
 a:any-link {
     color: var(--LINK-COLOR);
+    /* color: var(--LINK-COLOR-DARK-BG) */
 }
 
 a:hover,
@@ -77,7 +78,43 @@ a:focus-visible {
     color: var(--LINK-HOVER);
 }
 
+a-dark-bg {
+    text-decoration: none;
+}
 
+a-dark-bg:any-link {
+    color: var(--LINK-COLOR-DARK-BG);
+}
+
+a-dark-bg:hover,
+a-dark-bg:focus-visible {
+    color: var(--LINK-HOVER);
+}
+
+/* .navbar {
+    background-color: var(--BGCOLOR);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.navMenu {
+    list-style: none;
+    display: flex;
+}
+
+.link {
+    color:  var(--LINK-COLOR-DARK-BG);
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1.4rem;
+} */
+
+/* Changing the color */
+.link:hover {
+    color: var(--LINK-HOVER);
+}
 .form__action-buttons {
     display: flex;
     justify-content: flex-end;

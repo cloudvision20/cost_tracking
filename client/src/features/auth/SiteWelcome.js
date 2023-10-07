@@ -75,7 +75,11 @@ const Welcome = () => {
                     {(location === 'Site' && activities?.length === 1)
                         &&
                         <>
-                            <p><Link to="/site/consumables">Consumable List</Link></p>
+                            <p><Link to="/site/consumables"
+                                onMouseOver={(e) => e.target.style.color = 'rgba(110, 110, 110, 0.9)'}
+                                onMouseOut={(e) => e.target.style.color = 'blue'}
+                                style={{ color: 'blue' }}
+                            >Consumable List</Link></p>
                             <p><Link to="/site/consumables/new">New Consumable</Link></p>
 
                             <div className="form-group row">

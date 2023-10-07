@@ -1,23 +1,45 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { useNavigate, Link, useLocation, NavLink } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
-//import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 
-const SITE_REGEX = /^\/site(\/)?$/
-const FILES_REGEX = /^\/site\/files\/dailyReports(\/)?$/
+import { useSelector } from 'react-redux'
+import { selectActivity } from '../../components/site/siteSlice'
 
-const DAILY_REPORTS_REGEX = /^\/site\/dailyReports(\/)?$/
-
-const CONSUMABLES_REGEX = /^\/site\/consumables(\/)?$/
-const GPSDATS_REGEX = /^\/site\/files\/gpsdats(\/)?$/
-//const USERS_REGEX = /^\/site\/users(\/)?$/
-const btnStyle = { padding: "3px", height: "90%", fontSize: "14px" }
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const SiteHeader = () => {
-    // const { isManager, isAdmin } = useAuth()
+
+    const [currentActivity, setCurrentActivity] = useState('')
+    const onMouseOverNavLink = (e) => { e.target.style.color = 'rgba(110, 110, 110, 0.9)' }
+    const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
+    const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
+    const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
+    const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
+    const activities = useSelector(selectActivity)
+    const onActivitiesSelected = (activityId) => setCurrentActivity(activityId)
+    let navDropdownItems
+    if (activities) {
+
+        navDropdownItems = activities.map(activity => {
+            return (
+                <NavDropdown.Item href="#activity._id"
+                    onMouseOver={onMouseOverNavLink}
+                    onMouseOut={onMouseOutNavLink_Blue}
+                    onClick={onActivitiesSelected(activity._id)}
+                    style={navLinkStyle_blue}
+                >
+                    {activity.name}
+                </NavDropdown.Item>
+            )
+        });
+    }
+
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -39,130 +61,106 @@ const SiteHeader = () => {
     const onAttendancesClicked = () => navigate('/site/files/attendances')
     const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
 
-    // const onNewUserClicked = () => navigate('/site/users/new')
-    // const onUsersClicked = () => navigate('/site/users')
 
 
-    let siteClass = null
-    if (!SITE_REGEX.test(pathname) && !CONSUMABLES_REGEX.test(pathname)
-        && !GPSDATS_REGEX.test(pathname)) {
-        siteClass = "site-header__container--small"
-    }
 
-    let consumablesButton = null
-    // if (CONSUMABLES_REGEX.test(pathname)) {
-    consumablesButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
-            title="Consumables"
+    let consumablesNavLink = null
+    consumablesNavLink = (
+        <Nav.Link
             onClick={onConsumablesClicked}
-        >
-            {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
             Consumables
-        </button>
+        </Nav.Link>
     )
-    // }
-
-    let newConsumableButton = null
-    // if (USERS_REGEX.test(pathname)) {
-    newConsumableButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
-            title="New Consumabler"
+    let newConsumableNavLink = null
+    newConsumableNavLink = (
+        <Nav.Link
             onClick={onNewConsumableClicked}
-        >
-            {/* <FontAwesomeIcon icon={faUserPlus} /> */}
-            New Consumable
-        </button>
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
+            New_Consumable
+        </Nav.Link>
     )
-    // }
 
-    let filesButton = null
-    // if (FILES_REGEX.test(pathname)) {
-    //if (!CONSUMABLES_REGEX.test(pathname) && pathname.includes('/site')) {
-    filesButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
-            title="Files"
+
+    let filesNavLink = null
+    filesNavLink = (
+        <Nav.Link
             onClick={onFilesClicked}
-        >
-            {/* <FontAwesomeIcon icon={faClipboardList} /> */}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
             Files
-        </button>
+        </Nav.Link>
     )
-    // }
 
-    let attendancesButton = null
-    if (GPSDATS_REGEX.test(pathname)) {
-        attendancesButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
-                title="Attendances"
-                onClick={onAttendancesClicked}
-            >
-                {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
-                Attendances
-            </button>
-        )
-    }
+    let attendancesNavLink = null
+    attendancesNavLink = (
+        <Nav.Link
+            onClick={onAttendancesClicked}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
+            Attendances
+        </Nav.Link>
+    )
 
-    let gpsdatsButton = null
-    if (SITE_REGEX.test(pathname)) {
-        //if (!GPSDATS_REGEX.test(pathname) && pathname.includes('/site')) {
-        gpsdatsButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
-                title="Gps data"
-                onClick={onGpsdatsClicked}
-            >
-                {/* <FontAwesomeIcon icon={faRectangleList} /> */}
-                GPS Data
-            </button>
-        )
-    }
+    let gpsdatsNavLink = null
+    gpsdatsNavLink = (
+        <Nav.Link
+            onClick={onGpsdatsClicked}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
+            GPS_Data
+        </Nav.Link>
+    )
 
-    const logoutButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
-            title="Logout"
+    const logoutNavLink = (
+        <Nav.Link
             onClick={sendLogout}
-        >
-            {/* <FontAwesomeIcon icon={faRightFromBracket} /> */}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
             Logout
-        </button>
+        </Nav.Link>
     )
 
-    const backButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
-            title="Back"
-            onClick={() => navigate(-1)}>
+    const backNavLink = (
+        <Nav.Link
+            onClick={() => navigate(-1)}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            href='#'>
+            <span className="sr-only">(current)</span>
             <FontAwesomeIcon icon={faArrowCircleLeft} />
-        </button>
+        </Nav.Link>
     )
     const errClass = isError ? "errmsg" : "offscreen"
 
-    let buttonContent
+    let navLinkContent
     if (isLoading) {
-        buttonContent = <PulseLoader color={"#FFF"} />
+        navLinkContent = <PulseLoader color={"#FFF"} />
     } else {
-        buttonContent = (
+        navLinkContent = (
             <>
-                {backButton}
-                {attendancesButton}
-                {gpsdatsButton}
-                {newConsumableButton}
-                {consumablesButton}
-                {filesButton}
-
-                {logoutButton}
+                {backNavLink}
+                {attendancesNavLink}
+                {gpsdatsNavLink}
+                {newConsumableNavLink}
+                {consumablesNavLink}
+                {filesNavLink}
+                {logoutNavLink}
             </>
         )
     }
@@ -173,20 +171,59 @@ const SiteHeader = () => {
 
             <header className="site-header">
                 <div className={`container-xl site-header__container`}>
-                    {/* ${siteClass}`}> */}
-                    <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/site">
-                        <div><span style={{ fontSize: '20px' }}> <b>Cost Tracking</b></span> <span >--- {pathname}</span>
-                            {/* <div>activity info</div> */}
-                        </div>
-                    </Link>
-                    <nav className="site-header__nav">
-                        {buttonContent}
-                    </nav>
+                    <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
+
+                        <Container>
+                            <Navbar.Brand href="/site"
+                                style={navLinkStyle_Whitesmoke} >
+                                <div>
+                                    <span style={{ fontSize: '20px' }}> <b>Cost Tracking</b></span>
+                                    <span style={{ fontSize: '14px' }}> --- {pathname}</span>
+                                </div>
+                            </Navbar.Brand>
+                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                            {/* </Container>
+                        <Container> */}
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                    {navLinkContent}
+                                    <NavDropdown title={< span style={navLinkStyle_Whitesmoke} >Activities</span>} id="basic-nav-dropdown">
+
+                                        {navDropdownItems}
+                                        {/* <NavDropdown.Item href="#action/3.1"
+                                            onMouseOver={onMouseOverNavLink}
+                                            onMouseOut={onMouseOutNavLink_Blue}
+                                            style={navLinkStyle_blue}
+                                        >Action</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.2"
+                                            onMouseOver={onMouseOverNavLink}
+                                            onMouseOut={onMouseOutNavLink_Blue}
+                                            style={navLinkStyle_blue}
+                                        >
+                                            Another action
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Item href="#action/3.3"
+                                            onMouseOver={onMouseOverNavLink}
+                                            onMouseOut={onMouseOutNavLink_Blue}
+                                            style={navLinkStyle_blue}
+                                        >Something</NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action/3.4"
+                                            onMouseOver={onMouseOverNavLink}
+                                            onMouseOut={onMouseOutNavLink_Blue}
+                                            style={navLinkStyle_blue}
+                                        >
+                                            Separated link
+                                        </NavDropdown.Item> */}
+                                    </NavDropdown>
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Container>
+                    </Navbar>
                 </div>
             </header>
         </>
     )
-
     return content
 }
 export default SiteHeader
