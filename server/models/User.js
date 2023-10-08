@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema({
         type: [String],
         default: ["Employee"]
     },
+    currActivityId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: 'Activity'
+    },
     active: {
         type: Boolean,
         default: true

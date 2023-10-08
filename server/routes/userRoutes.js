@@ -11,4 +11,6 @@ router.route('/')
     .patch(usersController.updateUser)
     .delete(usersController.deleteUser)
 
+// router.route('/update')
+//     .patch(usersController.updateUser)
 module.exports = router

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, Link, useLocation, NavLink } from 'react-router-dom'
@@ -13,16 +13,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-const SiteHeader = () => {
 
-    const [currentActivity, setCurrentActivity] = useState('')
+const SiteHeaderForm = () => {
+
+
+    const [curActivityId, setCurActivityId] = useState('')
     const onMouseOverNavLink = (e) => { e.target.style.color = 'rgba(110, 110, 110, 0.9)' }
     const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
     const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
     const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
     const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
     const activities = useSelector(selectActivity)
-    const onActivitiesSelected = (activityId) => setCurrentActivity(activityId)
+    const onActivitiesSelected = (activityId) => { setCurActivityId(activityId) }
     let navDropdownItems
     if (activities) {
 
@@ -31,7 +33,7 @@ const SiteHeader = () => {
                 <NavDropdown.Item href="#activity._id"
                     onMouseOver={onMouseOverNavLink}
                     onMouseOut={onMouseOutNavLink_Blue}
-                    onClick={onActivitiesSelected(activity._id)}
+                    onClick={() => onActivitiesSelected(activity._id)}
                     style={navLinkStyle_blue}
                 >
                     {activity.name}
@@ -226,4 +228,4 @@ const SiteHeader = () => {
     )
     return content
 }
-export default SiteHeader
+export default SiteHeaderForm

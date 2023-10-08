@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const Note = require('../models/DailyReport')
+// const Note = require('../models/DailyReport')
 const bcrypt = require('bcrypt')
 
 // @desc Get all users
@@ -63,7 +63,7 @@ const createNewUser = async (req, res) => {
 // @desc Update a user
 // @route PATCH /users
 // @access Private
-const updateUser = async (req, res) => {
+const saveUser = async (req, res) => {
     const { id, username, employeeId, employeeName, contactInfo, roles, active, password } = req.body
 
     // Confirm data 
@@ -104,6 +104,59 @@ const updateUser = async (req, res) => {
     res.json({ message: `${updatedUser.username} updated` })
 }
 
+// @desc Update a user
+// @route PATCH /users
+// @access Private
+const updateUser = async (req, res) => {
+    const { username, employeeId, employeeName, contactInfo, roles, active, password, currActivityId } = req.body
+
+    let id
+    req.body.id ? id = req.body.id
+        : req.body._id ? id = req.body._id
+            : id = undefined
+    // Confirm data 
+    if (!id) {
+        return res.status(400).json({ message: 'User Id is required' })
+    }
+
+    // Does the user exist to update?
+    const userFound = await User.findById(id).exec()
+
+    if (!userFound) {
+        return res.status(400).json({ message: 'User not found' })
+    }
+
+    // Check for duplicate 
+    const duplicate = await User.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+    // Allow updates to the original user 
+    if (duplicate && duplicate?._id.toString() !== id) {
+        return res.status(409).json({ message: 'Duplicate username' })
+    }
+    let user = {}
+    if (username) { user.username = username }
+    if (employeeId) { user.employeeId = employeeId }
+    if (employeeName) { user.employeeName = employeeName }
+    if (contactInfo) { user.contactInfo = contactInfo }
+    if (roles) { user.roles = roles }
+    if (currActivityId) { user.currActivityId = currActivityId }
+    if (active) { user.active = active }
+    if (password) {
+        // Hash password 
+        user.password = await bcrypt.hash(password, 10) // salt rounds 
+    }
+
+    await User.findOneAndUpdate({ _id: id }, user, { new: true }).then((data) => {
+        if (data === null) {
+            throw new Error(`User Id: (\'${id}\') not found update failed `);
+        }
+        res.json({ message: `User Id: (\'${data._id}\'), Username: (\'${data.username}\'), updated successfully` })
+    }).catch((error) => {
+
+        res.status(500).json({ message: `error -- User Id: (\'${id}\') update failed`, error: error })
+    });
+}
+
 // @desc Delete a user
 // @route DELETE /users
 // @access Private
@@ -115,29 +168,21 @@ const deleteUser = async (req, res) => {
         return res.status(400).json({ message: 'User ID Required' })
     }
 
-    // Does the user still have assigned notes?
-    // const note = await Note.findOne({ user: id }).lean().exec()
-    // if (note) {
-    //     return res.status(400).json({ message: 'User has assigned notes' })
-    // }
-
-    // Does the user exist to delete?
-    const user = await User.findById(id).exec()
-
-    if (!user) {
-        return res.status(400).json({ message: 'User not found' })
+    try {
+        const user = await User.findOneAndDelete({ _id: id });
+        if (!user) {
+            return res.status(400).json({ message: `User Id: (\'${id}\') not found delete failed ` });
+        }
+        return res.status(200).json({ message: `User Id: (\'${data._id}\'), Username: (\'${data.username}\'), deleted successfully` });
+    } catch (err) {
+        return res.status(400).json({ message: `error -- User Id: (\'${id}\') delete failed`, error: err })
     }
-
-    const result = await user.deleteOne()
-
-    const reply = `Username ${result.username} with ID ${result._id} deleted`
-
-    res.json(reply)
 }
 
 module.exports = {
     getAllUsers,
     createNewUser,
+    saveUser,
     updateUser,
     deleteUser
 }
