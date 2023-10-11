@@ -1,10 +1,16 @@
 import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowCircleLeft, faFileInvoiceDollar, faClipboard, faClipboardList, faRectangleList, faFileCirclePlus, faFilePen, faUserGear, faUserPlus, faRightFromBracket, faTable } from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons" //, faFileInvoiceDollar, faClipboard, faClipboardList, faRectangleList, faFileCirclePlus, faFilePen, faUserGear, faUserPlus, faRightFromBracket, faTable 
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
+
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 
 const DASH_REGEX = /^\/dash(\/)?$/
 const DAILY_REPORTS_REGEX = /^\/dash\/dailyReports(\/)?$/
@@ -14,7 +20,14 @@ const USERS_REGEX = /^\/dash\/users(\/)?$/
 const btnStyle = { padding: "3px", height: "90%", fontSize: "14px" }
 
 const DashHeader = () => {
+
     const { isManager, isAdmin } = useAuth()
+    const onMouseOverNavLink = (e) => { e.target.style.color = 'rgba(110, 110, 110, 0.9)' }
+    const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
+    const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
+    const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
+    const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
+    const navLnkStyle_Btn = "btn btn-light"
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -50,192 +63,225 @@ const DashHeader = () => {
         dashClass = "dash-header__container--small"
     }
 
-    let newDailyReportButton = null
+    let newDailyReportNavLink = null
     if (DAILY_REPORTS_REGEX.test(pathname)) {
-        newDailyReportButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
+        newDailyReportNavLink = (
+            <Nav.Link
+                className={navLnkStyle_Btn}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Whitesmoke}
+                style={navLinkStyle_Whitesmoke}
                 title="New Daily Report"
                 onClick={onNewDailyReportClicked}
             >
                 {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
                 New Daily Report
-            </button>
+            </Nav.Link>
         )
     }
 
-    let dailyReportsButton = null
+    let dailyReportsNavLink = null
     if (DASH_REGEX.test(pathname)) {
         //if (!DAILY_REPORTS_REGEX.test(pathname) && pathname.includes('/dash')) {
-        dailyReportsButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
+        dailyReportsNavLink = (
+            <Nav.Link
+                className={navLnkStyle_Btn}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Whitesmoke}
+                style={navLinkStyle_Whitesmoke}
                 title="DailyReports"
                 onClick={onDailyReportsClicked}
             >
                 {/* <FontAwesomeIcon icon={faClipboardList} /> */}
                 Daily Reports
-            </button>
+            </Nav.Link>
         )
     }
 
-    let newActivityButton = null
+    let newActivityNavLink = null
     if (ACTIVITIES_REGEX.test(pathname)) {
-        newActivityButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
+        newActivityNavLink = (
+            <Nav.Link
+                className={navLnkStyle_Btn}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Whitesmoke}
+                style={navLinkStyle_Whitesmoke}
                 title="New Activity"
                 onClick={onNewActivityClicked}
             >
                 {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
                 New Activity
-            </button>
+            </Nav.Link>
         )
     }
 
-    let activitiesButton = null
+    let activitiesNavLink = null
     if (DASH_REGEX.test(pathname)) {
         //if (!ACTIVITIES_REGEX.test(pathname) && pathname.includes('/dash')) {
-        activitiesButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
+        activitiesNavLink = (
+            <Nav.Link
+                className={navLnkStyle_Btn}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Whitesmoke}
+                style={navLinkStyle_Whitesmoke}
                 title="Activities"
                 onClick={onActivitiesClicked}
             >
                 {/* <FontAwesomeIcon icon={faRectangleList} /> */}
                 Activities
-            </button>
+            </Nav.Link>
         )
     }
 
 
-    let newProjectButton = null
+    let newProjectNavLink = null
     if (PROJECTS_REGEX.test(pathname)) {
-        newProjectButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
+        newProjectNavLink = (
+            <Nav.Link
+                className={navLnkStyle_Btn}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Whitesmoke}
+                style={navLinkStyle_Whitesmoke}
                 title="New Project"
                 onClick={onNewProjectClicked}
             >
                 {/* <FontAwesomeIcon icon={faFileCirclePlus} /> */}
                 New Project
-            </button>
+            </Nav.Link>
         )
     }
 
-    let projectsButton = null
+    let projectsNavLink = null
     if (isManager || isAdmin) {
         if (DASH_REGEX.test(pathname)) {
             //if (!PROJECTS_REGEX.test(pathname) && pathname.includes('/dash')) {
-            projectsButton = (
-                <button
-                    className="btn btn-primary"
-                    style={btnStyle}
+            projectsNavLink = (
+                <Nav.Link
+                    className={navLnkStyle_Btn}
+                    onMouseOver={onMouseOverNavLink}
+                    onMouseOut={onMouseOutNavLink_Whitesmoke}
+                    style={navLinkStyle_Whitesmoke}
                     title="Projects"
                     onClick={onProjectsClicked}
                 >
                     {/* <FontAwesomeIcon icon={faFileInvoiceDollar} /> */}
                     Projects
-                </button>
+                </Nav.Link>
             )
         }
     }
 
 
-    let newUserButton = null
+    let newUserNavLink = null
     if (USERS_REGEX.test(pathname)) {
-        newUserButton = (
-            <button
-                className="btn btn-primary"
-                style={btnStyle}
+        newUserNavLink = (
+            <Nav.Link
+                className={navLnkStyle_Btn}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Whitesmoke}
+                style={navLinkStyle_Whitesmoke}
                 title="New User"
                 onClick={onNewUserClicked}
             >
                 {/* <FontAwesomeIcon icon={faUserPlus} /> */}
                 New User
-            </button>
+            </Nav.Link>
         )
     }
 
-    let usersButton = null
+    let usersNavLink = null
     if (isManager || isAdmin) {
         if (DASH_REGEX.test(pathname)) {
             //if (!USERS_REGEX.test(pathname) && pathname.includes('/dash')) {
-            usersButton = (
-                <button
-                    className="btn btn-primary"
-                    style={btnStyle}
+            usersNavLink = (
+                <Nav.Link
+                    className={navLnkStyle_Btn}
+                    onMouseOver={onMouseOverNavLink}
+                    onMouseOut={onMouseOutNavLink_Whitesmoke}
+                    style={navLinkStyle_Whitesmoke}
                     title="Users"
                     onClick={onUsersClicked}
                 >
                     {/* <FontAwesomeIcon icon={faUserGear} /> */}
                     Users
-                </button>
+                </Nav.Link>
             )
         }
     }
 
-    const logoutButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
+    const logoutNavLink = (
+        <Nav.Link
+            className={navLnkStyle_Btn}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
             title="Logout"
             onClick={sendLogout}
         >
             {/* <FontAwesomeIcon icon={faRightFromBracket} /> */}
             Logout
-        </button>
+        </Nav.Link>
     )
 
-    const backButton = (
-        <button
-            className="btn btn-primary"
-            style={btnStyle}
+    const backNavLink = (
+        <Nav.Link
+            className={navLnkStyle_Btn}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
             title="Back"
             onClick={() => navigate(-1)}>
             <FontAwesomeIcon icon={faArrowCircleLeft} />
-        </button>
+        </Nav.Link>
     )
     const errClass = isError ? "errmsg" : "offscreen"
 
-    let buttonContent
+    let navLinkContent
     if (isLoading) {
-        buttonContent = <PulseLoader color={"#FFF"} />
+        navLinkContent = <PulseLoader color={"#FFF"} />
     } else {
-        buttonContent = (
+        navLinkContent = (
             <>
-                {backButton}
-                {newProjectButton}
-                {projectsButton}
-                {newActivityButton}
-                {activitiesButton}
-                {newDailyReportButton}
-                {dailyReportsButton}
-                {newUserButton}
-                {usersButton}
-                {logoutButton}
+                {backNavLink}
+                {newProjectNavLink}
+                {projectsNavLink}
+                {newActivityNavLink}
+                {activitiesNavLink}
+                {newDailyReportNavLink}
+                {dailyReportsNavLink}
+                {newUserNavLink}
+                {usersNavLink}
+                {logoutNavLink}
             </>
         )
     }
 
     const content = (
+
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <header className="dash-header">
+            <header className="site-header">
                 <div className={`container-xl dash-header__container`}>
-                    <Link style={{ color: 'whitesmoke', textDecoration: 'none' }} to="/dash">
-                        <div><span style={{ fontSize: '20px' }}> <b>Cost Tracking</b></span> <span >--- {pathname}</span>
-                        </div>
-                    </Link>
-                    <nav className="dash-header__nav">
-                        {buttonContent}
-                    </nav>
+                    <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
+                        <Navbar.Brand href="/dash"
+                            style={navLinkStyle_Whitesmoke} >
+                            <div>
+                                <span style={{ fontSize: '20px' }}> <b>Cost Tracking Maintenance</b></span>
+                                <span style={{ fontSize: '14px' }}> --- {pathname}</span>
+                            </div>
+                        </Navbar.Brand>
+                    </Navbar>
+                    <Container className={`container-xl dash-header__nav`} >
+                        <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
+                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                            <Navbar.Collapse id="basic-navbar-nav">
+                                <Nav className="me-auto">
+                                    {navLinkContent}
+                                </Nav>
+                            </Navbar.Collapse>
+                        </Navbar>
+                    </Container>
                 </div>
             </header>
         </>

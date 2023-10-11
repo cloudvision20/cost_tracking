@@ -10,12 +10,10 @@ const bcrypt = require('bcrypt')
 const getAllProjects = async (req, res) => {
     // Get all projects from MongoDB
     const projects = await Project.find() //.select('-password').lean()
-
     // If no projects 
     if (!projects?.length) {
         return res.status(400).json({ message: 'No projects found' })
     }
-
     res.json(projects)
 }
 
@@ -23,21 +21,20 @@ const getAllProjects = async (req, res) => {
 // @route GET /projects
 // @access Private
 const getProjectById = asyncHandler(async (req, res) => {
-    const _id = req.params.id
-    // Get project by Id and return all the data for the options
+    const id = req.params.id
 
     // retrieve Project by Id and include usename corresponsing to userId
-    let project = await Project.find({ "_id": _id }).populate({ path: 'userId', select: 'username' }).exec()
+    let project = await Project.find({ "_id": id }).populate({ path: 'userId', select: 'username' }).exec()
     let users
     let activities
 
     // If no project 
     if (!project?.length) {
-        return res.status(400).json({ message: `Project id: ${_id} not found` })
+        return res.status(400).json({ message: `Project id: ${id} not found` })
     } else {
         // options
         users = (await User.find().select("_id, username"))
-        activities = await Activity.find({ "projectId": _id }).populate({ path: 'userId', select: 'username' }).exec()
+        activities = await Activity.find({ "projectId": id }).populate({ path: 'userId', select: 'username' }).exec()
     }
 
     let response = {}
@@ -68,13 +65,6 @@ const createNewProject = async (req, res) => {
         return res.status(409).json({ message: 'Duplicate title' })
     }
 
-    // // Hash password 
-    // const hashedPwd = await bcrypt.hash(password, 10) // salt rounds
-
-    // const projectObject = (!Array.isArray(roles) || !roles.length)
-    //     ? { userId, title, contactInfo }
-    //     : { userId, title, contactInfo, roles }
-
     // Create and store new project 
     const project = await Project.create(req.body)
 
@@ -89,42 +79,28 @@ const createNewProject = async (req, res) => {
 // @route PATCH /projects
 // @access Private
 const updateProject = async (req, res) => {
-    // const { id, projectId, title, roles, active } = req.body
-    const id = req.body._id
-    // // Confirm data 
-    // if (!id || !projectId || !title || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
-    //     return res.status(400).json({ message: 'All fields except password are required' })
-    // }
+    let id = req.body.id ? req.body.id
+        : req.body._id ? req.body._id
+            : undefined
 
     // Does the project exist to update?
-    const project = await Project.findById(id).exec()
+    let project = await Project.findById(id).exec()
 
     if (!project) {
         return res.status(400).json({ message: 'Project not found' })
     }
 
-    // Check for duplicate 
-    //const duplicate = await Project.findOne({ title }).collation({ locale: 'en', strength: 2 }).lean().exec()
+    await Project.findOneAndUpdate({ _id: id }, req.body, { new: true }).then((data) => {
+        if (data === null) {
+            throw new Error(`Project Id: (\'${id}\') not found update failed `);
+        }
+        res.json({ message: `Project Id: (\'${data._id}\'), Project (title: \'${data.title}\')   updated successfully` })
+    }).catch((error) => {
 
-    // Allow updates to the original project 
-    // if (duplicate && duplicate?._id.toString() !== id) {
-    //     return res.status(409).json({ message: 'Duplicate title' })
-    // }
-    project.userId = req.body.userId
-    project.title = req.body.title
-    project.description = req.body.description
-    project.startDate = req.body.startDate
-    project.endDate = req.body.endDate
-    project.completed = req.body.completed
+        res.status(500).json({ message: `error -- Project Id: (\'${id}\') update failed`, error: error })
+    });
 
-    // if (password) {
-    //     // Hash password 
-    //     project.password = await bcrypt.hash(password, 10) // salt rounds 
-    // }
 
-    const updatedProject = await project.save()
-
-    res.json({ message: `${updatedProject.title} updated` })
 }
 
 // @desc Delete a project
@@ -138,24 +114,15 @@ const deleteProject = async (req, res) => {
         return res.status(400).json({ message: 'Project ID Required' })
     }
 
-    // Does the project still have assigned notes?
-    // const note = await Note.findOne({ project: id }).lean().exec()
-    // if (note) {
-    //     return res.status(400).json({ message: 'Project has assigned notes' })
-    // }
-
-    // Does the project exist to delete?
-    const project = await Project.findById(id).exec()
-
-    if (!project) {
-        return res.status(400).json({ message: 'Project not found' })
+    try {
+        const data = await Project.findOneAndDelete({ _id: id });
+        if (!data) {
+            return res.status(400).json({ message: `Project Id: (\'${id}\') not found delete failed ` });
+        }
+        return res.status(200).json({ message: `Project Id: (\'${data._id}\'), Project (title: \'${data.title}\')  deleted successfully` });
+    } catch (err) {
+        return res.status(400).json({ message: `error -- Project Id: (\'${id}\') delete failed`, error: err })
     }
-
-    const result = await project.deleteOne()
-
-    const reply = `Title ${result.title} with ID ${result._id} deleted`
-
-    res.json(reply)
 }
 
 module.exports = {

@@ -14,11 +14,11 @@ const Welcome = () => {
 
     let content = (
         <section className="welcome">
-            <div className="container">
+            <div className="container" style={{ fontSize: '12px' }}>
                 <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <p>{today}</p>
 
-                    <h3>Welcome {username}!</h3>
+                    <h4>Welcome {username}!</h4>
                     {(location === 'HQ')
                         &&
                         <>

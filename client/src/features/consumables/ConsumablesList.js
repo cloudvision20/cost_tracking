@@ -33,7 +33,7 @@ const ConsumablesList = () => {
         const tableContent = ids?.length && ids.map(consumableId => <Consumable key={consumableId} consumableId={consumableId} />)
 
         content = (
-            <table className="table table-striped table-hover">
+            <table className="table table-striped table-hover" style={{ fontSize: '12px' }}>
                 <thead className="">
                     <tr>
                         <th scope="col" className="">Employee Name</th>

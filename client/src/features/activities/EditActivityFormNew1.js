@@ -11,7 +11,7 @@ import { dateForPicker } from "../../hooks/useDatePicker"
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
-//import { config } from "@fortawesome/fontawesome-svg-core"
+import { config } from "@fortawesome/fontawesome-svg-core"
 
 let rowId = 0
 let editedActivity = {}
@@ -54,10 +54,15 @@ class BtnCellRenderer extends Component {
     }
 }
 
+
 const extractKeys = (mappings) => {
     return Object.keys(mappings);
 };
 
+
+/*
+const colourCodes = extractKeys(colourMappings);
+*/
 const lookupValue = (mappings, key) => {
     return mappings[key];
 };
@@ -71,6 +76,18 @@ const lookupKey = (mappings, name) => {
         }
     }
 };
+
+// const assignValueGetter = (params) => {
+//     console.log('mapping labour :' + mapping['Labour'])
+//     const lst = (params.data?.assignment) ?
+//         params.data.assignment.map(assign => {
+//             return (`${assign.resourcesId}:${assign.budget},\n `)
+//         })
+//         : ""
+
+//     return lst;
+// };
+
 
 const EditActivityForm = ({ dailyReports, res }) => {
     const projects = res.projects
@@ -90,7 +107,22 @@ const EditActivityForm = ({ dailyReports, res }) => {
     const consumablesCodes = extractKeys(consumablesMapping);
     const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumable': consumablesMapping }
     const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumable': consumablesCodes }
-
+    // const mapping = (type) => {
+    //     return (
+    //         type == 'Labour' ? usersMapping
+    //             : type == 'Equipment' ? equipmentMapping
+    //                 : type == 'Consumable' ? consumablesMapping
+    //                     : ''
+    //     )
+    // }
+    // const codes = (type) => {
+    //     return (
+    //         type == 'Labour' ? usersCodes
+    //             : type == 'Equipment' ? equipmentCodes
+    //                 : type == 'Consumable' ? consumablesCodes
+    //                     : ''
+    //     )
+    // }
     const assignValueGetter = (params) => {
         const lst = (params.data?.assignment) ?
             params.data.assignment.map(assign => {
@@ -98,8 +130,10 @@ const EditActivityForm = ({ dailyReports, res }) => {
                 return (`${lookupValue(mapping[params.data.type], assign.resourcesId)}:${assign.budget},\n `)
             })
             : ""
+
         return lst;
     };
+
 
     let curResType = 'Labour'
     const [updateActivity, {
@@ -140,6 +174,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
         "rowId": resource._id
     }))
 
+
     const resGridRef = useRef();
     const [rowData, setRowData] = useState(data)
     const [currResId, setCurrResId] = useState('')
@@ -179,12 +214,14 @@ const EditActivityForm = ({ dailyReports, res }) => {
                     setRdAssignData(this.data.assignment)
                     setCurrResId(this.data.rowId)
                     curResType = this.data.type
-                    //console.log('curResType: ' + curResType)
+                    console.log('curResType: ' + curResType)
 
                     columnAssignDefs[0] = AssignDefCol00(curResType)
                     setColumnAssignDefs(columnAssignDefs)
                     assignGridRef.current.api.setColumnDefs(columnAssignDefs)
 
+                    console.log('columnAssignDefs: ' + JSON.stringify(columnAssignDefs))
+                    // 
                     document.getElementById("resourceDIV").style.display = "block";
                 }, delClicked: function () {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
@@ -194,6 +231,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
             },
         }
     ]);
+
 
     const assignGridRef = useRef();
     const assignData = { "resourceId": "", "budget": 0 }
@@ -211,6 +249,11 @@ const EditActivityForm = ({ dailyReports, res }) => {
             cellEditorParams: {
                 values: codes[type],
             },
+            // filterParams: {
+            //     valueFormatter: (params) => {
+            //         return lookupValue(mapping[type], params.value);
+            //     },
+            // },
             valueFormatter: (params) => {
                 return lookupValue(mapping[type], params.value);
             },
@@ -223,6 +266,8 @@ const EditActivityForm = ({ dailyReports, res }) => {
                 let rData = []
                 assignGridRef.current.api.forEachNode(node => rData.push(node.data));
                 setRdAssignData(rData)
+                //assignGridRef.current.api.redrawRows();
+
             },
             valueParser: params => {
                 return lookupKey(mapping[type], params.newValue);
@@ -242,6 +287,24 @@ const EditActivityForm = ({ dailyReports, res }) => {
             width: 150,
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
+                clicked: function (field) {
+
+                    const otherRowData = rowData.filter((row) =>
+                        row.rowId !== currResId
+                    )
+                    const dirtyRowData = rowData.filter((row) =>
+                        row.rowId === currResId
+                    )
+                    let newRowData = rowData
+                    let rData = []
+                    assignGridRef.current.api.forEachNode(node => rData.push(node.data));
+                    // dirtyRowData[0].assignment = rData
+                    // setRowData([...otherRowData, dirtyRowData[0]])
+                    newRowData[currResId].assignment = rData
+                    setRowData(newRowData)
+                    //resGridRef.current.api.redrawRows();
+                    document.getElementById("resourceDIV").style.display = "none";
+                },
                 delClicked: function (eprops) {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
                     this.api.applyTransaction({ remove: [this.data] });
@@ -283,6 +346,24 @@ const EditActivityForm = ({ dailyReports, res }) => {
         { field: "status", width: 150, editable: false },
         { field: "date", width: 150, editable: false },
         { field: "employee", width: 150, editable: false }
+        // ,
+        // {
+        //     field: "id",
+        //     headerName: 'Actions',
+        //     editable: false,
+        //     width: 150,
+        //     cellRenderer: BtnCellRenderer,
+        //     cellRendererParams: {
+        //         clicked: function (field) {
+
+        //             navigate(`/dash/dailyReports/new/${activity._id}`)
+        //         },
+        //         delClicked: function (field) {
+        //             navigate(`/dash/dailyReports/${field.value}`)
+        //         },
+        //         Id: "dailyReport"
+        //     },
+        // }
     ])
     const [name, setName] = useState(activity.name)
     const [description, setDescription] = useState(activity.description)
@@ -297,25 +378,18 @@ const EditActivityForm = ({ dailyReports, res }) => {
     const [endDate, setEndDate] = useState(activity.endDate)
 
     useEffect(() => {
+
         if (isSuccess || isDelSuccess) {
             errRef.className = "resmsg"
             isSuccess ? errContent = " Saved!"
                 : errContent = "Deleted!"
-            if (isDelSuccess) {
-                setName('')
-                setDescription('')
-                setCompleted(false)
-                setUserId('')
-                setProcessUOM('')
-                setProcessQuantity('')
-                setDurationUOM('')
-                setDurationQuantity('')
-                setStartDate('')
-                setEndDate('')
-                navigate('/dash/activities')
-            }
         }
+
     }, [isSuccess, isDelSuccess, navigate])
+
+    // useEffect(() => {
+    //     //alert('startDate:' + startDate + '\n endDate:' + endDate)
+    // }, [startDate, endDate])
 
     const onNameChanged = (e) => setName(e.target.value)
     const onDescriptionChanged = (e) => setDescription(e.target.value)
@@ -372,20 +446,43 @@ const EditActivityForm = ({ dailyReports, res }) => {
                     "budget": 0
                 }]
                 : [assignData]
+
         setRdAssignData(newRdAssignData)
+        console.log(JSON.stringify(newRdAssignData))
+        //console.log(JSON.stringify(rowData))
     }
 
     const onNewDailyReportClicked = (e) => {
         navigate(`/dash/dailyReports/new/${activity._id}`)
     }
     const onUpdateAssignmentClicked = (e) => {
+        const otherRowData = rowData.filter((row) =>
+            row.rowId !== currResId
+        )
+        const dirtyRowData = rowData.filter((row) =>
+            row.rowId === currResId
+        )
         let rData = []
+        // assignGridRef.current.api.forEachNode(node => rData.push(node.data));
+        // dirtyRowData[0].assignment = rData
+        // setRowData([...otherRowData, dirtyRowData[0]])
+        // document.getElementById("resourceDIV").style.display = "none";
+
         const newRowData = rowData
         assignGridRef.current.api.forEachNode(node => rData.push(node.data));
+        // dirtyRowData[0].assignment = rData
+        // setRowData([...otherRowData, dirtyRowData[0]])
         newRowData[rowData.findIndex((data) => data.rowId == currResId)].assignment = rData
         setRowData(newRowData)
-        resGridRef.current.api.refreshCells()
+        //resGridRef.current.api.redrawRows();
         document.getElementById("resourceDIV").style.display = "none";
+
+
+
+
+
+
+
     }
     const canSave = [activity._id].every(Boolean) && !isLoading
 
@@ -409,8 +506,8 @@ const EditActivityForm = ({ dailyReports, res }) => {
             duration.quantity = durationQuantity
             editedActivity.duration = duration
             editedActivity.resources = rowData
-            // console.log(editedActivity)
-            // console.log(JSON.stringify(editedActivity))
+            console.log(editedActivity)
+            console.log(JSON.stringify(editedActivity))
             await updateActivity(editedActivity)
         }
     }
@@ -430,6 +527,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
             > {user.username}</option >
         )
     })
+
 
     const prjOptions = projects.map(project => {
         return (
@@ -668,7 +766,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
                                     title="Update Resources"
                                     onClick={onUpdateAssignmentClicked}
                                 >
-                                    Confirm
+                                    Update
                                 </button>
                             </div>
                             <div className="panel-body">
@@ -728,4 +826,5 @@ const EditActivityForm = ({ dailyReports, res }) => {
     )
     return content
 }
+
 export default EditActivityForm

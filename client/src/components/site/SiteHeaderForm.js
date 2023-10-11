@@ -23,6 +23,7 @@ const SiteHeaderForm = () => {
     const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
     const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
     const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
+    const navLnkStyle_Btn = "btn btn-light"
     const activities = useSelector(selectActivity)
     const onActivitiesSelected = (activityId) => { setCurActivityId(activityId) }
     let navDropdownItems
@@ -69,23 +70,27 @@ const SiteHeaderForm = () => {
     let consumablesNavLink = null
     consumablesNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={onConsumablesClicked}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
+            title="Consumables"
+        >
             Consumables
         </Nav.Link>
     )
     let newConsumableNavLink = null
     newConsumableNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={onNewConsumableClicked}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
-            New_Consumable
+            title="New Consumables"
+        >
+            New Consumables
         </Nav.Link>
     )
 
@@ -93,11 +98,13 @@ const SiteHeaderForm = () => {
     let filesNavLink = null
     filesNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={onFilesClicked}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
+            title="File uploads"
+        >
             Files
         </Nav.Link>
     )
@@ -105,11 +112,13 @@ const SiteHeaderForm = () => {
     let attendancesNavLink = null
     attendancesNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={onAttendancesClicked}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
+            title="Attendance Files Upload"
+        >
             Attendances
         </Nav.Link>
     )
@@ -117,33 +126,39 @@ const SiteHeaderForm = () => {
     let gpsdatsNavLink = null
     gpsdatsNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={onGpsdatsClicked}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
-            GPS_Data
+            title="Garmin GPS file upload"
+        >
+            GPS Data
         </Nav.Link>
     )
 
     const logoutNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={sendLogout}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
+            title="Logoout"
+        >
             Logout
         </Nav.Link>
     )
 
     const backNavLink = (
         <Nav.Link
+            className={navLnkStyle_Btn}
             onClick={() => navigate(-1)}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            href='#'>
+            title="Back"
+        >
             <span className="sr-only">(current)</span>
             <FontAwesomeIcon icon={faArrowCircleLeft} />
         </Nav.Link>
@@ -172,56 +187,31 @@ const SiteHeaderForm = () => {
             <p className={errClass}>{error?.data?.message}</p>
 
             <header className="site-header">
-                <div className={`container-xl site-header__container`}>
+                <div className={`container-xl site-header__container `}>
                     <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
-
-                        <Container>
-                            <Navbar.Brand href="/site"
-                                style={navLinkStyle_Whitesmoke} >
-                                <div>
-                                    <span style={{ fontSize: '20px' }}> <b>Cost Tracking</b></span>
-                                    <span style={{ fontSize: '14px' }}> --- {pathname}</span>
-                                </div>
-                            </Navbar.Brand>
+                        <Navbar.Brand href="/site"
+                            style={navLinkStyle_Whitesmoke} >
+                            <div>
+                                <span style={{ fontSize: '20px' }}> <b>Cost Tracking Site</b></span>
+                                <span style={{ fontSize: '14px' }}> --- {pathname}</span>
+                            </div>
+                        </Navbar.Brand>
+                    </Navbar>
+                    <Container className={`container-xl site-header__nav`} >
+                        <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            {/* </Container>
-                        <Container> */}
+
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto">
                                     {navLinkContent}
                                     <NavDropdown title={< span style={navLinkStyle_Whitesmoke} >Activities</span>} id="basic-nav-dropdown">
-
                                         {navDropdownItems}
-                                        {/* <NavDropdown.Item href="#action/3.1"
-                                            onMouseOver={onMouseOverNavLink}
-                                            onMouseOut={onMouseOutNavLink_Blue}
-                                            style={navLinkStyle_blue}
-                                        >Action</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.2"
-                                            onMouseOver={onMouseOverNavLink}
-                                            onMouseOut={onMouseOutNavLink_Blue}
-                                            style={navLinkStyle_blue}
-                                        >
-                                            Another action
-                                        </NavDropdown.Item>
-                                        <NavDropdown.Item href="#action/3.3"
-                                            onMouseOver={onMouseOverNavLink}
-                                            onMouseOut={onMouseOutNavLink_Blue}
-                                            style={navLinkStyle_blue}
-                                        >Something</NavDropdown.Item>
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action/3.4"
-                                            onMouseOver={onMouseOverNavLink}
-                                            onMouseOut={onMouseOutNavLink_Blue}
-                                            style={navLinkStyle_blue}
-                                        >
-                                            Separated link
-                                        </NavDropdown.Item> */}
                                     </NavDropdown>
                                 </Nav>
                             </Navbar.Collapse>
-                        </Container>
-                    </Navbar>
+
+                        </Navbar>
+                    </Container>
                 </div>
             </header>
         </>

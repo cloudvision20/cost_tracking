@@ -88,14 +88,9 @@ const Login = () => {
             <div className="container">
                 <div id="loginbox" style={{ marginTop: "50px", textAlign: "left" }} className="mainbox col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-2">
                     <div className="panel panel-info">
-                        {/* <div className="panel-heading">
-                            <div className="panel-title">Sign In</div>
-                            <div style={{ float: "right", fontSize: "80%", position: "relative", top: "-10px" }}><a href="#">Forgot password?</a></div>
-                        </div> */}
                         <div className="panel panel-info">
                             <div className="panel-heading">
-                                <div className="panel-title"><h2>Employee Login</h2></div>
-                                {/* <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div> */}
+                                <div className="panel-title"><h5>Employee Login</h5></div>
                             </div>
                             <div style={{ paddingTop: "30px" }} className="panel-body">
                                 <p ref={errRef} className={errClass} aria-live="assertive">{errMsg}</p>
@@ -108,7 +103,7 @@ const Login = () => {
                                         <span style={{ marginRight: "20px" }} className="input-group-addon"><FontAwesomeIcon icon={faUser} /></span>
                                         <input
                                             className="form-control"
-                                            style={{ textAlign: "left" }}
+                                            style={{ textAlign: "left", fontSize: '14px' }}
                                             type="text"
                                             id="username"
                                             placeholder="username"
@@ -129,7 +124,7 @@ const Login = () => {
                                         <span style={{ marginRight: "20px" }} className="input-group-addon"><FontAwesomeIcon icon={faLock} /></span>
                                         <input
                                             className="form-control"
-                                            style={{ textAlign: "left" }}
+                                            style={{ textAlign: "left", fontSize: '14px' }}
                                             type="password"
                                             id="password"
                                             placeholder="password"
@@ -144,12 +139,9 @@ const Login = () => {
                                             required
                                         />
                                     </div>
-
-                                    {/* <button className="form__submit-button">Sign In</button> */}
                                     <div style={{ marginTop: "10px" }} className="form-group">
                                         <div className="col-sm-12 controls dash-header__nav">
-                                            {/* <a id="btn-login" onClick={handleSubmit} className="btn btn-success">Login  </a> */}
-                                            <button type="button" className="btn btn-primary" onClick={handleSubmit} >Sign In</button>
+                                            <button type="button" className="btn btn-primary btn-sm" onClick={handleSubmit} >Sign In</button>
                                         </div>
                                     </div>
 
@@ -161,7 +153,7 @@ const Login = () => {
                         <footer>
                             <div className="form-group">
                                 <div className="row">
-                                    <div className="col-4">
+                                    <div className="col-4" style={{ fontSize: '14px' }}>
                                         <p>Trust This Device</p>
                                     </div>
                                     <div className="checkbox col-2">
@@ -173,9 +165,9 @@ const Login = () => {
                                         />
                                     </div>
                                 </div>
-                                <div className='row'>
+                                {/* <div className='row'>
                                     <Link to="/">Back to Home</Link>
-                                </div>
+                                </div> */}
                             </div>
 
                         </footer>

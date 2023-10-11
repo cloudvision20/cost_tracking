@@ -57,13 +57,9 @@ const createNewDailyReport = async (req, res) => {
 // @route PATCH /dailyReports
 // @access Private
 const updateDailyReport = async (req, res) => {
-    //const { id, userId, completed } = req.body
-
-    // Confirm data
-    // if (!id || !userId || typeof completed !== 'boolean') {
-    //     return res.status(400).json({ message: 'All fields are required' })
-    // }
-
+    let id = req.body.id ? req.body.id
+        : req.body._id ? req.body._id
+            : undefined
     // Confirm dailyReport exists to update
     const dailyReport = await DailyReport.findById(req.body._id).exec()
 
@@ -158,9 +154,21 @@ const updateDailyReport = async (req, res) => {
 
 
 
-    const updatedDailyReport = await dailyReport.save()
+    // const updatedDailyReport = await dailyReport.save()
 
-    res.json(`'${updatedDailyReport.reportDate}' updated`)
+    // res.json(`'${updatedDailyReport.reportDate}' updated`)
+
+
+
+    await DailyReport.findOneAndUpdate({ _id: id }, req.body, { new: true }).then((data) => {
+        if (data === null) {
+            throw new Error(`DailyReport Id: (\'${id}\') not found update failed `);
+        }
+        res.json({ message: `DailyReport Id: (\'${data._id}\'), DailyReport (title: \'${data.title}\')   updated successfully` })
+    }).catch((error) => {
+
+        res.status(500).json({ message: `error -- DailyReport Id: (\'${id}\') update failed`, error: error })
+    });
 }
 
 // @desc Delete a dailyReport
@@ -174,19 +182,17 @@ const deleteDailyReport = async (req, res) => {
         return res.status(400).json({ message: 'DailyReport ID required' })
     }
 
-    // Confirm dailyReport exists to delete 
-    const dailyReport = await DailyReport.findById(id).exec()
-
-    if (!dailyReport) {
-        return res.status(400).json({ message: 'DailyReport not found' })
+    try {
+        const data = await DailyReport.findOneAndDelete({ _id: id });
+        if (!data) {
+            return res.status(400).json({ message: `DailyReport Id: (\'${id}\') not found delete failed ` });
+        }
+        return res.status(200).json({ message: `DailyReport Id: (\'${data._id}\'), DailyReport (title: \'${data.title}\')  deleted successfully` });
+    } catch (err) {
+        return res.status(400).json({ message: `error -- DailyReport Id: (\'${id}\') delete failed`, error: err })
     }
-
-    const result = await dailyReport.deleteOne()
-
-    const reply = `DailyReport '${result.title}' with ID ${result._id} deleted`
-
-    res.json(reply)
 }
+
 
 module.exports = {
     getAllDailyReports,

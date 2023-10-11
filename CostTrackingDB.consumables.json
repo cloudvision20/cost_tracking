@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "651546bcaddecd523626e603"
+  },
+  "employeeId": "1",
+  "type": "5",
+  "details": "3",
+  "job": "4",
+  "terminal": "2",
+  "createdAt": {
+    "$date": "2023-09-28T09:26:20.175Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-28T09:26:20.175Z"
+  },
+  "__v": 0,
+  "userId": "64c76e149a9f1104a69419b3"
+}]

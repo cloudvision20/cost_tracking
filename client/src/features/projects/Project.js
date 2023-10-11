@@ -36,7 +36,7 @@ const Project = ({ projectId }) => {
 
                 <td className="">
                     <button
-                        className="btn btn-primary"
+                        className="btn btn-primary btn-sm"
                         onClick={handleEdit}
                     >
                         <FontAwesomeIcon icon={faPenToSquare} />

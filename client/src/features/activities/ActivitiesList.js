@@ -42,7 +42,7 @@ const ActivitiesList = () => {
         const tableContent = ids?.length && filteredIds.map(activityId => <Activity key={activityId} activityId={activityId} />)
 
         content = (
-            <table className="table table-striped table-hover">
+            <table className="table table-striped table-hover" style={{ fontSize: '12px' }}>
                 <thead className="">
                     <tr>
                         <th scope="col" className="">Status</th>

@@ -1,168 +1,164 @@
 const Consumable = require('../models/Consumable')
-const User = require('../models/User')
-const Activity = require('../models/Activity')
-const DailyReport = require('../models/DailyReport')
-const asyncHandler = require('express-async-handler')
+// const Note = require('../models/DailyReport')
 const bcrypt = require('bcrypt')
-const { format } = require('date-fns')
-
 
 // @desc Get all consumables
 // @route GET /consumables
 // @access Private
-const getAllConsumables = asyncHandler(async (req, res) => {
+const getAllConsumables = async (req, res) => {
     // Get all consumables from MongoDB
-    const consumables = await Consumable.find().populate({ path: 'userId' }).exec()
+    const consumables = await Consumable.find().lean()
+
     // If no consumables 
     if (!consumables?.length) {
         return res.status(400).json({ message: 'No consumables found' })
     }
+
     res.json(consumables)
-})
+}
 
-const getConsumableById = asyncHandler(async (req, res) => {
-    const _id = req.params.id
-    // Get consumable by Id and return all the data for the options
-
-    // retrieve Consumable by Id and include usename corresponsing to userId
-    let consumable = await Consumable.find({ "_id": _id }).populate({ path: 'userId' }).exec()
-    let activities
-
-    // If no consumable 
-    if (!consumable?.length) {
-        return res.status(400).json({ message: `Consumable id: ${_id} not found` })
-    } else {
-        // options
-        activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": "emp001" })).exec()
-        //users = (await User.find().select("_id, username"))
-        //dailyReports = await DailyReport.find({ "consumableId": _id }).populate({ path: 'userId', select: 'username' }).exec()
-    }
-
-    let response = {}
-
-    response.consumable = consumable
-    response.activities = activities
-
-    res.json(response)
-})
-
-
-const getConsumableByActivityId = asyncHandler(async (req, res) => {
-    const _id = req.params.id
-    // Get consumable by Id and return all the data for the options
-
-    // retrieve Consumable by Id and include usename corresponsing to userId
-    let consumable = await Consumable.find({ "_id": _id }).populate({ path: 'userId' }).exec()
-    let activities
-
-    // If no consumable 
-    if (!consumable?.length) {
-        return res.status(400).json({ message: `Consumable id: ${_id} not found` })
-    } else {
-        // options
-        activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": "emp001" })).exec()
-        //users = (await User.find().select("_id, username"))
-        //dailyReports = await DailyReport.find({ "consumableId": _id }).populate({ path: 'userId', select: 'username' }).exec()
-    }
-
-    let response = {}
-
-    response.consumable = consumable
-    response.activities = activities
-
-    res.json(response)
-})
 // @desc Create new consumable
 // @route POST /consumables
 // @access Private
-const createNewConsumable = asyncHandler(async (req, res) => {
-    const { name } = req.body
-    // // Confirm data validation
-    // if (!name || !password || !Array.isArray(roles) || !roles.length) {
-    //     return res.status(400).json({ message: 'All fields are required' })
-    // }
+const createNewConsumable = async (req, res) => {
+    const { name, type, capacity } = req.body
 
-    // Check for duplicate name
-    const duplicate = await Consumable.findOne({ name }).lean().exec()
-
-    if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate name' })
+    // Confirm data
+    if (!name) {
+        return res.status(400).json({ message: 'name is required' })
     }
 
+    // Check for duplicate name
+    const duplicate = await Consumable.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+    if (duplicate) {
+        return res.status(409).json({ message: 'Duplicate consumable' })
+    }
+
+
+    const consumableObject = {}
+
+    consumableObject.name = name
+    consumableObject.type = type
+    consumableObject.capacity = capacity
+
     // Create and store new consumable 
-    const consumable = await Consumable.create(req.body)
+    const consumable = await Consumable.create(consumableObject)
 
     if (consumable) { //created 
         res.status(201).json({ message: `New consumable ${name} created` })
     } else {
         res.status(400).json({ message: 'Invalid consumable data received' })
     }
-})
+}
 
 // @desc Update a consumable
 // @route PATCH /consumables
 // @access Private
-const updateConsumable = asyncHandler(async (req, res) => {
-    const _id = req.body._id
+const saveConsumable = async (req, res) => {
+    const { id, name, type, capacity } = req.body
 
-    // Does the consumable exists for update?
-    const consumable = await Consumable.findById(_id).exec()
-
-    if (!consumable) {
-        return res.status(400).json({ message: 'Consumable not found' })
+    // Confirm data 
+    if (!name) {
+        return res.status(400).json({ message: 'name required' })
     }
 
-    consumable.userId = req.body.userId
-    consumable.name = req.body.name
-    consumable.description = req.body.description
-    consumable.startDate = req.body.startDate//format(Date(req.body.startDate), 'yyyy-MM-dd') + 'T23:59:59.999Z' //Date(req.body.startDate)
-    consumable.endDate = req.body.endDate//format(Date(req.body.endDate), 'yyyy-MM-dd') + 'T23:59:59.999Z'
-    consumable.process = req.body.process
-    consumable.duration = req.body.duration
-    consumable.resources = req.body.resources
-    consumable.completed = req.body.completed
-    consumable.workProgress = req.body.workProgress
-
-    const updatedConsumable = await consumable.save()
-
-    res.json({ message: `${updatedConsumable.name} updated` })
-})
-
-// @desc Delete a consumable
-// @route DELETE /consumables
-// @access Private
-const deleteConsumable = asyncHandler(async (req, res) => {
-    const { id } = req.body
-
-    // Confirm data -- check if id is  available
-    if (!id) {
-        return res.status(400).json({ message: 'Consumable ID Required' })
-    }
-
-    // // Does the consumable still have assigned notes?
-    // const note = await Note.findOne({ consumable: id }).lean().exec()
-    // if (note) {
-    //     return res.status(400).json({ message: 'Consumable has assigned notes' })
-    // }
-
-    // Does the consumable exists for delete?
+    // Does the consumable exist to update?
     const consumable = await Consumable.findById(id).exec()
 
     if (!consumable) {
         return res.status(400).json({ message: 'Consumable not found' })
     }
 
-    const result = await consumable.deleteOne()
+    // Check for duplicate 
+    const duplicate = await Consumable.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
-    const reply = `Name ${result.name} with ID ${result._id} deleted`
+    // Allow updates to the original consumable 
+    if (duplicate && duplicate?._id.toString() !== id) {
+        return res.status(409).json({ message: 'Duplicate name' })
+    }
 
-    res.json(reply)
-})
+    consumable.name = name
+    consumable.type = type
+    consumable.capacity = capacity
+
+
+    const updatedConsumable = await consumable.save()
+
+    res.json({ message: `${updatedConsumable.name} updated` })
+}
+
+// @desc Update a consumable
+// @route PATCH /consumables
+// @access Private
+const updateConsumable = async (req, res) => {
+    const { name, type, capacity } = req.body
+
+    let id
+    req.body.id ? id = req.body.id
+        : req.body._id ? id = req.body._id
+            : id = undefined
+    // Confirm data 
+    if (!id) {
+        return res.status(400).json({ message: 'Consumable Id is required' })
+    }
+
+    // Does the consumable exist to update?
+    const consumableFound = await Consumable.findById(id).exec()
+
+    if (!consumableFound) {
+        return res.status(400).json({ message: 'Consumable not found' })
+    }
+
+    // Check for duplicate 
+    const duplicate = await Consumable.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+    // Allow updates to the original consumable 
+    if (duplicate && duplicate?._id.toString() !== id) {
+        return res.status(409).json({ message: 'Duplicate name' })
+    }
+    let consumable = {}
+    if (name) { consumable.name = name }
+    if (type) { consumable.type = type }
+    if (capacity) { consumable.capacity = capacity }
+
+    await Consumable.findOneAndUpdate({ _id: id }, consumable, { new: true }).then((data) => {
+        if (data === null) {
+            throw new Error(`Consumable Id: (\'${id}\') not found update failed `);
+        }
+        res.json({ message: `Consumable Id: (\'${data._id}\'), Name: (\'${data.name}\'), updated successfully` })
+    }).catch((error) => {
+
+        res.status(500).json({ message: `error -- Consumable Id: (\'${id}\') update failed`, error: error })
+    });
+}
+
+// @desc Delete a consumable
+// @route DELETE /consumables
+// @access Private
+const deleteConsumable = async (req, res) => {
+    const { id } = req.body
+
+    // Confirm data
+    if (!id) {
+        return res.status(400).json({ message: 'Consumable ID Required' })
+    }
+
+    try {
+        const consumable = await Consumable.findOneAndDelete({ _id: id });
+        if (!consumable) {
+            return res.status(400).json({ message: `Consumable Id: (\'${id}\') not found delete failed ` });
+        }
+        return res.status(200).json({ message: `Consumable Id: (\'${data._id}\'), Name: (\'${data.name}\'), deleted successfully` });
+    } catch (err) {
+        return res.status(400).json({ message: `error -- Consumable Id: (\'${id}\') delete failed`, error: err })
+    }
+}
 
 module.exports = {
     getAllConsumables,
-    getConsumableById,
     createNewConsumable,
+    saveConsumable,
     updateConsumable,
     deleteConsumable
 }

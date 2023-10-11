@@ -36,7 +36,7 @@ const Activity = ({ activityId }) => {
                 <td className="">{activity.username}</td>
                 <td className="">
                     <button
-                        className="btn btn-primary"
+                        className="btn btn-primary btn-sm"
                         onClick={handleEdit}
                     >
                         <FontAwesomeIcon icon={faPenToSquare} />

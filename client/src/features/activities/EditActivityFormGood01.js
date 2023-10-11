@@ -1,21 +1,21 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { useUpdateActivityMutation, useDeleteActivityMutation } from "./activitiesApiSlice"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../../hooks/useAuth"
-import { Form } from 'react-bootstrap';
+import { FormControl, Form } from 'react-bootstrap';
 import { AgGridReact } from "ag-grid-react";
-import { dateForPicker } from "../../hooks/useDatePicker"
+import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
 // import EditDailyReportForm from '../dailyReports/EditDailyReportForm'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
-//import { config } from "@fortawesome/fontawesome-svg-core"
 
 let rowId = 0
 let editedActivity = {}
 let errContent
+
 
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
@@ -54,23 +54,15 @@ class BtnCellRenderer extends Component {
     }
 }
 
-const extractKeys = (mappings) => {
-    return Object.keys(mappings);
+const assignValueGetter = (params) => {
+    const lst = (params.data?.assignment) ?
+        params.data.assignment.map(assign => {
+            return (`${assign.resourcesId}:${assign.budget},\n `)
+        })
+        : ""
+    return lst;
 };
 
-const lookupValue = (mappings, key) => {
-    return mappings[key];
-};
-
-const lookupKey = (mappings, name) => {
-    const keys = Object.keys(mappings);
-    for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if (mappings[key] === name) {
-            return key;
-        }
-    }
-};
 
 const EditActivityForm = ({ dailyReports, res }) => {
     const projects = res.projects
@@ -78,30 +70,11 @@ const EditActivityForm = ({ dailyReports, res }) => {
     const users = res.users
     const equipment = res.equipment
     const consumables = res.consumables
+
     let errRef = useRef()
 
-
     const { isManager, isAdmin } = useAuth()
-    const usersMapping = Object.fromEntries(users.map(user => ([user._id, user.username])));
-    const usersCodes = extractKeys(usersMapping);
-    const equipmentMapping = Object.fromEntries(equipment.map(equipmnt => ([equipmnt._id, equipmnt.name])));
-    const equipmentCodes = extractKeys(equipmentMapping);
-    const consumablesMapping = Object.fromEntries(consumables.map(consumable => ([consumable._id, consumable.name])));
-    const consumablesCodes = extractKeys(consumablesMapping);
-    const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumable': consumablesMapping }
-    const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumable': consumablesCodes }
 
-    const assignValueGetter = (params) => {
-        const lst = (params.data?.assignment) ?
-            params.data.assignment.map(assign => {
-                console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
-                return (`${lookupValue(mapping[params.data.type], assign.resourcesId)}:${assign.budget},\n `)
-            })
-            : ""
-        return lst;
-    };
-
-    let curResType = 'Labour'
     const [updateActivity, {
         isLoading,
         isSuccess,
@@ -139,7 +112,6 @@ const EditActivityForm = ({ dailyReports, res }) => {
         "_id": resource._id,
         "rowId": resource._id
     }))
-
     const resGridRef = useRef();
     const [rowData, setRowData] = useState(data)
     const [currResId, setCurrResId] = useState('')
@@ -170,7 +142,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
             valueGetter: assignValueGetter,
         },
         {
-            //field: 'type',
+            field: 'type',
             headerName: 'Actions',
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
@@ -178,13 +150,6 @@ const EditActivityForm = ({ dailyReports, res }) => {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
                     setRdAssignData(this.data.assignment)
                     setCurrResId(this.data.rowId)
-                    curResType = this.data.type
-                    //console.log('curResType: ' + curResType)
-
-                    columnAssignDefs[0] = AssignDefCol00(curResType)
-                    setColumnAssignDefs(columnAssignDefs)
-                    assignGridRef.current.api.setColumnDefs(columnAssignDefs)
-
                     document.getElementById("resourceDIV").style.display = "block";
                 }, delClicked: function () {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
@@ -198,50 +163,28 @@ const EditActivityForm = ({ dailyReports, res }) => {
     const assignGridRef = useRef();
     const assignData = { "resourceId": "", "budget": 0 }
     const [rdAssignData, setRdAssignData] = useState([assignData])
-    const AssignDefCol00 = (type) => {
-        return ({
-            field: 'resourcesId',
-            width: 150,
-            editable: true,
-            enableCellTextSelection: true,
-            ensureDomOrder: true,
-            cellEditor: 'agSelectCellEditor',
-            filter: 'agSetColumnFilter',
-            cellEditorPopup: false,
-            cellEditorParams: {
-                values: codes[type],
-            },
-            valueFormatter: (params) => {
-                return lookupValue(mapping[type], params.value);
-            },
-            valueSetter: params => {
-
-                console.log('index =' + params.node.rowindex)
-                console.log('valueParser')
-                params.node.data = { "resourcesId": params.newValue, "budget": params.node.data.budget }
-                console.log('data =' + JSON.stringify(params.node.data))
-                let rData = []
-                assignGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdAssignData(rData)
-            },
-            valueParser: params => {
-                return lookupKey(mapping[type], params.newValue);
-            }
-
-        })
-    }
-    const [columnAssignDefs, setColumnAssignDefs] = useState([
-        {
-            field: 'resourcesId',
-            width: 150,
-            editable: true,
-        },
+    const [columnAssignDefs] = useState([
+        { field: "resourcesId", width: 150, editable: true },
         { field: "budget", width: 150, editable: true },
         {
             headerName: 'Actions',
             width: 150,
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
+                clicked: function (field) {
+
+                    const otherRowData = rowData.filter((row) =>
+                        row.rowId !== currResId
+                    )
+                    const dirtyRowData = rowData.filter((row) =>
+                        row.rowId === currResId
+                    )
+                    let rData = []
+                    assignGridRef.current.api.forEachNode(node => rData.push(node.data));
+                    dirtyRowData[0].assignment = rData
+                    setRowData([...otherRowData, dirtyRowData[0]])
+                    document.getElementById("resourceDIV").style.display = "none";
+                },
                 delClicked: function (eprops) {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
                     this.api.applyTransaction({ remove: [this.data] });
@@ -283,6 +226,24 @@ const EditActivityForm = ({ dailyReports, res }) => {
         { field: "status", width: 150, editable: false },
         { field: "date", width: 150, editable: false },
         { field: "employee", width: 150, editable: false }
+        // ,
+        // {
+        //     field: "id",
+        //     headerName: 'Actions',
+        //     editable: false,
+        //     width: 150,
+        //     cellRenderer: BtnCellRenderer,
+        //     cellRendererParams: {
+        //         clicked: function (field) {
+
+        //             navigate(`/dash/dailyReports/new/${activity._id}`)
+        //         },
+        //         delClicked: function (field) {
+        //             navigate(`/dash/dailyReports/${field.value}`)
+        //         },
+        //         Id: "dailyReport"
+        //     },
+        // }
     ])
     const [name, setName] = useState(activity.name)
     const [description, setDescription] = useState(activity.description)
@@ -297,25 +258,18 @@ const EditActivityForm = ({ dailyReports, res }) => {
     const [endDate, setEndDate] = useState(activity.endDate)
 
     useEffect(() => {
+
         if (isSuccess || isDelSuccess) {
-            errRef.className = "resmsg"
-            isSuccess ? errContent = " Saved!"
-                : errContent = "Deleted!"
-            if (isDelSuccess) {
-                setName('')
-                setDescription('')
-                setCompleted(false)
-                setUserId('')
-                setProcessUOM('')
-                setProcessQuantity('')
-                setDurationUOM('')
-                setDurationQuantity('')
-                setStartDate('')
-                setEndDate('')
-                navigate('/dash/activities')
-            }
+            // errRef.className = "resmsg"
+            // isSuccess ? errContent = " Saved!"
+            //     : errContent = "Deleted!"
         }
+
     }, [isSuccess, isDelSuccess, navigate])
+
+    // useEffect(() => {
+    //     //alert('startDate:' + startDate + '\n endDate:' + endDate)
+    // }, [startDate, endDate])
 
     const onNameChanged = (e) => setName(e.target.value)
     const onDescriptionChanged = (e) => setDescription(e.target.value)
@@ -331,7 +285,6 @@ const EditActivityForm = ({ dailyReports, res }) => {
         console.log('onCellValueChanged-rowData:' + JSON.stringify(rowData))
     }
     const onAssignValueChanged = (e) => {
-
         console.log('onAssignValueChanged-rdAssignData:' + JSON.stringify(rdAssignData))
     }
     const onDRValueChanged = (e) => {
@@ -372,19 +325,26 @@ const EditActivityForm = ({ dailyReports, res }) => {
                     "budget": 0
                 }]
                 : [assignData]
+
         setRdAssignData(newRdAssignData)
+        console.log(JSON.stringify(newRdAssignData))
+        //console.log(JSON.stringify(rowData))
     }
 
     const onNewDailyReportClicked = (e) => {
         navigate(`/dash/dailyReports/new/${activity._id}`)
     }
     const onUpdateAssignmentClicked = (e) => {
+        const otherRowData = rowData.filter((row) =>
+            row.rowId !== currResId
+        )
+        const dirtyRowData = rowData.filter((row) =>
+            row.rowId === currResId
+        )
         let rData = []
-        const newRowData = rowData
         assignGridRef.current.api.forEachNode(node => rData.push(node.data));
-        newRowData[rowData.findIndex((data) => data.rowId == currResId)].assignment = rData
-        setRowData(newRowData)
-        resGridRef.current.api.refreshCells()
+        dirtyRowData[0].assignment = rData
+        setRowData([...otherRowData, dirtyRowData[0]])
         document.getElementById("resourceDIV").style.display = "none";
     }
     const canSave = [activity._id].every(Boolean) && !isLoading
@@ -409,8 +369,8 @@ const EditActivityForm = ({ dailyReports, res }) => {
             duration.quantity = durationQuantity
             editedActivity.duration = duration
             editedActivity.resources = rowData
-            // console.log(editedActivity)
-            // console.log(JSON.stringify(editedActivity))
+            console.log(editedActivity)
+            console.log(JSON.stringify(editedActivity))
             await updateActivity(editedActivity)
         }
     }
@@ -430,6 +390,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
             > {user.username}</option >
         )
     })
+
 
     const prjOptions = projects.map(project => {
         return (
@@ -668,7 +629,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
                                     title="Update Resources"
                                     onClick={onUpdateAssignmentClicked}
                                 >
-                                    Confirm
+                                    Update
                                 </button>
                             </div>
                             <div className="panel-body">
@@ -678,7 +639,6 @@ const EditActivityForm = ({ dailyReports, res }) => {
                                         onCellValueChanged={onAssignValueChanged}
                                         onGridReady={(event) => event.api.sizeColumnsToFit()}
                                         defaultColDef={defaultColDef}
-                                        readOnlyEdit={false}
                                         rowData={rdAssignData}
                                         columnDefs={columnAssignDefs}>
                                     </AgGridReact>
@@ -728,4 +688,5 @@ const EditActivityForm = ({ dailyReports, res }) => {
     )
     return content
 }
+
 export default EditActivityForm

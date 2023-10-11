@@ -33,7 +33,7 @@ const UsersList = () => {
         const tableContent = ids?.length && ids.map(userId => <User key={userId} userId={userId} />)
 
         content = (
-            <table className="table table-striped table-hover">
+            <table className="table table-striped table-hover" style={{ fontSize: '12px' }}>
                 <thead className="">
                     <tr>
                         <th scope="col" className="">Username</th>
