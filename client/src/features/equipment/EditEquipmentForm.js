@@ -1,12 +1,12 @@
 import { useState, useEffect, useMemo, memo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateConsumablesMutation, useDeleteConsumableMutation } from './consumablesApiSlice'
+import { useUpdateEquipmentMutation, useDeleteEquipMutation } from './equipmentApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 
 let rowId = 0
-let eConsumables = {}
+let eEquipment = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -32,19 +32,19 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const EditConsumableForm = ({ consumables }) => {
+const EditEquipmentForm = ({ equipment }) => {
 
-    const [updateConsumables, {
+    const [updateEquipment, {
         isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateConsumablesMutation()
-    const [deleteConsumable, {
+    }] = useUpdateEquipmentMutation()
+    const [deleteEquip, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteConsumableMutation()
+    }] = useDeleteEquipMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -53,16 +53,16 @@ const EditConsumableForm = ({ consumables }) => {
             width: 150,
         };
     }, []);
-    const consumableGridRef = useRef();
+    const equipGridRef = useRef();
     const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
-    const data = Array.from(consumables).map((data, index) => ({
+    const data = Array.from(equipment).map((data, index) => ({
         "type": data.type,
         "name": data.name,
-        "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+        "capacity": data.capacity ? data.capacity : 0,
         "_id": data._id
     }))
-    const [rdConsumable, setRdConsumable] = useState(data)
-    const [consumableColDefs, setConsumableColDefs] = useState([
+    const [rdEquip, setRdEquip] = useState(data)
+    const [equipColDefs, setEquipColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
         { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
@@ -75,43 +75,36 @@ const EditConsumableForm = ({ consumables }) => {
                 delClicked: function (eprops) {
                     if (this.data._id) { delRecord(this.data._id) }
                     this.api.applyTransaction({ remove: [this.data] });
-                    const OtherRdConsumable = rdConsumable.filter((row) =>
-                        row.rowId !== this.data._id
-                    )
-                    setRdConsumable(OtherRdConsumable)
                 },
-                Id: "consumable"
+                Id: "equip"
             },
         }
     ])
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
-    let errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+    const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
     const onSaveClicked = async (e) => {
         e.preventDefault()
         // if (canSave) {
-        eConsumables.data = rdConsumable
-        let result
-        memo(
-            result = await updateConsumables(eConsumables)
-        )
-        console.log(result)
+        eEquipment.data = rdEquip
+
+        const result = await updateEquipment(eEquipment)
         // }
     }
     const delRecord = async (_id) => {
-        await deleteConsumable({ id: _id })
+        await deleteEquip({ id: _id })
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdConsumable))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdEquip))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdConsumable ?
-                [...rdConsumable, blankData]
+            rdEquip ?
+                [...rdEquip, blankData]
                 : [blankData]
-        setRdConsumable(newRData)
+        setRdEquip(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -119,14 +112,13 @@ const EditConsumableForm = ({ consumables }) => {
             errRef.className = "resmsg"
             isSuccess ? errContent = " Saved!"
                 : errContent = "Deleted!"
-            navigate('/site/consumables')
         }
     }, [isSuccess, isDelSuccess, navigate])
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent}</p>
             <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                <div className="panel-heading"><h5>Consumables</h5></div>
+                <div className="panel-heading"><h5>Equipment</h5></div>
                 <div className="form-group  dash-header__nav">
                     <button
                         className="btn btn-primary"
@@ -146,12 +138,12 @@ const EditConsumableForm = ({ consumables }) => {
                 <div className="panel-body">
                     <div className="container-sm ag-theme-balham" style={{ height: 200, width: "100%", fontSize: '12px' }}>
                         <AgGridReact
-                            ref={consumableGridRef}
+                            ref={equipGridRef}
                             onCellValueChanged={onValueChanged}
                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                             defaultColDef={defaultColDef}
-                            rowData={rdConsumable}
-                            columnDefs={consumableColDefs}>
+                            rowData={rdEquip}
+                            columnDefs={equipColDefs}>
                         </AgGridReact>
                     </div>
                 </div>
@@ -163,4 +155,4 @@ const EditConsumableForm = ({ consumables }) => {
 
 }
 
-export default EditConsumableForm
+export default EditEquipmentForm

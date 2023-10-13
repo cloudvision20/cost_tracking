@@ -32,6 +32,7 @@ const SiteHeaderForm = () => {
         navDropdownItems = activities.map(activity => {
             return (
                 <NavDropdown.Item href="#activity._id"
+                    key={activity._id}
                     onMouseOver={onMouseOverNavLink}
                     onMouseOut={onMouseOutNavLink_Blue}
                     onClick={() => onActivitiesSelected(activity._id)}
@@ -59,7 +60,7 @@ const SiteHeaderForm = () => {
     }, [isSuccess, navigate])
 
     const onConsumablesClicked = () => navigate('/site/consumables')
-    const onNewConsumableClicked = () => navigate('/site/Consumables/new')
+    const onEquipmentClicked = () => navigate('/site/equipment')
     const onFilesClicked = () => navigate('/site/files')
     const onAttendancesClicked = () => navigate('/site/files/attendances')
     const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
@@ -80,17 +81,17 @@ const SiteHeaderForm = () => {
             Consumables
         </Nav.Link>
     )
-    let newConsumableNavLink = null
-    newConsumableNavLink = (
+    let equipmentNavLink = null
+    equipmentNavLink = (
         <Nav.Link
             className={navLnkStyle_Btn}
-            onClick={onNewConsumableClicked}
+            onClick={onEquipmentClicked}
             onMouseOver={onMouseOverNavLink}
             onMouseOut={onMouseOutNavLink_Whitesmoke}
             style={navLinkStyle_Whitesmoke}
-            title="New Consumables"
+            title="Equipment"
         >
-            New Consumables
+            Equipment
         </Nav.Link>
     )
 
@@ -174,7 +175,7 @@ const SiteHeaderForm = () => {
                 {backNavLink}
                 {attendancesNavLink}
                 {gpsdatsNavLink}
-                {newConsumableNavLink}
+                {equipmentNavLink}
                 {consumablesNavLink}
                 {filesNavLink}
                 {logoutNavLink}
@@ -188,7 +189,7 @@ const SiteHeaderForm = () => {
 
             <header className="site-header">
                 <div className={`container-xl site-header__container `}>
-                    <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
+                    <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
                         <Navbar.Brand href="/site"
                             style={navLinkStyle_Whitesmoke} >
                             <div>
@@ -198,7 +199,7 @@ const SiteHeaderForm = () => {
                         </Navbar.Brand>
                     </Navbar>
                     <Container className={`container-xl site-header__nav`} >
-                        <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
+                        <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
                             <Navbar.Collapse id="basic-navbar-nav">

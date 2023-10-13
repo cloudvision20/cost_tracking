@@ -1,23 +1,23 @@
-import { useGetConsumablesQuery } from './consumablesApiSlice'
+import { useGetEquipmentQuery } from './equipmentApiSlice'
 import { useParams } from 'react-router-dom'
-import EditConsumableForm from './EditConsumableForm'
+import EditEquipmentForm from './EditEquipmentForm'
 
 import PulseLoader from 'react-spinners/PulseLoader'
 import useAuth from "../../hooks/useAuth"
 import useTitle from '../../hooks/useTitle'
 
-const EditConsumable = () => {
-    useTitle('Cost Tracking: Consumable')
+const EditEquipment = () => {
+    useTitle('Cost Tracking: Equipment')
 
 
 
     const {
-        data: consumables,
+        data: equipment,
         isLoading,
         isSuccess,
         isError,
         error
-    } = useGetConsumablesQuery('consumablesList', {
+    } = useGetEquipmentQuery('equipmentList', {
         pollingInterval: 60000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
@@ -28,11 +28,11 @@ const EditConsumable = () => {
 
     if (isSuccess) {
 
-        if (!consumables) return <PulseLoader color={"#FFF"} />
+        if (!equipment) return <PulseLoader color={"#FFF"} />
 
-        content = <EditConsumableForm consumables={consumables} />
+        content = <EditEquipmentForm equipment={equipment} />
 
         return content
     }
 }
-export default EditConsumable
+export default EditEquipment

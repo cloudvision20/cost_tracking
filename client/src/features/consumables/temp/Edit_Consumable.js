@@ -1,18 +1,14 @@
-import { useGetConsumablesQuery } from './consumablesApiSlice'
-import { useParams } from 'react-router-dom'
 import EditConsumableForm from './EditConsumableForm'
-
+import { useGetConsumablesQuery } from './consumablesApiSlice'
 import PulseLoader from 'react-spinners/PulseLoader'
-import useAuth from "../../hooks/useAuth"
-import useTitle from '../../hooks/useTitle'
+import useTitle from '../../../hooks/useTitle'
 
 const EditConsumable = () => {
     useTitle('Cost Tracking: Consumable')
 
 
-
     const {
-        data: consumables,
+        data: res,
         isLoading,
         isSuccess,
         isError,
@@ -28,9 +24,11 @@ const EditConsumable = () => {
 
     if (isSuccess) {
 
-        if (!consumables) return <PulseLoader color={"#FFF"} />
+        if (!res.consumables || !res.consumables?.length) return <PulseLoader color={"#FFF"} />
 
-        content = <EditConsumableForm consumables={consumables} />
+
+
+        content = <EditConsumableForm consumable={res.consumables} />
 
         return content
     }

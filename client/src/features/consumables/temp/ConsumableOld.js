@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-import { useGetConsumablesQuery } from './consumablesApiSlice'
+import { useGetConsumablesQuery } from '../consumablesApiSlice'
 import { memo } from 'react'
 
 const Consumable = ({ consumableId }) => {
@@ -23,11 +23,9 @@ const Consumable = ({ consumableId }) => {
 
         return (
             <tr className="">
-                <td className="">{consumable.userId.employeeName}</td>
-                <td className="">{consumable.details}</td>
+                <td className="">{consumable.name}</td>
                 <td className="">{consumable.type}</td>
-                <td className="">{consumable.unit}</td>
-                <td className="">{consumable.amount}</td>
+                <td className="">{consumable.capacity}</td>
                 <td className="">{consumable.updatedAt}</td>
                 <td className="">
                     <button

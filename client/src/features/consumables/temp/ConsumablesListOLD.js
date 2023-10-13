@@ -1,6 +1,6 @@
-import { useGetConsumablesQuery } from "./consumablesApiSlice"
-import Consumable from './temp/Consumable'
-import useTitle from "../../hooks/useTitle"
+import { useGetConsumablesQuery } from "../consumablesApiSlice"
+import Consumable from '../Consumable'
+import useTitle from "../../../hooks/useTitle"
 import PulseLoader from 'react-spinners/PulseLoader'
 
 const ConsumablesList = () => {

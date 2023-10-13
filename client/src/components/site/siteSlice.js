@@ -7,14 +7,11 @@ const siteSlice = createSlice({
         setActivity: (state, action) => {
             const { activities } = action.payload
             state.activity = activities
-        },
-        logOut: (state, action) => {
-            state.activity = null
         }
     }
 })
 
-export const { setActivity, logOut } = siteSlice.actions
+export const { setActivity } = siteSlice.actions
 
 export default siteSlice.reducer
 

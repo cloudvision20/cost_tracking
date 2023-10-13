@@ -31,9 +31,9 @@ import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
 
-import ConsumablesList from './features/consumables/ConsumablesList'
+import EditEquipment from './features/equipment/EditEquipment'
 import EditConsumable from './features/consumables/EditConsumable'
-import NewConsumableForm from './features/consumables/NewConsumableForm'
+//import NewConsumableForm from './features/consumables/NewConsumableForm'
 
 import SiteLayout from './components/site/SiteLayout'
 import SiteWelcome from './features/auth/SiteWelcome'
@@ -62,9 +62,12 @@ function App() {
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
                 <Route path="consumables">
-                  <Route index element={<ConsumablesList />} />
-                  <Route path=":id" element={<EditConsumable />} />
-                  <Route path="new" element={<NewConsumableForm />} />
+                  <Route index element={<EditConsumable />} />
+                  {/* <Route path=":id" element={<EditConsumable />} />
+                  <Route path="new" element={<NewConsumableForm />} /> */}
+                </Route>
+                <Route path="equipment">
+                  <Route index element={<EditEquipment />} />
                 </Route>
                 <Route path="files">
                   <Route index element={<FilesUpload />} />
@@ -78,9 +81,7 @@ function App() {
                 <Route index element={<Welcome />} />
 
                 <Route path="consumables">
-                  <Route index element={<ConsumablesList />} />
-                  <Route path=":id" element={<EditConsumable />} />
-                  <Route path="new" element={<NewConsumableForm />} />
+                  <Route index element={<EditConsumable />} />
                 </Route>
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>

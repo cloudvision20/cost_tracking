@@ -133,6 +133,55 @@ const updateConsumable = async (req, res) => {
     });
 }
 
+const updateConsumables = async (req, res) => {
+    const newData = req.body.data
+    let response = []
+    let consumable
+    let result
+
+    newData.forEach(async (data) => {
+        consumable = new Consumable()
+
+
+        if (data.name) { consumable.name = data.name }
+        if (data.type) { consumable.type = data.type }
+        if (data.capacity) { consumable.capacity = parseFloat(data.capacity) }
+        if (data._id) {
+            consumable._id = data._id
+            await Consumable.findOneAndUpdate({ _id: data._id }, consumable, { new: true }).then((data) => {
+                if (data === null) {
+                    response.push({ message: `Consumable Id: : ${data._id},name: ${data.name} not found update failed` })
+                } else {
+                    response.push({ message: `Consumable Id: ${data._id},name: ${data.name} updated successfully` })
+                }
+            }).catch((error) => {
+                response.push({ message: `error -- Consumable Id: (\'${data._id}\') update failed , error: ${error}` })
+            });
+        } else {
+            delete (data['_id'])
+            await consumable.save()
+                .then((result) => {
+                    if (result === null) {
+                        response.push({ message: `Consumable Id: ${data._id},name: ${data.name} fail to saved` })
+                    } else {
+                        response.push({ message: `Consumable Id: ${data._id},name: ${data.name} created successfully` })
+                    }
+                }
+                )
+                .catch(
+                    (error) => {
+                        console.log(`result=${result}`)
+                        console.log(`id: ${data._id},name: ${data.name}` + error)
+                        response.push({ message: `error -- Consumable Id: (\'${data._id}\') create failed , error: ${error}` })
+                    }
+                )
+        }
+    }
+
+    )
+    console.log(`response = ${JSON.stringify(response)}`)
+    res.json(response)
+}
 // @desc Delete a consumable
 // @route DELETE /consumables
 // @access Private
@@ -149,7 +198,7 @@ const deleteConsumable = async (req, res) => {
         if (!consumable) {
             return res.status(400).json({ message: `Consumable Id: (\'${id}\') not found delete failed ` });
         }
-        return res.status(200).json({ message: `Consumable Id: (\'${data._id}\'), Name: (\'${data.name}\'), deleted successfully` });
+        return res.status(200).json({ message: `Consumable Id: (\'${consumable._id}\'), Name: (\'${consumable.name}\'), deleted successfully` });
     } catch (err) {
         return res.status(400).json({ message: `error -- Consumable Id: (\'${id}\') delete failed`, error: err })
     }
@@ -159,6 +208,6 @@ module.exports = {
     getAllConsumables,
     createNewConsumable,
     saveConsumable,
-    updateConsumable,
+    updateConsumables,
     deleteConsumable
 }

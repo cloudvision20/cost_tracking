@@ -17,21 +17,21 @@ export const consumablesApiSlice = apiSlice.injectEndpoints({
                     return response.status === 200 && !result.isError
                 },
             }),
-            transformResponse: responseData => {
-                const loadedConsumables = responseData.map(consumable => {
-                    consumable.id = consumable._id
-                    return consumable
-                });
-                return consumablesAdapter.setAll(initialState, loadedConsumables)
-            },
-            providesTags: (result, error, arg) => {
-                if (result?.ids) {
-                    return [
-                        { type: 'Consumable', id: 'LIST' },
-                        ...result.ids.map(id => ({ type: 'Consumable', id }))
-                    ]
-                } else return [{ type: 'Consumable', id: 'LIST' }]
-            }
+            // transformResponse: responseData => {
+            //     const loadedConsumables = responseData.map(consumable => {
+            //         consumable.id = consumable._id
+            //         return consumable
+            //     });
+            //     return consumablesAdapter.setAll(initialState, loadedConsumables)
+            // },
+            // providesTags: (result, error, arg) => {
+            //     if (result?.ids) {
+            //         return [
+            //             { type: 'Consumable', id: 'LIST' },
+            //             ...result.ids.map(id => ({ type: 'Consumable', id }))
+            //         ]
+            //     } else return [{ type: 'Consumable', id: 'LIST' }]
+            // }
         }),
         getConsumableById: builder.query({
             query: (id) => ({
@@ -53,7 +53,7 @@ export const consumablesApiSlice = apiSlice.injectEndpoints({
                 { type: 'Consumable', id: "LIST" }
             ]
         }),
-        updateConsumable: builder.mutation({
+        updateConsumables: builder.mutation({
             query: initialConsumableData => ({
                 url: '/consumables',
                 method: 'PATCH',
@@ -82,7 +82,7 @@ export const {
     useGetConsumablesQuery,
     useGetConsumableByIdQuery,
     useAddNewConsumableMutation,
-    useUpdateConsumableMutation,
+    useUpdateConsumablesMutation,
     useDeleteConsumableMutation,
 } = consumablesApiSlice
 

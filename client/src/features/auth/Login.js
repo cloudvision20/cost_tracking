@@ -9,9 +9,7 @@ import useTitle from '../../hooks/useTitle'
 import jwtDecode from 'jwt-decode'
 import PulseLoader from 'react-spinners/PulseLoader'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-    faUser, faLock
-} from "@fortawesome/free-solid-svg-icons"
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons"
 
 const Login = () => {
     useTitle('Employee Login')

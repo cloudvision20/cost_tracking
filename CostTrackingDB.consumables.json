@@ -1,18 +1,24 @@
 [{
   "_id": {
-    "$oid": "651546bcaddecd523626e603"
+    "$oid": "6524e39b563a5ab03cc6760d"
   },
-  "employeeId": "1",
-  "type": "5",
-  "details": "3",
-  "job": "4",
-  "terminal": "2",
-  "createdAt": {
-    "$date": "2023-09-28T09:26:20.175Z"
+  "type": "welding",
+  "name": "oxygen",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6524e3a2563a5ab03cc67610"
   },
-  "updatedAt": {
-    "$date": "2023-09-28T09:26:20.175Z"
+  "type": "fuel",
+  "name": "diesel",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6524e3b0563a5ab03cc67613"
   },
-  "__v": 0,
-  "userId": "64c76e149a9f1104a69419b3"
+  "type": "fuel",
+  "name": "petrol",
+  "__v": 0
 }]
