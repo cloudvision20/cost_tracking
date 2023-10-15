@@ -18,22 +18,22 @@ export const equipmentApiSlice = apiSlice.injectEndpoints({
                 },
             }),
             // transformResponse: responseData => {
-            //     const loadedEquipment = responseData.map(equipment => {
-            //         equipment.id = equipment._id
-            //         return equipment
+            //     const loadedEquipment = responseData.map(equip => {
+            //         equip.id = equip._id
+            //         return equip
             //     });
             //     return equipmentAdapter.setAll(initialState, loadedEquipment)
             // },
-            // providesTags: (result, error, arg) => {
-            //     if (result?.ids) {
-            //         return [
-            //             { type: 'Equipment', id: 'LIST' },
-            //             ...result.ids.map(id => ({ type: 'Equipment', id }))
-            //         ]
-            //     } else return [{ type: 'Equipment', id: 'LIST' }]
-            // }
+            providesTags: (result, error, arg) => {
+                if (result?.ids) {
+                    return [
+                        { type: 'Equip', id: 'LIST' },
+                        ...result.ids.map(id => ({ type: 'Equip', id }))
+                    ]
+                } else return [{ type: 'Equip', id: 'LIST' }]
+            }
         }),
-        getEquipmentById: builder.query({
+        getEquipById: builder.query({
             query: (id) => ({
                 url: `/equipment/${id}`,
                 validateStatus: (response, result) => {
@@ -42,27 +42,27 @@ export const equipmentApiSlice = apiSlice.injectEndpoints({
             })
         }),
         addNewEquip: builder.mutation({
-            query: initialEquipmentData => ({
+            query: initialEquipData => ({
                 url: '/equipment',
                 method: 'POST',
                 body: {
-                    ...initialEquipmentData,
+                    ...initialEquipData,
                 }
             }),
             invalidatesTags: [
-                { type: 'Equipment', id: "LIST" }
+                { type: 'Equip', id: "LIST" }
             ]
         }),
         updateEquipment: builder.mutation({
-            query: initialEquipmentData => ({
+            query: initialEquipData => ({
                 url: '/equipment',
                 method: 'PATCH',
                 body: {
-                    ...initialEquipmentData,
+                    ...initialEquipData,
                 }
             }),
-            invalidatesTags: (result, error, arg) => [
-                { type: 'Equipment', id: arg.id }
+            invalidatesTags: [
+                { type: 'Equip', id: "LIST" }
             ]
         }),
         deleteEquip: builder.mutation({
@@ -72,7 +72,7 @@ export const equipmentApiSlice = apiSlice.injectEndpoints({
                 body: { id }
             }),
             invalidatesTags: (result, error, arg) => [
-                { type: 'Equipment', id: arg.id }
+                { type: 'Equip', id: arg.id }
             ]
         }),
     }),
@@ -80,7 +80,7 @@ export const equipmentApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetEquipmentQuery,
-    useGetEquipmentByIdQuery,
+    useGetEquipByIdQuery,
     useAddNewEquipMutation,
     useUpdateEquipmentMutation,
     useDeleteEquipMutation,
@@ -98,7 +98,7 @@ const selectEquipmentData = createSelector(
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
     selectAll: selectAllEquipment,
-    selectById: selectEquipmentById,
-    selectIds: selectEquipmentIds
+    selectById: selectEquipById,
+    selectIds: selectEquipIds
     // Pass in a selector that returns the equipment slice of state
 } = equipmentAdapter.getSelectors(state => selectEquipmentData(state) ?? initialState)

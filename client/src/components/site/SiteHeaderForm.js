@@ -1,7 +1,7 @@
-import { useState, useEffect, useMemo, useRef, Component } from "react"
+import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate, Link, useLocation, NavLink } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import PulseLoader from 'react-spinners/PulseLoader'
 
@@ -26,10 +26,11 @@ const SiteHeaderForm = () => {
     const navLnkStyle_Btn = "btn btn-light"
     const activities = useSelector(selectActivity)
     const onActivitiesSelected = (activityId) => { setCurActivityId(activityId) }
-    let navDropdownItems
+
+    let navActivitiesMenu
     if (activities) {
 
-        navDropdownItems = activities.map(activity => {
+        navActivitiesMenu = activities.map(activity => {
             return (
                 <NavDropdown.Item href="#activity._id"
                     key={activity._id}
@@ -43,7 +44,25 @@ const SiteHeaderForm = () => {
             )
         });
     }
+    const masters = [
+        { '_id': 'Consumables', 'name': 'Consumables' },
+        { '_id': 'Equipment', 'name': 'Equipment' },
+        { '_id': 'Expenses', 'name': 'Expenses' }]
+    let navMasterMenu
 
+    navMasterMenu = masters.map(item => {
+        return (
+            <NavDropdown.Item href="#item._id"
+                key={item._id}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Blue}
+                onClick={() => onMastersSelected(item._id)}
+                style={navLinkStyle_blue}
+            >
+                {item.name}
+            </NavDropdown.Item>
+        )
+    })
 
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -59,14 +78,26 @@ const SiteHeaderForm = () => {
         if (isSuccess) navigate('/')
     }, [isSuccess, navigate])
 
-    const onConsumablesClicked = () => navigate('/site/consumables')
+    const onConsumablesClicked = (e) => { navigate('/site/consumables') }
     const onEquipmentClicked = () => navigate('/site/equipment')
     const onFilesClicked = () => navigate('/site/files')
     const onAttendancesClicked = () => navigate('/site/files/attendances')
     const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
-
-
-
+    const onMastersSelected = (item) => {
+        switch (item) {
+            case 'Consumables':
+                navigate('/site/consumables')
+                break;
+            case 'Equipment':
+                navigate('/site/equipment')
+                break;
+            case 'Expenses':
+                navigate('/site/expenses')
+                break;
+            default:
+                break;
+        }
+    }
 
     let consumablesNavLink = null
     consumablesNavLink = (
@@ -175,8 +206,8 @@ const SiteHeaderForm = () => {
                 {backNavLink}
                 {attendancesNavLink}
                 {gpsdatsNavLink}
-                {equipmentNavLink}
-                {consumablesNavLink}
+                {/* {equipmentNavLink}
+                {consumablesNavLink} */}
                 {filesNavLink}
                 {logoutNavLink}
             </>
@@ -186,35 +217,32 @@ const SiteHeaderForm = () => {
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
-
-            <header className="site-header">
-                <div className={`container-xl site-header__container `}>
+            <div className="site-header">
+                <div className="container-xl  site-header__container">
                     <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
-                        <Navbar.Brand href="/site"
-                            style={navLinkStyle_Whitesmoke} >
+                        <Navbar.Brand href="/site" style={navLinkStyle_Whitesmoke} >
                             <div>
                                 <span style={{ fontSize: '20px' }}> <b>Cost Tracking Site</b></span>
                                 <span style={{ fontSize: '14px' }}> --- {pathname}</span>
                             </div>
                         </Navbar.Brand>
                     </Navbar>
-                    <Container className={`container-xl site-header__nav`} >
-                        <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
-                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-
-                            <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="me-auto">
-                                    {navLinkContent}
-                                    <NavDropdown title={< span style={navLinkStyle_Whitesmoke} >Activities</span>} id="basic-nav-dropdown">
-                                        {navDropdownItems}
-                                    </NavDropdown>
-                                </Nav>
-                            </Navbar.Collapse>
-
-                        </Navbar>
-                    </Container>
+                    <Navbar style={{ backgroundColor: '#212f51' }} >
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav" >
+                            <Nav className="ms-auto">
+                                {navLinkContent}
+                                <NavDropdown title={< span style={navLinkStyle_Whitesmoke} >Master Menu</span>} id="basic-nav-dropdown">
+                                    {navMasterMenu}
+                                </NavDropdown>
+                                <NavDropdown title={< span style={navLinkStyle_Whitesmoke} >Select Activity</span>} id="basic-nav-dropdown">
+                                    {navActivitiesMenu}
+                                </NavDropdown>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
                 </div>
-            </header>
+            </div>
         </>
     )
     return content

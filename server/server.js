@@ -34,6 +34,7 @@ app.use('/dailyReports', require('./routes/dailyReportRoutes'))
 app.use('/activities', require('./routes/activityRoutes'))
 app.use('/consumables', require('./routes/consumableRoutes'))
 app.use('/equipment', require('./routes/equipmentRoutes'))
+app.use('/expenses', require('./routes/expenseRoutes'))
 app.use(fileUpload());
 app.use('/files', require('./routes/filesRoutes'))
 

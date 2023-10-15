@@ -216,6 +216,7 @@ a-dark-bg:focus-visible {
     background-color: var(--BGCOLOR);
     padding: 0 0.5em;
     border-bottom: 1px solid var(--BORDER-COLOR);
+    width:100%
 }
 
 .site-header__container {
@@ -257,7 +258,7 @@ a-dark-bg:focus-visible {
 
 .site-footer {
     font-size: 0.875rem;
-    position: sticky;
+    position: absolute;
     bottom: 0;
     z-index: 1;
     color: var(--FGCOLOR);
@@ -266,8 +267,10 @@ a-dark-bg:focus-visible {
     border-top: 1px solid var(--BORDER-COLOR);
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
+    justify-content:flex-start;
     gap: 1em;
+    width:100%;
+
 }
 
 .site-footer__button {

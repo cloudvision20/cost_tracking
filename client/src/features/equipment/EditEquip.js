@@ -1,16 +1,16 @@
-import { useGetConsumablesQuery } from './consumablesApiSlice'
-import EditConsumableForm from './EditConsumableForm'
+import { useGetEquipmentQuery } from './equipmentApiSlice'
+import EditEquipForm from './EditEquipForm'
 import useTitle from '../../hooks/useTitle'
 
-const EditConsumable = () => {
-    useTitle('Cost Tracking: Consumable')
+const EditEquip = () => {
+    useTitle('Cost Tracking: Equip')
     const {
-        data: consumables,
+        data: equipment,
         //isLoading,
         isSuccess,
         isError,
         error
-    } = useGetConsumablesQuery('consumablesList', {
+    } = useGetEquipmentQuery('equipmentList', {
         pollingInterval: 60000,
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
@@ -18,16 +18,16 @@ const EditConsumable = () => {
 
     let content
     if (isSuccess) {
-        content = <EditConsumableForm consumables={consumables} />
+        content = <EditEquipForm equipment={equipment} />
         return content
     }
     if (isError) {
         if (error.status == 400) {
-            content = <EditConsumableForm consumables={consumables} />
+            content = <EditEquipForm equipment={equipment} />
             return content
         } else {
             console.log(`error loading data: ${error}`)
         }
     }
 }
-export default EditConsumable
+export default EditEquip

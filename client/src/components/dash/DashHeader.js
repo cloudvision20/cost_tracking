@@ -260,30 +260,26 @@ const DashHeader = () => {
 
         <>
             <p className={errClass}>{error?.data?.message}</p>
-
-            <header className="site-header">
-                <div className={`container-xl dash-header__container`}>
+            <div className="site-header">
+                <div className="container-xl  site-header__container">
                     <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
-                        <Navbar.Brand href="/dash"
-                            style={navLinkStyle_Whitesmoke} >
+                        <Navbar.Brand href="/dash" style={navLinkStyle_Whitesmoke} >
                             <div>
                                 <span style={{ fontSize: '20px' }}> <b>Cost Tracking Maintenance</b></span>
                                 <span style={{ fontSize: '14px' }}> --- {pathname}</span>
                             </div>
                         </Navbar.Brand>
                     </Navbar>
-                    <Container className={`container-xl dash-header__nav`} >
-                        <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
-                            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                            <Navbar.Collapse id="basic-navbar-nav">
-                                <Nav className="me-auto">
-                                    {navLinkContent}
-                                </Nav>
-                            </Navbar.Collapse>
-                        </Navbar>
-                    </Container>
+                    <Navbar dark style={{ backgroundColor: '#212f51' }} >
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto">
+                                {navLinkContent}
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
                 </div>
-            </header>
+            </div>
         </>
     )
 

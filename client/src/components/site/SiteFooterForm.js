@@ -28,17 +28,16 @@ const SiteFooter = ({ userid, username, status, activities }) => {
     console.log(activities)
 
     const content = (
-        <footer className="site-footer">
-            <div className={`container-xl site-header__container`}>
-                {goHomeButton}
-                <p>Current User: {username}</p>
-                <p>User Id: {userid}</p>
-                <p>Status: {status}</p>
-                <p>Activity: {activities?.name}</p>
-            </div>
-        </footer>
+
+        <div className="site-footer">
+            {goHomeButton}
+            <p>Current User: {username}</p>
+            <p>User Id: {userid}</p>
+            <p>Status: {status}</p>
+            <p>Activity: {activities?.name}</p>
+        </div>
+
     )
     return content
 }
 export default SiteFooter
-

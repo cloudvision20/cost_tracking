@@ -15,8 +15,7 @@ import "ag-grid-community/styles/ag-theme-balham.css";
 
 let rowId = 0
 let editedActivity = {}
-let errContent
-
+//const errContent = useRef('');
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -72,12 +71,13 @@ const lookupKey = (mappings, name) => {
     }
 };
 
-const EditActivityForm = ({ dailyReports, res }) => {
+const EditActivityForm = ({ res }) => {
     const projects = res.projects
     const activity = res.activity[0]
     const users = res.users
     const equipment = res.equipment
     const consumables = res.consumables
+    const dailyReports = res.dailyReports
     let errRef = useRef()
 
 
@@ -215,7 +215,6 @@ const EditActivityForm = ({ dailyReports, res }) => {
                 return lookupValue(mapping[type], params.value);
             },
             valueSetter: params => {
-
                 console.log('index =' + params.node.rowindex)
                 console.log('valueParser')
                 params.node.data = { "resourcesId": params.newValue, "budget": params.node.data.budget }
@@ -278,7 +277,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
 
 
     //const dailyReportData = { "status": "", "date": "", "employee": "" }
-    const [rdDailyReport, setRdDailyReport] = useState(dailyReportData)
+    const [rdDailyReport] = useState(dailyReportData)
     const [columnDRDefs] = useState([
         { field: "status", width: 150, editable: false },
         { field: "date", width: 150, editable: false },
@@ -299,8 +298,8 @@ const EditActivityForm = ({ dailyReports, res }) => {
     useEffect(() => {
         if (isSuccess || isDelSuccess) {
             errRef.className = "resmsg"
-            isSuccess ? errContent = " Saved!"
-                : errContent = "Deleted!"
+            isSuccess ? errContent.current = " Saved!"
+                : errContent.current = "Deleted!"
             if (isDelSuccess) {
                 setName('')
                 setDescription('')
@@ -382,7 +381,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
         let rData = []
         const newRowData = rowData
         assignGridRef.current.api.forEachNode(node => rData.push(node.data));
-        newRowData[rowData.findIndex((data) => data.rowId == currResId)].assignment = rData
+        newRowData[rowData.findIndex((data) => data.rowId === currResId)].assignment = rData
         setRowData(newRowData)
         resGridRef.current.api.refreshCells()
         document.getElementById("resourceDIV").style.display = "none";
@@ -442,7 +441,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
 
-    errContent = (error?.data?.message || delerror?.data?.message) ?? ''
+    const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '')
 
     let deleteButton = null
     if (isManager || isAdmin) {
@@ -459,7 +458,7 @@ const EditActivityForm = ({ dailyReports, res }) => {
 
     const content = (
         <>
-            <p ref={errRef} className={errClass}>{errContent}</p>
+            <p ref={errRef} className={errClass}>{errContent.current}</p>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="panel">
                     <h4><b>Edit Activity #{activity.name}</b></h4>

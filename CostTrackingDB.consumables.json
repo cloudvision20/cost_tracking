@@ -1,13 +1,5 @@
 [{
   "_id": {
-    "$oid": "6524e39b563a5ab03cc6760d"
-  },
-  "type": "welding",
-  "name": "oxygen",
-  "__v": 0
-},
-{
-  "_id": {
     "$oid": "6524e3a2563a5ab03cc67610"
   },
   "type": "fuel",
@@ -20,5 +12,38 @@
   },
   "type": "fuel",
   "name": "petrol",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6524e39b563a5ab03cc6760d"
+  },
+  "type": "welding",
+  "name": "oxygen",
+  "__v": 0,
+  "capacity": "4"
+},
+{
+  "_id": {
+    "$oid": "652b5dde5bac998c91b13efc"
+  },
+  "name": "222",
+  "type": "222",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652b5dde5bac998c91b13efe"
+  },
+  "name": "333",
+  "type": "333",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652b5f215bac998c91b13f31"
+  },
+  "name": "111",
+  "type": "111",
   "__v": 0
 }]

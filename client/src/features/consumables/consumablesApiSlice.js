@@ -24,14 +24,14 @@ export const consumablesApiSlice = apiSlice.injectEndpoints({
             //     });
             //     return consumablesAdapter.setAll(initialState, loadedConsumables)
             // },
-            // providesTags: (result, error, arg) => {
-            //     if (result?.ids) {
-            //         return [
-            //             { type: 'Consumable', id: 'LIST' },
-            //             ...result.ids.map(id => ({ type: 'Consumable', id }))
-            //         ]
-            //     } else return [{ type: 'Consumable', id: 'LIST' }]
-            // }
+            providesTags: (result, error, arg) => {
+                if (result?.ids) {
+                    return [
+                        { type: 'Consumable', id: 'LIST' },
+                        ...result.ids.map(id => ({ type: 'Consumable', id }))
+                    ]
+                } else return [{ type: 'Consumable', id: 'LIST' }]
+            }
         }),
         getConsumableById: builder.query({
             query: (id) => ({
@@ -61,8 +61,8 @@ export const consumablesApiSlice = apiSlice.injectEndpoints({
                     ...initialConsumableData,
                 }
             }),
-            invalidatesTags: (result, error, arg) => [
-                { type: 'Consumable', id: arg.id }
+            invalidatesTags: [
+                { type: 'Consumable', id: "LIST" }
             ]
         }),
         deleteConsumable: builder.mutation({

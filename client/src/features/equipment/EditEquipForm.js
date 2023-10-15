@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateConsumablesMutation, useDeleteConsumableMutation } from './consumablesApiSlice'
+import { useUpdateEquipmentMutation, useDeleteEquipMutation } from './equipmentApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 
-let eConsumables = {}
+let eEquipment = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -31,31 +31,31 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const EditConsumableForm = ({ consumables }) => {
+const EditEquipForm = ({ equipment }) => {
     const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
 
     let msgContent = ''
     const msgRef = useRef();
 
-    if (!consumables) {
-        msgContent = 'New Consumable database'
+    if (!equipment) {
+        msgContent = 'New Equip database'
         msgRef.className = 'resmsg'
-        consumables = { blankData }
+        equipment = { blankData }
     } else {
         msgRef.className = 'offscreen'
         msgContent = ''
     }
-    const [updateConsumables, {
+    const [updateEquipment, {
         //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateConsumablesMutation()
-    const [deleteConsumable, {
+    }] = useUpdateEquipmentMutation()
+    const [deleteEquip, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteConsumableMutation()
+    }] = useDeleteEquipMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -64,17 +64,17 @@ const EditConsumableForm = ({ consumables }) => {
             width: 150,
         };
     }, []);
-    const consumableGridRef = useRef();
+    const equipGridRef = useRef();
 
-    let data = Array.from(consumables).map((data, index) => ({
+    let data = Array.from(equipment).map((data, index) => ({
         "type": data.type,
         "name": data.name,
         "capacity": data.capacity ? parseFloat(data.capacity) : 0,
         "_id": data._id
     }))
 
-    const [rdConsumable, setRdConsumable] = useState(data)
-    const [consumableColDefs] = useState([
+    const [rdEquip, setRdEquip] = useState(data)
+    const [equipColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
         { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
@@ -89,7 +89,7 @@ const EditConsumableForm = ({ consumables }) => {
                     if (this.data._id) { delRecord(this.data._id) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "consumable"
+                Id: "equip"
             },
         }
     ])
@@ -99,9 +99,9 @@ const EditConsumableForm = ({ consumables }) => {
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        eConsumables.data = rdConsumable
+        eEquipment.data = rdEquip
 
-        await updateConsumables(eConsumables)
+        await updateEquipment(eEquipment)
             .then((result) => {
                 console.log(` result = ${JSON.stringify(result)}`)
                 data = result.data.data.map((data, index) => ({
@@ -110,8 +110,8 @@ const EditConsumableForm = ({ consumables }) => {
                     "capacity": data.capacity ? parseFloat(data.capacity) : 0,
                     "_id": data._id
                 }))
-                setRdConsumable(data)
-                consumableGridRef.current.api.refreshCells()
+                setRdEquip(data)
+                equipGridRef.current.api.refreshCells()
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
@@ -120,7 +120,7 @@ const EditConsumableForm = ({ consumables }) => {
     }
 
     const delRecord = async (_id) => {
-        await deleteConsumable({ id: _id })
+        await deleteEquip({ id: _id })
             .then((result) => {
 
 
@@ -128,21 +128,21 @@ const EditConsumableForm = ({ consumables }) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 let rData = []
-                consumableGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdConsumable(rData)
+                equipGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdEquip(rData)
             }
             )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdConsumable))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdEquip))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdConsumable ?
-                [...rdConsumable, blankData]
+            rdEquip ?
+                [...rdEquip, blankData]
                 : [blankData]
-        setRdConsumable(newRData)
+        setRdEquip(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -152,14 +152,14 @@ const EditConsumableForm = ({ consumables }) => {
     }, [isSuccess, isDelSuccess, navigate])
 
     // useEffect(() => {
-    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdConsumable))
+    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdEquip))
     // })
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
 
             <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                <div className="panel-heading"><h5>Consumables</h5></div>
+                <div className="panel-heading"><h5>Equipment</h5></div>
                 <div className="form-group  dash-header__nav">
                     <button
                         className="btn btn-primary"
@@ -180,13 +180,13 @@ const EditConsumableForm = ({ consumables }) => {
                     <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
                         <p ref={msgRef} className="" >{msgContent}</p>
                         <AgGridReact
-                            ref={consumableGridRef}
+                            ref={equipGridRef}
                             onCellValueChanged={onValueChanged}
                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                             // onRowDataUpdated={(event) => event.current.api.refreshCells()}
                             defaultColDef={defaultColDef}
-                            rowData={rdConsumable}
-                            columnDefs={consumableColDefs}>
+                            rowData={rdEquip}
+                            columnDefs={equipColDefs}>
 
                         </AgGridReact>
                     </div>
@@ -199,4 +199,4 @@ const EditConsumableForm = ({ consumables }) => {
 
 }
 
-export default EditConsumableForm
+export default EditEquipForm

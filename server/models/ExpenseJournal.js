@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 //const AutoIncrement = require('mongoose-sequence')(mongoose)
 
-const expensesSchema = new mongoose.Schema(
+const expenseJournalchema = new mongoose.Schema(
     {
         employeeId: {
             type: String,
@@ -36,5 +36,5 @@ const expensesSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('Expenses', expensesSchema)
+module.exports = mongoose.model('ExpenseJournal', expenseJournalchema)
 

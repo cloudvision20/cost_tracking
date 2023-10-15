@@ -54,7 +54,7 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
                 const loadedActivities = responseData.map((activity) => {
                     return {
                         ...activity,
-                        resources: activity.resources.filter((res) => res.type == 'Labour')
+                        resources: activity.resources.filter((res) => res.type === 'Labour')
                     }
                 });
                 return loadedActivities

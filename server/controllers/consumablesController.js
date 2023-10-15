@@ -1,5 +1,4 @@
 const Consumable = require('../models/Consumable')
-// const Note = require('../models/DailyReport')
 const bcrypt = require('bcrypt')
 
 // @desc Get all consumables
@@ -14,7 +13,7 @@ const getAllConsumables = async (req, res) => {
         return res.status(400).json({ message: 'No consumables found' })
     }
 
-    res.json(consumables)
+    res.status(200).json(consumables)
 }
 
 // @desc Create new consumable
@@ -35,17 +34,16 @@ const createNewConsumable = async (req, res) => {
         return res.status(409).json({ message: 'Duplicate consumable' })
     }
 
+    const consumable = {}
 
-    const consumableObject = {}
-
-    consumableObject.name = name
-    consumableObject.type = type
-    consumableObject.capacity = capacity
+    if (name) { consumable.name = name }
+    if (type) { consumable.type = type }
+    if (capacity) { consumable.capacity = parseFloat(capacity) }
 
     // Create and store new consumable 
-    const consumable = await Consumable.create(consumableObject)
+    const result = await Consumable.create(consumable)
 
-    if (consumable) { //created 
+    if (result) { //created 
         res.status(201).json({ message: `New consumable ${name} created` })
     } else {
         res.status(400).json({ message: 'Invalid consumable data received' })
@@ -78,14 +76,13 @@ const saveConsumable = async (req, res) => {
         return res.status(409).json({ message: 'Duplicate name' })
     }
 
-    consumable.name = name
-    consumable.type = type
-    consumable.capacity = capacity
+    if (name) { consumable.name = name }
+    if (type) { consumable.type = type }
+    if (capacity) { consumable.capacity = parseFloat(capacity) }
 
+    const result = await consumable.save()
 
-    const updatedConsumable = await consumable.save()
-
-    res.json({ message: `${updatedConsumable.name} updated` })
+    res.json({ message: `${result.name} updated` })
 }
 
 // @desc Update a consumable
@@ -120,13 +117,13 @@ const updateConsumable = async (req, res) => {
     let consumable = {}
     if (name) { consumable.name = name }
     if (type) { consumable.type = type }
-    if (capacity) { consumable.capacity = capacity }
+    if (capacity) { consumable.capacity = parseFloat(capacity) }
 
-    await Consumable.findOneAndUpdate({ _id: id }, consumable, { new: true }).then((data) => {
-        if (data === null) {
+    await Consumable.findOneAndUpdate({ _id: id }, consumable, { new: true }).then((result) => {
+        if (result === null) {
             throw new Error(`Consumable Id: (\'${id}\') not found update failed `);
         }
-        res.json({ message: `Consumable Id: (\'${data._id}\'), Name: (\'${data.name}\'), updated successfully` })
+        res.json({ message: `Consumable Id: (\'${result._id}\'), Name: (\'${result.name}\'), updated successfully` })
     }).catch((error) => {
 
         res.status(500).json({ message: `error -- Consumable Id: (\'${id}\') update failed`, error: error })
@@ -135,52 +132,55 @@ const updateConsumable = async (req, res) => {
 
 const updateConsumables = async (req, res) => {
     const newData = req.body.data
-    let response = []
+    const response = []
+    const data = []
     let consumable
-    let result
-
-    newData.forEach(async (data) => {
+    for (let i = 0; i < newData.length; i++) {
         consumable = new Consumable()
-
-
-        if (data.name) { consumable.name = data.name }
-        if (data.type) { consumable.type = data.type }
-        if (data.capacity) { consumable.capacity = parseFloat(data.capacity) }
-        if (data._id) {
-            consumable._id = data._id
-            await Consumable.findOneAndUpdate({ _id: data._id }, consumable, { new: true }).then((data) => {
-                if (data === null) {
-                    response.push({ message: `Consumable Id: : ${data._id},name: ${data.name} not found update failed` })
+        if (newData[i].name) { consumable.name = newData[i].name }
+        if (newData[i].type) { consumable.type = newData[i].type }
+        if (newData[i].capacity) { consumable.capacity = parseFloat(newData[i].capacity) }
+        if (newData[i]._id) {
+            // Update
+            consumable._id = newData[i]._id
+            await Consumable.findOneAndUpdate({ _id: newData[i]._id }, consumable, { new: true }).then((result) => {
+                if (result === null) {
+                    response.push({ message: `Consumable Id: : ${newData[i]._id},name: ${newData[i].name} not found update failed` })
                 } else {
-                    response.push({ message: `Consumable Id: ${data._id},name: ${data.name} updated successfully` })
+                    response.push({ message: `Consumable Id: ${result._id},name: ${result.name} updated successfully` })
+                    data.push(result)
                 }
             }).catch((error) => {
-                response.push({ message: `error -- Consumable Id: (\'${data._id}\') update failed , error: ${error}` })
+                response.push({ message: `error -- Consumable Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
             });
         } else {
-            delete (data['_id'])
+            //create 
             await consumable.save()
                 .then((result) => {
                     if (result === null) {
-                        response.push({ message: `Consumable Id: ${data._id},name: ${data.name} fail to saved` })
+                        response.push({ message: `Consumable Id: ${newData[i]._id},name: ${newData[i].name} fail to saved` })
                     } else {
-                        response.push({ message: `Consumable Id: ${data._id},name: ${data.name} created successfully` })
+                        response.push({ message: `Consumable Id: ${result._id},name: ${result.name} created successfully` })
+                        data.push(result)
                     }
                 }
                 )
                 .catch(
                     (error) => {
                         console.log(`result=${result}`)
-                        console.log(`id: ${data._id},name: ${data.name}` + error)
+                        console.log(`id: ${newData[i]._id},name: ${newData[i].name}` + error)
                         response.push({ message: `error -- Consumable Id: (\'${data._id}\') create failed , error: ${error}` })
                     }
                 )
         }
     }
-
-    )
     console.log(`response = ${JSON.stringify(response)}`)
-    res.json(response)
+    console.log(`data = ${JSON.stringify(data)}`)
+    // let result = {}
+    // result.data = data
+    // result.response = response
+
+    return res.status(202).json({ data: data, response })
 }
 // @desc Delete a consumable
 // @route DELETE /consumables
@@ -194,11 +194,11 @@ const deleteConsumable = async (req, res) => {
     }
 
     try {
-        const consumable = await Consumable.findOneAndDelete({ _id: id });
-        if (!consumable) {
+        const data = await Consumable.findOneAndDelete({ _id: id });
+        if (!data) {
             return res.status(400).json({ message: `Consumable Id: (\'${id}\') not found delete failed ` });
         }
-        return res.status(200).json({ message: `Consumable Id: (\'${consumable._id}\'), Name: (\'${consumable.name}\'), deleted successfully` });
+        return res.status(200).json({ data: data, message: `Consumable Id: (\'${data._id}\'), Name: (\'${data.name}\'), deleted successfully` });
     } catch (err) {
         return res.status(400).json({ message: `error -- Consumable Id: (\'${id}\') delete failed`, error: err })
     }

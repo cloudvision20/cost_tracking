@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
@@ -9,12 +10,13 @@ import { useGetActivitiesByUserIdQuery } from '../../features/activities/activit
 
 const SiteLayout = () => {
     const dispatch = useDispatch()
-    const { userid, username, status, isManager, isAdmin } = useAuth()
-    const { data: res, isSuccess } = useGetActivitiesByUserIdQuery(userid);
-    //const { activities } = useActvitiesByUser(userid)
-    if (isSuccess) {
-        dispatch(setActivity({ activities: res }))
-    }
+    const { userid } = useAuth()
+    const { data: activities, isSuccess } = useGetActivitiesByUserIdQuery(userid);
+
+    useEffect(() => {
+        dispatch(setActivity({ activities }))
+    }, [isSuccess])
+
     return (
         <>
             <SiteHeader />

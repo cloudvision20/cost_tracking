@@ -31,9 +31,9 @@ import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
 
-import EditEquipment from './features/equipment/EditEquipment'
+import EditEquip from './features/equipment/EditEquip'
 import EditConsumable from './features/consumables/EditConsumable'
-//import NewConsumableForm from './features/consumables/NewConsumableForm'
+import EditExpense from './features/expenses/EditExpense'
 
 import SiteLayout from './components/site/SiteLayout'
 import SiteWelcome from './features/auth/SiteWelcome'
@@ -63,11 +63,12 @@ function App() {
                 <Route index element={<SiteWelcome />} />
                 <Route path="consumables">
                   <Route index element={<EditConsumable />} />
-                  {/* <Route path=":id" element={<EditConsumable />} />
-                  <Route path="new" element={<NewConsumableForm />} /> */}
                 </Route>
                 <Route path="equipment">
-                  <Route index element={<EditEquipment />} />
+                  <Route index element={<EditEquip />} />
+                </Route>
+                <Route path="expenses">
+                  <Route index element={<EditExpense />} />
                 </Route>
                 <Route path="files">
                   <Route index element={<FilesUpload />} />

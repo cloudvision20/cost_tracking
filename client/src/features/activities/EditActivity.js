@@ -11,7 +11,7 @@ const EditActivity = () => {
 
     const { id } = useParams()
 
-    const { userid, username, isManager, isAdmin } = useAuth()
+    const { username, isManager, isAdmin } = useAuth()
 
     const { data: res, isSuccess } = useGetActivityByIdQuery(id);
 
@@ -26,7 +26,7 @@ const EditActivity = () => {
                 return <p className="errmsg">No access</p>
             }
         }
-        content = <EditActivityForm dailyReports={res.dailyReports} res={res} />
+        content = <EditActivityForm res={res} />
 
     }
 

@@ -1,12 +1,11 @@
-import { useState, useEffect, useMemo, memo, useRef, Component } from "react"
+import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateEquipmentMutation, useDeleteEquipMutation } from './equipmentApiSlice'
+import { useUpdateExpensesMutation, useDeleteExpenseMutation } from './expensesApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 
-let rowId = 0
-let eEquipment = {}
+let eExpenses = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -32,19 +31,31 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const EditEquipmentForm = ({ equipment }) => {
+const EditExpenseForm = ({ expenses }) => {
+    const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
 
-    const [updateEquipment, {
-        isLoading,
+    let msgContent = ''
+    const msgRef = useRef();
+
+    if (!expenses) {
+        msgContent = 'New Expense database'
+        msgRef.className = 'resmsg'
+        expenses = { blankData }
+    } else {
+        msgRef.className = 'offscreen'
+        msgContent = ''
+    }
+    const [updateExpenses, {
+        //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateEquipmentMutation()
-    const [deleteEquip, {
+    }] = useUpdateExpensesMutation()
+    const [deleteExpense, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteEquipMutation()
+    }] = useDeleteExpenseMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -53,16 +64,17 @@ const EditEquipmentForm = ({ equipment }) => {
             width: 150,
         };
     }, []);
-    const equipGridRef = useRef();
-    const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
-    const data = Array.from(equipment).map((data, index) => ({
+    const expenseGridRef = useRef();
+
+    let data = Array.from(expenses).map((data, index) => ({
         "type": data.type,
         "name": data.name,
-        "capacity": data.capacity ? data.capacity : 0,
+        "capacity": data.capacity ? parseFloat(data.capacity) : 0,
         "_id": data._id
     }))
-    const [rdEquip, setRdEquip] = useState(data)
-    const [equipColDefs, setEquipColDefs] = useState([
+
+    const [rdExpense, setRdExpense] = useState(data)
+    const [expenseColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
         { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
@@ -73,52 +85,81 @@ const EditEquipmentForm = ({ equipment }) => {
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
                 delClicked: function (eprops) {
+
                     if (this.data._id) { delRecord(this.data._id) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "equip"
+                Id: "expense"
             },
         }
     ])
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
-    const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
+    const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        // if (canSave) {
-        eEquipment.data = rdEquip
+        eExpenses.data = rdExpense
 
-        const result = await updateEquipment(eEquipment)
-        // }
+        await updateExpenses(eExpenses)
+            .then((result) => {
+                console.log(` result = ${JSON.stringify(result)}`)
+                data = result.data.data.map((data, index) => ({
+                    "type": data.type,
+                    "name": data.name,
+                    "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+                    "_id": data._id
+                }))
+                setRdExpense(data)
+                expenseGridRef.current.api.refreshCells()
+            }).catch((error) => {
+                console.log(`error: ${error}`)
+            }).finally(() => {
+                msgRef.className = "offscreen"
+            })
     }
+
     const delRecord = async (_id) => {
-        await deleteEquip({ id: _id })
+        await deleteExpense({ id: _id })
+            .then((result) => {
+
+
+            }).catch((error) => {
+                console.log(`error: ${error}`)
+            }).finally(() => {
+                let rData = []
+                expenseGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdExpense(rData)
+            }
+            )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdEquip))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdExpense))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdEquip ?
-                [...rdEquip, blankData]
+            rdExpense ?
+                [...rdExpense, blankData]
                 : [blankData]
-        setRdEquip(newRData)
+        setRdExpense(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
-        if (isSuccess || isDelSuccess) {
-            errRef.className = "resmsg"
-            isSuccess ? errContent = " Saved!"
-                : errContent = "Deleted!"
-        }
+        errRef.className = "resmsg"
+        isSuccess ? errContent.current = " Saved!"
+            : errContent.current = "Deleted!"
     }, [isSuccess, isDelSuccess, navigate])
+
+    // useEffect(() => {
+    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdExpense))
+    // })
     const content = (
         <>
-            <p ref={errRef} className={errClass}>{errContent}</p>
+            <p ref={errRef} className={errClass}>{errContent.current}</p>
+
             <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                <div className="panel-heading"><h5>Equipment</h5></div>
+                <div className="panel-heading"><h5>Expenses</h5></div>
                 <div className="form-group  dash-header__nav">
                     <button
                         className="btn btn-primary"
@@ -136,14 +177,17 @@ const EditEquipmentForm = ({ equipment }) => {
                     </button>
                 </div>
                 <div className="panel-body">
-                    <div className="container-sm ag-theme-balham" style={{ height: 200, width: "100%", fontSize: '12px' }}>
+                    <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
+                        <p ref={msgRef} className="" >{msgContent}</p>
                         <AgGridReact
-                            ref={equipGridRef}
+                            ref={expenseGridRef}
                             onCellValueChanged={onValueChanged}
                             onGridReady={(event) => event.api.sizeColumnsToFit()}
+                            // onRowDataUpdated={(event) => event.current.api.refreshCells()}
                             defaultColDef={defaultColDef}
-                            rowData={rdEquip}
-                            columnDefs={equipColDefs}>
+                            rowData={rdExpense}
+                            columnDefs={expenseColDefs}>
+
                         </AgGridReact>
                     </div>
                 </div>
@@ -155,4 +199,4 @@ const EditEquipmentForm = ({ equipment }) => {
 
 }
 
-export default EditEquipmentForm
+export default EditExpenseForm
