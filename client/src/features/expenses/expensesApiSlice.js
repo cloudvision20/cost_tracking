@@ -1,11 +1,7 @@
-import {
-    createSelector,
-    createEntityAdapter
-} from "@reduxjs/toolkit";
+import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
 
 const expensesAdapter = createEntityAdapter({})
-
 const initialState = expensesAdapter.getInitialState()
 
 export const expensesApiSlice = apiSlice.injectEndpoints({

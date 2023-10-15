@@ -8,15 +8,12 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 const SiteHeaderForm = () => {
-
-
     const [curActivityId, setCurActivityId] = useState('')
     const onMouseOverNavLink = (e) => { e.target.style.color = 'rgba(110, 110, 110, 0.9)' }
     const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
@@ -52,7 +49,7 @@ const SiteHeaderForm = () => {
 
     navMasterMenu = masters.map(item => {
         return (
-            <NavDropdown.Item href="#item._id"
+            <NavDropdown.Item href="#Masters"
                 key={item._id}
                 onMouseOver={onMouseOverNavLink}
                 onMouseOut={onMouseOutNavLink_Blue}

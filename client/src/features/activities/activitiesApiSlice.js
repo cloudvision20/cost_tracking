@@ -1,13 +1,9 @@
-import {
-    createSelector,
-    createEntityAdapter
-} from "@reduxjs/toolkit";
+import { createSelector, createEntityAdapter } from "@reduxjs/toolkit";
 import { apiSlice } from "../../app/api/apiSlice"
 
 const activitiesAdapter = createEntityAdapter({
     sortComparer: (a, b) => (a.completed === b.completed) ? 0 : a.completed ? 1 : -1
 })
-
 const initialState = activitiesAdapter.getInitialState()
 
 export const activitiesApiSlice = apiSlice.injectEndpoints({

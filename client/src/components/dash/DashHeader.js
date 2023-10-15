@@ -6,10 +6,8 @@ import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
 
-import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 const DASH_REGEX = /^\/dash(\/)?$/
@@ -24,7 +22,7 @@ const DashHeader = () => {
     const { isManager, isAdmin } = useAuth()
     const onMouseOverNavLink = (e) => { e.target.style.color = 'rgba(110, 110, 110, 0.9)' }
     const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
-    const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
+    //const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
     const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
     const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
     const navLnkStyle_Btn = "btn btn-light"
@@ -262,7 +260,7 @@ const DashHeader = () => {
             <p className={errClass}>{error?.data?.message}</p>
             <div className="site-header">
                 <div className="container-xl  site-header__container">
-                    <Navbar expand="lg" dark style={{ backgroundColor: '#212f51' }} >
+                    <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
                         <Navbar.Brand href="/dash" style={navLinkStyle_Whitesmoke} >
                             <div>
                                 <span style={{ fontSize: '20px' }}> <b>Cost Tracking Maintenance</b></span>
@@ -270,7 +268,7 @@ const DashHeader = () => {
                             </div>
                         </Navbar.Brand>
                     </Navbar>
-                    <Navbar dark style={{ backgroundColor: '#212f51' }} >
+                    <Navbar style={{ backgroundColor: '#212f51' }} >
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
