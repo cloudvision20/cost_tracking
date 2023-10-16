@@ -11,4 +11,7 @@ router.route('/')
     .patch(dailyReportsController.updateDailyReport)
     .delete(dailyReportsController.deleteDailyReport)
 
+router.route('/:id')
+    .get(dailyReportsController.getDailyReportById)
+
 module.exports = router

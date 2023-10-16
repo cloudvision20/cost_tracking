@@ -7,10 +7,12 @@ import useAuth from "../../hooks/useAuth"
 import { Form } from 'react-bootstrap';
 import { AgGridReact } from "ag-grid-react";
 import AttendancesUpload from '../files/AttendancesUpload'
-import { date2Weekday, dateForPicker } from "../../hooks/useDatePicker"
+import { todayForPicker, today2Weekday, date2Weekday, dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
+let rowId = 0
+let meRowId = 0
 
 class BtnCellRenderer extends Component {
     constructor(props, Id) {
@@ -18,12 +20,19 @@ class BtnCellRenderer extends Component {
         this.btnClickedHandler = this.btnClickedHandler.bind(this);
         this.btnDelClickedHandler = this.btnDelClickedHandler.bind(this);
     }
-    btnClickedHandler() { this.props.clicked(this.props.value); }
-    btnDelClickedHandler(e) { this.props.delClicked(this.props); }
+    btnClickedHandler() {
+        this.props.clicked(this.props.value);
+    }
+    btnDelClickedHandler(e) {
+        this.props.delClicked(this.props);
+    }
     render() {
         return (
             <div className="form-group dash-header__nav">
-                <button className="btn btn-danger btn-xs" style={{ fontSize: "8px" }} onClick={this.btnDelClickedHandler}>Del</button>
+                <button
+                    className="btn btn-danger btn-xs"
+                    style={{ fontSize: "8px" }}
+                    onClick={this.btnDelClickedHandler}>Del</button>
             </div>
         )
     }
@@ -32,19 +41,43 @@ class BtnCellRenderer extends Component {
 const EditDailyReportForm = ({ res }) => {
     const dailyReport = res.dailyReport[0]
     const users = res.users
-    const { userid, isManager, isAdmin } = useAuth()
-    if (dailyReport._id === 'new') { dailyReport.userId = userid }
+    const { isManager, isAdmin } = useAuth()
 
-    const [updateDailyReport, { isLoading, isSuccess, isError, error }] = useUpdateDailyReportMutation()
-    const [deleteDailyReport, { isSuccess: isDelSuccess, isError: isDelError, error: delerror }] = useDeleteDailyReportMutation()
+    const [updateDailyReport, {
+        isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useUpdateDailyReportMutation()
+
+    const [deleteDailyReport, {
+        isSuccess: isDelSuccess,
+        isError: isDelError,
+        error: delerror
+    }] = useDeleteDailyReportMutation()
 
     const navigate = useNavigate()
 
     const defaultColDef = useMemo(() => {
-        return { flex: 1, resizable: true, editable: true, };
+        return {
+            flex: 1,
+            resizable: true,
+            editable: true,
+        };
     }, []);
-
-    const data = Array.from(dailyReport.manHour.loading).map((loading) => ({
+    // const data = {
+    //     "indirect": null,
+    //     "indirectPax": null,
+    //     "direct": null,
+    //     "directPax": null,
+    //     "direct1": null,
+    //     "directPax1": null,
+    //     "owner": null,
+    //     "ownerPax": null,
+    //     "rowId": 0,
+    //     "isDirty": false
+    // }
+    const data = Array.from(dailyReport.manHour.loading).map((loading, index) => ({
         "indirect": loading.indirect,
         "indirectPax": loading.indirectPax,
         "direct": loading.direct,
@@ -53,10 +86,9 @@ const EditDailyReportForm = ({ res }) => {
         "directPax1": loading.directPax1,
         "owner": loading.owner,
         "ownerPax": loading.ownerPax,
-        "rowId": Date.now().toString(36),
+        "rowId": index,
         "isDirty": false
     }))
-
     const [columnDefs] = useState([
         { field: "indirect", headerName: "Indirect (HNEH)", editable: true },
         { field: "indirectPax", width: 100, headerName: "PAX", editable: true },
@@ -71,13 +103,19 @@ const EditDailyReportForm = ({ res }) => {
             editable: false,
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
-                //clicked: function (field) { },
-                delClicked: function () { this.api.applyTransaction({ remove: [this.data] }); },
+                clicked: function (field) {
+
+                },
+                delClicked: function () {
+                    this.api.applyTransaction({ remove: [this.data] });
+                },
                 Id: "loading"
             },
         }
     ])
     const newLoadingClicked = (e) => {
+        // e.preventDefault()
+        rowId = rowId + 1
         let newRowData = [...rowData, {
             "indirect": null,
             "indirectPax": null,
@@ -87,14 +125,29 @@ const EditDailyReportForm = ({ res }) => {
             "directPax1": null,
             "owner": null,
             "ownerPax": null,
-            "rowId": Date.now().toString(36),
+            "rowId": 'new' + rowId.toString(),
             "isDirty": false
         }]
         setRowData(newRowData)
+        console.log(JSON.stringify(newRowData))
     }
     const loadingGridRef = useRef();
     const [rowData, setRowData] = useState(data)
-    const meData = Array.from(dailyReport.meLoading).map((meLoading) => ({
+    if (rowData.length === 0) { newLoadingClicked() }
+    const [currLoadId, setCurrLoadId] = useState('')
+    // const meData = {
+    //     "load1": null,
+    //     "pax1": null,
+    //     "load2": null,
+    //     "pax2": null,
+    //     "load3": null,
+    //     "pax3": null,
+    //     "load4": null,
+    //     "pax4": null,
+    //     "load5": null,
+    //     "pax5": null
+    // }
+    const meData = Array.from(dailyReport.meLoading).map((meLoading, index) => ({
         "load1": meLoading.load1,
         "pax1": meLoading.pax1,
         "load2": meLoading.load2,
@@ -104,9 +157,7 @@ const EditDailyReportForm = ({ res }) => {
         "load4": meLoading.load4,
         "pax4": meLoading.pax4,
         "load5": meLoading.load5,
-        "pax5": meLoading.pax5,
-        "rowId": Date.now().toString(36),
-        "isDirty": false
+        "pax5": meLoading.pax5
     }))
     const [meColumnDefs] = useState([
         { field: "load1", headerName: "Loading", editable: true },
@@ -124,14 +175,20 @@ const EditDailyReportForm = ({ res }) => {
             editable: false,
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
-                //clicked: function (field) { },
-                delClicked: function () { this.api.applyTransaction({ remove: [this.data] }); },
+                clicked: function (field) {
+
+                },
+                delClicked: function () {
+                    this.api.applyTransaction({ remove: [this.data] });
+                },
                 Id: "meloading"
             },
         }
     ])
 
     const newRowMELoadingClicked = (e) => {
+        // e.preventDefault()
+        meRowId = meRowId + 1
         let newRdMELoading = [...rdMELoading, {
             "load1": null,
             "pax1": null,
@@ -143,17 +200,21 @@ const EditDailyReportForm = ({ res }) => {
             "pax4": null,
             "load5": null,
             "pax5": null,
-            "rowId": Date.now().toString(36),
+            "rowId": 'new' + meRowId.toString(),
             "isDirty": false
         }]
         setRdMELoading(newRdMELoading)
+        console.log(JSON.stringify(newRdMELoading))
     }
     const meLoadingGridRef = useRef();
     const [rdMELoading, setRdMELoading] = useState(meData)
+    if (rdMELoading.length === 0) { newRowMELoadingClicked() }
+
     const [title, setTitle] = useState(dailyReport.title)
     const [text, setText] = useState(dailyReport.text)
     const [reportDate, setReportDate] = useState(dailyReport.reportDate)
     const [reportDay, setReportDay] = useState(dailyReport.reportDay)
+
 
     const [indirectPrev, setIndirectPrev] = useState(dailyReport.manHour.indirectPrev)
     const [indirectTdy, setIndirectTdy] = useState(dailyReport.manHour.indirectTdy)
@@ -211,6 +272,9 @@ const EditDailyReportForm = ({ res }) => {
     const [completed, setCompleted] = useState(dailyReport.completed)
     const [userId, setUserId] = useState(dailyReport.userId)
 
+    // const [activityId, setActivityId] = useState(dailyReport.)
+    // if (ActivityId) { setActivityId(ActivityId) }
+
     useEffect(() => {
         setReportDay(date2Weekday(reportDate))
     }, [reportDate])
@@ -226,80 +290,136 @@ const EditDailyReportForm = ({ res }) => {
         }
     }, [isSuccess, isDelSuccess, navigate])
 
-    // const onTitleChanged = e => setTitle(e.target.value)
-    // const onCompletedChanged = e => setCompleted(prev => !prev)
+    const onTitleChanged = e => setTitle(e.target.value)
+    const onCompletedChanged = e => setCompleted(prev => !prev)
     const onUserIdChanged = e => setUserId(e.target.value)
     const onReportDateChanged = (e) => setReportDate(e.target.value)
     const onTextChanged = (e, type) => {
         switch (type) {
-            case 'indirectPrev': return setIndirectPrev(e.target.value)
-            case 'indirectTdy': return setIndirectTdy(e.target.value)
-            case 'indirectCumm': return setIndirectCumm(e.target.value)
-            case 'directPrev': return setDirectPrev(e.target.value)
-            case 'directTdy': return setDirectTdy(e.target.value)
-            case 'directCumm': return setDirectCumm(e.target.value)
-            case 'raining': return setRaining(e.target.value)
-            case 'driziling': return setDriziling(e.target.value)
-            case 'sunny': return setSunny(e.target.value)
-            case 'indirectTtl': return setIndirectTtl(e.target.value)
-            case 'directTtl': return setDirectTtl(e.target.value)
-            case 'directTtl1': return setDirectTtl1(e.target.value)
-            case 'ownerTtl': return setOwnerTtl(e.target.value)
-            case 'pcSarawakians': return setPcSarawakians(e.target.value)
-            case 'pcNonSarawakians': return setPcNonSarawakians(e.target.value)
-            //Safety Toolbox
-            case 'safetyTbItem': return setSafetyTbItem(e.target.value)
-            case 'safetyTbDesp': return setSafetyTbDesp(e.target.value)
-            //Downtime
-            case 'downTimeItem': return setDownTimeItem(e.target.value)
-            case 'downTimeDesp': return setDownTimeDesp(e.target.value)
-            //Construction Progress
-            case 'conProgressItem': return setConProgressItem(e.target.value)
-            case 'conProgressDesp': return setConProgressDesp(e.target.value)
-            case 'conProgressStatus': return setConProgressStatus(e.target.value)
-            //Next Day Work Plan
-            case 'nextDayWPItem': return setNextDayWPItem(e.target.value)
-            case 'nextDayWPDesp': return setNextDayWPDesp(e.target.value)
-            case 'nextDayWPRemarks': return setNextDayWPRemarks(e.target.value)
-            //Project Material
-            case 'prjMaterialItem': return setPrjMaterialItem(e.target.value)
-            case 'prjMaterialDocNo': return setPrjMaterialDocNo(e.target.value) //PO ,DO number
-            case 'prjMaterialQty': return setPrjMaterialQty(e.target.value)
-            case 'prjMaterialStatus': return setPrjMaterialStatus(e.target.value) // status and remarks
-            //Area Of Concern
-            case 'aocItem': return setAocItem(e.target.value)
-            case 'aocDesp': return setAocDesp(e.target.value)
-            case 'aocRemedialPlan': return setAocRemedialPlan(e.target.value)
-            case 'aocStatus': return setAocStatus(e.target.value) // status and remarks
-            case 'aocDtResolved': return setAocDtResolved(e.target.value)
-            //site Tech Query
-            case 'siteTechQItem': return setSiteTechQItem(e.target.value)
-            case 'siteTechQIDesp': return setSiteTechQIDesp(e.target.value)
-            case 'siteTechQIDtRaised': return setSiteTechQIDtRaised(e.target.value)
-            case 'siteTechQIDtResolved': return setSiteTechQIDtResolved(e.target.value)
+            // case 'indirectPrev':
+            //     return setIndirectPrev(e.target.value)
+            case 'indirectPrev':
+                return setIndirectPrev(e.target.value)
+            case 'indirectTdy':
+                return setIndirectTdy(e.target.value)
+            case 'indirectCumm':
+                return setIndirectCumm(e.target.value)
+            case 'directPrev':
+                return setDirectPrev(e.target.value)
+            case 'directTdy':
+                return setDirectTdy(e.target.value)
+            case 'directCumm':
+                return setDirectCumm(e.target.value)
+            case 'raining':
+                return setRaining(e.target.value)
+            case 'driziling':
+                return setDriziling(e.target.value)
+            case 'sunny':
+                return setSunny(e.target.value)
+            case 'indirectTtl':
+                return setIndirectTtl(e.target.value)
+            case 'directTtl':
+                return setDirectTtl(e.target.value)
+            case 'directTtl1':
+                return setDirectTtl1(e.target.value)
+            case 'ownerTtl':
+                return setOwnerTtl(e.target.value)
+            case 'pcSarawakians':
+                return setPcSarawakians(e.target.value)
+            case 'pcNonSarawakians':
+                return setPcNonSarawakians(e.target.value)
 
-            case 'preparedBy': return setPreparedBy(e.target.value)
-            case 'verifiedBy': return setVerifiedBy(e.target.value)
-            case 'acknowledgedBy': return setAcknowledgedBy(e.target.value)
+            //Safety Toolbox
+            case 'safetyTbItem':
+                return setSafetyTbItem(e.target.value)
+            case 'safetyTbDesp':
+                return setSafetyTbDesp(e.target.value)
+            //Downtime
+            case 'downTimeItem':
+                return setDownTimeItem(e.target.value)
+            case 'downTimeDesp':
+                return setDownTimeDesp(e.target.value)
+            //Construction Progress
+            case 'conProgressItem':
+                return setConProgressItem(e.target.value)
+            case 'conProgressDesp':
+                return setConProgressDesp(e.target.value)
+            case 'conProgressStatus':
+                return setConProgressStatus(e.target.value)
+            //Next Day Work Plan
+            case 'nextDayWPItem':
+                return setNextDayWPItem(e.target.value)
+            case 'nextDayWPDesp':
+                return setNextDayWPDesp(e.target.value)
+            case 'nextDayWPRemarks':
+                return setNextDayWPRemarks(e.target.value)
+
+            //Project Material
+            case 'prjMaterialItem':
+                return setPrjMaterialItem(e.target.value)
+            case 'prjMaterialDocNo':
+                return setPrjMaterialDocNo(e.target.value) //PO ,DO number
+            case 'prjMaterialQty':
+                return setPrjMaterialQty(e.target.value)
+            case 'prjMaterialStatus':
+                return setPrjMaterialStatus(e.target.value) // status and remarks
+            //Area Of Concern
+            case 'aocItem':
+                return setAocItem(e.target.value)
+            case 'aocDesp':
+                return setAocDesp(e.target.value)
+            case 'aocRemedialPlan':
+                return setAocRemedialPlan(e.target.value)
+            case 'aocStatus':
+                return setAocStatus(e.target.value) // status and remarks
+            case 'aocDtResolved':
+                return setAocDtResolved(e.target.value)
+            //site Tech Query
+            case 'siteTechQItem':
+                return setSiteTechQItem(e.target.value)
+            case 'siteTechQIDesp':
+                return setSiteTechQIDesp(e.target.value)
+            case 'siteTechQIDtRaised':
+                return setSiteTechQIDtRaised(e.target.value)
+            case 'siteTechQIDtResolved':
+                return setSiteTechQIDtResolved(e.target.value)
+
+            case 'preparedBy':
+                return setPreparedBy(e.target.value)
+            case 'verifiedBy':
+                return setVerifiedBy(e.target.value)
+            case 'acknowledgedBy':
+                return setAcknowledgedBy(e.target.value)
+
             default:
                 return setText(e.target.value)
         }
     }
 
     const onCellValueChanged = (e) => {
-        //console.log('newLoadingClicked-rowData:' + JSON.stringify(rowData))
-        if (e.data.indirect || e.data.indirectPax || e.data.direct || e.data.directPax || e.data.direct1 || e.data.directPax1 || e.data.owner || e.data.ownerPax) {
+        console.log('newLoadingClicked-rowData:' + JSON.stringify(rowData))
+
+        if (e.data.indirect || e.data.indirectPax || e.data.direct || e.data.directPax || e.data.direct1 || e.data.directPax1 || e.data.owner || e.ownerPax) {
             e.data.isDirty = true
-            if (e.rowIndex === (rowData.length - 1)) { newLoadingClicked(e) }
-        } else { e.data.isDirty = false }
+            if (rowData[rowId].isDirty) {
+                newLoadingClicked(e)
+            }
+        } else {
+            e.data.isDirty = false
+        }
     }
 
     const onMECellValueChanged = (e) => {
-        //console.log('newRowMELoadingClicked-rowData:' + JSON.stringify(rowData))
+        console.log('newRowMELoadingClicked-rowData:' + JSON.stringify(rowData))
+
         if (e.data.load1 || e.data.pax1 || e.data.load2 || e.data.pax2 || e.data.load3 || e.data.pax3 || e.data.load4 || e.data.pax4 || e.data.load5 || e.data.pax5) {
             e.data.isDirty = true
-            if (e.rowIndex === (rdMELoading.length - 1)) { newRowMELoadingClicked(e) }
-        } else { e.data.isDirty = false }
+            if (rdMELoading[meRowId].isDirty) {
+                newRowMELoadingClicked(e)
+            }
+        } else {
+            e.data.isDirty = false
+        }
     }
 
     const canSave = [userId].every(Boolean) && !isLoading
@@ -310,8 +430,8 @@ const EditDailyReportForm = ({ res }) => {
         let weatherChart = {}
         let manHour = {}
         if (canSave) {
-            if (dailyReport.activityId) { eDailyReport.activityId = dailyReport.activityId }
-            if (dailyReport._id !== 'new') eDailyReport._id = dailyReport._id
+            eDailyReport.activityId = dailyReport.activityId
+            eDailyReport._id = dailyReport.id
             eDailyReport.id = dailyReport.id
             eDailyReport.userId = userId
             eDailyReport.title = title
@@ -326,9 +446,7 @@ const EditDailyReportForm = ({ res }) => {
             manHour.directTdy = directTdy
             manHour.directCumm = directCumm
 
-            let rData = []
-            loadingGridRef.current.api.forEachNode(node => rData.push(node.data));
-            manHour.loading = rData.filter(rd => { return (rd.indirect || rd.indirectPax || rd.direct || rd.directPax || rd.direct1 || rd.directPax1 || rd.owner || rd.ownerPax) });
+            manHour.loading = rowData.filter(rd => { return rd.isDirty })
 
             manHour.indirectTtl = indirectTtl
             manHour.directTtl = directTtl
@@ -336,74 +454,191 @@ const EditDailyReportForm = ({ res }) => {
             manHour.ownerTtl = ownerTtl
             manHour.pcSarawakians = pcSarawakians
             manHour.pcNonSarawakians = pcNonSarawakians
+
             eDailyReport.manHour = manHour
 
             //weatherChart.legend = legend
             weatherChart.raining = raining
             weatherChart.driziling = driziling
             weatherChart.sunny = sunny
-            eDailyReport.weatherChart = weatherChart
 
-            rData = []
-            meLoadingGridRef.current.api.forEachNode(node => rData.push(node.data));
-            eDailyReport.meLoading = rData.filter(rd => { return (rd.load1 || rd.pax1 || rd.load2 || rd.pax2 || rd.load3 || rd.pax3 || rd.load4 || rd.pax4 || rd.load5 || rd.pax5) })
+            eDailyReport.weatherChart = weatherChart
+            eDailyReport.meLoading = rdMELoading.filter(rd => { return rd.isDirty })
 
             eDailyReport.meLoadingTtl = meLoadingTtl
 
             //safetyToolbox
-            eDailyReport.safetyTbItem = !safetyTbItem ? '' : safetyTbItem
-            eDailyReport.safetyTbDesp = !safetyTbDesp ? '' : safetyTbDesp
+            if (!safetyTbItem) {
+                eDailyReport.safetyTbItem = ''
+            } else {
+                eDailyReport.safetyTbItem = safetyTbItem
+            }
+            if (!safetyTbDesp) {
+                eDailyReport.safetyTbDesp = ''
+            } else {
+                eDailyReport.safetyTbDesp = safetyTbDesp
+            }
+
             //downTime
-            eDailyReport.downTimeItem = !downTimeItem ? '' : downTimeItem
-            eDailyReport.downTimeDesp = !downTimeDesp ? '' : downTimeDesp
+            if (!downTimeItem) {
+                eDailyReport.downTimeItem = ''
+            } else {
+                eDailyReport.downTimeItem = downTimeItem
+            }
+            if (!downTimeDesp) {
+                eDailyReport.downTimeDesp = ''
+            } else {
+                eDailyReport.downTimeDesp = downTimeDesp
+            }
+
             //constructionProgress
-            eDailyReport.conProgressItem = !conProgressItem ? '' : conProgressItem
-            eDailyReport.conProgressDesp = !conProgressDesp ? '' : conProgressDesp
-            eDailyReport.conProgressStatus = !conProgressStatus ? '' : conProgressStatus
+            if (!conProgressItem) {
+                eDailyReport.conProgressItem = ''
+            } else {
+                eDailyReport.conProgressItem = conProgressItem
+            }
+            if (!conProgressDesp) {
+                eDailyReport.conProgressDesp = ''
+            } else {
+                eDailyReport.conProgressDesp = conProgressDesp
+            }
+            if (!conProgressStatus) {
+                eDailyReport.conProgressStatus = ''
+            } else {
+                eDailyReport.conProgressStatus = conProgressStatus
+            }
             //nextDayWorkPlan
-            eDailyReport.nextDayWPItem = !nextDayWPItem ? '' : nextDayWPItem
-            eDailyReport.nextDayWPDesp = !nextDayWPDesp ? '' : nextDayWPDesp
-            eDailyReport.nextDayWPRemarks = !nextDayWPRemarks ? '' : nextDayWPRemarks
+            if (!nextDayWPItem) {
+                eDailyReport.nextDayWPItem = ''
+            } else {
+                eDailyReport.nextDayWPItem = nextDayWPItem
+            }
+            if (!nextDayWPDesp) {
+                eDailyReport.nextDayWPDesp = ''
+            } else {
+                eDailyReport.nextDayWPDesp = nextDayWPDesp
+            }
+            if (!nextDayWPRemarks) {
+                eDailyReport.nextDayWPRemarks = ''
+            } else {
+                eDailyReport.nextDayWPRemarks = nextDayWPRemarks
+            }
+
             //projectMaterial
-            eDailyReport.prjMaterialItem = !prjMaterialItem ? '' : prjMaterialItem
-            eDailyReport.prjMaterialDocNo = !prjMaterialDocNo ? '' : prjMaterialDocNo   //PO ,DO number
-            eDailyReport.prjMaterialQty = !prjMaterialQty ? 0 : parseFloat(prjMaterialQty)
-            eDailyReport.prjMaterialStatus = !prjMaterialStatus ? '' : prjMaterialStatus // status and remarks
+            if (!prjMaterialItem) {
+                eDailyReport.prjMaterialItem = ''
+            } else {
+                eDailyReport.prjMaterialItem = prjMaterialItem
+            }
+            if (!prjMaterialDocNo) {
+                eDailyReport.prjMaterialDocNo = '' //PO ,DO number
+            } else {
+                eDailyReport.prjMaterialDocNo = prjMaterialDocNo //PO ,DO number
+            }
+            if (!prjMaterialQty) {
+                eDailyReport.prjMaterialQty = 0
+            } else {
+                eDailyReport.prjMaterialQty = parseFloat(prjMaterialQty)
+            }
+            if (!prjMaterialStatus) {
+                eDailyReport.prjMaterialStatus = '' // status and remarks
+            } else {
+                eDailyReport.prjMaterialStatus = prjMaterialStatus // status and remarks
+            }
+
             //areaOfConcern
-            eDailyReport.aocItem = !aocItem ? '' : aocItem
-            eDailyReport.aocDesp = !aocDesp ? '' : aocDesp  //PO ,DO number
-            eDailyReport.aocRemedialPlan = !aocRemedialPlan ? '' : aocRemedialPlan
-            eDailyReport.aocStatus = !aocStatus ? '' : aocStatus // status and remarks
-            eDailyReport.aocDtResolved = !aocDtResolved ? '' : aocDtResolved
+            if (!aocItem) {
+                eDailyReport.aocItem = ''
+            } else {
+                eDailyReport.aocItem = aocItem
+            }
+            if (!aocDesp) {
+                eDailyReport.aocDesp = '' //PO ,DO number
+            } else {
+                eDailyReport.aocDesp = aocDesp //PO ,DO number
+            }
+            if (!aocRemedialPlan) {
+                eDailyReport.aocRemedialPlan = ''
+            } else {
+                eDailyReport.aocRemedialPlan = aocRemedialPlan
+            }
+            if (!aocStatus) {
+                eDailyReport.aocStatus = ''// status and remarks
+            } else {
+                eDailyReport.aocStatus = aocStatus// status and remarks
+            }
+            if (!aocDtResolved) {
+                eDailyReport.aocDtResolved = ''
+            } else {
+                eDailyReport.aocDtResolved = aocDtResolved
+            }
+
             //site Tech Query
-            eDailyReport.siteTechQItem = !siteTechQItem ? '' : siteTechQItem
-            eDailyReport.siteTechQIDesp = !siteTechQIDesp ? '' : siteTechQIDesp //PO ,DO number
-            eDailyReport.siteTechQIDtRaised = !siteTechQIDtRaised ? '' : siteTechQIDtRaised
-            eDailyReport.siteTechQIDtResolved = !siteTechQIDtResolved ? '' : siteTechQIDtResolved
+            if (!siteTechQItem) {
+                eDailyReport.siteTechQItem = ''
+            } else {
+                eDailyReport.siteTechQItem = siteTechQItem
+            }
+            if (!siteTechQIDesp) {
+                eDailyReport.siteTechQIDesp = ''
+            } else {
+                eDailyReport.siteTechQIDesp = siteTechQIDesp//PO ,DO number
+            }
+            if (!siteTechQIDtRaised) {
+                eDailyReport.siteTechQIDtRaised = ''
+            } else {
+                eDailyReport.siteTechQIDtRaised = siteTechQIDtRaised
+            }
+            if (!siteTechQIDtResolved) {
+                eDailyReport.siteTechQIDtResolved = ''
+            } else {
+                eDailyReport.siteTechQIDtResolved = siteTechQIDtResolved
+            }
+
             eDailyReport.acknowledgedBy = acknowledgedBy
             eDailyReport.verifiedBy = verifiedBy //PO ,DO number
             eDailyReport.preparedBy = preparedBy
             eDailyReport.completed = completed
 
-            // console.log(eDailyReport); console.log(JSON.stringify(eDailyReport))
+            console.log(eDailyReport)
+            console.log(JSON.stringify(eDailyReport))
             await updateDailyReport(eDailyReport)
         }
     }
 
-    const onDeleteDailyReportClicked = async (e) => {
-        e.preventDefault()
-        await deleteDailyReport({ id: dailyReport._id })
+    const onDeleteDailyReportClicked = async () => {
+        await deleteDailyReport({ id: dailyReport.id })
     }
 
     const created = new Date(dailyReport.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
     const updated = new Date(dailyReport.updatedAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
 
-    const options = users.map(user => { return (<option key={user._id} value={user._id} >{user.username} </option >) })
+    const options = users.map(user => {
+        return (
+            <option key={user.id} value={user.id} >
+                {user.username}
+            </option >
+        )
+    })
+
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
+    // const validTitleClass = !title ? "form__input--incomplete" : ''
+    // const validTextClass = !text ? "form__input--incomplete" : ''
+
     const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
     let deleteButton = null
-    if (isManager || isAdmin) { deleteButton = (<button className="btn btn-danger" title="Delete" onClick={onDeleteDailyReportClicked}><FontAwesomeIcon icon={faTrashCan} /></button>) }
+    if (isManager || isAdmin) {
+        deleteButton = (
+            <button
+                className="btn btn-danger"
+                title="Delete"
+                onClick={onDeleteDailyReportClicked}
+            >
+                <FontAwesomeIcon icon={faTrashCan} />
+            </button>
+        )
+    }
 
     const content = (
         <>
@@ -412,7 +647,14 @@ const EditDailyReportForm = ({ res }) => {
                 <div className="panel">
                     <h5><b>Edit DailyReport for date: {dateForPicker(reportDate)}</b></h5>
                     <div className="form-group dash-header__nav">
-                        <button className="btn btn-primary" title="Save" onClick={onSaveDailyReportClicked} disabled={!canSave}><FontAwesomeIcon icon={faSave} /></button>
+                        <button
+                            className="btn btn-primary"
+                            title="Save"
+                            onClick={onSaveDailyReportClicked}
+                            disabled={!canSave}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
                         {deleteButton}
                     </div>
                 </div>
@@ -483,7 +725,9 @@ const EditDailyReportForm = ({ res }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-6"></div>
+                        <div className="col-sm-6">
+
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-6">
@@ -523,7 +767,7 @@ const EditDailyReportForm = ({ res }) => {
                                     <div className="ag-theme-balham" style={{ height: 320, width: "100%", padding: "0px" }}>
                                         <AgGridReact
                                             ref={loadingGridRef}
-                                            onCellValueChanged={onCellValueChanged}
+                                            newLoadingClicked={onCellValueChanged}
                                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                                             defaultColDef={defaultColDef}
                                             rowData={rowData}
@@ -533,6 +777,7 @@ const EditDailyReportForm = ({ res }) => {
                                 </div>
                             </div>
                             <div className="container-fluid" style={{ border: "0px" }}>
+
                                 <div className="row">
                                     <div className="mid_row   col-sm-2 label-back">TOTAL</div>
                                     <div className="mid_row   col-sm-1" style={{ padding: "0px" }}>
@@ -565,6 +810,7 @@ const EditDailyReportForm = ({ res }) => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <div className="row">
@@ -579,7 +825,7 @@ const EditDailyReportForm = ({ res }) => {
                                     <div className="ag-theme-balham" style={{ height: 180, width: "100%", padding: "0px" }}>
                                         <AgGridReact
                                             ref={meLoadingGridRef}
-                                            onCellValueChanged={onMECellValueChanged}
+                                            newLoadingClicked={onMECellValueChanged}
                                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                                             defaultColDef={defaultColDef}
                                             rowData={rdMELoading}
@@ -588,6 +834,8 @@ const EditDailyReportForm = ({ res }) => {
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
                     </div>
                     <div className="row">
@@ -622,6 +870,9 @@ const EditDailyReportForm = ({ res }) => {
                             <textarea className="form-control" id="downTimeDesp" name="downTimeDesp" rows="3" value={downTimeDesp} onChange={(e) => onTextChanged(e, 'downTimeDesp')} />
                         </div>
                     </div>
+
+
+
 
                     <div className="row">
                         <div className="col-sm-1 label-back">6.0</div>
@@ -745,13 +996,22 @@ const EditDailyReportForm = ({ res }) => {
                         <div className="col-sm-4 " style={{ padding: "5px" }}><br />Verified by:<br /> <input className="" id="verifiedBy" name="verifiedBy" type="text" autoComplete="off" value={verifiedBy} onChange={(e) => onTextChanged(e, 'verifiedBy')} /><br />__________________________<br /><br /></div>
                         <div className="col-sm-4 " style={{ padding: "5px" }}><br />Ackowledged by:<br /> <input className="" id="acknowledgedBy" name="acknowledgedBy" type="text" autoComplete="off" value={acknowledgedBy} onChange={(e) => onTextChanged(e, 'acknowledgedBy')} /><br />__________________________<br /><br /></div>
                     </div>
+                    {/* </div> */}
                 </div>
                 <br />
                 <div className="panel panel-info">
                     <div className="form-group row">
                         <div className="col-sm-2"><b>ASSIGNED TO:</b></div>
                         <div className="col-sm-2">
-                            <select id="userid" name="userid" className="form-control" value={userId} onChange={onUserIdChanged}> {options}</select>
+                            <select
+                                id="userid"
+                                name="userid"
+                                className="form-control"
+                                value={userId}
+                                onChange={onUserIdChanged}
+                            >
+                                {options}
+                            </select>
                         </div>
                     </div>
                     <div className="">
@@ -759,8 +1019,12 @@ const EditDailyReportForm = ({ res }) => {
                     </div>
                 </div>
             </form>
+
         </>
     )
+    // "border-right-0 border-left-0 border-top-0 border-bottom-0 border-primary"
+
     return content
 }
+
 export default EditDailyReportForm

@@ -1,6 +1,4 @@
 const Equip = require('../models/Equipment')
-// const Note = require('../models/DailyReport')
-const bcrypt = require('bcrypt')
 
 // @desc Get all equipment
 // @route GET /equipment
@@ -14,7 +12,7 @@ const getAllEquipment = async (req, res) => {
         return res.status(400).json({ message: 'No equipment found' })
     }
 
-    res.json(equipment)
+    res.status(200).json(equipment)
 }
 
 // @desc Create new equip
@@ -32,27 +30,26 @@ const createNewEquip = async (req, res) => {
     const duplicate = await Equip.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
     if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate equipment' })
+        return res.status(409).json({ message: 'Duplicate equip' })
     }
 
+    const equip = {}
 
-    const equipObject = {}
+    if (name) { equip.name = name }
+    if (type) { equip.type = type }
+    if (capacity) { equip.capacity = parseFloat(capacity) }
 
-    equipObject.name = name
-    equipObject.type = type
-    equipObject.capacity = capacity
+    // Create and store new equip 
+    const result = await Equip.create(equip)
 
-    // Create and store new equipment 
-    const equip = await Equip.create(equipObject)
-
-    if (equip) { //created 
-        res.status(201).json({ message: `New equipment ${name} created` })
+    if (result) { //created 
+        res.status(201).json({ message: `New equip ${name} created` })
     } else {
-        res.status(400).json({ message: 'Invalid equipment data received' })
+        res.status(400).json({ message: 'Invalid equip data received' })
     }
 }
 
-// @desc Update a equipment
+// @desc Update a equip
 // @route PATCH /equipment
 // @access Private
 const saveEquip = async (req, res) => {
@@ -63,32 +60,31 @@ const saveEquip = async (req, res) => {
         return res.status(400).json({ message: 'name required' })
     }
 
-    // Does the equipment exist to update?
+    // Does the equip exist to update?
     const equip = await Equip.findById(id).exec()
 
     if (!equip) {
-        return res.status(400).json({ message: 'Equipment not found' })
+        return res.status(400).json({ message: 'Equip not found' })
     }
 
     // Check for duplicate 
     const duplicate = await Equip.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
-    // Allow updates to the original equipment 
+    // Allow updates to the original equip 
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate name' })
     }
 
-    equip.name = name
-    equip.type = type
-    equip.capacity = capacity
+    if (name) { equip.name = name }
+    if (type) { equip.type = type }
+    if (capacity) { equip.capacity = parseFloat(capacity) }
 
+    const result = await equip.save()
 
-    const updatedEquip = await Equip.save()
-
-    res.json({ message: `${updatedEquip.name} updated` })
+    res.json({ message: `${result.name} updated` })
 }
 
-// @desc Update a equipment
+// @desc Update a equip
 // @route PATCH /equipment
 // @access Private
 const updateEquip = async (req, res) => {
@@ -100,63 +96,92 @@ const updateEquip = async (req, res) => {
             : id = undefined
     // Confirm data 
     if (!id) {
-        return res.status(400).json({ message: 'equipment Id is required' })
+        return res.status(400).json({ message: 'Equipment Id is required' })
     }
 
-    // Does the equipment exist to update?
-    const EquipFound = await Equip.findById(id).exec()
+    // Does the equip exist to update?
+    const equipFound = await Equip.findById(id).exec()
 
     if (!equipFound) {
-        return res.status(400).json({ message: 'equipment not found' })
+        return res.status(400).json({ message: 'Equip not found' })
     }
 
     // Check for duplicate 
     const duplicate = await Equip.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
-    // Allow updates to the original equipment 
+    // Allow updates to the original equip 
     if (duplicate && duplicate?._id.toString() !== id) {
         return res.status(409).json({ message: 'Duplicate name' })
     }
     let equip = {}
     if (name) { equip.name = name }
     if (type) { equip.type = type }
-    if (capacity) { equip.capacity = capacity }
+    if (capacity) { equip.capacity = parseFloat(capacity) }
 
-    await Equip.findOneAndUpdate({ _id: id }, equip, { new: true }).then((data) => {
-        if (data === null) {
-            throw new Error(`Equipmment Id: (\'${id}\') not found update failed `);
+    await Equip.findOneAndUpdate({ _id: id }, equip, { new: true }).then((result) => {
+        if (result === null) {
+            throw new Error(`Equipment Id: (\'${id}\') not found update failed `);
         }
-        res.json({ message: `Equipmment Id: (\'${data._id}\'), Name: (\'${data.name}\'), updated successfully` })
+        res.json({ message: `Equipment Id: (\'${result._id}\'), Name: (\'${result.name}\'), updated successfully` })
     }).catch((error) => {
 
-        res.status(500).json({ message: `error -- Equipmment Id: (\'${id}\') update failed`, error: error })
+        res.status(500).json({ message: `error -- Equipment Id: (\'${id}\') update failed`, error: error })
     });
 }
 
 const updateEquipment = async (req, res) => {
     const newData = req.body.data
-    let response = []
+    const response = []
+    const data = []
     let equip
-    let result
-    newData.forEach((data) => {
+    for (let i = 0; i < newData.length; i++) {
         equip = new Equip()
-
-        if (data._id != '') { equip._id = data._id }
-        if (data.name) { equip.name = data.name }
-        if (data.type) { equip.type = data.type }
-        if (data.capacity) { equip.capacity = data.capacity }
-
-        result = equip.save()
-        if (result) {
-            response.push({ message: `${data.name} saved` })
+        if (newData[i].name) { equip.name = newData[i].name }
+        if (newData[i].type) { equip.type = newData[i].type }
+        if (newData[i].capacity) { equip.capacity = parseFloat(newData[i].capacity) }
+        if (newData[i]._id) {
+            // Update
+            equip._id = newData[i]._id
+            await Equip.findOneAndUpdate({ _id: newData[i]._id }, equip, { new: true }).then((result) => {
+                if (result === null) {
+                    response.push({ message: `Equipment Id: ${newData[i]._id},name: ${newData[i].name} not found update failed` })
+                } else {
+                    response.push({ message: `Equipment Id: ${result._id},name: ${result.name} updated successfully` })
+                    data.push(result)
+                }
+            }).catch((error) => {
+                response.push({ message: `error -- Equipment Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
+            });
         } else {
-            response.push({ message: `${data.name} fail to saved` })
+            //create 
+            await equip.save()
+                .then((result) => {
+                    if (result === null) {
+                        response.push({ message: `Equipment Id: ${newData[i]._id},name: ${newData[i].name} fail to saved` })
+                    } else {
+                        response.push({ message: `Equipment Id: ${result._id},name: ${result.name} created successfully` })
+                        data.push(result)
+                    }
+                }
+                )
+                .catch(
+                    (error) => {
+                        console.log(`result=${result}`)
+                        console.log(`id: ${newData[i]._id},name: ${newData[i].name}` + error)
+                        response.push({ message: `error -- Equipment Id: (\'${data._id}\') create failed , error: ${error}` })
+                    }
+                )
         }
     }
-    )
-    res.json(response)
+    console.log(`response = ${JSON.stringify(response)}`)
+    console.log(`data = ${JSON.stringify(data)}`)
+    // let result = {}
+    // result.data = data
+    // result.response = response
+
+    return res.status(202).json({ data: data, response })
 }
-// @desc Delete a equipment
+// @desc Delete a equip
 // @route DELETE /equipment
 // @access Private
 const deleteEquip = async (req, res) => {
@@ -164,15 +189,15 @@ const deleteEquip = async (req, res) => {
 
     // Confirm data
     if (!id) {
-        return res.status(400).json({ message: 'Equipment ID Required' })
+        return res.status(400).json({ message: 'Equipment Id Required' })
     }
 
     try {
-        const equip = await Equip.findOneAndDelete({ _id: id });
-        if (!equip) {
+        const data = await Equip.findOneAndDelete({ _id: id });
+        if (!data) {
             return res.status(400).json({ message: `Equipment Id: (\'${id}\') not found delete failed ` });
         }
-        return res.status(200).json({ message: `Equipment Id: (\'${data._id}\'), Name: (\'${data.name}\'), deleted successfully` });
+        return res.status(200).json({ data: data, message: `Equipment Id: (\'${data._id}\'), Name: (\'${data.name}\'), deleted successfully` });
     } catch (err) {
         return res.status(400).json({ message: `error -- Equipment Id: (\'${id}\') delete failed`, error: err })
     }

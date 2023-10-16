@@ -42,8 +42,7 @@ const AttendancesUpload = () => {
 
 
     return (
-        <div style={{ fontSize: '12px' }}>
-            <div><b>Upload and import Attendances</b></div>
+        <div>
             {/* {currentFile && (
                 <div className="progress">
                     <div
@@ -59,23 +58,23 @@ const AttendancesUpload = () => {
                 </div>
             )} */}
 
-            <label className="btn-sm">
+            <label className="btn btn-default">
                 <input type="file" onChange={onChangeSelectFile} />
             </label>
 
             <button
-                className="btn btn-success btn-xs"
-                style={{ fontSize: '12px' }}
+                className="btn btn-success"
                 disabled={!selectedFiles}
                 onClick={upload}
-            >import
+            >
+                import attendances
             </button>
 
             <div className="alert alert-light" role="alert">
                 {message}
             </div>
-            {/* 
-            <div className="card" style={{ fontSize: '10px' }}>
+
+            <div className="card">
                 <div className="card-header">List of Files</div>
                 <ul className="list-group list-group-flush">
                     {fileInfos &&
@@ -85,7 +84,7 @@ const AttendancesUpload = () => {
                             </li>
                         ))}
                 </ul>
-            </div> */}
+            </div>
         </div>
     );
     // }

@@ -27,9 +27,7 @@ const EditActivity = () => {
             }
         }
         content = <EditActivityForm res={res} />
-
     }
-
     return content
 }
 export default EditActivity

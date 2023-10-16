@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons" //, faFileInvoiceDollar, faClipboard, faClipboardList, faRectangleList, faFileCirclePlus, faFilePen, faUserGear, faUserPlus, faRightFromBracket, faTable 
-import { useNavigate, Link, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../../features/auth/authApiSlice'
 import useAuth from '../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
@@ -15,7 +15,7 @@ const DAILY_REPORTS_REGEX = /^\/dash\/dailyReports(\/)?$/
 const ACTIVITIES_REGEX = /^\/dash\/activities(\/)?$/
 const PROJECTS_REGEX = /^\/dash\/projects(\/)?$/
 const USERS_REGEX = /^\/dash\/users(\/)?$/
-const btnStyle = { padding: "3px", height: "90%", fontSize: "14px" }
+//const btnStyle = { padding: "3px", height: "90%", fontSize: "14px" }
 
 const DashHeader = () => {
 
@@ -24,7 +24,7 @@ const DashHeader = () => {
     const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
     //const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
     const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
-    const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
+    //const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
     const navLnkStyle_Btn = "btn btn-light"
 
     const navigate = useNavigate()
@@ -54,12 +54,12 @@ const DashHeader = () => {
     const onUsersClicked = () => navigate('/dash/users')
 
 
-    let dashClass = null
-    if (!DASH_REGEX.test(pathname) && !DAILY_REPORTS_REGEX.test(pathname)
-        && !ACTIVITIES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)
-        && !PROJECTS_REGEX.test(pathname)) {
-        dashClass = "dash-header__container--small"
-    }
+    // let dashClass = null
+    // if (!DASH_REGEX.test(pathname) && !DAILY_REPORTS_REGEX.test(pathname)
+    //     && !ACTIVITIES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)
+    //     && !PROJECTS_REGEX.test(pathname)) {
+    //     dashClass = "dash-header__container--small"
+    // }
 
     let newDailyReportNavLink = null
     if (DAILY_REPORTS_REGEX.test(pathname)) {

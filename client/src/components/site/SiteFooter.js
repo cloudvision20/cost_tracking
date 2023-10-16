@@ -10,9 +10,7 @@ const SiteFooter = () => {
   let content
 
   if (activities) {
-
     content = <SiteFooterForm userid={userid} username={username} status={status} activities={activities[0]} />
-
   }
 
 

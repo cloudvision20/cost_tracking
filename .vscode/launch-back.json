@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Chrome",
+            "request": "launch",
+            "type": "chrome",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}\\client"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Run Client: start",
+            "request": "launch",
+            "command": "npm run start",
+            "cwd": "${workspaceFolder}\\client"
+        },
+        {
+            "type": "node-terminal",
+            "name": "Run Server: dev",
+            "request": "launch",
+            "command": "npm run dev",
+            "cwd": "${workspaceFolder}\\server"
+        }
+    ]
+}

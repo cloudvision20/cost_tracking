@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
-import Public from './components/Public'
+//import Public from './components/Public'
 import Login from './features/auth/Login';
 import DashLayout from './components/dash/DashLayout'
 import Welcome from './features/auth/Welcome'
@@ -38,6 +38,10 @@ import EditExpense from './features/expenses/EditExpense'
 import SiteLayout from './components/site/SiteLayout'
 import SiteWelcome from './features/auth/SiteWelcome'
 
+import FrmExpense from './features/expenses/FrmExpense';
+import FrmConsumable from './features/consumables/FrmConsumable';
+import FrmEquip from './features/equipment/FrmEquip';
+
 function App() {
   useTitle('Cost Tracking')
 
@@ -61,6 +65,11 @@ function App() {
 
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
+                <Route path="forms">
+                  <Route path="consumables" element={<FrmConsumable />} />
+                  <Route path="Equipment" element={<FrmEquip />} />
+                  <Route path="Expenses" element={<FrmExpense />} />
+                </Route>
                 <Route path="consumables">
                   <Route index element={<EditConsumable />} />
                 </Route>

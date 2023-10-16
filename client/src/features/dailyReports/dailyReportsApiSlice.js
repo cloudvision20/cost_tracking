@@ -32,6 +32,14 @@ export const dailyReportsApiSlice = apiSlice.injectEndpoints({
                 } else return [{ type: 'DailyReport', id: 'LIST' }]
             }
         }),
+        getDailyReportById: builder.query({
+            query: (id) => ({
+                url: `/dailyReports/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
         addNewDailyReport: builder.mutation({
             query: initialDailyReport => ({
                 url: '/dailyReports',
@@ -71,6 +79,8 @@ export const dailyReportsApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetDailyReportsQuery,
+    useGetDailyReportByIdQuery,
+    useGetDailyReportNewQuery,
     useAddNewDailyReportMutation,
     useUpdateDailyReportMutation,
     useDeleteDailyReportMutation,

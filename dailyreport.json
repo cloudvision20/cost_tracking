@@ -1,0 +1,86 @@
+    "dailyReport": {
+        "activityId": "",
+        "userId": "",
+        "title": "",
+        "text": "",
+        "reportDate": "",
+        "reportDay": "",
+        "manHour": {
+            "indirectPrev": 0,
+            "indirectTdy": 0,
+            "indirectCumm": 0,
+            "directPrev": 0,
+            "directTdy": 0,
+            "directCumm": 0,
+            "loading": [
+                "indirect": "", // modify field name when clarified
+                "indirectPax": 0,
+                "direct": "",
+                "directPax": 0,
+                "direct1": "",
+                "directPax1": 0,
+                "owner": "",
+                "ownerPax": 0
+            ]
+            "indirectTtl": 0,
+            "directTtl": 0,
+            "directTtl1": 0,
+            "ownerTtl": 0,
+            "pcSarawakians": 0,
+            "pcNonSarawakians": 0
+        },
+        "weatherChart": {
+            "legend": "",
+            "raining": "",
+            "driziling": "",
+            "sunny": ""
+        },
+        "completed": false,
+        "_id": "652cab36f0d764869625e884",
+        "meLoading": [
+            "load1": "", // modify field name when clarified
+            "pax1": 0,
+            "load2": "", // modify field name when clarified
+            "pax2": 0,
+            "load3": "", // modify field name when clarified
+            "pax3": 0,
+            "load4": "", // modify field name when clarified
+            "pax4": 0,
+            "load5": "", // modify field name when clarified
+            "pax5": 0,
+        ]
+                "meLoadingTtl": 0,
+        //safetyToolbox
+        "safetyTbItem": "",
+        "safetyTbDesp": "",
+        //downTime
+        "downTimeItem": "",
+        "downTimeDesp": "",
+        //constructionProgress
+        "conProgressItem": "",
+        "conProgressDesp": "",
+        "conProgressStatus": "",
+        //nextDayWorkPlan
+        "nextDayWPItem": "",
+        "nextDayWPDesp": "",
+        "nextDayWPRemarks": "",
+        //projectMaterial
+        "prjMaterialItem": "",
+        "prjMaterialDocNo": "", //PO ,DO number
+        "prjMaterialQty": 0,
+        "prjMaterialStatus": "", // status and remarks
+        //areaOfConcern
+        "aocItem": "",
+        "aocDesp": "", //PO ,DO number
+        "aocRemedialPlan": "",
+        "aocStatus": "", // status and remarks
+        "aocDtResolved": "",
+        //site Tech Query
+        "siteTechQItem": "",
+        "siteTechQIDesp": "", //PO ,DO number
+        "siteTechQIDtRaised": "",
+        "siteTechQIDtResolved": "",
+        "preparedBy": "",
+        "verifiedBy": "", //PO ,DO number
+        "acknowledgedBy": "",
+    }
