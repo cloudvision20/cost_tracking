@@ -93,7 +93,7 @@ const NewUserForm = () => {
             <form onSubmit={onSaveUserClicked}>
                 <div className="panel ">
                     <h4><b>New User</b></h4>
-                    <div className="form-group dash-header__nav">
+                    <div className="form-group ct-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"

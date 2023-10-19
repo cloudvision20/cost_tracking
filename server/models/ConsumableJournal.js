@@ -5,11 +5,11 @@ const consumableJournalSchema = new mongoose.Schema(
     {
         employeeId: {
             type: String,
-            required: true
+            required: false
         },
         userId: {
             type: mongoose.Schema.Types.ObjectId,
-            required: false,
+            required: true,
             ref: 'User'
         },
         activityId: {
@@ -17,12 +17,12 @@ const consumableJournalSchema = new mongoose.Schema(
             required: false,
             ref: 'Activity'
         },
-        projectId: {
-            type: mongoose.Schema.Types.ObjectId,
-            required: false,
-            ref: 'Project'
-        },
-        datetime: { type: Date }, // date time of transaction
+        /*       projectId: {
+                   type: mongoose.Schema.Types.ObjectId,
+                   required: false,
+                   ref: 'Project'
+               }, */
+        dateTime: { type: Date }, // date time of transaction
         type: { type: String },
         details: { type: String },
         job: { type: String },
@@ -30,7 +30,10 @@ const consumableJournalSchema = new mongoose.Schema(
         unit: { type: String },
         amtType: { type: String }, // IN / OUT , Start / End?
         amount: { type: Number },
-        fileInfo: { type: String },
+        description: { type: String },
+        formId: { type: String },
+        posted: { type: Boolean },
+        fileInfo: [{ type: String }],
     },
     {
         timestamps: true

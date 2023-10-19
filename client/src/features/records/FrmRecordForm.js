@@ -1,11 +1,14 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateExpensesMutation, useDeleteExpenseMutation } from './expensesApiSlice'
+import { useUpdateRecordsMutation, useDeleteRecordMutation } from './recordsApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
+import { Form } from 'react-bootstrap';
+import { date2Weekday, dateForPicker } from "../../hooks/useDatePicker"
+import useAuth from "../../hooks/useAuth"
 
-let eExpenses = {}
+let eRecords = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -31,31 +34,44 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const FrmExpenseForm = ({ expenses }) => {
-    const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
+const EditRecordForm = ({ res }) => {
+    const { userid, username, status, isManager, isAdmin } = useAuth()
+    const blankData = { "type": "", "details": "", "description": "", "amount": 0, "_id": null, "userId": userid }
+    let records = {}
+    const activities = {}
+    if (res) {
+        if (res.records) {
+            records = res.records
+            if (records._id === 'new') { records.userId = userid }
+        }
+        if (res.activities) {
+            activities = res.activities
+        }
+    }
 
+    const formType = res.formType
     let msgContent = ''
     const msgRef = useRef();
 
-    if (!expenses) {
-        msgContent = 'New Expense database'
+    if (!records) {
+        msgContent = 'New Record database'
         msgRef.className = 'resmsg'
-        expenses = { blankData }
+        records = { blankData }
     } else {
         msgRef.className = 'offscreen'
         msgContent = ''
     }
-    const [updateExpenses, {
+    const [updateRecords, {
         //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateExpensesMutation()
-    const [deleteExpense, {
+    }] = useUpdateRecordsMutation()
+    const [deleteRecord, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteExpenseMutation()
+    }] = useDeleteRecordMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -64,21 +80,28 @@ const FrmExpenseForm = ({ expenses }) => {
             width: 150,
         };
     }, []);
-    const expenseGridRef = useRef();
+    const recordGridRef = useRef();
 
-    let data = Array.from(expenses).map((data, index) => ({
+    let data = Array.from(records).map((data, index) => ({
+        "userId": data.userId._id,
+        "activityId": data.activityId,
         "type": data.type,
-        "name": data.name,
-        "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+        "details": data.details,
+        "description": data.description,
+        "dateTime": dateForPicker(data.dateTime),
+        "amount": data.amount ? parseFloat(data.amount) : 0,
         "_id": data._id
     }))
 
-    const [rdExpense, setRdExpense] = useState(data)
-    const [expenseColDefs] = useState([
+    const [rdRecord, setRdRecord] = useState(data)
+    const [recordColDefs] = useState([
+        { field: 'userId', headerName: 'user Id', width: 150, hide: true },
         { field: '_id', headerName: 'Id', width: 150 },
-        { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
-        { field: "capacity", headerName: 'Capacity', width: 150, editable: true },
+        { field: 'details', headerName: 'Details', width: 150, editable: true },
+        { field: "description", headerName: 'Description', width: 300, editable: true },
+        { field: 'dateTime', headerName: 'Date', width: 150, editable: true },
+        { field: "amount", headerName: 'Amount', width: 150, editable: true },
         {
             headerName: 'Actions',
             width: 150,
@@ -86,10 +109,10 @@ const FrmExpenseForm = ({ expenses }) => {
             cellRendererParams: {
                 delClicked: function (eprops) {
 
-                    if (this.data._id) { delRecord(this.data._id) }
+                    if (this.data._id) { delRecord(this.data._id, formType) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "expense"
+                Id: "record"
             },
         }
     ])
@@ -99,19 +122,21 @@ const FrmExpenseForm = ({ expenses }) => {
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        eExpenses.data = rdExpense
-
-        await updateExpenses(eExpenses)
+        eRecords.data = rdRecord
+        eRecords.formType = formType
+        await updateRecords(eRecords)
             .then((result) => {
                 console.log(` result = ${JSON.stringify(result)}`)
                 data = result.data.data.map((data, index) => ({
                     "type": data.type,
-                    "name": data.name,
-                    "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+                    "details": data.details,
+                    "description": data.description,
+                    "dateTime": dateForPicker(data.dateTime),
+                    "amount": data.amount ? parseFloat(data.amount) : 0,
                     "_id": data._id
                 }))
-                setRdExpense(data)
-                expenseGridRef.current.api.refreshCells()
+                setRdRecord(data)
+                recordGridRef.current.api.refreshCells()
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
@@ -119,8 +144,8 @@ const FrmExpenseForm = ({ expenses }) => {
             })
     }
 
-    const delRecord = async (_id) => {
-        await deleteExpense({ id: _id })
+    const delRecord = async (_id, formType) => {
+        await deleteRecord({ id: _id, formType: formType })
             .then((result) => {
 
 
@@ -128,21 +153,21 @@ const FrmExpenseForm = ({ expenses }) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 let rData = []
-                expenseGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdExpense(rData)
+                recordGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdRecord(rData)
             }
             )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdExpense))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdRecord))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdExpense ?
-                [...rdExpense, blankData]
+            rdRecord ?
+                [...rdRecord, blankData]
                 : [blankData]
-        setRdExpense(newRData)
+        setRdRecord(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -152,43 +177,52 @@ const FrmExpenseForm = ({ expenses }) => {
     }, [isSuccess, isDelSuccess, navigate])
 
     // useEffect(() => {
-    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdExpense))
+    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdRecord))
     // })
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
 
-            <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                <div className="panel-heading"><h5>Expenses</h5></div>
-                <div className="form-group  ct-header__nav">
-                    <button
-                        className="btn btn-primary"
-                        title="New"
-                        onClick={onNewClicked}
-                    >
-                        <FontAwesomeIcon icon={faPlusSquare} />
-                    </button>
-                    <button
-                        className="btn btn-primary"
-                        title="Save"
-                        onClick={onSaveClicked}
-                    >
-                        <FontAwesomeIcon icon={faSave} />
-                    </button>
+
+            <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
+
+                <div className="row">
+                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h4><b>{formType} Records</b></h4><br /><br /></div>
                 </div>
-                <div className="panel-body">
+
+
+                <div className="row" >
+                    <div className="form-group  ct-header__nav">
+                        <button
+                            className="btn btn-primary"
+                            title="New"
+                            onClick={onNewClicked}
+                        >
+                            <FontAwesomeIcon icon={faPlusSquare} />
+                        </button>
+                        <button
+                            className="btn btn-primary"
+                            title="Save"
+                            onClick={onSaveClicked}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
+                    </div>
                     <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
                         <p ref={msgRef} className="" >{msgContent}</p>
                         <AgGridReact
-                            ref={expenseGridRef}
+                            ref={recordGridRef}
                             onCellValueChanged={onValueChanged}
                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                             // onRowDataUpdated={(event) => event.current.api.refreshCells()}
                             defaultColDef={defaultColDef}
-                            rowData={rdExpense}
-                            columnDefs={expenseColDefs}>
+                            rowData={rdRecord}
+                            columnDefs={recordColDefs}>
 
                         </AgGridReact>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12" style={{ border: "0px" }}><br /><h5><b></b></h5><br /><br /></div>
                     </div>
                 </div>
             </div>
@@ -199,4 +233,4 @@ const FrmExpenseForm = ({ expenses }) => {
 
 }
 
-export default FrmExpenseForm
+export default EditRecordForm

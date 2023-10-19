@@ -89,7 +89,7 @@ const NewProjectForm = ({ users }) => {
             <form onSubmit={onSaveProjectClicked}>
                 <div className="panel">
                     <h2>New Project</h2>
-                    <div className="form-group dash-header__nav">
+                    <div className="form-group ct-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"

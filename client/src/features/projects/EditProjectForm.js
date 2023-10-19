@@ -177,7 +177,7 @@ const EditProjectForm = ({ activities, project, users }) => {
             <form onSubmit={e => e.preventDefault()}>
                 <div className="panel">
                     <h2>Edit Project #{project.title}</h2>
-                    <div className="form-group dash-header__nav">
+                    <div className="form-group ct-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"
@@ -247,7 +247,7 @@ const EditProjectForm = ({ activities, project, users }) => {
 
                     <div className="panel-group">
                         <div className="panel panel-default">
-                            <div className="form-group  dash-header__nav">
+                            <div className="form-group  ct-header__nav">
                                 <button
                                     className="btn btn-primary"
                                     title="New Resources"

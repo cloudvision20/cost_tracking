@@ -20,7 +20,7 @@ const SiteLayout = () => {
     return (
         <>
             <SiteHeader />
-            <div className="container-xl site-container">
+            <div className="container-xl ct-container">
                 <Outlet />
             </div>
             <SiteFooter />

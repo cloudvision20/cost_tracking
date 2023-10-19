@@ -22,7 +22,7 @@ class BtnCellRenderer extends Component {
     btnDelClickedHandler(e) { this.props.delClicked(this.props); }
     render() {
         return (
-            <div className="form-group dash-header__nav">
+            <div className="form-group ct-header__nav">
                 <button className="btn btn-danger btn-xs" style={{ fontSize: "8px" }} onClick={this.btnDelClickedHandler}>Del</button>
             </div>
         )
@@ -411,7 +411,7 @@ const EditDailyReportForm = ({ res }) => {
             <form onSubmit={e => e.preventDefault()}>
                 <div className="panel">
                     <h5><b>Edit DailyReport for date: {dateForPicker(reportDate)}</b></h5>
-                    <div className="form-group dash-header__nav">
+                    <div className="form-group ct-header__nav">
                         <button className="btn btn-primary" title="Save" onClick={onSaveDailyReportClicked} disabled={!canSave}><FontAwesomeIcon icon={faSave} /></button>
                         {deleteButton}
                     </div>

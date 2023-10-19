@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { useUpdateConsumablesMutation, useDeleteConsumableMutation } from './consumablesApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
+import { Form } from 'react-bootstrap';
 
 let eConsumables = {}
 // Button definition for buttons in Ag-grid
@@ -25,7 +26,7 @@ class BtnCellRenderer extends Component {
     }
     render() {
         return (
-            <div className="form-group -dash-header__nav " style={divButton}>
+            <div className="form-group -ct-header__nav " style={divButton}>
                 <button className="btn btn-danger btn-sm" style={btnStyle} onClick={this.btnDelClickedHandler}>Del</button>
             </div>
         )
@@ -158,37 +159,73 @@ const EditConsumableForm = ({ consumables }) => {
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
 
-            <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                <div className="panel-heading"><h5>Consumables</h5></div>
-                <div className="form-group  dash-header__nav">
-                    <button
-                        className="btn btn-primary"
-                        title="New"
-                        onClick={onNewClicked}
-                    >
-                        <FontAwesomeIcon icon={faPlusSquare} />
-                    </button>
-                    <button
-                        className="btn btn-primary"
-                        title="Save"
-                        onClick={onSaveClicked}
-                    >
-                        <FontAwesomeIcon icon={faSave} />
-                    </button>
-                </div>
-                <div className="panel-body">
-                    <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
-                        <p ref={msgRef} className="" >{msgContent}</p>
-                        <AgGridReact
-                            ref={consumableGridRef}
-                            onCellValueChanged={onValueChanged}
-                            onGridReady={(event) => event.api.sizeColumnsToFit()}
-                            // onRowDataUpdated={(event) => event.current.api.refreshCells()}
-                            defaultColDef={defaultColDef}
-                            rowData={rdConsumable}
-                            columnDefs={consumableColDefs}>
 
-                        </AgGridReact>
+            <div className="container grid_system" style={{ fontSize: '12px', borderLeft: "1px solid blue", borderBottom: "1px solid blue" }}>
+                <div className="row">
+                    <div className="col-sm-4"><br /><br /><br /></div>
+                    <div className="col-sm-4"><br /><b>DAILY PROGRESS REPORT</b><br /><br /></div>
+                    <div className="col-sm-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-1 label-back">Date</div>
+                    <div className="col-sm-4">
+                        <Form.Group controlId="reportDate">
+                            <Form.Control
+                                type="date"
+                            //value={reportDate ? dateForPicker(reportDate) : ''}
+                            //placeholder={reportDate ? dateForPicker(reportDate) : "dd-mm-yyyy"}
+                            //onChange={onReportDateChanged}
+                            />
+                        </Form.Group>
+                    </div>
+                    <div className="col-sm-3 label-back">Day</div>
+                    <div className="col-sm-4">reportDay</div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-1 label-back">1.0</div>
+                    <div className="col-sm-11 label-back"><b>ManHours & Weather Record</b></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-6 label-back">Man - Hour Expenditure</div>
+                    <div className="col-sm-6 label-back">Weather Chart</div>
+                </div>
+            </div>
+
+
+            <div className="row" >
+
+                <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
+                    <div className="panel-heading"><h5>Consumables</h5></div>
+                    <div className="form-group  ct-header__nav">
+                        <button
+                            className="btn btn-primary"
+                            title="New"
+                            onClick={onNewClicked}
+                        >
+                            <FontAwesomeIcon icon={faPlusSquare} />
+                        </button>
+                        <button
+                            className="btn btn-primary"
+                            title="Save"
+                            onClick={onSaveClicked}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
+                    </div>
+                    <div className="panel-body">
+                        <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
+                            <p ref={msgRef} className="" >{msgContent}</p>
+                            <AgGridReact
+                                ref={consumableGridRef}
+                                onCellValueChanged={onValueChanged}
+                                onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                // onRowDataUpdated={(event) => event.current.api.refreshCells()}
+                                defaultColDef={defaultColDef}
+                                rowData={rdConsumable}
+                                columnDefs={consumableColDefs}>
+
+                            </AgGridReact>
+                        </div>
                     </div>
                 </div>
             </div>

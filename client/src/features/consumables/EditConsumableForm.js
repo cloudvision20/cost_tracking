@@ -25,7 +25,7 @@ class BtnCellRenderer extends Component {
     }
     render() {
         return (
-            <div className="form-group -dash-header__nav " style={divButton}>
+            <div className="form-group -ct-header__nav " style={divButton}>
                 <button className="btn btn-danger btn-sm" style={btnStyle} onClick={this.btnDelClickedHandler}>Del</button>
             </div>
         )
@@ -160,7 +160,7 @@ const EditConsumableForm = ({ consumables }) => {
 
             <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
                 <div className="panel-heading"><h5>Consumables</h5></div>
-                <div className="form-group  dash-header__nav">
+                <div className="form-group  ct-header__nav">
                     <button
                         className="btn btn-primary"
                         title="New"

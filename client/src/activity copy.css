@@ -133,12 +133,12 @@ a:focus-visible {
     height: 70%;
     font-size: 11px;
 }
-.dash-container {
+.ct-container {
     padding: 0.75em 0.5em 0.5em;
     flex-grow: 1;
 }
 
-.dash-footer {
+.ct-footer {
     font-size: 1rem;
     position: sticky;
     bottom: 0;
@@ -153,7 +153,7 @@ a:focus-visible {
     gap: 1em;
 }
 
-.dash-footer__button {
+.ct-footer__button {
     font-size: 1rem;
     width: auto;
     height: auto;

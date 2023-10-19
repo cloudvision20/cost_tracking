@@ -20,67 +20,12 @@ const SiteHeaderForm = () => {
     const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
     const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
     const navLinkStyle_ws = { color: 'whitesmoke', fontSize: '14px', backgroundColor: '#212f51' }
+    const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
     const navLnkStyle_Btn = "btn btn-light"
     const activities = useSelector(selectActivity)
     const onActivitiesSelected = (activityId) => { console.log(activityId) }
 
-    let navActivitiesMenu
-    if (activities) {
 
-        navActivitiesMenu = activities.map(activity => {
-            return (
-                <NavDropdown.Item href="#activity._id"
-
-                    key={activity._id}
-                    onMouseOver={onMouseOverNavLink}
-                    onMouseOut={onMouseOutNavLink_Blue}
-                    onClick={() => onActivitiesSelected(activity._id)}
-                    style={navLinkStyle_ws}
-                >
-                    {activity.name}
-                </NavDropdown.Item>
-            )
-        });
-    }
-    const masters = [
-        { '_id': 'Consumables', 'name': 'Consumables' },
-        { '_id': 'Equipment', 'name': 'Equipment' },
-        { '_id': 'Expenses', 'name': 'Expenses' }]
-    let navMasterMenu
-
-    navMasterMenu = masters.map(item => {
-        return (
-            <NavDropdown.Item href="#Masters"
-
-                key={item._id}
-                onMouseOver={onMouseOverNavLink}
-                onMouseOut={onMouseOutNavLink_Blue}
-                onClick={() => onMastersSelected(item._id)}
-                style={navLinkStyle_ws}
-            >
-                {item.name}
-            </NavDropdown.Item>
-        )
-    })
-    const forms = [
-        { '_id': 'Consumables', 'name': 'Consumables form' },
-        { '_id': 'Equipment', 'name': 'Equipment form' },
-        { '_id': 'Expenses', 'name': 'Expenses form' }]
-    let navFormsMenu
-    navFormsMenu = forms.map(item => {
-        return (
-            <NavDropdown.Item href="#Master#Forms"
-
-                key={item._id}
-                onMouseOver={onMouseOverNavLink}
-                onMouseOut={onMouseOutNavLink_Blue}
-                onClick={() => onFormsSelected(item._id)}
-                style={navLinkStyle_ws}
-            >
-                {item.name}
-            </NavDropdown.Item>
-        )
-    })
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
@@ -95,8 +40,10 @@ const SiteHeaderForm = () => {
         if (isSuccess) navigate('/')
     }, [isSuccess, navigate])
 
-    // const onConsumablesClicked = (e) => { navigate('/site/consumables') }
-    // const onEquipmentClicked = () => navigate('/site/equipment')
+
+
+    const onNewDailyReportSelected = () => navigate('/site/dailyReports/new')
+    const onDailyReportSelected = () => navigate('/site/dailyReports')
     const onFilesClicked = () => navigate('/site/files')
     const onAttendancesClicked = () => navigate('/site/files/attendances')
     const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
@@ -117,19 +64,105 @@ const SiteHeaderForm = () => {
     }
     const onFormsSelected = (item) => {
         switch (item) {
+
             case 'Consumables':
-                navigate('/site/forms/consumables')
+                navigate('/site/records/consumables')
                 break;
             case 'Equipment':
-                navigate('/site/forms/equipment')
+                navigate('/site/records/equipment')
                 break;
             case 'Expenses':
-                navigate('/site/forms/expenses')
+                navigate('/site/records/expenses')
                 break;
             default:
                 break;
         }
     }
+    let newDailyReportMenu = null
+    newDailyReportMenu = (
+        <NavDropdown.Item href="#newDailyReports"
+            key={`newDailyReports`}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Blue}
+            style={navLinkStyle_blue}
+            title="New Daily Report"
+            onClick={onNewDailyReportSelected}
+        >
+            New Daily Report
+        </NavDropdown.Item>
+    )
+
+    let dailyReportMenu = null
+    dailyReportMenu = (
+        <NavDropdown.Item href="#dailyReports"
+            key={`dailyReports`}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Blue}
+            style={navLinkStyle_blue}
+            title="Daily Reports"
+            onClick={onDailyReportSelected}
+        >
+            Daily Reports
+        </NavDropdown.Item>
+    )
+
+
+    let navActivitiesMenu
+    if (activities) {
+
+        navActivitiesMenu = activities.map(activity => {
+            return (
+                <NavDropdown.Item href="#activity._id"
+                    key={activity._id}
+                    onMouseOver={onMouseOverNavLink}
+                    onMouseOut={onMouseOutNavLink_Blue}
+                    onClick={() => onActivitiesSelected(activity._id)}
+                    style={navLinkStyle_blue}
+                >
+                    {activity.name}
+                </NavDropdown.Item>
+            )
+        });
+    }
+    const masters = [
+        { '_id': 'Consumables', 'name': 'Consumables' },
+        { '_id': 'Equipment', 'name': 'Equipment' },
+        { '_id': 'Expenses', 'name': 'Expenses' }]
+    let navMasterMenu
+
+    navMasterMenu = masters.map(item => {
+        return (
+            <NavDropdown.Item href="#Masters"
+
+                key={item._id}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Blue}
+                onClick={() => onMastersSelected(item._id)}
+            >
+                {item.name}
+            </NavDropdown.Item>
+        )
+    })
+    const forms = [
+        { '_id': 'Consumables', 'name': 'Consumables form' },
+        { '_id': 'Equipment', 'name': 'Equipment form' },
+        { '_id': 'Expenses', 'name': 'Expenses form' }]
+    let navFormsMenu
+    navFormsMenu = forms.map(item => {
+        return (
+            <NavDropdown.Item href="#Master#Forms"
+                key={item._id}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Blue}
+                onClick={() => onFormsSelected(item._id)}
+            >
+                {item.name}
+            </NavDropdown.Item>
+        )
+    })
+
+
+
     // let consumablesNavLink = null
     // consumablesNavLink = (
     //     <Nav.Link
@@ -226,6 +259,14 @@ const SiteHeaderForm = () => {
             <FontAwesomeIcon icon={faArrowCircleLeft} />
         </Nav.Link>
     )
+
+    const blankNavLink = (
+        <Nav.Link
+            disabled="true"
+            title="Blank"
+        >&nbsp;&#9;&#9;&nbsp;
+        </Nav.Link>
+    )
     const errClass = isError ? "errmsg" : "offscreen"
 
     let navLinkContent
@@ -240,7 +281,7 @@ const SiteHeaderForm = () => {
                 {/* {equipmentNavLink}
                 {consumablesNavLink} */}
                 {filesNavLink}
-                {logoutNavLink}
+
             </>
         )
     }
@@ -248,9 +289,9 @@ const SiteHeaderForm = () => {
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
-            <div className="site-header">
-                <div className="container-xl  site-header__container">
-                    <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
+            <div className="ct-header">
+                <div className="container-xl  ct-header__container">
+                    <Navbar expand="lg"  >
                         <Navbar.Brand href="/site" style={navLinkStyle_Whitesmoke} >
                             <div>
                                 <span style={{ fontSize: '20px' }}> <b>Cost Tracking Site</b></span>
@@ -258,32 +299,42 @@ const SiteHeaderForm = () => {
                             </div>
                         </Navbar.Brand>
                     </Navbar>
-                    <Navbar style={{ backgroundColor: '#212f51' }} >
+                    <Navbar bg="backgroundColor: #212f51" >
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav" >
                             <Nav className="ms-auto" >
                                 {navLinkContent}
                                 <NavDropdown
-                                    title={< span style={navLinkStyle_Whitesmoke}>Master Menu</span>}
-                                    style={{ backgroundColor: '#212f51' }}
-                                    onMouseOver={onMouseOverNavLink}
-                                    onMouseOut={onMouseOutNavLink_Whitesmoke} id="basic-nav-dropdown">
+                                    title={< span style={navLinkStyle_Whitesmoke}
+                                        onMouseOver={onMouseOverNavLink}
+                                        onMouseOut={onMouseOutNavLink_Whitesmoke}
+                                    >Master Menu</span>}
+                                    id="basic-nav-dropdown">
                                     {navMasterMenu}
                                 </NavDropdown>
                                 <NavDropdown
-                                    title={< span style={navLinkStyle_Whitesmoke}>Records Menu</span>}
-                                    style={{ backgroundColor: '#212f51' }}
-                                    onMouseOver={onMouseOverNavLink}
-                                    onMouseOut={onMouseOutNavLink_Whitesmoke} id="basic-nav-dropdown">
+                                    title={< span style={navLinkStyle_Whitesmoke}
+                                        onMouseOver={onMouseOverNavLink}
+                                        onMouseOut={onMouseOutNavLink_Whitesmoke}
+                                    >Records Menu</span>}
+                                    id="basic-nav-dropdown">
                                     {navFormsMenu}
+                                    <NavDropdown.Divider />
+                                    {dailyReportMenu}
+                                    {newDailyReportMenu}
                                 </NavDropdown>
-                                <NavDropdown title={< span style={navLinkStyle_Whitesmoke}>Select Activity</span>}
-                                    style={{ backgroundColor: '#212f51' }}
-                                    onMouseOver={onMouseOverNavLink}
-                                    onMouseOut={onMouseOutNavLink_Whitesmoke}
+                                <NavDropdown
+                                    title={
+                                        < span style={navLinkStyle_Whitesmoke}
+                                            onMouseOver={onMouseOverNavLink}
+                                            onMouseOut={onMouseOutNavLink_Whitesmoke}
+                                        >Select Activity</span>}
+
                                     id="basic-nav-dropdown">
                                     {navActivitiesMenu}
                                 </NavDropdown>
+                                {blankNavLink}
+                                {logoutNavLink}
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

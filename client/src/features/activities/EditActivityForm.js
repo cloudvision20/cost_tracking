@@ -36,12 +36,12 @@ class BtnCellRenderer extends Component {
     render() {
         return (
             this.props.Id === "resources" ?
-                <div className="form-group -dash-header__nav" style={divButton}>
+                <div className="form-group ct-header__nav" style={divButton}>
                     <button className="btn btn-primary btn-sm" style={btnStyle} onClick={this.btnClickedHandler}>Assign</button>
                     <button className="btn btn-danger btn-sm" style={btnStyle} onClick={this.btnDelClickedHandler}>Del</button>
                 </div>
                 : this.props.Id === "assign" ?
-                    <div className="form-group -dash-header__nav " style={divButton}>
+                    <div className="form-group ct-header__nav " style={divButton}>
                         <button className="btn btn-danger btn-sm" style={btnStyle} onClick={this.btnDelClickedHandler}>Del</button>
                     </div>
                     :
@@ -461,8 +461,8 @@ const EditActivityForm = ({ res }) => {
             <p ref={errRef} className={errClass}>{errContent.current}</p>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="panel">
-                    <h4><b>Edit Activity #{activity.name}</b></h4>
-                    <div className="form-group dash-header__nav">
+                    <h6><b>Edit Activity #{activity.name}</b></h6>
+                    <div className="form-group ct-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"
@@ -474,7 +474,7 @@ const EditActivityForm = ({ res }) => {
                         {deleteButton}
                     </div>
                 </div>
-                <div className="container grid_system_no_border" style={{ borderLeft: "0px solid blue", borderBottom: "0px solid blue" }}>
+                <div className="container grid_system_no_border" style={{ fontSize: '12px', borderLeft: "0px solid blue", borderBottom: "0px solid blue" }}>
                     <div className="row">
                         <div className="col-sm-6">
                             <div className="container-fluid" style={{ border: "0px" }}>
@@ -629,7 +629,7 @@ const EditActivityForm = ({ res }) => {
                     <div className="panel-group">
                         <div className="panel panel-default">
                             <div className="panel-heading">Resources List</div>
-                            <div className="form-group  dash-header__nav">
+                            <div className="form-group  ct-header__nav">
                                 <button
                                     className="btn btn-primary"
                                     title="New Resources"
@@ -654,7 +654,7 @@ const EditActivityForm = ({ res }) => {
                         <br />
                         <div className="panel panel-default" id="resourceDIV" style={{ display: "none" }}>
                             <div className="panel-heading">Resource Assignments</div>
-                            <div className="form-group  dash-header__nav">
+                            <div className="form-group  ct-header__nav">
                                 <button
                                     className="btn btn-primary"
                                     title="New Resources"

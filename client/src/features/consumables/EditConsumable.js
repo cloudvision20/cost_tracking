@@ -21,8 +21,8 @@ const EditConsumable = () => {
         content = <EditConsumableForm consumables={consumables} />
         return content
     }
-    if (isError) {
-        if (error.status == 400) {
+    if (isError) {// no records found
+        if (error.status === 400) {
             content = <EditConsumableForm consumables={consumables} />
             return content
         } else {

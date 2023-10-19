@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "651546bcaddecd523626e603"
+  },
+  "employeeId": "1",
+  "type": "fuel",
+  "details": "diesel",
+  "job": null,
+  "terminal": null,
+  "createdAt": {
+    "$date": "2023-09-28T09:26:20.175Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-18T12:59:27.448Z"
+  },
+  "__v": 0,
+  "userId": {
+    "$oid": "64c76e149a9f1104a69419b3"
+  },
+  "amount": 200,
+  "amtType": null,
+  "dateTime": {
+    "$date": "2023-10-18T00:00:00.000Z"
+  },
+  "description": "description ",
+  "fileInfo": [],
+  "formId": null,
+  "posted": false,
+  "unit": null
+},
+{
+  "_id": {
+    "$oid": "652fd6af378f1ecae7664511"
+  },
+  "fileInfo": [],
+  "userId": {
+    "$oid": "64c76e149a9f1104a69419b3"
+  },
+  "type": "welding",
+  "details": "oxygen",
+  "description": "remarks",
+  "dateTime": {
+    "$date": "2023-10-18T00:00:00.000Z"
+  },
+  "job": null,
+  "terminal": null,
+  "unit": null,
+  "amtType": null,
+  "amount": 300,
+  "formId": null,
+  "posted": false,
+  "createdAt": {
+    "$date": "2023-10-18T12:59:30.180Z"
+  },
+  "updatedAt": {
+    "$date": "2023-10-18T12:59:30.180Z"
+  },
+  "__v": 0
+}]

@@ -42,6 +42,8 @@ import FrmExpense from './features/expenses/FrmExpense';
 import FrmConsumable from './features/consumables/FrmConsumable';
 import FrmEquip from './features/equipment/FrmEquip';
 
+import FrmRecord from './features/records/FrmRecord';
+
 function App() {
   useTitle('Cost Tracking')
 
@@ -65,6 +67,11 @@ function App() {
 
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
+                <Route path="records">
+                  <Route path="consumables" element={<FrmRecord formType={`Consumables`} />} />
+                  <Route path="equipment" element={<FrmRecord formType={`Equipment`} />} />
+                  <Route path="equipment" element={<FrmRecord formType={`Expenses`} />} />
+                </Route>
                 <Route path="forms">
                   <Route path="consumables" element={<FrmConsumable />} />
                   <Route path="Equipment" element={<FrmEquip />} />
@@ -83,6 +90,12 @@ function App() {
                   <Route index element={<FilesUpload />} />
                   <Route path="attendances" element={<AttendancesUpload />} />
                   <Route path="gpsdats" element={<GPSDatsUpload />} />
+                </Route>
+                <Route path="dailyReports">
+                  <Route index element={<DailyReportsList />} />
+                  <Route path=":id" element={<EditDailyReport />} />
+                  <Route path="new" element={<NewDailyReport />} />
+                  <Route path="new/:activityId" element={<NewDailyReport />} />
                 </Route>
               </Route>
 

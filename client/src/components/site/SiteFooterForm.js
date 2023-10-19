@@ -21,11 +21,11 @@ const SiteFooter = ({ userid, username, status, activities }) => {
             </button>
         )
     }
-    console.log(activities)
+    //console.log(activities)
 
     const content = (
 
-        <div className="site-footer">
+        <div className="ct-footer">
             {goHomeButton}
             <p>Current User: {username}</p>
             <p>User Id: {userid}</p>

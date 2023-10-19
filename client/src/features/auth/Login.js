@@ -138,7 +138,7 @@ const Login = () => {
                                         />
                                     </div>
                                     <div style={{ marginTop: "10px" }} className="form-group">
-                                        <div className="col-sm-12 controls dash-header__nav">
+                                        <div className="col-sm-12 controls ct-header__nav">
                                             <button type="button" className="btn btn-primary btn-sm" onClick={handleSubmit} >Sign In</button>
                                         </div>
                                     </div>

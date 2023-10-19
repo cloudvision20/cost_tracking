@@ -58,7 +58,7 @@ const DashHeader = () => {
     // if (!DASH_REGEX.test(pathname) && !DAILY_REPORTS_REGEX.test(pathname)
     //     && !ACTIVITIES_REGEX.test(pathname) && !USERS_REGEX.test(pathname)
     //     && !PROJECTS_REGEX.test(pathname)) {
-    //     dashClass = "dash-header__container--small"
+    //     dashClass = "ct-header__container--small"
     // }
 
     let newDailyReportNavLink = null
@@ -87,7 +87,7 @@ const DashHeader = () => {
                 onMouseOver={onMouseOverNavLink}
                 onMouseOut={onMouseOutNavLink_Whitesmoke}
                 style={navLinkStyle_Whitesmoke}
-                title="DailyReports"
+                title="Daily Reports"
                 onClick={onDailyReportsClicked}
             >
                 {/* <FontAwesomeIcon icon={faClipboardList} /> */}
@@ -232,6 +232,14 @@ const DashHeader = () => {
             <FontAwesomeIcon icon={faArrowCircleLeft} />
         </Nav.Link>
     )
+
+    const blankNavLink = (
+        <Nav.Link
+            disabled="true"
+            title="Blank"
+        >&nbsp;&#9;&#9;&nbsp;
+        </Nav.Link>
+    )
     const errClass = isError ? "errmsg" : "offscreen"
 
     let navLinkContent
@@ -249,7 +257,7 @@ const DashHeader = () => {
                 {dailyReportsNavLink}
                 {newUserNavLink}
                 {usersNavLink}
-                {logoutNavLink}
+
             </>
         )
     }
@@ -258,8 +266,8 @@ const DashHeader = () => {
 
         <>
             <p className={errClass}>{error?.data?.message}</p>
-            <div className="site-header">
-                <div className="container-xl  site-header__container">
+            <div className="ct-header">
+                <div className="container-xl  ct-header__container">
                     <Navbar expand="lg" style={{ backgroundColor: '#212f51' }} >
                         <Navbar.Brand href="/dash" style={navLinkStyle_Whitesmoke} >
                             <div>
@@ -268,11 +276,14 @@ const DashHeader = () => {
                             </div>
                         </Navbar.Brand>
                     </Navbar>
-                    <Navbar style={{ backgroundColor: '#212f51' }} >
+                    <Navbar bg="backgroundColor: #212f51"  >
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="me-auto">
+                            <Nav className="ms-auto">
                                 {navLinkContent}
+                                {blankNavLink}
+                                {blankNavLink}
+                                {logoutNavLink}
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>

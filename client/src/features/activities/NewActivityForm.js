@@ -29,13 +29,13 @@ class BtnCellRenderer extends Component {
     render() {
         return (
             this.props.Id === "resources" ?
-                <div className="form-group dash-header__nav">
+                <div className="form-group ct-header__nav">
                     <button className="btn btn-primary btn-sm" onClick={this.btnClickedHandler}>Assign</button>
                     <button className="btn btn-danger btn-sm" onClick={this.btnDelClickedHandler}>Del</button>
                 </div>
 
                 :
-                <div className="form-group dash-header__nav">
+                <div className="form-group ct-header__nav">
                     {/* <button className="btn btn-primary btn-sm" onClick={this.btnClickedHandler}>Close</button> */}
                     <button className="btn btn-danger btn-sm" onClick={this.btnDelClickedHandler}>Del</button>
                 </div>
@@ -311,10 +311,10 @@ const NewActivityForm = ({ users }) => {
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <form onSubmit={onSaveActivityClicked}>
+            <form onSubmit={onSaveActivityClicked} style={{ fontSize: '12px', }}>
                 <div className="panel">
-                    <h2>New Activity</h2>
-                    <div className="form-group dash-header__nav">
+                    <h6>New Activity</h6>
+                    <div className="form-group ct-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"
@@ -438,7 +438,7 @@ const NewActivityForm = ({ users }) => {
                     <div className="panel-group">
                         <div className="panel panel-default">
                             <div className="panel-heading">Resources List</div>
-                            <div className="form-group  dash-header__nav">
+                            <div className="form-group  ct-header__nav">
                                 <button
                                     className="btn btn-primary"
                                     title="New Resources"
@@ -463,7 +463,7 @@ const NewActivityForm = ({ users }) => {
                         <br />
                         <div className="panel panel-default" id="resourceDIV" style={{ display: "none" }}>
                             <div className="panel-heading">Resource Assignments</div>
-                            <div className="form-group  dash-header__nav">
+                            <div className="form-group  ct-header__nav">
                                 <button
                                     className="btn btn-primary"
                                     title="New Resources"

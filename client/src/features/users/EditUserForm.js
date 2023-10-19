@@ -112,7 +112,7 @@ const EditUserForm = ({ user }) => {
             <form className="form" onSubmit={e => e.preventDefault()}>
                 <div className="panel">
                     <h4><b>Edit User</b></h4>
-                    <div className="form-group  dash-header__nav">
+                    <div className="form-group  ct-header__nav">
                         <button
                             className="btn btn-primary"
                             title="Save"
