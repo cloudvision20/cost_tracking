@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateExpensesMutation, useDeleteExpenseMutation } from './expensesApiSlice'
+import { useUpdateMastersMutation, useDeleteMasterMutation } from './mastersApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 
-let eExpenses = {}
+let eMasters = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -31,31 +31,31 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const FrmExpenseForm = ({ expenses }) => {
-    const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
-
+const EditMasterForm = ({ masters, formType }) => {
+    const blankData = { "type": "", "name": "", "capacity": 0, "unit": "", "_id": "" }
+    //formType = formType ? formType : 'Consumables'
     let msgContent = ''
     const msgRef = useRef();
 
-    if (!expenses) {
-        msgContent = 'New Expense database'
+    if (!masters) {
+        msgContent = `New ${formType} database`
         msgRef.className = 'resmsg'
-        expenses = { blankData }
+        masters = { blankData }
     } else {
         msgRef.className = 'offscreen'
         msgContent = ''
     }
-    const [updateExpenses, {
+    const [updateMasters, {
         //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateExpensesMutation()
-    const [deleteExpense, {
+    }] = useUpdateMastersMutation()
+    const [deleteMaster, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteExpenseMutation()
+    }] = useDeleteMasterMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -64,21 +64,23 @@ const FrmExpenseForm = ({ expenses }) => {
             width: 150,
         };
     }, []);
-    const expenseGridRef = useRef();
+    const masterGridRef = useRef();
 
-    let data = Array.from(expenses).map((data, index) => ({
+    let data = Array.from(masters).map((data, index) => ({
         "type": data.type,
         "name": data.name,
         "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+        "unit": data.unit,
         "_id": data._id
     }))
 
-    const [rdExpense, setRdExpense] = useState(data)
-    const [expenseColDefs] = useState([
+    const [rdMaster, setRdMaster] = useState(data)
+    const [masterColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
         { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
         { field: "capacity", headerName: 'Capacity', width: 150, editable: true },
+        { field: "unit", headerName: 'Unit', width: 150, editable: true },
         {
             headerName: 'Actions',
             width: 150,
@@ -89,7 +91,7 @@ const FrmExpenseForm = ({ expenses }) => {
                     if (this.data._id) { delRecord(this.data._id) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "expense"
+                Id: "master"
             },
         }
     ])
@@ -99,19 +101,20 @@ const FrmExpenseForm = ({ expenses }) => {
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        eExpenses.data = rdExpense
-
-        await updateExpenses(eExpenses)
+        eMasters.data = rdMaster
+        eMasters.formType = formType
+        await updateMasters(eMasters)
             .then((result) => {
                 console.log(` result = ${JSON.stringify(result)}`)
                 data = result.data.data.map((data, index) => ({
                     "type": data.type,
                     "name": data.name,
                     "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+                    "unit": data.unit,
                     "_id": data._id
                 }))
-                setRdExpense(data)
-                expenseGridRef.current.api.refreshCells()
+                setRdMaster(data)
+                masterGridRef.current.api.refreshCells()
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
@@ -120,7 +123,7 @@ const FrmExpenseForm = ({ expenses }) => {
     }
 
     const delRecord = async (_id) => {
-        await deleteExpense({ id: _id })
+        await deleteMaster({ id: _id, formType: formType })
             .then((result) => {
 
 
@@ -128,21 +131,21 @@ const FrmExpenseForm = ({ expenses }) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 let rData = []
-                expenseGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdExpense(rData)
+                masterGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdMaster(rData)
             }
             )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdExpense))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdMaster))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdExpense ?
-                [...rdExpense, blankData]
+            rdMaster ?
+                [...rdMaster, blankData]
                 : [blankData]
-        setRdExpense(newRData)
+        setRdMaster(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -151,45 +154,53 @@ const FrmExpenseForm = ({ expenses }) => {
             : errContent.current = "Deleted!"
     }, [isSuccess, isDelSuccess, navigate])
 
-    // useEffect(() => {
-    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdExpense))
-    // })
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
 
-            <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                <div className="panel-heading"><h5>Expenses</h5></div>
-                <div className="form-group  ct-header__nav">
-                    <button
-                        className="btn btn-primary"
-                        title="New"
-                        onClick={onNewClicked}
-                    >
-                        <FontAwesomeIcon icon={faPlusSquare} />
-                    </button>
-                    <button
-                        className="btn btn-primary"
-                        title="Save"
-                        onClick={onSaveClicked}
-                    >
-                        <FontAwesomeIcon icon={faSave} />
-                    </button>
+            <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
+                <div className="row">
+                    <br />
                 </div>
-                <div className="panel-body">
+                <div className="row">
+                    <div className="col-sm-12" style={{ border: "0px" }}><h4><b>Edit {formType} </b></h4></div>
+                </div>
+
+                <div className="row">
+                    <div className="form-group  ct-header__nav">
+                        <button
+                            className="btn btn-primary"
+                            title="New"
+                            onClick={onNewClicked}
+                        >
+                            <FontAwesomeIcon icon={faPlusSquare} />
+                        </button>
+                        <button
+                            className="btn btn-primary"
+                            title="Save"
+                            onClick={onSaveClicked}
+                        >
+                            <FontAwesomeIcon icon={faSave} />
+                        </button>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
                         <p ref={msgRef} className="" >{msgContent}</p>
                         <AgGridReact
-                            ref={expenseGridRef}
+                            ref={masterGridRef}
                             onCellValueChanged={onValueChanged}
                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                             // onRowDataUpdated={(event) => event.current.api.refreshCells()}
                             defaultColDef={defaultColDef}
-                            rowData={rdExpense}
-                            columnDefs={expenseColDefs}>
+                            rowData={rdMaster}
+                            columnDefs={masterColDefs}>
 
                         </AgGridReact>
                     </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h5><b></b></h5><br /><br /></div>
                 </div>
             </div>
         </>
@@ -199,4 +210,4 @@ const FrmExpenseForm = ({ expenses }) => {
 
 }
 
-export default FrmExpenseForm
+export default EditMasterForm

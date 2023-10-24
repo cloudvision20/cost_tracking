@@ -62,6 +62,22 @@ const SiteHeaderForm = () => {
                 break;
         }
     }
+    const onFormSelected = (item) => {
+        switch (item) {
+
+            case 'Consumables':
+                navigate('/site/records/consumable')
+                break;
+            case 'Equipment':
+                navigate('/site/records/equip')
+                break;
+            case 'Expenses':
+                navigate('/site/records/expense')
+                break;
+            default:
+                break;
+        }
+    }
     const onFormsSelected = (item) => {
         switch (item) {
 
@@ -143,6 +159,24 @@ const SiteHeaderForm = () => {
             </NavDropdown.Item>
         )
     })
+    const form = [
+        { '_id': 'Consumables', 'name': 'Consumables (Single record) form' },
+        { '_id': 'Equipment', 'name': 'Equipment (Single record) form' },
+        { '_id': 'Expenses', 'name': 'Expenses (Single record) form' }]
+    let navFormMenu
+    navFormMenu = form.map(item => {
+        return (
+            <NavDropdown.Item
+                key={item._id}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Blue}
+                onClick={() => onFormSelected(item._id)}
+            >
+                {item.name}
+            </NavDropdown.Item>
+        )
+    })
+
     const forms = [
         { '_id': 'Consumables', 'name': 'Consumables form' },
         { '_id': 'Equipment', 'name': 'Equipment form' },
@@ -150,7 +184,7 @@ const SiteHeaderForm = () => {
     let navFormsMenu
     navFormsMenu = forms.map(item => {
         return (
-            <NavDropdown.Item href="#Master#Forms"
+            <NavDropdown.Item
                 key={item._id}
                 onMouseOver={onMouseOverNavLink}
                 onMouseOut={onMouseOutNavLink_Blue}
@@ -160,7 +194,6 @@ const SiteHeaderForm = () => {
             </NavDropdown.Item>
         )
     })
-
 
 
     // let consumablesNavLink = null
@@ -319,6 +352,7 @@ const SiteHeaderForm = () => {
                                     >Records Menu</span>}
                                     id="basic-nav-dropdown">
                                     {navFormsMenu}
+                                    {navFormMenu}
                                     <NavDropdown.Divider />
                                     {dailyReportMenu}
                                     {newDailyReportMenu}

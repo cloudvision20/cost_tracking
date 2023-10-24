@@ -39,6 +39,15 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
                 },
             })
         }),
+
+        // getActivityByType: builder.query({
+        //     query: (formType) => ({
+        //         url: `/activities/forms/${formType}`,
+        //         validateStatus: (response, result) => {
+        //             return response.status === 200 && !result.isError
+        //         },
+        //     })
+        // }),
         getActivitiesByUserId: builder.query({
             query: (id) => ({
                 url: `/activities/userid/${id}`,
@@ -96,6 +105,8 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
 export const {
     useGetActivitiesQuery,
     useGetActivityByIdQuery,
+    // useGetActivityByTypeQuery,
+    // useLazyGetActivityByTypeQuery,
     useGetActivitiesByUserIdQuery,
     useAddNewActivityMutation,
     useUpdateActivityMutation,

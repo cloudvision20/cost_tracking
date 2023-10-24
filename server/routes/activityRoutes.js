@@ -8,6 +8,9 @@ router.route('/')
     .patch(activitiesController.updateActivity)
     .delete(activitiesController.deleteActivity)
 
+// router.route('/forms/:type')
+//     .get(activitiesController.getActivityByType)
+
 router.route('/:id')
     .get(activitiesController.getActivityById)
 

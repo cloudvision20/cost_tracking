@@ -8,6 +8,10 @@ router.route('/')
     .post(recordsController.createNewRecord)
     .patch(recordsController.updateRecords)
     .delete(recordsController.deleteRecord)
+
+// router.route('/forms/:type')
+//     .get(recordsController.getMastersByType)
+
 router.route('/:formType')
     .get(recordsController.getRecordsByType)
     .patch(recordsController.updateRecords)

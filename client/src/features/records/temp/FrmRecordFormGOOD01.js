@@ -1,19 +1,19 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 // import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateRecordsMutation, useDeleteRecordMutation } from './recordsApiSlice'
+import { useUpdateRecordsMutation, useDeleteRecordMutation } from '../recordsApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 import { Form } from 'react-bootstrap';
-import { date2Weekday, dateForPicker } from "../../hooks/useDatePicker"
-import useAuth from "../../hooks/useAuth"
+import { date2Weekday, dateForPicker } from "../../../hooks/useDatePicker"
+import useAuth from "../../../hooks/useAuth"
 import { useSelector } from 'react-redux'
-import { selectActivity } from '../../components/site/siteSlice'
+import { selectActivity } from '../../../components/site/siteSlice'
 
 let eRecords = {}
 //let activities = {}
 let detail_list = {}
-const EditRecordForm = ({ res, formType }) => {
+const EditRecordForm = ({ res }) => {
     const activities = useSelector(selectActivity)
     const { userid, username, status, isManager, isAdmin } = useAuth()
     // const records = {
@@ -36,9 +36,26 @@ const EditRecordForm = ({ res, formType }) => {
     // }
     //let records = {}
 
-    if (res) { detail_list = res.masters }
+    const formType = res.formType
+    if (res) {
+        // if (res.records) {
+        //     records = res.records
+        //     if (records._id === 'new') { records.userId = userid }
+        // }
+        // if (res.activities) {
+        //     activities = res.activities
+        // }
+
+        detail_list = (formType === 'Consumables')
+            ? res.consumables
+            : (formType === 'Equipment')
+                ? res.equipment
+                : (formType === 'Expenses')
+                    ? res.expenses
+                    : null
+
+    }
     const typeRef = useRef();
-    const amtTypeRef = useRef();
     const actOptions = activities.map(activity => {
         return (
             <option
@@ -59,9 +76,15 @@ const EditRecordForm = ({ res, formType }) => {
 
     let msgContent = ''
     const msgRef = useRef();
+
+    // if (!records) {
+    //     msgContent = 'New Record database'
+    //     msgRef.className = 'resmsg'
+    //     records = { blankData }
+    // } else {
     msgRef.className = 'offscreen'
     msgContent = ''
-
+    // }
     const [updateRecords, {
         //isLoading,
         isSuccess,
@@ -74,6 +97,13 @@ const EditRecordForm = ({ res, formType }) => {
         error: delerror
     }] = useDeleteRecordMutation()
     const navigate = useNavigate()
+    // const defaultColDef = useMemo(() => {
+    //     return {
+    //         flex: 1,
+    //         resizable: true,
+    //         width: 150,
+    //     };
+    // }, []);
 
     const [_id, set_id] = useState('new')
     const [employeeId, setEmployeeId] = useState(null)
@@ -107,6 +137,7 @@ const EditRecordForm = ({ res, formType }) => {
     const onDateTimeChanged = (e) => { setDateTime(e.target.value) }
     const onSaveClicked = async (e) => {
         e.preventDefault()
+        //eRecords._id = !_id ? '' : _id
         eRecords.employeeId = !employeeId ? '' : employeeId
         eRecords.type = !type ? '' : type
         eRecords.details = !details ? '' : details
@@ -147,13 +178,16 @@ const EditRecordForm = ({ res, formType }) => {
     const delRecord = async (_id, formType) => {
         await deleteRecord({ id: _id, formType: formType })
             .then((result) => {
+
+
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 //let rData = []
                 //recordGridRef.current.api.forEachNode(node => rData.push(node.data));
                 //setRdRecord(rData)
-            })
+            }
+            )
     }
 
     const onNewClicked = (e) => {
@@ -170,6 +204,7 @@ const EditRecordForm = ({ res, formType }) => {
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
+
             <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
 
                 <div className="row">
@@ -222,7 +257,7 @@ const EditRecordForm = ({ res, formType }) => {
                     </div>
                 </div>
                 <div className="form-group row" >
-                    <div className="col-sm-2" style={{ border: "0px" }}><b>ResourceDetails </b></div>
+                    <div className="col-sm-2" style={{ border: "0px" }}><b>Details </b></div>
                     <div className="col-sm-4" style={{ border: "0px" }}>
                         <select
                             id="details"
@@ -249,33 +284,6 @@ const EditRecordForm = ({ res, formType }) => {
                             value={type}
                             onChange={onTypeChanged}
                         />
-                    </div>
-                </div>
-                <div className="form-group row" >
-                    <div className="col-sm-2" style={{ border: "0px" }}><b>Amount: </b></div>
-                    <div className="col-sm-4" style={{ border: "0px" }}>
-                        <input
-                            className="form-control"
-                            id="amount" name="amount"
-                            type="text"
-                            style={{ fontSize: '11px' }}
-                            placeholder="Type"
-                            autoComplete="off"
-                            value={amount}
-                            onChange={onTypeChanged}
-                        />
-                    </div>
-                    <div className="col-sm-1" style={{ border: "0px" }}><b>Unit: </b></div>
-                    <div className="col-sm-4" style={{ border: "0px" }}>
-                        <select
-                            id="amtType" name="amtType"
-                            style={{ fontSize: '11px' }}
-                            className="form-select form-select-sm"
-                            value={amtType}
-                            onChange={onDetailsChanged}
-                        >
-                            {detailsOptions}
-                        </select>
                     </div>
                 </div>
                 <div className="row">

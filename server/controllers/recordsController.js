@@ -1,7 +1,12 @@
 const Record = require('../models/Record')
+
 const ConsJrnl = require('../models/ConsumableJournal')
-const Equip = require('../models/EquipmentJournal')
-const Expense = require('../models/ExpenseJournal')
+const EquipJrnl = require('../models/EquipmentJournal')
+const ExpenseJrnl = require('../models/ExpenseJournal')
+
+const Equipment = require('../models/Equipment')
+const Consumable = require('../models/Consumable')
+const Expense = require('../models/Expense')
 
 //const User = require('../models/User')
 const Activity = require('../models/Activity')
@@ -27,13 +32,12 @@ const getRecordsByType = asyncHandler(async (req, res) => {
     const formType = req.params.formType
     // Get record by type
 
-    const record = {}
     const records = (formType === 'Consumables') ?
         await ConsJrnl.find().populate({ path: 'userId' }).populate({ path: 'activityId' }).exec()
         : (formType === 'Equipment') ?
-            await Equip.find().populate({ path: 'userId' }).populate({ path: 'activityId' }).exec()
+            await EquipJrnl.find().populate({ path: 'userId' }).populate({ path: 'activityId' }).exec()
             : (formType === 'Expenses') ?
-                await Expense.find().populate({ path: 'userId' }).populate({ path: 'activityId' }).exec()
+                await ExpenseJrnl.find().populate({ path: 'userId' }).populate({ path: 'activityId' }).exec()
                 : await Record.find().populate({ path: 'userId' }).populate({ path: 'activityId' }).exec()
 
     let activities = {}
@@ -59,16 +63,15 @@ const getRecordsByType = asyncHandler(async (req, res) => {
 const getRecordById = asyncHandler(async (req, res) => {
     const _id = req.params.id
     const formType = req.params.type
-    // Get record by type
-    // Get record by Id and return all the data for the options
+    // Get record by type and  Id and return all the data for the options
     // retrieve Record by Id and include usename corresponsing to userId
 
     const record = (formType === 'Consumables') ?
         new ConsJrnl()
         : (formType === 'Equipment') ?
-            new Equip()
+            new EquipJrnl()
             : (formType === 'Expenses') ?
-                new Expense()
+                new ExpenseJrnl()
                 : new Record()
     const result = await record.find({ "_id": _id }).populate({ path: 'userId' }).exec()
     let activities
@@ -174,7 +177,7 @@ const updateRecord = asyncHandler(async (req, res) => {
 const updateRecords = async (req, res) => {
     const newData = req.body.data
     const formType = req.body.formType
-    const formName = !formType ? 'Record' : formType
+    //const formName = !formType ? 'Record' : formType
     const response = []
     const data = []
     let record
@@ -182,12 +185,13 @@ const updateRecords = async (req, res) => {
         record = (formType === 'Consumables') ?
             new ConsJrnl()
             : (formType === 'Equipment') ?
-                new Equip()
+                new EquipJrnl()
                 : (formType === 'Expenses') ?
-                    new Expense()
+                    new ExpenseJrnl()
                     : new Record()
 
         record.userId = newData[i].userId ? newData[i].userId : null
+        record.activityId = newData[i].activityId ? newData[i].activityId : null
         record.type = newData[i].type ? newData[i].type : null
         record.details = newData[i].details ? newData[i].details : null
         record.description = newData[i].description ? newData[i].description : null
@@ -201,6 +205,7 @@ const updateRecords = async (req, res) => {
         record.formId = newData[i].formId ? newData[i].formId : null
         record.amtType = newData[i].amtType ? newData[i].amtType : null
         record.posted = newData[i].posted ? newData[i].posted : false // default false
+        record.fileInfo = newData[i].fileInfo ? newData[i].fileInfo : []
 
         if (newData[i]._id) {
             // Update
@@ -209,49 +214,49 @@ const updateRecords = async (req, res) => {
                 case 'Consumables':
                     await ConsJrnl.findOneAndUpdate({ _id: newData[i]._id }, record, { new: true }).then((result) => {
                         if (result === null) {
-                            response.push({ message: `${formName} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
+                            response.push({ message: `${formType} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
                         } else {
-                            response.push({ message: `${formName} Id: ${result._id},details: ${result.details} updated successfully` })
+                            response.push({ message: `${formType} Id: ${result._id},details: ${result.details} updated successfully` })
                             data.push(result)
                         }
                     }).catch((error) => {
-                        response.push({ message: `error -- ${formName} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
+                        response.push({ message: `error -- ${formType} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
                     });
                     break;
                 case 'Equipment':
-                    await Equip.findOneAndUpdate({ _id: newData[i]._id }, record, { new: true }).then((result) => {
+                    await EquipJrnl.findOneAndUpdate({ _id: newData[i]._id }, record, { new: true }).then((result) => {
                         if (result === null) {
-                            response.push({ message: `${formName} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
+                            response.push({ message: `${formType} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
                         } else {
-                            response.push({ message: `${formName} Id: ${result._id},details: ${result.details} updated successfully` })
+                            response.push({ message: `${formType} Id: ${result._id},details: ${result.details} updated successfully` })
                             data.push(result)
                         }
                     }).catch((error) => {
-                        response.push({ message: `error -- ${formName} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
+                        response.push({ message: `error -- ${formType} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
                     });
                     break;
                 case 'Expenses':
-                    await Expense.findOneAndUpdate({ _id: newData[i]._id }, record, { new: true }).then((result) => {
+                    await ExpenseJrnl.findOneAndUpdate({ _id: newData[i]._id }, record, { new: true }).then((result) => {
                         if (result === null) {
-                            response.push({ message: `${formName} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
+                            response.push({ message: `${formType} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
                         } else {
-                            response.push({ message: `${formName} Id: ${result._id},details: ${result.details} updated successfully` })
+                            response.push({ message: `${formType} Id: ${result._id},details: ${result.details} updated successfully` })
                             data.push(result)
                         }
                     }).catch((error) => {
-                        response.push({ message: `error -- ${formName} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
+                        response.push({ message: `error -- ${formType} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
                     });
                     break;
                 default:
                     await Record.findOneAndUpdate({ _id: newData[i]._id }, record, { new: true }).then((result) => {
                         if (result === null) {
-                            response.push({ message: `${formName} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
+                            response.push({ message: `${formType} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
                         } else {
-                            response.push({ message: `${formName} Id: ${result._id},details: ${result.details} updated successfully` })
+                            response.push({ message: `${formType} Id: ${result._id},details: ${result.details} updated successfully` })
                             data.push(result)
                         }
                     }).catch((error) => {
-                        response.push({ message: `error -- ${formName} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
+                        response.push({ message: `error -- ${formType} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
                     });
                     break;
             }
@@ -261,9 +266,9 @@ const updateRecords = async (req, res) => {
             await record.save()
                 .then((result) => {
                     if (result === null) {
-                        response.push({ message: `${formName} Id: ${newData[i]._id},details: ${newData[i].details} fail to saved` })
+                        response.push({ message: `${formType} Id: ${newData[i]._id},details: ${newData[i].details} fail to saved` })
                     } else {
-                        response.push({ message: `${formName} Id: ${result._id},details: ${result.details} created successfully` })
+                        response.push({ message: `${formType} Id: ${result._id},details: ${result.details} created successfully` })
                         data.push(result)
                     }
                 }
@@ -272,7 +277,7 @@ const updateRecords = async (req, res) => {
                     (error) => {
                         console.log(`error=${error}`)
                         console.log(`id: ${newData[i]._id},details: ${newData[i].details}` + error)
-                        response.push({ message: `error -- ${formName} Id: (\'${data._id}\') create failed , error: ${error}` })
+                        response.push({ message: `error -- ${formType} Id: (\'${data._id}\') create failed , error: ${error}` })
                     }
                 )
         }
@@ -290,25 +295,25 @@ const updateRecords = async (req, res) => {
 // @access Private
 const deleteRecord = async (req, res) => {
     const { id, formType } = req.body.del
-    const formName = !formType ? 'Record' : formType
+    // const formName = !formType ? 'Record' : formType
 
-    if (!formType) { return res.status(400).json({ message: `${formName} ID Required` }) }
-    if (!id) { return res.status(400).json({ message: `${formName} ID Required` }) }
+    if (!formType) { return res.status(400).json({ message: `${formType} ID Required` }) }
+    if (!id) { return res.status(400).json({ message: `${formType} ID Required` }) }
     try {
         const data = (formType === 'Consumables') ?
             await ConsJrnl.findOneAndDelete({ _id: id })
             : (formType === 'Equipment') ?
-                await Equip.findOneAndDelete({ _id: id })
+                await EquipJrnl.findOneAndDelete({ _id: id })
                 : (formType === 'Expenses') ?
-                    await Expense.findOneAndDelete({ _id: id })
+                    await ExpenseJrnl.findOneAndDelete({ _id: id })
                     : await Record.findOneAndDelete({ _id: id });
         //const data = await record.findOneAndDelete({ _id: id });
         if (!data) {
-            return res.status(400).json({ message: `${formName}  Id: (\'${id}\') not found delete failed ` });
+            return res.status(400).json({ message: `${formType}  Id: (\'${id}\') not found delete failed ` });
         }
-        return res.status(200).json({ data: data, message: `${formName}  Id: (\'${data._id}\'), Details: (\'${data.details}\'), deleted successfully` });
+        return res.status(200).json({ data: data, message: `${formType}  Id: (\'${data._id}\'), Details: (\'${data.details}\'), deleted successfully` });
     } catch (err) {
-        return res.status(400).json({ message: `error -- ${formName}  Id: (\'${id}\') delete failed`, error: err })
+        return res.status(400).json({ message: `error -- ${formType}  Id: (\'${id}\') delete failed`, error: err })
     }
 }
 module.exports = {

@@ -4,6 +4,7 @@ const Project = require('../models/Project')
 const DailyReport = require('../models/DailyReport')
 const Equipment = require('../models/Equipment')
 const Consumable = require('../models/Consumable')
+const Expense = require('../models/Expense')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const { format } = require('date-fns')
@@ -54,7 +55,62 @@ const getActivityById = asyncHandler(async (req, res) => {
     response.consumables = consumables
     res.json(response)
 })
+// const getActivityByType = asyncHandler(async (req, res) => {
+//     const formType = req.params.type
+//     // retrieve Activity by Id and include usename corresponsing to userId
+//     //populate({ path: 'userId', select: 'username' }).populate({ path: 'projectId' }).exec()
+//     let response = {}
+//     await Activity.find().lean().then((result) => {
+//         if (result === null) {
+//             return res.status(400).json({ message: `Activities record not found` })
+//         }
+//         //console.log(`Activities result = ${JSON.stringify(result)}`)
+//         response.activities = result
 
+//     }).catch((error) => {
+//         console.log(`error : Activities Loading Error`)
+//     })
+//     // If no activity 
+//     if (response?.activities?.length) {
+//         //response.activities = activities
+//         if (formType === 'Consumables') {
+//             await Consumable.find().lean().then((result) => {
+//                 if (result === null) {
+//                     console.log(`${formType} record not found`)
+//                 }
+//                 console.log('result =' + JSON.stringify(result))
+//                 response.consumables = result
+//             }).catch((error => {
+//                 console.log(`error : ${formType} Loading Error`)
+//             }))
+
+//         } else if (formType === 'Equipment') {
+//             await Equipment.find().lean().then((result) => {
+//                 if (result === null) {
+//                     console.log(`${formType} record not found`)
+//                 }
+//                 console.log('result =' + JSON.stringify(result))
+//                 response.equipment = result
+//             }).catch((error => {
+//                 console.log(`error : ${formType} Loading Error`)
+//             }))
+
+
+//         } else if (formType === 'Expenses') {
+//             await Expense.find().lean().then((result) => {
+//                 if (result === null) {
+//                     console.log(`${formType} record not found`)
+//                 }
+//                 console.log('result =' + JSON.stringify(result))
+//                 response.expenses = result
+//             }).catch((error => {
+//                 console.log(`error : ${formType} Loading Error`)
+//             }))
+//         }
+//     }
+//     console.log('response =' + JSON.stringify(response))
+//     res.status(200).json(response)
+// })
 const getActivityByUserId = asyncHandler(async (req, res) => {
     const id = req.params.id
     let activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": id })).exec()
@@ -139,4 +195,5 @@ module.exports = {
     createNewActivity,
     updateActivity,
     deleteActivity
+    // ,getActivityByType
 }

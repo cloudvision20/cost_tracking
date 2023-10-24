@@ -12,6 +12,10 @@ const consumableSchema = new mongoose.Schema({
     capacity: {
         type: String,
         required: false
+    },
+    unit: {
+        type: String,
+        required: false
     }
 })
 

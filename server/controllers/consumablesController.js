@@ -20,7 +20,7 @@ const getAllConsumables = async (req, res) => {
 // @route POST /consumables
 // @access Private
 const createNewConsumable = async (req, res) => {
-    const { name, type, capacity } = req.body
+    const { name, type, unit, capacity } = req.body
 
     // Confirm data
     if (!name) {
@@ -39,6 +39,7 @@ const createNewConsumable = async (req, res) => {
     if (name) { consumable.name = name }
     if (type) { consumable.type = type }
     if (capacity) { consumable.capacity = parseFloat(capacity) }
+    if (unit) { consumable.unit = unit }
 
     // Create and store new consumable 
     const result = await Consumable.create(consumable)
@@ -54,7 +55,7 @@ const createNewConsumable = async (req, res) => {
 // @route PATCH /consumables
 // @access Private
 const saveConsumable = async (req, res) => {
-    const { id, name, type, capacity } = req.body
+    const { id, name, type, unit, capacity } = req.body
 
     // Confirm data 
     if (!name) {
@@ -79,6 +80,7 @@ const saveConsumable = async (req, res) => {
     if (name) { consumable.name = name }
     if (type) { consumable.type = type }
     if (capacity) { consumable.capacity = parseFloat(capacity) }
+    if (unit) { consumable.unit = unit }
 
     const result = await consumable.save()
 
@@ -89,7 +91,7 @@ const saveConsumable = async (req, res) => {
 // @route PATCH /consumables
 // @access Private
 const updateConsumable = async (req, res) => {
-    const { name, type, capacity } = req.body
+    const { name, type, unit, capacity } = req.body
 
     let id
     req.body.id ? id = req.body.id
@@ -118,6 +120,7 @@ const updateConsumable = async (req, res) => {
     if (name) { consumable.name = name }
     if (type) { consumable.type = type }
     if (capacity) { consumable.capacity = parseFloat(capacity) }
+    if (unit) { consumable.unit = unit }
 
     await Consumable.findOneAndUpdate({ _id: id }, consumable, { new: true }).then((result) => {
         if (result === null) {
@@ -140,6 +143,7 @@ const updateConsumables = async (req, res) => {
         if (newData[i].name) { consumable.name = newData[i].name }
         if (newData[i].type) { consumable.type = newData[i].type }
         if (newData[i].capacity) { consumable.capacity = parseFloat(newData[i].capacity) }
+        if (newData[i].unit) { consumable.unit = newData[i].unit }
         if (newData[i]._id) {
             // Update
             consumable._id = newData[i]._id

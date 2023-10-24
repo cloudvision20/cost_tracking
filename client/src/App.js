@@ -31,18 +31,20 @@ import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
 
-import EditEquip from './features/equipment/EditEquip'
-import EditConsumable from './features/consumables/EditConsumable'
-import EditExpense from './features/expenses/EditExpense'
+// import EditEquip from './features/equipment/EditEquip'
+// import EditConsumable from './features/consumables/EditConsumable'
+// import EditExpense from './features/expenses/EditExpense'
 
 import SiteLayout from './components/site/SiteLayout'
 import SiteWelcome from './features/auth/SiteWelcome'
 
-import FrmExpense from './features/expenses/FrmExpense';
-import FrmConsumable from './features/consumables/FrmConsumable';
-import FrmEquip from './features/equipment/FrmEquip';
+// import FrmExpense from './features/expenses/FrmExpense';
+// import FrmConsumable from './features/consumables/FrmConsumable';
+// import FrmEquip from './features/equipment/FrmEquip';
 
+import FrmRecords from './features/records/FrmRecords';
 import FrmRecord from './features/records/FrmRecord';
+import EditMasters from './features/masters/EditMasters'
 
 function App() {
   useTitle('Cost Tracking')
@@ -68,23 +70,26 @@ function App() {
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
                 <Route path="records">
-                  <Route path="consumables" element={<FrmRecord formType={`Consumables`} />} />
-                  <Route path="equipment" element={<FrmRecord formType={`Equipment`} />} />
-                  <Route path="equipment" element={<FrmRecord formType={`Expenses`} />} />
+                  <Route path="consumables" element={<FrmRecords formType={`Consumables`} />} />
+                  <Route path="equipment" element={<FrmRecords formType={`Equipment`} />} />
+                  <Route path="expenses" element={<FrmRecords formType={`Expenses`} />} />
+                  <Route path="consumable" element={<FrmRecord formType={`Consumables`} />} />
+                  <Route path="equip" element={<FrmRecord formType={`Equipment`} />} />
+                  <Route path="expense" element={<FrmRecord formType={`Expenses`} />} />
                 </Route>
-                <Route path="forms">
+                {/* <Route path="forms">
                   <Route path="consumables" element={<FrmConsumable />} />
                   <Route path="Equipment" element={<FrmEquip />} />
                   <Route path="Expenses" element={<FrmExpense />} />
-                </Route>
+                </Route> */}
                 <Route path="consumables">
-                  <Route index element={<EditConsumable />} />
+                  <Route index element={<EditMasters formType={`Consumables`} />} />
                 </Route>
                 <Route path="equipment">
-                  <Route index element={<EditEquip />} />
+                  <Route index element={<EditMasters formType={`Equipment`} />} />
                 </Route>
                 <Route path="expenses">
-                  <Route index element={<EditExpense />} />
+                  <Route index element={<EditMasters formType={`Expenses`} />} />
                 </Route>
                 <Route path="files">
                   <Route index element={<FilesUpload />} />
@@ -103,9 +108,9 @@ function App() {
 
                 <Route index element={<Welcome />} />
 
-                <Route path="consumables">
+                {/* <Route path="consumables">
                   <Route index element={<EditConsumable />} />
-                </Route>
+                </Route> */}
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
                   <Route path="users">

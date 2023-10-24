@@ -1,12 +1,14 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateConsumablesMutation, useDeleteConsumableMutation } from './consumablesApiSlice'
+import { useUpdateRecordsMutation, useDeleteRecordMutation } from './recordsApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 import { Form } from 'react-bootstrap';
+import { date2Weekday, dateForPicker } from "../../hooks/useDatePicker"
+import useAuth from "../../hooks/useAuth"
 
-let eConsumables = {}
+let eRecords = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -32,31 +34,44 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const EditConsumableForm = ({ consumables }) => {
-    const blankData = { "type": "", "name": "", "capacity": 0, "_id": "" }
+const EditRecordForm = ({ res }) => {
+    const { userid, username, status, isManager, isAdmin } = useAuth()
+    const blankData = { "type": "", "details": "", "description": "", "amount": 0, "_id": null, "userId": userid }
+    let records = {}
+    let activities = {}
+    if (res) {
+        if (res.records) {
+            records = res.records
+            if (records._id === 'new') { records.userId = userid }
+        }
+        if (res.activities) {
+            activities = res.activities
+        }
+    }
 
+    const formType = res.formType
     let msgContent = ''
     const msgRef = useRef();
 
-    if (!consumables) {
-        msgContent = 'New Consumable database'
+    if (!records) {
+        msgContent = 'New Record database'
         msgRef.className = 'resmsg'
-        consumables = { blankData }
+        records = { blankData }
     } else {
         msgRef.className = 'offscreen'
         msgContent = ''
     }
-    const [updateConsumables, {
+    const [updateRecords, {
         //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateConsumablesMutation()
-    const [deleteConsumable, {
+    }] = useUpdateRecordsMutation()
+    const [deleteRecord, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteConsumableMutation()
+    }] = useDeleteRecordMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -65,21 +80,28 @@ const EditConsumableForm = ({ consumables }) => {
             width: 150,
         };
     }, []);
-    const consumableGridRef = useRef();
+    const recordGridRef = useRef();
 
-    let data = Array.from(consumables).map((data, index) => ({
+    let data = Array.from(records).map((data, index) => ({
+        "userId": data.userId._id,
+        "activityId": data.activityId,
         "type": data.type,
-        "name": data.name,
-        "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+        "details": data.details,
+        "description": data.description,
+        "dateTime": dateForPicker(data.dateTime),
+        "amount": data.amount ? parseFloat(data.amount) : 0,
         "_id": data._id
     }))
 
-    const [rdConsumable, setRdConsumable] = useState(data)
-    const [consumableColDefs] = useState([
+    const [rdRecord, setRdRecord] = useState(data)
+    const [recordColDefs] = useState([
+        { field: 'userId', headerName: 'user Id', width: 150, hide: true },
         { field: '_id', headerName: 'Id', width: 150 },
-        { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
-        { field: "capacity", headerName: 'Capacity', width: 150, editable: true },
+        { field: 'details', headerName: 'Details', width: 150, editable: true },
+        { field: "description", headerName: 'Description', width: 300, editable: true },
+        { field: 'dateTime', headerName: 'Date', width: 150, editable: true },
+        { field: "amount", headerName: 'Amount', width: 150, editable: true },
         {
             headerName: 'Actions',
             width: 150,
@@ -87,10 +109,10 @@ const EditConsumableForm = ({ consumables }) => {
             cellRendererParams: {
                 delClicked: function (eprops) {
 
-                    if (this.data._id) { delRecord(this.data._id) }
+                    if (this.data._id) { delRecord(this.data._id, formType) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "consumable"
+                Id: "record"
             },
         }
     ])
@@ -100,19 +122,23 @@ const EditConsumableForm = ({ consumables }) => {
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        eConsumables.data = rdConsumable
-
-        await updateConsumables(eConsumables)
+        eRecords.data = rdRecord
+        eRecords.formType = formType
+        await updateRecords(eRecords)
             .then((result) => {
                 console.log(` result = ${JSON.stringify(result)}`)
                 data = result.data.data.map((data, index) => ({
+                    "userId": data.userId,
+                    "activityId": data.activityId,
                     "type": data.type,
-                    "name": data.name,
-                    "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+                    "details": data.details,
+                    "description": data.description,
+                    "dateTime": dateForPicker(data.dateTime),
+                    "amount": data.amount ? parseFloat(data.amount) : 0,
                     "_id": data._id
                 }))
-                setRdConsumable(data)
-                consumableGridRef.current.api.refreshCells()
+                setRdRecord(data)
+                recordGridRef.current.api.refreshCells()
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
@@ -120,8 +146,8 @@ const EditConsumableForm = ({ consumables }) => {
             })
     }
 
-    const delRecord = async (_id) => {
-        await deleteConsumable({ id: _id })
+    const delRecord = async (_id, formType) => {
+        await deleteRecord({ id: _id, formType: formType })
             .then((result) => {
 
 
@@ -129,21 +155,21 @@ const EditConsumableForm = ({ consumables }) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 let rData = []
-                consumableGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdConsumable(rData)
+                recordGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdRecord(rData)
             }
             )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdConsumable))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdRecord))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdConsumable ?
-                [...rdConsumable, blankData]
+            rdRecord ?
+                [...rdRecord, blankData]
                 : [blankData]
-        setRdConsumable(newRData)
+        setRdRecord(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -153,49 +179,21 @@ const EditConsumableForm = ({ consumables }) => {
     }, [isSuccess, isDelSuccess, navigate])
 
     // useEffect(() => {
-    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdConsumable))
+    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdRecord))
     // })
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
 
 
-            <div className="container grid_system" style={{ fontSize: '12px', borderLeft: "1px solid blue", borderBottom: "1px solid blue" }}>
+            <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
+
                 <div className="row">
-                    <div className="col-sm-4"><br /><br /><br /></div>
-                    <div className="col-sm-4"><br /><b>DAILY PROGRESS REPORT</b><br /><br /></div>
-                    <div className="col-sm-4"></div>
+                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h4><b>{formType} Records</b></h4><br /><br /></div>
                 </div>
-                <div className="row">
-                    <div className="col-sm-1 label-back">Date</div>
-                    <div className="col-sm-4">
-                        <Form.Group controlId="reportDate">
-                            <Form.Control
-                                type="date"
-                            //value={reportDate ? dateForPicker(reportDate) : ''}
-                            //placeholder={reportDate ? dateForPicker(reportDate) : "dd-mm-yyyy"}
-                            //onChange={onReportDateChanged}
-                            />
-                        </Form.Group>
-                    </div>
-                    <div className="col-sm-3 label-back">Day</div>
-                    <div className="col-sm-4">reportDay</div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-1 label-back">1.0</div>
-                    <div className="col-sm-11 label-back"><b>ManHours & Weather Record</b></div>
-                </div>
-                <div className="row">
-                    <div className="col-sm-6 label-back">Man - Hour Expenditure</div>
-                    <div className="col-sm-6 label-back">Weather Chart</div>
-                </div>
-            </div>
 
 
-            <div className="row" >
-
-                <div className="panel panel-default" id="resourceDIV" style={{ fontSize: '14px' }}>
-                    <div className="panel-heading"><h5>Consumables</h5></div>
+                <div className="row" >
                     <div className="form-group  ct-header__nav">
                         <button
                             className="btn btn-primary"
@@ -212,20 +210,21 @@ const EditConsumableForm = ({ consumables }) => {
                             <FontAwesomeIcon icon={faSave} />
                         </button>
                     </div>
-                    <div className="panel-body">
-                        <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
-                            <p ref={msgRef} className="" >{msgContent}</p>
-                            <AgGridReact
-                                ref={consumableGridRef}
-                                onCellValueChanged={onValueChanged}
-                                onGridReady={(event) => event.api.sizeColumnsToFit()}
-                                // onRowDataUpdated={(event) => event.current.api.refreshCells()}
-                                defaultColDef={defaultColDef}
-                                rowData={rdConsumable}
-                                columnDefs={consumableColDefs}>
+                    <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
+                        <p ref={msgRef} className="" >{msgContent}</p>
+                        <AgGridReact
+                            ref={recordGridRef}
+                            onCellValueChanged={onValueChanged}
+                            onGridReady={(event) => event.api.sizeColumnsToFit()}
+                            // onRowDataUpdated={(event) => event.current.api.refreshCells()}
+                            defaultColDef={defaultColDef}
+                            rowData={rdRecord}
+                            columnDefs={recordColDefs}>
 
-                            </AgGridReact>
-                        </div>
+                        </AgGridReact>
+                    </div>
+                    <div className="row">
+                        <div className="col-sm-12" style={{ border: "0px" }}><br /><h5><b></b></h5><br /><br /></div>
                     </div>
                 </div>
             </div>
@@ -236,4 +235,4 @@ const EditConsumableForm = ({ consumables }) => {
 
 }
 
-export default EditConsumableForm
+export default EditRecordForm
