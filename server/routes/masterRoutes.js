@@ -10,7 +10,7 @@ router.route('/')
     .delete(mastersController.deleteMaster)
 router.route('/:type')
     .get(mastersController.getAllMastersByType)
-    .post(mastersController.NewMasterByType)
+// .post(mastersController.NewMasterByType)
 router.route('/:type/:id')
 //     .get(mastersController.getMasterById)
 module.exports = router

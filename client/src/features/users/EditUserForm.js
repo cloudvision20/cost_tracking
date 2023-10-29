@@ -70,9 +70,9 @@ const EditUserForm = ({ user }) => {
 
     const onSaveUserClicked = async (e) => {
         if (password) {
-            await updateUser({ id: user.id, username, employeeId, employeeName, password, roles, active })
+            await updateUser({ _id: user.id, id: user.id, username, employeeId, employeeName, password, roles, active })
         } else {
-            await updateUser({ id: user.id, username, employeeId, employeeName, roles, active })
+            await updateUser({ _id: user.id, id: user.id, username, employeeId, employeeName, roles, active })
         }
     }
 

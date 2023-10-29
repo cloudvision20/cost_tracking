@@ -94,6 +94,19 @@ const SiteHeaderForm = () => {
                 break;
         }
     }
+    const onAttendsSelected = (item) => {
+        switch (item) {
+
+            case 'upload':
+                navigate('/site/files/attendances')
+                break;
+            case 'record':
+                navigate('/site/attends')
+                break;
+            default:
+                break;
+        }
+    }
     let newDailyReportMenu = null
     newDailyReportMenu = (
         <NavDropdown.Item href="#newDailyReports"
@@ -195,6 +208,22 @@ const SiteHeaderForm = () => {
         )
     })
 
+    const attends = [
+        { '_id': 'upload', 'name': 'Upload Attendance csv file' },
+        { '_id': 'record', 'name': 'view attendance' }]
+    let navAttendsMenu
+    navAttendsMenu = attends.map(item => {
+        return (
+            <NavDropdown.Item
+                key={item._id}
+                onMouseOver={onMouseOverNavLink}
+                onMouseOut={onMouseOutNavLink_Blue}
+                onClick={() => onAttendsSelected(item._id)}
+            >
+                {item.name}
+            </NavDropdown.Item>
+        )
+    })
 
     // let consumablesNavLink = null
     // consumablesNavLink = (
@@ -309,7 +338,8 @@ const SiteHeaderForm = () => {
         navLinkContent = (
             <>
                 {backNavLink}
-                {attendancesNavLink}
+                {/* {attendancesNavLink} */}
+
                 {gpsdatsNavLink}
                 {/* {equipmentNavLink}
                 {consumablesNavLink} */}
@@ -337,6 +367,16 @@ const SiteHeaderForm = () => {
                         <Navbar.Collapse id="basic-navbar-nav" >
                             <Nav className="ms-auto" >
                                 {navLinkContent}
+                                <NavDropdown
+                                    title={< span style={navLinkStyle_Whitesmoke}
+                                        onMouseOver={onMouseOverNavLink}
+                                        onMouseOut={onMouseOutNavLink_Whitesmoke}
+                                    >Attendance Menu</span>}
+                                    id="basic-nav-dropdown">
+                                    {navAttendsMenu}
+                                </NavDropdown>
+
+
                                 <NavDropdown
                                     title={< span style={navLinkStyle_Whitesmoke}
                                         onMouseOver={onMouseOverNavLink}

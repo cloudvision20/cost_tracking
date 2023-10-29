@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const masterSchema = new mongoose.Schema({
+const consumableSchema = new mongoose.Schema({
     type: {
         type: String,
         required: false
@@ -16,9 +16,7 @@ const masterSchema = new mongoose.Schema({
     unit: {
         type: String,
         required: false
-    },
-    remark: { type: String }
+    }
 })
 
-// const Master = mongoose.model('Master', masterSchema)
-module.exports = { masterSchema }
+module.exports = mongoose.model('Consumable', consumableSchema)

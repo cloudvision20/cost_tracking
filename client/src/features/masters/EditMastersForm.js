@@ -32,7 +32,7 @@ class BtnCellRenderer extends Component {
     }
 }
 const EditMasterForm = ({ masters, formType }) => {
-    const blankData = { "type": "", "name": "", "capacity": 0, "unit": "", "_id": "" }
+    const blankData = { "type": "", "name": "", "capacity": 0, "unit": "", "_id": "", "remark": "" }
     //formType = formType ? formType : 'Consumables'
     let msgContent = ''
     const msgRef = useRef();
@@ -65,25 +65,37 @@ const EditMasterForm = ({ masters, formType }) => {
         };
     }, []);
     const masterGridRef = useRef();
+    // const data = useRef()
+    // useMemo(() => {
+    //     data.current = Array.from(masters).map((data, index) => ({
+    //         "type": data.type,
+    //         "name": data.name,
+    //         "capacity": data.capacity ? parseFloat(data.capacity) : 0,
+    //         "unit": data.unit,
+    //         "_id": data._id
+    //     }))
 
+    // }, [formType, masters])
     let data = Array.from(masters).map((data, index) => ({
-        "type": data.type,
+        "_id": data._id,
         "name": data.name,
+        "type": data.type,
         "capacity": data.capacity ? parseFloat(data.capacity) : 0,
         "unit": data.unit,
-        "_id": data._id
+        "remark": data.remark
     }))
-
     const [rdMaster, setRdMaster] = useState(data)
+
     const [masterColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
         { field: 'name', headerName: 'Name', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
-        { field: "capacity", headerName: 'Capacity', width: 150, editable: true },
-        { field: "unit", headerName: 'Unit', width: 150, editable: true },
+        { field: "capacity", headerName: 'Capacity (Amt/Qt)', width: 100, editable: true },
+        { field: "unit", headerName: 'Unit', width: 75, editable: true },
+        { field: "remark", headerName: 'Remark', width: 250, editable: true },
         {
             headerName: 'Actions',
-            width: 150,
+            width: 75,
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
                 delClicked: function (eprops) {
@@ -96,7 +108,7 @@ const EditMasterForm = ({ masters, formType }) => {
         }
     ])
 
-    const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
+    let errClass = (isError || isDelError) ? "errmsg" : "errmsg" //"offscreen"
 
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
@@ -111,14 +123,18 @@ const EditMasterForm = ({ masters, formType }) => {
                     "name": data.name,
                     "capacity": data.capacity ? parseFloat(data.capacity) : 0,
                     "unit": data.unit,
+                    "remark": data.remark,
                     "_id": data._id
                 }))
                 setRdMaster(data)
                 masterGridRef.current.api.refreshCells()
+                errClass = "resmsg"
+                errRef.className = "resmsg"
+                errContent.current = " Saved!"
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
-                msgRef.className = "offscreen"
+                //msgRef.className = "offscreen"
             })
     }
 
@@ -153,7 +169,10 @@ const EditMasterForm = ({ masters, formType }) => {
         isSuccess ? errContent.current = " Saved!"
             : errContent.current = "Deleted!"
     }, [isSuccess, isDelSuccess, navigate])
-
+    // useEffect(() => {
+    //     console.log(`data = ${JSON.stringify(data)}`)
+    //     setRdMaster(data)
+    // }, [data])
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>

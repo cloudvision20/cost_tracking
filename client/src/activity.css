@@ -26,7 +26,8 @@
 /* || UTILITY CLASSES */
 .errmsg {
     display: inline-block;
-    background-color: var(--ERROR-BACK);
+    /* background-color: var(--ERROR-BACK); */
+        background-color: var(--COLOR);
     color: var(--ERROR);
     padding: 0.25em;
     margin-bottom: 0.5em;
@@ -38,7 +39,8 @@
 }
 .resmsg {
     display: inline-block;
-    background-color: var(--ERROR-BACK);
+    /* background-color: var(--ERROR-BACK); */
+        background-color: var(--COLOR);
     color: var(--ERROR);
     padding: 0.25em;
     margin-bottom: 0.5em;

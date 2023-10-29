@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 // import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateRecordsMutation, useDeleteRecordMutation } from './recordsApiSlice'
+import { useUpdateRecordsMutation, useDeleteRecordMutation } from './attendsApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 import { Form } from 'react-bootstrap';

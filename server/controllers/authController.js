@@ -27,17 +27,18 @@ const login = async (req, res) => {
             "UserInfo": {
                 "username": foundUser.username,
                 "userid": foundUser.id,
+                "currActivityId": foundUser.currActivityId,
                 "roles": foundUser.roles
             }
         },
         process.env.ACCESS_TOKEN_SECRET,
-        { expiresIn: '15m' }
+        { expiresIn: '2m' }
     )
 
     const refreshToken = jwt.sign(
         { "username": foundUser.username },
         process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '2m' }
     )
 
     // Create secure cookie with refresh token 
@@ -77,11 +78,12 @@ const refresh = (req, res) => {
                     "UserInfo": {
                         "username": foundUser.username,
                         "userid": foundUser.id,
+                        "currActivityId": foundUser.currActivityId,
                         "roles": foundUser.roles
                     }
                 },
                 process.env.ACCESS_TOKEN_SECRET,
-                { expiresIn: '15m' }
+                { expiresIn: '2m' }
             )
 
             res.json({ accessToken })

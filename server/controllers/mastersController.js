@@ -50,123 +50,126 @@ const getAllMastersByType = asyncHandler(async (req, res) => {
     res.status(200).json(response)
 })
 // @desc Create new master
-// @route POST /masters
-// @access Private
-const NewMasterByType = async (req, res) => {
+// // @route POST /masters
+// // @access Private
+// const NewMasterByType = async (req, res) => {
 
-    const formType = req.params.type
-    const { name, type, unit, capacity } = req.body
+//     const formType = req.params.type
+//     const { name, type, unit, capacity } = req.body
 
-    // Confirm data
-    if (!name) {
-        return res.status(400).json({ message: 'name is required' })
-    }
+//     // Confirm data
+//     if (!name) {
+//         return res.status(400).json({ message: 'name is required' })
+//     }
 
-    // Check for duplicate name
-    const duplicate = await Master.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
+//     // Check for duplicate name
+//     const duplicate = await Master.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
-    if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate master' })
-    }
+//     if (duplicate) {
+//         return res.status(409).json({ message: 'Duplicate master' })
+//     }
 
-    const master = {}
+//     const master = {}
 
-    if (name) { master.name = name }
-    if (type) { master.type = type }
-    if (capacity) { master.capacity = parseFloat(capacity) }
-    if (unit) { master.unit = unit }
+//     if (name) { master.name = name }
+//     if (type) { master.type = type }
+//     if (capacity) { master.capacity = parseFloat(capacity) }
+//     if (unit) { master.unit = unit }
 
-    // Create and store new master 
-    const result = await Master.create(master)
+//     // Create and store new master 
+//     const result = await Master.create(master)
 
-    if (result) { //created 
-        res.status(201).json({ message: `New master ${name} created` })
-    } else {
-        res.status(400).json({ message: 'Invalid master data received' })
-    }
-}
-
-// @desc Update a master
-// @route PATCH /masters
-// @access Private
-const saveMaster = async (req, res) => {
-    const { id, name, type, unit, capacity } = req.body
-
-    // Confirm data 
-    if (!name) {
-        return res.status(400).json({ message: 'name required' })
-    }
-
-    // Does the master exist to update?
-    const master = await Master.findById(id).exec()
-
-    if (!master) {
-        return res.status(400).json({ message: 'Master not found' })
-    }
-
-    // Check for duplicate 
-    const duplicate = await Master.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
-
-    // Allow updates to the original master 
-    if (duplicate && duplicate?._id.toString() !== id) {
-        return res.status(409).json({ message: 'Duplicate name' })
-    }
-
-    if (name) { master.name = name }
-    if (type) { master.type = type }
-    if (capacity) { master.capacity = parseFloat(capacity) }
-    if (unit) { master.unit = unit }
-
-    const result = await master.save()
-
-    res.json({ message: `${result.name} updated` })
-}
+//     if (result) { //created 
+//         res.status(201).json({ message: `New master ${name} created` })
+//     } else {
+//         res.status(400).json({ message: 'Invalid master data received' })
+//     }
+// }
 
 // @desc Update a master
-// @route PATCH /masters
-// @access Private
-const updateMaster = async (req, res) => {
-    const { name, type, unit, capacity } = req.body
+// // @route PATCH /masters
+// // @access Private
+// const saveMaster = async (req, res) => {
+//     const { id, name, type, unit, capacity, remark } = req.body
 
-    let id
-    req.body.id ? id = req.body.id
-        : req.body._id ? id = req.body._id
-            : id = undefined
-    // Confirm data 
-    if (!id) {
-        return res.status(400).json({ message: 'Master Id is required' })
-    }
+//     // Confirm data 
+//     if (!name) {
+//         return res.status(400).json({ message: 'name required' })
+//     }
 
-    // Does the master exist to update?
-    const masterFound = await Master.findById(id).exec()
+//     // Does the master exist to update?
+//     const master = await Master.findById(id).exec()
 
-    if (!masterFound) {
-        return res.status(400).json({ message: 'Master not found' })
-    }
+//     if (!master) {
+//         return res.status(400).json({ message: 'Master not found' })
+//     }
 
-    // Check for duplicate 
-    const duplicate = await Master.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
+//     // Check for duplicate 
+//     const duplicate = await Master.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
 
-    // Allow updates to the original master 
-    if (duplicate && duplicate?._id.toString() !== id) {
-        return res.status(409).json({ message: 'Duplicate name' })
-    }
-    let master = {}
-    if (name) { master.name = name }
-    if (type) { master.type = type }
-    if (capacity) { master.capacity = parseFloat(capacity) }
-    if (unit) { master.unit = unit }
+//     // Allow updates to the original master 
+//     if (duplicate && duplicate?._id.toString() !== id) {
+//         return res.status(409).json({ message: 'Duplicate name' })
+//     }
 
-    await Master.findOneAndUpdate({ _id: id }, master, { new: true }).then((result) => {
-        if (result === null) {
-            throw new Error(`Master Id: (\'${id}\') not found update failed `);
-        }
-        res.json({ message: `Master Id: (\'${result._id}\'), Name: (\'${result.name}\'), updated successfully` })
-    }).catch((error) => {
+//     if (name) { master.name = name }
+//     if (type) { master.type = type }
+//     if (capacity) { master.capacity = parseFloat(capacity) }
+//     if (unit) { master.unit = unit }
+//     if (remark) { master.remark = remark }
 
-        res.status(500).json({ message: `error -- Master Id: (\'${id}\') update failed`, error: error })
-    });
-}
+//     const result = await master.save()
+
+//     res.json({ message: `${result.name} updated` })
+// }
+
+// // @desc Update a master
+// // @route PATCH /masters
+// // @access Private
+// const updateMaster = async (req, res) => {
+//     const { name, type, unit, capacity, remark } = req.body
+
+//     let id
+//     req.body.id ? id = req.body.id
+//         : req.body._id ? id = req.body._id
+//             : id = undefined
+//     // Confirm data 
+//     if (!id) {
+//         return res.status(400).json({ message: 'Master Id is required' })
+//     }
+
+//     // Does the master exist to update?
+//     const masterFound = await Master.findById(id).exec()
+
+//     if (!masterFound) {
+//         return res.status(400).json({ message: 'Master not found' })
+//     }
+
+//     // Check for duplicate 
+//     const duplicate = await Master.findOne({ name }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+//     // Allow updates to the original master 
+//     if (duplicate && duplicate?._id.toString() !== id) {
+//         return res.status(409).json({ message: 'Duplicate name' })
+//     }
+//     let master = {}
+//     if (name) { master.name = name }
+//     if (type) { master.type = type }
+//     if (capacity) { master.capacity = parseFloat(capacity) }
+//     if (unit) { master.unit = unit }
+//     if (remark) { master.remark = remark }
+
+
+//     await Master.findOneAndUpdate({ _id: id }, master, { new: true }).then((result) => {
+//         if (result === null) {
+//             throw new Error(`Master Id: (\'${id}\') not found update failed `);
+//         }
+//         res.json({ message: `Master Id: (\'${result._id}\'), Name: (\'${result.name}\'), updated successfully` })
+//     }).catch((error) => {
+
+//         res.status(500).json({ message: `error -- Master Id: (\'${id}\') update failed`, error: error })
+//     });
+// }
 
 const updateMasters = async (req, res) => {
     const newData = req.body.data
@@ -188,6 +191,7 @@ const updateMasters = async (req, res) => {
         master.type = newData[i].type ? newData[i].type : null
         master.capacity = newData[i].capacity ? parseFloat(newData[i].capacity) : null
         master.unit = newData[i].unit ? newData[i].unit : null
+        master.remark = newData[i].remark ? newData[i].remark : null
 
         if (newData[i]._id) {
             // Update
@@ -301,8 +305,8 @@ const deleteMaster = async (req, res) => {
 
 module.exports = {
     getAllMastersByType,
-    NewMasterByType,
-    saveMaster,
+    // NewMasterByType,
+    // saveMaster,
     updateMasters,
     deleteMaster
 }

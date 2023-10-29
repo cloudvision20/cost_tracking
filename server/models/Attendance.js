@@ -5,6 +5,7 @@ const attendanceSchema = new mongoose.Schema(
     {
         //"Employee No","Employee Name","Date","Weekday","Time","DateTime","IO Status","Device ID"
         userId: { type: String, required: true },
+        //activityId: { type: String }, // "IO Status"
         employeeId: { type: String, required: true }, //"Employee No"
         employeeName: { type: String, required: true }, //"Employee Name"
         clockType: { type: String }, // "IO Status"

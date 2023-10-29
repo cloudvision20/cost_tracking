@@ -37,6 +37,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setErrMsg('username:' + username);
         let decoded
         try {
             setUsername('')
@@ -45,6 +46,7 @@ const Login = () => {
             dispatch(setCredentials({ accessToken }))
             try {
                 decoded = await jwtDecode(accessToken)
+                setErrMsg('decoded:' + JSON.stringify(decoded));
             } catch (err) {
                 console.log(err.message)
             }

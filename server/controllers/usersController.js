@@ -21,7 +21,7 @@ const getAllUsers = async (req, res) => {
 // @route POST /users
 // @access Private
 const createNewUser = async (req, res) => {
-    const { username, password, employeeId, employeeName, contactInfo, roles, active } = req.body
+    const { username, password, employeeId, employeeName, currActivityId, contactInfo, roles, active } = req.body
 
     // Confirm data
     if (!username || !password) {
@@ -46,6 +46,7 @@ const createNewUser = async (req, res) => {
     userObject.username = username
     userObject.employeeId = employeeId
     userObject.employeeName = employeeName
+    userObject.currActivityId = currActivityId
     userObject.contactInfo = contactInfo
     userObject.roles = roles
     userObject.active = active
@@ -64,7 +65,7 @@ const createNewUser = async (req, res) => {
 // @route PATCH /users
 // @access Private
 const saveUser = async (req, res) => {
-    const { id, username, employeeId, employeeName, contactInfo, roles, active, password } = req.body
+    const { id, username, employeeId, employeeName, currActivityId, contactInfo, roles, active, password } = req.body
 
     // Confirm data 
     if (!id || !username || !Array.isArray(roles) || !roles.length || typeof active !== 'boolean') {
@@ -89,6 +90,7 @@ const saveUser = async (req, res) => {
     user.username = username
     user.employeeId = employeeId
     user.employeeName = employeeName
+    user.currActivityId = currActivityId
     user.contactInfo = contactInfo
     user.roles = roles
     user.active = active
@@ -108,7 +110,7 @@ const saveUser = async (req, res) => {
 // @route PATCH /users
 // @access Private
 const updateUser = async (req, res) => {
-    const { username, employeeId, employeeName, contactInfo, roles, active, password, currActivityId } = req.body
+    const { username, employeeId, employeeName, currActivityId, contactInfo, roles, active, password } = req.body
 
     let id
     req.body.id ? id = req.body.id
@@ -157,6 +159,90 @@ const updateUser = async (req, res) => {
     });
 }
 
+
+// // @desc Update a user
+// // @route PATCH /users
+// // @access Private
+const updateUsers = async (req, res) => {
+    const newData = req.body.data
+    //const formType = req.body.formType
+    //const formName = !formType ? 'User' : formType
+    const response = []
+    const data = []
+    let user
+    for (let i = 0; i < newData.length; i++) {
+        user = new User()
+        let roles = []
+        let contactInfo = []
+        let id = newData[i].id ? newData[i].id
+            : newData[i]._id ? newData[i]._id
+                : undefined
+
+        // Hash password 
+
+
+
+        newData[i].username ? user.username = newData[i].username : null
+        newData[i].password ? user.password = await bcrypt.hash(newData[i].password, 10) : null
+        newData[i].employeeId ? user.employeeId = newData[i].employeeId : null
+        newData[i].employeeName ? user.employeeName = newData[i].employeeName : null
+        if (newData[i].contactInfo) {
+            contactInfo = newData[i].contactInfo
+            user.contactInfo = contactInfo
+        }
+        if (newData[i].roles) {
+            roles = newData[i].roles
+            user.roles = roles
+        }
+        newData[i].currActivityId ? user.currActivityId = newData[i].currActivityId : null
+        newData[i].active ? user.active = newData[i].active : null
+
+
+
+        if (id) {
+            // Update
+            user._id = id
+            await User.findOneAndUpdate({ _id: id }, user, { new: true }).then((result) => {
+                if (result === null) {
+                    response.push({ message: `User Id: ${id} not found update failed` })
+                } else {
+                    response.push({ message: `User Id: ${result._id} updated successfully` })
+                    data.push(result)
+                }
+            }).catch((error) => {
+                response.push({ message: `error -- User Id: (\'${id}\') update failed , error: ${error}` })
+            });
+        } else {
+            //create 
+            await user.save()
+                .then((result) => {
+                    if (result === null) {
+                        response.push({ message: `Employee Name: ${user.employeeName}, fail to create new user` })
+                    } else {
+                        response.push({ message: `User Id: ${result._id} created successfully` })
+                        data.push(result)
+                    }
+                }
+                )
+                .catch(
+                    (error) => {
+                        console.log(`error=${error}`)
+                        console.log(`Employee Name: ${user.employeeName},` + error)
+                        response.push({ message: `error -- Employee Name: ${user.employeeName} create failed , error: ${error}` })
+                    }
+                )
+        }
+    }
+    console.log(`response = ${JSON.stringify(response)}`)
+    console.log(`data = ${JSON.stringify(data)}`)
+    // let result = {}
+    // result.data = data
+    // result.response = response
+
+    return res.status(202).json({ data: data, response })
+}
+
+
 // @desc Delete a user
 // @route DELETE /users
 // @access Private
@@ -184,5 +270,6 @@ module.exports = {
     createNewUser,
     saveUser,
     updateUser,
+    updateUsers,
     deleteUser
 }

@@ -1,4 +1,4 @@
-const Record = require('../models/Record')
+const { Record } = require('../models/Record')
 
 const ConsJrnl = require('../models/ConsumableJournal')
 const EquipJrnl = require('../models/EquipmentJournal')
@@ -190,22 +190,27 @@ const updateRecords = async (req, res) => {
                     new ExpenseJrnl()
                     : new Record()
 
-        record.userId = newData[i].userId ? newData[i].userId : null
-        record.activityId = newData[i].activityId ? newData[i].activityId : null
+
+        record.employeeId = newData[i].employeeId ? newData[i].employeeId : null
         record.type = newData[i].type ? newData[i].type : null
         record.details = newData[i].details ? newData[i].details : null
-        record.description = newData[i].description ? newData[i].description : null
-        record.dateTime = newData[i].dateTime ? newData[i].dateTime : null
         record.job = newData[i].job ? newData[i].job : null
         record.terminal = newData[i].terminal ? newData[i].terminal : null
-        record.unit = newData[i].unit ? newData[i].unit : null
+        record.userId = newData[i].userId ? newData[i].userId : null
+        record.activityId = newData[i].activityId ? newData[i].activityId : null
+
+        record.amount = newData[i].amount ? newData[i].amount : null
         record.amtType = newData[i].amtType ? newData[i].amtType : null
-        record.amount = newData[i].amount ? parseFloat(newData[i].amount) : null
+        record.dateTime = newData[i].dateTime ? newData[i].dateTime : null
         record.description = newData[i].description ? newData[i].description : null
-        record.formId = newData[i].formId ? newData[i].formId : null
-        record.amtType = newData[i].amtType ? newData[i].amtType : null
-        record.posted = newData[i].posted ? newData[i].posted : false // default false
+
         record.fileInfo = newData[i].fileInfo ? newData[i].fileInfo : []
+        record.formId = newData[i].formId ? newData[i].formId : null
+        record.posted = newData[i].posted ? newData[i].posted : false // default false        
+
+        record.unit = newData[i].unit ? newData[i].unit : null
+
+
 
         if (newData[i]._id) {
             // Update

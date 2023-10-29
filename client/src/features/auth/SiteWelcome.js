@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import useTitle from '../../hooks/useTitle'
 import { useEffect, useState, useContext } from "react"
+import Form from 'react-bootstrap/Form';
 //import ActivitiesContext from '../../context/ActivitiesContext'
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 const Welcome = () => {
 
-    const { username, isManager, isAdmin, status, location } = useAuth()
+    const { currActivityId, username, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
     const [currentActivity, setCurrentActivity] = useState('')
     const activities = useSelector(selectActivity)
@@ -20,6 +21,7 @@ const Welcome = () => {
             (option) => option.value
         )
         setCurrentActivity(values)
+        console.log(`selected option: ${values}`)
     }
     let options
     useEffect(() => {
@@ -31,7 +33,7 @@ const Welcome = () => {
             return (
                 <option
                     key={activity._id}
-                    value={activity.name}
+                    value={activity._id}
 
                 > {activity.name}</option >
             )
@@ -53,23 +55,7 @@ const Welcome = () => {
                         <>
                             <p><Link to="/site/consumables">Consumable List</Link></p>
                             <p><Link to="/site/consumables/new">New Consumable</Link></p>
-                            {/* 
-                            <div className="form-group row">
-                                <div className="col-sm-2"><b> Activities:</b></div>
-                                <div className="col-sm-6">
-                                    <select
-                                        id="activities"
-                                        name="activities"
-                                        className="form-control"
-                                        multiple={true}
-                                        size="1"
-                                        value={activities}
-                                        onChange={onActivitiesChanged}
-                                    >
-                                        {options}
-                                    </select>
-                                </div>
-                            </div> */}
+
                         </>
                     }
                     {(location === 'Site' && activities?.length === 1)
@@ -98,6 +84,30 @@ const Welcome = () => {
 
 
                         </>
+                    }
+                    {(!currActivityId)
+                        &&
+                        <>
+
+                            <div className="form-group row">
+                                <div className="col-sm-2"><b> Activities:</b></div>
+                                <div className="col-sm-6">
+                                    <Form.Select
+                                        title="Choose default Activity:"
+                                        id="activities"
+                                        name="activities"
+                                        // className="form-select"
+                                        multiple={false}
+                                        size="l"
+                                        onChange={onActivitiesChanged}
+                                    >
+                                        <option>Choose default Activity:</option>
+                                        {options}
+                                    </Form.Select>
+                                </div>
+                            </div>
+                        </>
+
                     }
                 </div>
             </div>

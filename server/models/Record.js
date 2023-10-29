@@ -31,6 +31,8 @@ const recordSchema = new mongoose.Schema(
         amtType: { type: String }, // IN / OUT , Start / End?
         amount: { type: Number },
         description: { type: String },
+        formId: { type: String },
+        posted: { type: Boolean },
         fileInfo: [{ type: String }],
     },
     {
@@ -38,5 +40,6 @@ const recordSchema = new mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('Record', recordSchema)
-
+// module.exports = mongoose.model('Record', recordSchema)
+const Record = new mongoose.model('Record', recordSchema)
+module.exports = { Record, recordSchema }

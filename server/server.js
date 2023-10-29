@@ -19,6 +19,10 @@ connectDB()
 app.use(logger)
 
 app.use(cors(corsOptions))
+// app.use(cors())
+// app.options("*", (req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', "*")
+// })
 
 app.use(express.json())
 
@@ -37,6 +41,7 @@ app.use('/equipment', require('./routes/equipmentRoutes'))
 app.use('/expenses', require('./routes/expenseRoutes'))
 app.use('/records', require('./routes/recordRoutes'))
 app.use('/masters', require('./routes/masterRoutes'))
+app.use('/attends', require('./routes/attendRoutes'))
 app.use(fileUpload());
 app.use('/files', require('./routes/filesRoutes'))
 

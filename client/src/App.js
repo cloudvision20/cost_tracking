@@ -30,22 +30,14 @@ import RequireAuth from './features/auth/RequireAuth'
 import { ROLES } from './config/roles'
 import useTitle from './hooks/useTitle';
 
-
-// import EditEquip from './features/equipment/EditEquip'
-// import EditConsumable from './features/consumables/EditConsumable'
-// import EditExpense from './features/expenses/EditExpense'
-
 import SiteLayout from './components/site/SiteLayout'
 import SiteWelcome from './features/auth/SiteWelcome'
 
-// import FrmExpense from './features/expenses/FrmExpense';
-// import FrmConsumable from './features/consumables/FrmConsumable';
-// import FrmEquip from './features/equipment/FrmEquip';
-
 import FrmRecords from './features/records/FrmRecords';
 import FrmRecord from './features/records/FrmRecord';
-import EditMasters from './features/masters/EditMasters'
 
+import EditMasters from './features/masters/EditMasters'
+import FrmAttends from './features/attendance/FrmAttends';
 function App() {
   useTitle('Cost Tracking')
 
@@ -69,6 +61,7 @@ function App() {
 
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
+                <Route path="attends" element={<FrmAttends />} />
                 <Route path="records">
                   <Route path="consumables" element={<FrmRecords formType={`Consumables`} />} />
                   <Route path="equipment" element={<FrmRecords formType={`Equipment`} />} />
@@ -77,11 +70,6 @@ function App() {
                   <Route path="equip" element={<FrmRecord formType={`Equipment`} />} />
                   <Route path="expense" element={<FrmRecord formType={`Expenses`} />} />
                 </Route>
-                {/* <Route path="forms">
-                  <Route path="consumables" element={<FrmConsumable />} />
-                  <Route path="Equipment" element={<FrmEquip />} />
-                  <Route path="Expenses" element={<FrmExpense />} />
-                </Route> */}
                 <Route path="consumables">
                   <Route index element={<EditMasters formType={`Consumables`} />} />
                 </Route>
@@ -107,10 +95,6 @@ function App() {
               <Route path="dash" element={<DashLayout />}>
 
                 <Route index element={<Welcome />} />
-
-                {/* <Route path="consumables">
-                  <Route index element={<EditConsumable />} />
-                </Route> */}
 
                 <Route element={<RequireAuth allowedRoles={[ROLES.Manager, ROLES.Admin]} />}>
                   <Route path="users">
