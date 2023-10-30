@@ -5,6 +5,7 @@ const app = express()
 const path = require('path')
 const { logger, logEvents } = require('./middleware/logger')
 const errorHandler = require('./middleware/errorHandler')
+const credentials = require('./middleware/credentials')
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const corsOptions = require('./config/corsOptions')
@@ -17,6 +18,9 @@ const fileUpload = require('express-fileupload');
 connectDB()
 
 app.use(logger)
+// Handle options credentials check - before CORS!
+// and fetch cookies credentials requirement
+app.use(credentials);
 
 app.use(cors(corsOptions))
 // app.use(cors())
