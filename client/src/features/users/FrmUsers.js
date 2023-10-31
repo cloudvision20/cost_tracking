@@ -25,7 +25,10 @@ const FrmUsers = () => {
 
     let content
     if (isSuccess) {
-        content = <FrmUsersForm res={res} />
+        const newRes = {}
+        newRes.users = res
+        newRes.activities = activities
+        content = <FrmUsersForm res={newRes} />
         return content
     }
     if (isError) {

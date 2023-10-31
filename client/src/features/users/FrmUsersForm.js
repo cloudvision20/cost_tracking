@@ -82,40 +82,37 @@ const FrmUsersForm = ({ res }) => {
     const userGridRef = useRef();
 
     let data = Array.from(users).map((data, index) => ({
-        "userId": data.userId._id,
-        "activityId": data.activityId,
+        "id": data._id,
+        "username": data.username,
+        "password": data.password,
+
         "employeeId": data.employeeId,
         "employeeName": data.employeeName,
-        "clockType": data.description,
-
-        "date": data.date,
-        "time": data.time,
-        "weekday": data.weekday,
-
-        "dateTime": data.dateTime,
-        "terminal": data.terminal,
+        "contactInfo": JSON.stringify(data?.contactInfo),
+        "roles": data.roles?.toString().replaceAll(',', ', '),
+        "currActivityId": data.currActivityId?._id,
+        "currActivity": data.currActivityId?.name,
+        "active": data.active,
         "_id": data._id
     }))
 
     const [rdUser, setRdUser] = useState(data)
     const [userColDefs] = useState([
-        { field: 'userId', headerName: 'user Id', width: 150, hide: true },
-        { field: '_id', headerName: 'Id', width: 150 },
+        { field: 'id', headerName: 'user Id', width: 100, hide: true },
+        { field: '_id', headerName: '_id', width: 100, hide: true },
 
-        { field: "activityId", headerName: 'Activity Id', width: 150, editable: true },
-        { field: 'employeeId', headerName: 'Employee Id', width: 150, editable: true },
-        { field: "employeeName", headerName: 'employeeName', width: 300, editable: true },
-        { field: "clockType", headerName: 'clockType', width: 150, editable: true },
-        { field: 'date', headerName: 'Date', width: 150, editable: true },
-
-        { field: "time", headerName: 'Time', width: 150, editable: true },
-        { field: 'weekday', headerName: 'Weekday', width: 150, editable: true },
-        { field: "description", headerName: 'Description', width: 300, editable: true },
-        { field: 'datetime', headerName: 'Date Time', width: 150, editable: true },
-        { field: "terminal", headerName: 'Terminal', width: 150, editable: true },
+        { field: 'employeeId', headerName: 'Employee Id', width: 100, editable: false },
+        { field: "employeeName", headerName: 'Employee Name', width: 160, editable: false },
+        { field: "username", headerName: 'Username', width: 150, editable: false },
+        // { field: 'password', headerName: 'Password', width: 150, editable: false },
+        { field: "contactInfo", headerName: 'Contact Info', width: 200, editable: false },
+        { field: 'roles', headerName: 'Roles', width: 200, editable: false },
+        { field: "currActivityId", headerName: 'Default Activity Id', width: 150, editable: false },
+        { field: "currActivity", headerName: 'Default Activity', width: 300, editable: false },
+        { field: 'active', headerName: 'Active', width: 75, editable: false },
         {
             headerName: 'Actions',
-            width: 150,
+            width: 75,
             cellRenderer: BtnCellRenderer,
             cellRendererParams: {
                 delClicked: function (eprops) {
@@ -125,6 +122,7 @@ const FrmUsersForm = ({ res }) => {
                 },
                 Id: "user"
             },
+            editable: false,
         }
     ])
 
@@ -202,7 +200,7 @@ const FrmUsersForm = ({ res }) => {
             <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
 
                 <div className="row">
-                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h4><b>View Userance Records</b></h4></div>
+                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h4><b>User Details</b></h4></div>
                 </div>
                 {/* <div className="form-group  ct-header__nav">
                     <button
@@ -220,7 +218,7 @@ const FrmUsersForm = ({ res }) => {
                         <FontAwesomeIcon icon={faSave} />
                     </button>
                 </div> */}
-                <div className="container-sm ag-theme-balham" style={{ overflow: 'hidden', height: "600px", width: "100%", fontSize: '12px' }}>
+                <div className="container-sm ag-theme-balham" style={{ height: "600px", width: "100%", fontSize: '12px' }}>
                     <p ref={msgRef} className="" >{msgContent}</p>
                     <AgGridReact
                         ref={userGridRef}

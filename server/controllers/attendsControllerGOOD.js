@@ -13,10 +13,10 @@ const getAllAttends = asyncHandler(async (req, res) => {
         if (result === null) {
             console.log(`Attendance data not found`)
         }
-        // console.log('result =' + JSON.stringify(result))
+        console.log('result =' + JSON.stringify(result))
         response.attends = result
     }).catch((error => {
-        // console.log(`error : Loading Error`)
+        console.log(`error : Loading Error`)
     }))
 
 

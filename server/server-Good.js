@@ -28,15 +28,6 @@ app.use(cors(corsOptions))
 //     res.header('Access-Control-Allow-Origin', "*")
 // })
 
-// app.use(cors())
-// app.use(function(req, res, next) {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//     next();
-//     });
-
-
-//     app.options('*', cors()) 
 app.use(express.json())
 
 app.use(cookieParser())

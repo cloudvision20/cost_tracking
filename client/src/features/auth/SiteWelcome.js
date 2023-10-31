@@ -6,16 +6,23 @@ import Form from 'react-bootstrap/Form';
 //import ActivitiesContext from '../../context/ActivitiesContext'
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
+import { useGetUsersQuery } from '../users/usersApiSlice';
 const Welcome = () => {
 
-    const { currActivityId, username, isManager, isAdmin, status, location } = useAuth()
+    const { currActivityId, userid, username, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
     const [currentActivity, setCurrentActivity] = useState('')
     const activities = useSelector(selectActivity)
-    //const { activities } = useContext(ActivitiesContext)
+    // const user = useSelector(selectUserById(userid))
+    // //const { activities } = useContext(ActivitiesContext)
+    const { user } = useGetUsersQuery("usersList", {
+        selectFromResult: ({ data }) => ({
+            user: data?.entities[userid]
+        }),
+    })
+    console.log(`user:${JSON.stringify(user)}`)
 
-
-    const onActivitiesChanged = e => {
+    const onCurrActivtyChange = e => {
         const values = Array.from(
             e.target.selectedOptions,
             (option) => option.value
@@ -26,7 +33,10 @@ const Welcome = () => {
     let options
     useEffect(() => {
         //setCurrentActivity(activities[0]._id)
-    }, []);
+        setCurrentActivity(currActivityId)
+    }, [currActivityId]);
+
+    let currActivityName
     if (activities) {
 
         options = activities.map(activity => {
@@ -38,6 +48,12 @@ const Welcome = () => {
                 > {activity.name}</option >
             )
         });
+        currActivityName = activities.map(activity => {
+            if (activity._id === currentActivity) {
+                return (activity.name)
+            }
+        });
+
     }
 
     const date = new Date()
@@ -50,7 +66,56 @@ const Welcome = () => {
                     <p>{today}</p>
 
                     <h4>Welcome {username}!</h4>
-                    {(location === 'Site' && activities?.length > 1)
+                    <br />
+                    {(currentActivity)
+                        &&
+                        <>
+
+                            <div className="form-group row" style={{ fontSize: '14px' }}>
+                                <div className="col-sm-4"><b>Default Activity: </b></div>
+                                <div className="col-sm-6" ><b>{currActivityName}</b>
+                                </div>
+                            </div>
+
+                        </>
+
+                    }
+                    <br />
+                    <br />
+                    {(!currentActivity)
+                        &&
+                        <>
+
+                            <div className="form-group row">
+                                <div className="col-sm-4"><b>Choose a default Activity to continue</b></div>
+                                <div className="col-sm-6" >
+                                    <Form.Select
+                                        title="-- Select Activity --"
+                                        id="activities"
+                                        name="activities"
+                                        className="form-select form-select-sm"
+                                        style={{ fontSize: '11px' }}
+                                        multiple={false}
+                                        size="l"
+                                        onChange={onCurrActivtyChange}
+                                    >
+                                        <option>Choose default Activity:</option>
+                                        {options}
+                                    </Form.Select>
+                                </div>
+                            </div>
+                        </>
+
+                    }
+                    {(location === 'Site')
+                        &&
+                        <>
+                            <p><Link to="/site/consumables">Consumables </Link></p>
+                            <p><Link to="/site/equipment">Equipment</Link></p>
+                            <p><Link to="/site/expenses">Expenses</Link></p>
+                        </>
+                    }
+                    {/* {(location === 'Site' && activities?.length > 1)
                         &&
                         <>
                             <p><Link to="/site/consumables">Consumable List</Link></p>
@@ -75,40 +140,17 @@ const Welcome = () => {
                                 </div>
                             </div>
                         </>
-                    }
+                    } */}
                     {(location === 'HQ' || isManager || isAdmin)
                         &&
                         <>
                             <p><Link to="/site/users">View User Settings</Link></p>
-                            <p><Link to="/site/users/new">Add New User</Link></p>
+                            {/* <p><Link to="/site/users/new">Add New User</Link></p> */}
 
 
                         </>
                     }
-                    {(!currActivityId)
-                        &&
-                        <>
 
-                            <div className="form-group row">
-                                <div className="col-sm-2"><b> Activities:</b></div>
-                                <div className="col-sm-6">
-                                    <Form.Select
-                                        title="Choose default Activity:"
-                                        id="activities"
-                                        name="activities"
-                                        // className="form-select"
-                                        multiple={false}
-                                        size="l"
-                                        onChange={onActivitiesChanged}
-                                    >
-                                        <option>Choose default Activity:</option>
-                                        {options}
-                                    </Form.Select>
-                                </div>
-                            </div>
-                        </>
-
-                    }
                 </div>
             </div>
         </section>

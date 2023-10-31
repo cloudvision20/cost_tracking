@@ -38,7 +38,6 @@ import FrmRecord from './features/records/FrmRecord';
 
 import EditMasters from './features/masters/EditMasters'
 import FrmAttends from './features/attendance/FrmAttends';
-import FrmUsers from './features/users/FrmUsers'
 function App() {
   useTitle('Cost Tracking')
 
@@ -63,7 +62,6 @@ function App() {
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
                 <Route path="attends" element={<FrmAttends />} />
-                <Route path="users" element={<FrmUsers />} />
                 <Route path="records">
                   <Route path="consumables" element={<FrmRecords formType={`Consumables`} />} />
                   <Route path="equipment" element={<FrmRecords formType={`Equipment`} />} />

@@ -44,6 +44,7 @@ const SiteHeaderForm = () => {
 
     const onNewDailyReportSelected = () => navigate('/site/dailyReports/new')
     const onDailyReportSelected = () => navigate('/site/dailyReports')
+    const onUserSelected = () => navigate('/site/users')
     const onFilesClicked = () => navigate('/site/files')
     const onAttendancesClicked = () => navigate('/site/files/attendances')
     const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
@@ -135,6 +136,19 @@ const SiteHeaderForm = () => {
         </NavDropdown.Item>
     )
 
+    let navUserMenu = null
+    navUserMenu = (
+        <NavDropdown.Item href="#users"
+            key={`users`}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Blue}
+            style={navLinkStyle_blue}
+            title="Users"
+            onClick={onUserSelected}
+        >
+            Users
+        </NavDropdown.Item>
+    )
 
     let navActivitiesMenu
     if (activities) {
@@ -384,6 +398,8 @@ const SiteHeaderForm = () => {
                                     >Master Menu</span>}
                                     id="basic-nav-dropdown">
                                     {navMasterMenu}
+                                    <NavDropdown.Divider />
+                                    {navUserMenu}
                                 </NavDropdown>
                                 <NavDropdown
                                     title={< span style={navLinkStyle_Whitesmoke}
@@ -397,7 +413,7 @@ const SiteHeaderForm = () => {
                                     {dailyReportMenu}
                                     {newDailyReportMenu}
                                 </NavDropdown>
-                                <NavDropdown
+                                {/* <NavDropdown
                                     title={
                                         < span style={navLinkStyle_Whitesmoke}
                                             onMouseOver={onMouseOverNavLink}
@@ -406,7 +422,7 @@ const SiteHeaderForm = () => {
 
                                     id="basic-nav-dropdown">
                                     {navActivitiesMenu}
-                                </NavDropdown>
+                                </NavDropdown> */}
                                 {blankNavLink}
                                 {logoutNavLink}
                             </Nav>

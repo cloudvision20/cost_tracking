@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 // @access Private
 const getAllUsers = async (req, res) => {
     // Get all users from MongoDB
-    const users = await User.find().select('-password').populate({ path: 'currActivityId', select: 'name' }).lean()
+    const users = await User.find().select('-password').lean()
 
     // If no users 
     if (!users?.length) {
