@@ -1,14 +1,14 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateAttendsMutation, useDeleteAttendMutation } from './attendsApiSlice'
+import { useUpdateUsersMutation, useDeleteUserMutation } from './usersApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 import { Form } from 'react-bootstrap';
 import { date2Weekday, dateForPicker } from "../../hooks/useDatePicker"
 import useAuth from "../../hooks/useAuth"
 
-let eAttends = {}
+let eUsers = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -34,15 +34,15 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const FrmAttendForm = ({ res }) => {
+const FrmUsersForm = ({ res }) => {
     const { userid, username, status, isManager, isAdmin } = useAuth()
     const blankData = { "type": "", "details": "", "description": "", "amount": 0, "_id": null, "userId": userid }
-    let attends = {}
+    let users = {}
     let activities = {}
     if (res) {
-        if (res.attends) {
-            attends = res.attends
-            if (attends._id === 'new') { attends.userId = userid }
+        if (res.users) {
+            users = res.users
+            if (users._id === 'new') { users.userId = userid }
         }
         if (res.activities) {
             activities = res.activities
@@ -52,25 +52,25 @@ const FrmAttendForm = ({ res }) => {
     let msgContent = ''
     const msgRef = useRef();
 
-    if (!attends) {
-        msgContent = 'New Attend database'
+    if (!users) {
+        msgContent = 'New User database'
         msgRef.className = 'resmsg'
-        attends = { blankData }
+        users = { blankData }
     } else {
         msgRef.className = 'offscreen'
         msgContent = ''
     }
-    const [updateAttends, {
+    const [updateUsers, {
         //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateAttendsMutation()
-    const [deleteAttend, {
+    }] = useUpdateUsersMutation()
+    const [deleteUser, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteAttendMutation()
+    }] = useDeleteUserMutation()
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -79,28 +79,26 @@ const FrmAttendForm = ({ res }) => {
             width: 150,
         };
     }, []);
-    const attendGridRef = useRef();
+    const userGridRef = useRef();
 
-    let data = Array.from(attends).map((data, index) => ({
+    let data = Array.from(users).map((data, index) => ({
         "userId": data.userId._id,
         "activityId": data.activityId,
         "employeeId": data.employeeId,
         "employeeName": data.employeeName,
-        "clockType": data.clockType,
+        "clockType": data.description,
 
         "date": data.date,
         "time": data.time,
         "weekday": data.weekday,
-
-        "description": data.description,
 
         "dateTime": data.dateTime,
         "terminal": data.terminal,
         "_id": data._id
     }))
 
-    const [rdAttend, setRdAttend] = useState(data)
-    const [attendColDefs] = useState([
+    const [rdUser, setRdUser] = useState(data)
+    const [userColDefs] = useState([
         { field: 'userId', headerName: 'user Id', width: 150, hide: true },
         { field: '_id', headerName: 'Id', width: 150 },
 
@@ -122,10 +120,10 @@ const FrmAttendForm = ({ res }) => {
             cellRendererParams: {
                 delClicked: function (eprops) {
 
-                    if (this.data._id) { delAttend(this.data._id) }
+                    if (this.data._id) { delUser(this.data._id) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "attend"
+                Id: "user"
             },
         }
     ])
@@ -135,8 +133,8 @@ const FrmAttendForm = ({ res }) => {
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        eAttends.data = rdAttend
-        await updateAttends(eAttends)
+        eUsers.data = rdUser
+        await updateUsers(eUsers)
             .then((result) => {
                 console.log(` result = ${JSON.stringify(result)}`)
                 data = result.data.data.map((data, index) => ({
@@ -152,8 +150,8 @@ const FrmAttendForm = ({ res }) => {
                     "terminal": data.terminal,
                     "_id": data._id
                 }))
-                setRdAttend(data)
-                attendGridRef.current.api.refreshCells()
+                setRdUser(data)
+                userGridRef.current.api.refreshCells()
             }).catch((error) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
@@ -161,8 +159,8 @@ const FrmAttendForm = ({ res }) => {
             })
     }
 
-    const delAttend = async (_id) => {
-        await deleteAttend({ id: _id })
+    const delUser = async (_id) => {
+        await deleteUser({ id: _id })
             .then((result) => {
 
 
@@ -170,21 +168,21 @@ const FrmAttendForm = ({ res }) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 let rData = []
-                attendGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdAttend(rData)
+                userGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdUser(rData)
             }
             )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdAttend))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdUser))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdAttend ?
-                [...rdAttend, blankData]
+            rdUser ?
+                [...rdUser, blankData]
                 : [blankData]
-        setRdAttend(newRData)
+        setRdUser(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -194,7 +192,7 @@ const FrmAttendForm = ({ res }) => {
     }, [isSuccess, isDelSuccess, navigate])
 
     // useEffect(() => {
-    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdAttend))
+    //     console.log('useEffect-rowData: \n' + JSON.stringify(rdUser))
     // })
     const content = (
         <>
@@ -204,7 +202,7 @@ const FrmAttendForm = ({ res }) => {
             <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
 
                 <div className="row">
-                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h4><b>View Attendance Records</b></h4></div>
+                    <div className="col-sm-12" style={{ border: "0px" }}><br /><h4><b>View Userance Records</b></h4></div>
                 </div>
                 {/* <div className="form-group  ct-header__nav">
                     <button
@@ -225,13 +223,13 @@ const FrmAttendForm = ({ res }) => {
                 <div className="container-sm ag-theme-balham" style={{ overflow: 'hidden', height: "600px", width: "100%", fontSize: '12px' }}>
                     <p ref={msgRef} className="" >{msgContent}</p>
                     <AgGridReact
-                        ref={attendGridRef}
+                        ref={userGridRef}
                         onCellValueChanged={onValueChanged}
                         onGridReady={(event) => event.api.sizeColumnsToFit()}
                         // onRowDataUpdated={(event) => event.current.api.refreshCells()}
                         defaultColDef={defaultColDef}
-                        rowData={rdAttend}
-                        columnDefs={attendColDefs}>
+                        rowData={rdUser}
+                        columnDefs={userColDefs}>
 
                     </AgGridReact>
                 </div>
@@ -247,4 +245,4 @@ const FrmAttendForm = ({ res }) => {
 
 }
 
-export default FrmAttendForm
+export default FrmUsersForm
