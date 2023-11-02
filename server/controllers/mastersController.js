@@ -177,9 +177,10 @@ const updateMasters = async (req, res) => {
     //const formName = !formType ? 'Master' : formType
     const response = []
     const data = []
-    let master
+    let Model
+    let master = {}
     for (let i = 0; i < newData.length; i++) {
-        master = (formType === 'Consumables') ?
+        Model = (formType === 'Consumables') ?
             new Consumable()
             : (formType === 'Equipment') ?
                 new Equipment()
@@ -187,11 +188,17 @@ const updateMasters = async (req, res) => {
                     new Expense()
                     : {}
 
-        master.name = newData[i].name ? newData[i].name : null
-        master.type = newData[i].type ? newData[i].type : null
-        master.capacity = newData[i].capacity ? parseFloat(newData[i].capacity) : null
-        master.unit = newData[i].unit ? newData[i].unit : null
-        master.remark = newData[i].remark ? newData[i].remark : null
+        if (newData[i].name) { master.name = newData[i].name }
+        if (newData[i].type) { master.type = newData[i].type }
+        master.capacity = (newData[i].capacity === undefined) ? 0 : parseFloat(newData[i].capacity)
+        if (newData[i].unit) { master.unit = newData[i].unit }
+        if (newData[i].remark) { master.remark = newData[i].remark }
+
+        // master.name = newData[i].name ? newData[i].name : null
+        // master.type = newData[i].type ? newData[i].type : null
+        // master.capacity = newData[i].capacity ? parseFloat(newData[i].capacity) : null
+        // master.unit = newData[i].unit ? newData[i].unit : null
+        // master.remark = newData[i].remark ? newData[i].remark : null
 
         if (newData[i]._id) {
             // Update
@@ -234,22 +241,22 @@ const updateMasters = async (req, res) => {
                     });
                     break;
                 default:
-                    await Master.findOneAndUpdate({ _id: newData[i]._id }, master, { new: true }).then((result) => {
-                        if (result === null) {
-                            response.push({ message: `${formType} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
-                        } else {
-                            response.push({ message: `${formType} Id: ${result._id},details: ${result.details} updated successfully` })
-                            data.push(result)
-                        }
-                    }).catch((error) => {
-                        response.push({ message: `error -- ${formType} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
-                    });
+                    // await Master.findOneAndUpdate({ _id: newData[i]._id }, master, { new: true }).then((result) => {
+                    //     if (result === null) {
+                    //         response.push({ message: `${formType} Id: : ${newData[i]._id},details: ${newData[i].details} not found update failed` })
+                    //     } else {
+                    //         response.push({ message: `${formType} Id: ${result._id},details: ${result.details} updated successfully` })
+                    //         data.push(result)
+                    //     }
+                    // }).catch((error) => {
+                    //     response.push({ message: `error -- ${formType} Id: (\'${newData[i]._id}\') update failed , error: ${error}` })
+                    // });
                     break;
             }
 
         } else {
             //create 
-            await master.save()
+            await Model.create(master)
                 .then((result) => {
                     if (result === null) {
                         response.push({ message: `${formType} Id: ${newData[i]._id},details: ${newData[i].details} fail to saved` })

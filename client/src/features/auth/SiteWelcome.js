@@ -6,21 +6,24 @@ import Form from 'react-bootstrap/Form';
 //import ActivitiesContext from '../../context/ActivitiesContext'
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
-import { useGetUsersQuery } from '../users/usersApiSlice';
+import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
 const Welcome = () => {
 
     const { currActivityId, userid, username, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
     const [currentActivity, setCurrentActivity] = useState('')
     const activities = useSelector(selectActivity)
-    // const user = useSelector(selectUserById(userid))
-    // //const { activities } = useContext(ActivitiesContext)
-    const { user } = useGetUsersQuery("usersList", {
-        selectFromResult: ({ data }) => ({
-            user: data?.entities[userid]
-        }),
-    })
-    console.log(`user:${JSON.stringify(user)}`)
+
+    // console.log(`activities:${JSON.stringify(activities)}`)
+    // console.log(`activities.length : ${activities?.length}`)
+
+
+    const [updateUsers, {
+        //isLoading,
+        isSuccess,
+        isError,
+        error
+    }] = useUpdateUsersMutation()
 
     const onCurrActivtyChange = e => {
         const values = Array.from(
@@ -32,14 +35,28 @@ const Welcome = () => {
     }
     let options
     useEffect(() => {
-        //setCurrentActivity(activities[0]._id)
         setCurrentActivity(currActivityId)
     }, [currActivityId]);
 
     let currActivityName
+    const updateDefaultActivity = (activityId) => {
+        let user = {}
+        user._id = userid
+        user.currActivityId = activityId
+        let req = {}
+        req.data = [user]
+        updateUsers(req)
+            .then((result) => {
+                console.log(` result = ${JSON.stringify(result)}`)
+            }).catch((error) => {
+                console.log(`error: ${error}`)
+            }).finally(() => {
+
+            })
+    }
     if (activities) {
 
-        options = activities.map(activity => {
+        options = activities?.map(activity => {
             return (
                 <option
                     key={activity._id}
@@ -48,7 +65,13 @@ const Welcome = () => {
                 > {activity.name}</option >
             )
         });
-        currActivityName = activities.map(activity => {
+        if (!currentActivity && activities?.length === 1) {
+            setTimeout(() => {
+                setCurrentActivity(activities[0]?._id)
+                updateDefaultActivity(activities[0]?._id)
+            }, 1000)
+        }
+        currActivityName = activities?.map(activity => {
             if (activity._id === currentActivity) {
                 return (activity.name)
             }
@@ -67,7 +90,20 @@ const Welcome = () => {
 
                     <h4>Welcome {username}!</h4>
                     <br />
-                    {(currentActivity)
+                    {(!currentActivity && activities?.length === 0)
+                        &&
+                        <>
+
+                            <div className="form-group row" style={{ fontSize: '14px' }}>
+                                <div className="col-sm-6"><b>No Activity assigned to {username} </b></div>
+                                <div className="col-sm-6" ><b></b>
+                                </div>
+                            </div>
+                            <br />
+                            <br />
+                        </>
+                    }
+                    {(activities?.length === 1)
                         &&
                         <>
 
@@ -80,9 +116,8 @@ const Welcome = () => {
                         </>
 
                     }
-                    <br />
-                    <br />
-                    {(!currentActivity)
+
+                    {(!currentActivity && activities?.length > 1)
                         &&
                         <>
 
@@ -115,6 +150,7 @@ const Welcome = () => {
                             <p><Link to="/site/expenses">Expenses</Link></p>
                         </>
                     }
+
                     {/* {(location === 'Site' && activities?.length > 1)
                         &&
                         <>

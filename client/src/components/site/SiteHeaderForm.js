@@ -19,11 +19,11 @@ const SiteHeaderForm = () => {
     const onMouseOutNavLink_Whitesmoke = (e) => { e.target.style.color = 'whitesmoke' }
     const onMouseOutNavLink_Blue = (e) => { e.target.style.color = 'blue' }
     const navLinkStyle_Whitesmoke = { color: 'whitesmoke', fontSize: '14px' }
-    const navLinkStyle_ws = { color: 'whitesmoke', fontSize: '14px', backgroundColor: '#212f51' }
+    // const navLinkStyle_ws = { color: 'whitesmoke', fontSize: '14px', backgroundColor: '#212f51' }
     const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
     const navLnkStyle_Btn = "btn btn-light"
-    const activities = useSelector(selectActivity)
-    const onActivitiesSelected = (activityId) => { console.log(activityId) }
+    // const activities = useSelector(selectActivity)
+    // const onActivitiesSelected = (activityId) => { console.log(activityId) }
 
 
     const navigate = useNavigate()
@@ -150,23 +150,23 @@ const SiteHeaderForm = () => {
         </NavDropdown.Item>
     )
 
-    let navActivitiesMenu
-    if (activities) {
+    // let navActivitiesMenu
+    // if (activities) {
 
-        navActivitiesMenu = activities.map(activity => {
-            return (
-                <NavDropdown.Item href="#activity._id"
-                    key={activity._id}
-                    onMouseOver={onMouseOverNavLink}
-                    onMouseOut={onMouseOutNavLink_Blue}
-                    onClick={() => onActivitiesSelected(activity._id)}
-                    style={navLinkStyle_blue}
-                >
-                    {activity.name}
-                </NavDropdown.Item>
-            )
-        });
-    }
+    //     navActivitiesMenu = activities.map(activity => {
+    //         return (
+    //             <NavDropdown.Item href="#activity._id"
+    //                 key={activity._id}
+    //                 onMouseOver={onMouseOverNavLink}
+    //                 onMouseOut={onMouseOutNavLink_Blue}
+    //                 onClick={() => onActivitiesSelected(activity._id)}
+    //                 style={navLinkStyle_blue}
+    //             >
+    //                 {activity.name}
+    //             </NavDropdown.Item>
+    //         )
+    //     });
+    // }
     const masters = [
         { '_id': 'Consumables', 'name': 'Consumables' },
         { '_id': 'Equipment', 'name': 'Equipment' },
@@ -238,34 +238,6 @@ const SiteHeaderForm = () => {
             </NavDropdown.Item>
         )
     })
-
-    // let consumablesNavLink = null
-    // consumablesNavLink = (
-    //     <Nav.Link
-    //         className={navLnkStyle_Btn}
-    //         onClick={onConsumablesClicked}
-    //         onMouseOver={onMouseOverNavLink}
-    //         onMouseOut={onMouseOutNavLink_Whitesmoke}
-    //         style={navLinkStyle_Whitesmoke}
-    //         title="Consumables"
-    //     >
-    //         Consumables
-    //     </Nav.Link>
-    // )
-    // let equipmentNavLink = null
-    // equipmentNavLink = (
-    //     <Nav.Link
-    //         className={navLnkStyle_Btn}
-    //         onClick={onEquipmentClicked}
-    //         onMouseOver={onMouseOverNavLink}
-    //         onMouseOut={onMouseOutNavLink_Whitesmoke}
-    //         style={navLinkStyle_Whitesmoke}
-    //         title="Equipment"
-    //     >
-    //         Equipment
-    //     </Nav.Link>
-    // )
-
 
     let filesNavLink = null
     filesNavLink = (

@@ -170,8 +170,9 @@ const updateUsers = async (req, res) => {
     const response = []
     const data = []
     let user
+    let newUser
     for (let i = 0; i < newData.length; i++) {
-        user = new User()
+        user = {}
         let roles = []
         let contactInfo = []
         let id = newData[i].id ? newData[i].id
@@ -179,13 +180,11 @@ const updateUsers = async (req, res) => {
                 : undefined
 
         // Hash password 
+        if (newData[i].username !== undefined) { user.username = newData[i].username }
+        if (newData[i].password !== undefined) { user.password = await bcrypt.hash(newData[i].password, 10) }
+        if (newData[i].employeeId !== undefined) { user.employeeId = newData[i].employeeId }
+        if (newData[i].employeeName !== undefined) { user.employeeName = newData[i].employeeName }
 
-
-
-        newData[i].username ? user.username = newData[i].username : null
-        newData[i].password ? user.password = await bcrypt.hash(newData[i].password, 10) : null
-        newData[i].employeeId ? user.employeeId = newData[i].employeeId : null
-        newData[i].employeeName ? user.employeeName = newData[i].employeeName : null
         if (newData[i].contactInfo) {
             contactInfo = newData[i].contactInfo
             user.contactInfo = contactInfo
@@ -194,9 +193,12 @@ const updateUsers = async (req, res) => {
             roles = newData[i].roles
             user.roles = roles
         }
-        newData[i].currActivityId ? user.currActivityId = newData[i].currActivityId : null
-        newData[i].active ? user.active = newData[i].active : null
-
+        if (newData[i]?.currActivityId !== undefined) {
+            user.currActivityId = newData[i].currActivityId
+        }
+        if (newData[i].active) {
+            user.active = newData[i].active
+        }
 
 
         if (id) {
@@ -214,7 +216,7 @@ const updateUsers = async (req, res) => {
             });
         } else {
             //create 
-            await user.save()
+            await User.create(user)
                 .then((result) => {
                     if (result === null) {
                         response.push({ message: `Employee Name: ${user.employeeName}, fail to create new user` })
@@ -233,8 +235,8 @@ const updateUsers = async (req, res) => {
                 )
         }
     }
-    console.log(`response = ${JSON.stringify(response)}`)
-    console.log(`data = ${JSON.stringify(data)}`)
+    // console.log(`response = ${JSON.stringify(response)}`)
+    // console.log(`data = ${JSON.stringify(data)}`)
     // let result = {}
     // result.data = data
     // result.response = response

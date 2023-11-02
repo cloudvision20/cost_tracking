@@ -14,17 +14,25 @@ const SiteLayout = () => {
     const { data: activities, isSuccess } = useGetActivitiesByUserIdQuery(userid);
 
     useEffect(() => {
-        dispatch(setActivity({ activities }))
+        try {
+            dispatch(setActivity({ activities }))
+
+        } catch (err) {
+            console.log(`siteLayout dispatch error: ${err}`)
+        }
+
     }, [isSuccess])
 
-    return (
-        <>
-            <SiteHeader />
-            <div className="container-xl ct-container">
-                <Outlet />
-            </div>
-            <SiteFooter />
-        </>
-    )
+    if (isSuccess) {
+        return (
+            <>
+                <SiteHeader />
+                <div className="container-xl ct-container">
+                    <Outlet />
+                </div>
+                <SiteFooter />
+            </>
+        )
+    }
 }
 export default SiteLayout

@@ -56,13 +56,13 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
                 },
             }),
             transformResponse: responseData => {
-                const loadedActivities = responseData.map((activity) => {
+                const activities = responseData.map((activity) => {
                     return {
                         ...activity,
                         resources: activity.resources.filter((res) => res.type === 'Labour')
                     }
                 });
-                return loadedActivities
+                return activities
             },
         }),
         addNewActivity: builder.mutation({

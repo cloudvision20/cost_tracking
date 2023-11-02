@@ -1,0 +1,294 @@
+[{
+  "_id": {
+    "$oid": "64c83a309a9f1104a6941a61"
+  },
+  "username": "b",
+  "password": "$2b$10$LkUHVWkFKrtimNQAaOgyxuA7IzIeh1iX2ojjGDoUtDMb1BnBhiRKq",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin"
+  ],
+  "active": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "652278222811d7c30565954f"
+  },
+  "username": "bb",
+  "password": "$2b$10$EjRjuwsLq597lC3nITGlW.bzccZs0ZDiY94zmSk0NpGRs4C87W1Bi",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin",
+    "Site"
+  ],
+  "active": true,
+  "__v": 0,
+  "currActivityId": {
+    "$oid": "64e0f3b2ecbaa145475119b6"
+  }
+},
+{
+  "_id": {
+    "$oid": "64c0a3409bb3abaaa39603b3"
+  },
+  "username": "beng",
+  "password": "$2b$10$Vh9.UXkDYj2y5bksk58JHuf1GJDXlsU3Ff581mefmMM6w.5DJWkX.",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin",
+    "Site"
+  ],
+  "active": true,
+  "__v": 0,
+  "currActivityId": {
+    "$oid": "64e0f491ecbaa145475119e1"
+  }
+},
+{
+  "_id": {
+    "$oid": "64c76e149a9f1104a69419b3"
+  },
+  "username": "ben",
+  "password": "$2b$10$Y5PTknYBSYlNNSeDWSUEUuie3keOMKekeQLavLCrHsRevygJpMN6q",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin",
+    "Site"
+  ],
+  "active": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd5a"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "rido",
+  "password": "$2b$10$H/WDHOvF/FNENFaFvVpqH.dTJI2MRdOfJjl78Y7ZT4MGvArll63JO",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd5c"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "koh_pek_siong",
+  "password": "$2b$10$2PI0HaVy/HQiq6wbWcyICurpa2.E6wyHUH2cOyb2h134NU3shsv/G",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd5e"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "saberi_abdullah",
+  "password": "$2b$10$Vo06SaRTXjuW14w6Pv2JFOrb1dzP0S5eWDPfw0g/9u4nzfoWDsmMu",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd60"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "lai_chen_ann",
+  "password": "$2b$10$eOeS1iRs4Kblr0vZGedwJeEWsb7N0wmXhnlbwWnsSTdUeIRBseBW6",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd62"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "rosli_sarbini",
+  "password": "$2b$10$8nI9Odd5xjljwXD22sP/T.D3yfDAjLArJBk0xJQLgfpy.i7nohNNS",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd64"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "usni",
+  "password": "$2b$10$rHecr/8Put.yx9UtxWKVWe3JnPAl2FMc4ttSnmC3AOg9XcNJ57oUy",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd66"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "suhaidi",
+  "password": "$2b$10$BMToh/r9l2g0sP7VdD/Sg.rBgYO.ASd7nkRqYaF7nrz/0wj5kmNNK",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd68"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "warren",
+  "password": "$2b$10$xsJkeW9uU5wKP5PQE5swdOW5tAMPgJc4Om7MdCTOc.uz63HtZpI06",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd6a"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "magdalane",
+  "password": "$2b$10$Vu7O.b7ThZXW8ojKuioXL.J1cbwnzAxGP7IJGNKP.4yMIYo0csa4W",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd6c"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "hamidon_wahap",
+  "password": "$2b$10$kvUCA2BEi1jfpMNG35aipeW8NvR89eUzg3JXxAo9Jln5iEbt9N/h6",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653b62413869e2b6f9bafd6e"
+  },
+  "roles": [
+    "Employee",
+    "Site"
+  ],
+  "active": true,
+  "contactInfo": null,
+  "username": "jonathan",
+  "password": "$2b$10$brAHvw3CDfLLugYrzZlWE.tHjyDxmP7BbiKQSfAmVSYvuk/.0EgiO",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6542254fce0c8898e1456015"
+  },
+  "username": "bbb",
+  "password": "$2b$10$uvZBiAgw02ud5jfqHSh84uXMEkfs8faNshm8dIcY/TtxHqvs0AB0S",
+  "employeeId": "beng",
+  "employeeName": "Ong Kian Beng",
+  "contactInfo": [
+    {
+      "email": "kbenghk@gmail.com",
+      "phone": "60109720098",
+      "whatsapp": "60109720098"
+    }
+  ],
+  "roles": [
+    "Employee",
+    "Manager",
+    "Admin"
+  ],
+  "active": true,
+  "__v": 0
+}]

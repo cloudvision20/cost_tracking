@@ -1,0 +1,42 @@
+activities: [
+    {
+        "process": {
+            "uom": "m3",
+            "quantity": 16800
+        },
+        "duration": {
+            "uom": "month",
+            "quantity": 1
+        },
+        "_id": "64e0f3b2ecbaa145475119b6",
+        "projectId": "64d0aa3710d9c6e297d9ebad",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "PISTA Project Clearing New #1",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "resources": [
+            {
+                "type": "Labour",
+                "details": "Test Labour Details",
+                "job": "Welder",
+                "costType": "hourly",
+                "uom": "rm",
+                "rate": 15,
+                "qtyAssign": 100,
+                "remarks": "",
+                "assignment": [
+                    {
+                        "resourcesId": "652278222811d7c30565954f",
+                        "budget": 10
+                    }
+                ],
+                "_id": "64e0f3b2ecbaa145475119b7"
+            }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:54:10.196Z",
+        "updatedAt": "2023-10-08T21:02:33.509Z",
+        "__v": 0,
+        "endDate": "2023-09-08T00:00:00.000Z",
+        "startDate": "2023-08-04T00:00:00.000Z"
+    }
+]

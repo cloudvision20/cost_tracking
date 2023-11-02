@@ -113,7 +113,11 @@ const getActivityById = asyncHandler(async (req, res) => {
 // })
 const getActivityByUserId = asyncHandler(async (req, res) => {
     const id = req.params.id
-    let activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": id })).exec()
+    const activities = await (Activity.find({ "resources.type": "Labour" }).find({ "resources.assignment.resourcesId": id })).exec()
+    // const user = await User.find({ "_id": id }).select('-password').populate({ path: 'currActivityId', select: 'name' }).lean()
+    // let response = {}
+    // response = activities
+    // response.user = user
     res.json(activities)
 })
 
