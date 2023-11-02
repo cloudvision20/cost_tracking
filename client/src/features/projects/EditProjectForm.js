@@ -174,145 +174,151 @@ const EditProjectForm = ({ activities, project, users }) => {
     const content = (
         <>
             <p className={errClass}>{errContent}</p>
-            <form onSubmit={e => e.preventDefault()}>
-                <div className="panel">
-                    <h2>Edit Project #{project.title}</h2>
-                    <div className="form-group ct-header__nav">
-                        <button
-                            className="btn btn-primary"
-                            title="Save"
-                            onClick={onSaveProjectClicked}
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                        {deleteButton}
-                    </div>
+            <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
+                <div className="row">
+                    <br />
                 </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Project Title:</b></div>
-                    <div className="col-sm-6">
-                        <input
-                            className="form-control"
-                            id="title"
-                            name="title"
-                            type="description"
-                            placeholder="Project Title"
-                            autoComplete="off"
-                            value={title}
-                            onChange={onTitleChanged}
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Description:</b></div>
-                    <div className="col-sm-6">
-                        <textarea
-                            className="form-control"
-                            id="description"
-                            name="description"
-                            placeholder="Description"
-                            rows="4"
-                            value={description}
-                            onChange={onDescriptionChanged}
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Start / End Dates:</b></div>
-                    <div className="col-md-3">
-                        <Form.Group controlId="startDate">
-                            <Form.Control
-                                type="date"
-                                value={startDate ? dateForPicker(startDate) : ''}
-                                placeholder={startDate ? dateForPicker(startDate) : "dd-mm-yyyy"}
-                                onChange={onStartDateChanged}
-                            />
-                        </Form.Group>
-                    </div>
-                    <div className="col-md-3">
-                        <Form.Group controlId="endDate">
-                            <Form.Control
-                                type="date"
-                                value={endDate ? dateForPicker(endDate) : ''}
-                                placeholder={endDate ? dateForPicker(endDate) : "dd-mm-yyyy"}
-                                onChange={onEndDateChanged}
-                            />
-                        </Form.Group>
-                    </div>
-                </div>
+                <form onSubmit={e => e.preventDefault()}>
+                    <div className="row" style={{ border: "0px" }}>
 
-                <div className="panel-heading"><b>Activities</b></div>
-                <div className="container-sm">
+                        <div className="col-sm-10" style={{ border: "0px" }}><h5>Edit Project #{project.title}</h5></div>
+                        <div className="form-group col-sm-2 ct-header__nav" style={{ border: "0px" }}>
+                            <button
+                                className="btn btn-primary"
+                                title="Save"
+                                onClick={onSaveProjectClicked}
+                                disabled={!canSave}
+                            >
+                                <FontAwesomeIcon icon={faSave} />
+                            </button>
+                            {deleteButton}
+                        </div>
+                    </div>
+                    <div className="form-group row" style={{ border: "0px" }}>
+                        <div className="col-sm-2" style={{ border: "0px" }}><b>Project Title:</b></div>
+                        <div className="col-sm-6" style={{ border: "0px" }} >
+                            <input
+                                className="form-control"
+                                id="title"
+                                name="title"
+                                type="description"
+                                placeholder="Project Title"
+                                autoComplete="off"
+                                value={title}
+                                onChange={onTitleChanged}
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group row" style={{ border: "0px" }}>
+                        <div className="col-sm-2" style={{ border: "0px" }}><b>Description:</b></div>
+                        <div className="col-sm-6" style={{ border: "0px" }}>
+                            <textarea
+                                className="form-control"
+                                id="description"
+                                name="description"
+                                placeholder="Description"
+                                rows="4"
+                                value={description}
+                                onChange={onDescriptionChanged}
+                            />
+                        </div>
+                    </div>
+                    <div className="form-group row">
+                        <div className="col-sm-2" style={{ border: "0px" }}><b>Start / End Dates:</b></div>
+                        <div className="col-md-3" style={{ border: "0px" }}>
+                            <Form.Group controlId="startDate">
+                                <Form.Control
+                                    type="date"
+                                    value={startDate ? dateForPicker(startDate) : ''}
+                                    placeholder={startDate ? dateForPicker(startDate) : "dd-mm-yyyy"}
+                                    onChange={onStartDateChanged}
+                                />
+                            </Form.Group>
+                        </div>
+                        <div className="col-md-3" style={{ border: "0px" }}>
+                            <Form.Group controlId="endDate">
+                                <Form.Control
+                                    type="date"
+                                    value={endDate ? dateForPicker(endDate) : ''}
+                                    placeholder={endDate ? dateForPicker(endDate) : "dd-mm-yyyy"}
+                                    onChange={onEndDateChanged}
+                                />
+                            </Form.Group>
+                        </div>
+                    </div>
 
-                    <div className="panel-group">
-                        <div className="panel panel-default">
-                            <div className="form-group  ct-header__nav">
-                                <button
-                                    className="btn btn-primary"
-                                    title="New Resources"
-                                    onClick={onNewActivityClicked}
-                                >
-                                    Add Activities
-                                </button>
-                            </div>
-                            <div className="panel-body">
-                                <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
-                                    <AgGridReact
-                                        ref={activitiesRef}
-                                        onCellValueChanged={onCellValueChanged}
-                                        onRowDoubleClicked={onRowDblClicked}
-                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
-                                        defaultColDef={defaultColDef}
-                                        rowData={rowData}
-                                        columnDefs={columnDefs}>
-                                    </AgGridReact>
+                    <div className="panel-heading" style={{ border: "0px" }}><b>Activities</b></div>
+                    <div className="container-sm" style={{ border: "0px" }}>
+
+                        <div className="panel-group" style={{ border: "0px" }}>
+                            <div className="panel panel-default">
+                                <div className="form-group  ct-header__nav">
+                                    <button
+                                        className="btn btn-primary"
+                                        title="New Resources"
+                                        onClick={onNewActivityClicked}
+                                    >
+                                        Add Activities
+                                    </button>
+                                </div>
+                                <div className="panel-body">
+                                    <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
+                                        <AgGridReact
+                                            ref={activitiesRef}
+                                            onCellValueChanged={onCellValueChanged}
+                                            onRowDoubleClicked={onRowDblClicked}
+                                            onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                            defaultColDef={defaultColDef}
+                                            rowData={rowData}
+                                            columnDefs={columnDefs}>
+                                        </AgGridReact>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
 
 
-                <div className="panel panel-info">
+                    <div className="panel panel-info">
 
-                    <div className="form-group row">
-                        <div className="col-sm-2"> <b>WORK COMPLETE:</b></div>
-                        <div className="col-sm-10">
-                            <div className="form-check">
-                                <input
-                                    className="form-check-input"
-                                    id="project-completed"
-                                    name="completed"
-                                    type="checkbox"
-                                    checked={completed}
-                                    onChange={onCompletedChanged}
-                                />
+                        <div className="form-group row" style={{ border: "0px" }}>
+                            <div className="col-sm-2" style={{ border: "0px" }}> <b>WORK COMPLETE:</b></div>
+                            <div className="col-sm-10" style={{ border: "0px" }}>
+                                <div className="form-check" style={{ border: "0px" }}>
+                                    <input
+                                        className="form-check-input"
+                                        id="project-completed"
+                                        name="completed"
+                                        type="checkbox"
+                                        checked={completed}
+                                        onChange={onCompletedChanged}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="form-group row">
-                        <div className="col-sm-2"> <b>ASSIGNED TO:</b></div>
-                        <div className="col-sm-2">
-                            <select
-                                id="username"
-                                name="username"
-                                className="form-control"
-                                value={userId}
-                                onChange={onUserIdChanged}
-                            >
-                                {options}
-                            </select>
+                        <div className="form-group row" style={{ border: "0px" }}>
+                            <div className="col-sm-2" style={{ border: "0px" }}> <b>ASSIGNED TO:</b></div>
+                            <div className="col-sm-2" style={{ border: "0px" }}>
+                                <select
+                                    id="username"
+                                    name="username"
+                                    className="form-control"
+                                    value={userId}
+                                    onChange={onUserIdChanged}
+                                >
+                                    {options}
+                                </select>
+                            </div>
+                        </div>
+                        <div className="panel" style={{ border: "0px" }}>
+                            <p className=""><span>Created: {created}</span><span style={{ padding: "15px" }} /><span>Updated: {updated}</span></p>
                         </div>
                     </div>
-                    <div className="panel">
-                        <p className=""><span>Created: {created}</span><span style={{ padding: "15px" }} /><span>Updated: {updated}</span></p>
-                    </div>
-                </div>
 
-            </form>
+                </form>
+            </div>
         </>
     )
 

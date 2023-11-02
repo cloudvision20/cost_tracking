@@ -1,12 +1,19 @@
 {
     "version": "0.2.0",
     "configurations": [
-        {
-            "type": "firefox",
+        // {
+        //     "type": "firefox",
+        //     "request": "launch",
+        //     "reAttach": true,
+        //     "name": "Launch firefox",
+        //     "url":"https://dk8qlj1g-3000.asse.devtunnels.ms",// "http://localhost:3000",
+        //     "webRoot": "${workspaceFolder}\\client"
+        // },
+                {
+            "name": "Launch Local Chrome",
             "request": "launch",
-            "reAttach": true,
-            "name": "Launch firefox",
-            "url":"https://dk8qlj1g-3000.asse.devtunnels.ms",// "http://localhost:3000",
+            "type": "chrome",
+            "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}\\client"
         },
         {

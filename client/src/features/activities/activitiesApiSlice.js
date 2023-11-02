@@ -54,16 +54,16 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
                 validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError
                 },
-            }),
-            transformResponse: responseData => {
-                const activities = responseData.map((activity) => {
-                    return {
-                        ...activity,
-                        resources: activity.resources.filter((res) => res.type === 'Labour')
-                    }
-                });
-                return activities
-            },
+            })
+            // transformResponse: responseData => {
+            //     const activities = responseData.map((activity) => {
+            //         return {
+            //             ...activity,
+            //             resources: activity.resources.filter((res) => res.type === 'Labour')
+            //         }
+            //     });
+            //     return activities
+            // },
         }),
         addNewActivity: builder.mutation({
             query: initialActivity => ({

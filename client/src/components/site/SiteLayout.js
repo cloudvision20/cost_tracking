@@ -4,7 +4,6 @@ import SiteHeader from './SiteHeader'
 import SiteFooter from './SiteFooter'
 import { setActivity } from './siteSlice'
 import { useDispatch } from 'react-redux'
-//import useActvitiesByUser from '../../hooks/useActvitiesByUser'
 import useAuth from '../../hooks/useAuth'
 import { useGetActivitiesByUserIdQuery } from '../../features/activities/activitiesApiSlice'
 
@@ -13,17 +12,12 @@ const SiteLayout = () => {
     const { userid } = useAuth()
     const { data: activities, isSuccess } = useGetActivitiesByUserIdQuery(userid);
 
-    useEffect(() => {
+    if (isSuccess) {
         try {
             dispatch(setActivity({ activities }))
-
         } catch (err) {
             console.log(`siteLayout dispatch error: ${err}`)
         }
-
-    }, [isSuccess])
-
-    if (isSuccess) {
         return (
             <>
                 <SiteHeader />

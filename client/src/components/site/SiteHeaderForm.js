@@ -22,7 +22,7 @@ const SiteHeaderForm = () => {
     // const navLinkStyle_ws = { color: 'whitesmoke', fontSize: '14px', backgroundColor: '#212f51' }
     const navLinkStyle_blue = { color: 'blue', fontSize: '14px' }
     const navLnkStyle_Btn = "btn btn-light"
-    // const activities = useSelector(selectActivity)
+    //const activities = useSelector(selectActivity)
     // const onActivitiesSelected = (activityId) => { console.log(activityId) }
 
 

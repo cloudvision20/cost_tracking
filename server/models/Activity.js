@@ -54,17 +54,21 @@ const activitySchema = new mongoose.Schema(
                 rate: { type: Number },
                 qtyAssign: { type: Number },
                 remarks: { type: String },
-                assignment: [{ resourcesId: { type: String }, budget: { type: Number }, _id: false }]
+                assignment: [{ resourcesId: { type: String }, budget: { type: Number }, current: { type: Boolean }, _id: false }]
             }
         ],
         completed: {
             type: Boolean,
             default: false
         },
-        workProgress: {
-            type: String,
-            required: false
-        }
+        active: { // 
+            type: Boolean,
+            default: true
+        },
+        // workProgress: { // remove?
+        //     type: Boolean,
+        //     required: false
+        // }
     },
     {
         timestamps: true

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const siteSlice = createSlice({
     name: 'site',
-    initialState: { activity: null },
+    initialState: { activity: [] },
     reducers: {
         setActivity: (state, action) => {
             const { activities } = action.payload

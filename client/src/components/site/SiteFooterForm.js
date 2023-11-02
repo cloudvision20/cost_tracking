@@ -30,7 +30,7 @@ const SiteFooter = ({ userid, username, status, activities }) => {
             <p>Current User: {username}</p>
             <p>User Id: {userid}</p>
             <p>Status: {status}</p>
-            <p>Activity: {activities?.name}</p>
+            <p>Activity: {activities.current.name}</p>
         </div>
 
     )

@@ -18,7 +18,8 @@ const Welcome = () => {
     const { userid, username, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
 
-    const Activities = useSelector(selectActivity)
+    let Activities = useSelector(selectActivity)
+
     const activities = Activities.activities
     let currActivityId = Activities.current.activityId
     let currActivityName = Activities.current.name
@@ -26,7 +27,10 @@ const Welcome = () => {
     // console.log(`activities.length : ${activities?.length}`)
 
     const [updateUsers, {
-        //isLoading, isSuccess, isError, error
+        //isLoading,
+        isSuccess,
+        isError,
+        error
     }] = useUpdateUsersMutation()
 
     const onCurrActivtyChange = (e) => {
@@ -43,6 +47,9 @@ const Welcome = () => {
             }
         }, 500)
     }
+
+    let options
+
     const updateDefaultActivity = (activityId) => {
         let user = {}
         user._id = userid
@@ -56,7 +63,6 @@ const Welcome = () => {
                 console.log(`error: ${error}`)
             })
     }
-    let options
     if (activities) {
         options = activities?.map(activity => {
             return (
@@ -111,6 +117,7 @@ const Welcome = () => {
                             </div>
                         </>
                     }
+
                     {(!currActivityId && activities?.length > 1)
                         &&
                         <>
@@ -131,9 +138,13 @@ const Welcome = () => {
                                     </Form.Select>
                                 </div>
                             </div>
+
                         </>
+
                     }
                     <br />
+
+
                     {(location === 'Site')
                         &&
                         <>
@@ -154,8 +165,10 @@ const Welcome = () => {
                     }
                 </div>
             </div>
+        </div>
         </section >
     )
-    return content
+
+return content
 }
 export default Welcome
