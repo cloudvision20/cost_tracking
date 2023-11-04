@@ -28,17 +28,19 @@ import Prefetch from './features/auth/Prefetch'
 import PersistLogin from './features/auth/PersistLogin'
 import RequireAuth from './features/auth/RequireAuth'
 import { ROLES } from './config/roles'
-import useTitle from './hooks/useTitle';
+import useTitle from './hooks/useTitle'
 
 import SiteLayout from './components/site/SiteLayout'
 import SiteWelcome from './features/auth/SiteWelcome'
 
-import FrmRecords from './features/records/FrmRecords';
-import FrmRecord from './features/records/FrmRecord';
+import FrmRecords from './features/records/FrmRecords'
+import FrmRecord from './features/records/FrmRecord'
 
 import EditMasters from './features/masters/EditMasters'
-import FrmAttends from './features/attendance/FrmAttends';
+import FrmAttends from './features/attendance/FrmAttends'
 import FrmUsers from './features/users/FrmUsers'
+import FrmTypes from './features/types/FrmTypes'
+
 function App() {
   useTitle('Cost Tracking')
 
@@ -64,6 +66,10 @@ function App() {
                 <Route index element={<SiteWelcome />} />
                 <Route path="attends" element={<FrmAttends />} />
                 <Route path="users" element={<FrmUsers />} />
+                <Route path="consumables" element={<EditMasters formType={`Consumables`} />} />
+                <Route path="equipment" element={<EditMasters formType={`Equipment`} />} />
+                <Route path="expenses" element={<EditMasters formType={`Expenses`} />} />
+                <Route path="types" element={<FrmTypes />} />
                 <Route path="records">
                   <Route path="consumables" element={<FrmRecords formType={`Consumables`} />} />
                   <Route path="equipment" element={<FrmRecords formType={`Equipment`} />} />
@@ -72,7 +78,7 @@ function App() {
                   <Route path="equip" element={<FrmRecord formType={`Equipment`} />} />
                   <Route path="expense" element={<FrmRecord formType={`Expenses`} />} />
                 </Route>
-                <Route path="consumables">
+                {/* <Route path="consumables">
                   <Route index element={<EditMasters formType={`Consumables`} />} />
                 </Route>
                 <Route path="equipment">
@@ -80,7 +86,7 @@ function App() {
                 </Route>
                 <Route path="expenses">
                   <Route index element={<EditMasters formType={`Expenses`} />} />
-                </Route>
+                </Route> */}
                 <Route path="files">
                   <Route index element={<FilesUpload />} />
                   <Route path="attendances" element={<AttendancesUpload />} />

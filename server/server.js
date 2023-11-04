@@ -55,6 +55,7 @@ app.use('/expenses', require('./routes/expenseRoutes'))
 app.use('/records', require('./routes/recordRoutes'))
 app.use('/masters', require('./routes/masterRoutes'))
 app.use('/attends', require('./routes/attendRoutes'))
+app.use('/types', require('./routes/typeRoutes'))
 app.use(fileUpload());
 app.use('/files', require('./routes/filesRoutes'))
 

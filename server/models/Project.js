@@ -16,6 +16,13 @@ const projectSchema = new mongoose.Schema({
     },
     startDate: { type: Date },
     endDate: { type: Date },
+    png: [{ //PnGType facilities:[], mobilization:[], supervisor:[]
+        pngType: { type: String },
+        uom: { type: String },
+        Quantity: { type: Number },
+        rate: { type: Number },
+        amount: { type: Number }
+    }],
     budgetTotals: [{
         budgetType: { type: String }, //HR, Equipment, Comsumables
         uom: { type: String },

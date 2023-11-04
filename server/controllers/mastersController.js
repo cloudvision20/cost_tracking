@@ -90,7 +90,7 @@ const getAllMastersByType = asyncHandler(async (req, res) => {
 // // @route PATCH /masters
 // // @access Private
 // const saveMaster = async (req, res) => {
-//     const { id, name, type, unit, capacity, remark } = req.body
+//     const { id, name, type, unit, capacity, remarks } = req.body
 
 //     // Confirm data 
 //     if (!name) {
@@ -116,7 +116,7 @@ const getAllMastersByType = asyncHandler(async (req, res) => {
 //     if (type) { master.type = type }
 //     if (capacity) { master.capacity = parseFloat(capacity) }
 //     if (unit) { master.unit = unit }
-//     if (remark) { master.remark = remark }
+//     if (remarks) { master.remarks = remarks }
 
 //     const result = await master.save()
 
@@ -127,7 +127,7 @@ const getAllMastersByType = asyncHandler(async (req, res) => {
 // // @route PATCH /masters
 // // @access Private
 // const updateMaster = async (req, res) => {
-//     const { name, type, unit, capacity, remark } = req.body
+//     const { name, type, unit, capacity, remarks } = req.body
 
 //     let id
 //     req.body.id ? id = req.body.id
@@ -157,7 +157,7 @@ const getAllMastersByType = asyncHandler(async (req, res) => {
 //     if (type) { master.type = type }
 //     if (capacity) { master.capacity = parseFloat(capacity) }
 //     if (unit) { master.unit = unit }
-//     if (remark) { master.remark = remark }
+//     if (remarks) { master.remarks = remarks }
 
 
 //     await Master.findOneAndUpdate({ _id: id }, master, { new: true }).then((result) => {
@@ -192,13 +192,13 @@ const updateMasters = async (req, res) => {
         if (newData[i].type) { master.type = newData[i].type }
         master.capacity = (newData[i].capacity === undefined) ? 0 : parseFloat(newData[i].capacity)
         if (newData[i].unit) { master.unit = newData[i].unit }
-        if (newData[i].remark) { master.remark = newData[i].remark }
+        if (newData[i].remarks) { master.remarks = newData[i].remarks }
 
         // master.name = newData[i].name ? newData[i].name : null
         // master.type = newData[i].type ? newData[i].type : null
         // master.capacity = newData[i].capacity ? parseFloat(newData[i].capacity) : null
         // master.unit = newData[i].unit ? newData[i].unit : null
-        // master.remark = newData[i].remark ? newData[i].remark : null
+        // master.remarks = newData[i].remarks ? newData[i].remarks : null
 
         if (newData[i]._id) {
             // Update

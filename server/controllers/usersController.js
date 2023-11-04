@@ -160,23 +160,20 @@ const updateUser = async (req, res) => {
 }
 
 
-// // @desc Update a user
+// // @desc Update user(s)
 // // @route PATCH /users
 // // @access Private
 const updateUsers = async (req, res) => {
     const newData = req.body.data
-    //const formType = req.body.formType
-    //const formName = !formType ? 'User' : formType
     const response = []
     const data = []
     let user
-    let newUser
     for (let i = 0; i < newData.length; i++) {
         user = {}
         let roles = []
         let contactInfo = []
         let id = newData[i].id ? newData[i].id
-            : newData[i]._id ? newData[i]._id
+            : newData[i]._id ? newData[i]._id.toString()
                 : undefined
 
         // Hash password 
@@ -237,10 +234,6 @@ const updateUsers = async (req, res) => {
     }
     // console.log(`response = ${JSON.stringify(response)}`)
     // console.log(`data = ${JSON.stringify(data)}`)
-    // let result = {}
-    // result.data = data
-    // result.response = response
-
     return res.status(202).json({ data: data, response })
 }
 

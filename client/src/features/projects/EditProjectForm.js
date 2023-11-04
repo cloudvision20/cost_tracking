@@ -298,20 +298,37 @@ const EditProjectForm = ({ activities, project, users }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="form-group row" style={{ border: "0px" }}>
-                            <div className="col-sm-2" style={{ border: "0px" }}> <b>ASSIGNED TO:</b></div>
-                            <div className="col-sm-2" style={{ border: "0px" }}>
-                                <select
-                                    id="username"
-                                    name="username"
-                                    className="form-control"
-                                    value={userId}
-                                    onChange={onUserIdChanged}
-                                >
-                                    {options}
-                                </select>
-                            </div>
-                        </div>
+                        {(!userId)
+                            &&
+                            <>
+                                <div className="form-group row" style={{ border: "0px" }}>
+                                    <div className="col-sm-2" style={{ border: "0px" }}> <b>ASSIGNED TO:</b></div>
+                                    <div className="col-sm-2" style={{ border: "0px" }}>
+                                        <select
+                                            id="username"
+                                            name="username"
+                                            className="form-select"
+                                            value={userId}
+                                            onChange={onUserIdChanged}
+                                        >
+                                            {options}
+                                        </select>
+                                    </div>
+                                </div>
+                            </>
+                        }
+
+                        {(userId)
+                            &&
+                            <>
+                                <div className="form-group row" style={{ border: "0px" }}>
+                                    <div className="col-sm-2" style={{ border: "0px" }}> <b>ASSIGNED TO:</b></div>
+                                    <div className="col-sm-2" style={{ border: "0px" }}>
+                                        <b><label value={userId}>{userId.username}</label></b>
+                                    </div>
+                                </div>
+                            </>
+                        }
                         <div className="panel" style={{ border: "0px" }}>
                             <p className=""><span>Created: {created}</span><span style={{ padding: "15px" }} /><span>Updated: {updated}</span></p>
                         </div>

@@ -17,7 +17,7 @@ const masterSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    remark: { type: String }
+    remarks: { type: String }
 })
 
 // const Master = mongoose.model('Master', masterSchema)

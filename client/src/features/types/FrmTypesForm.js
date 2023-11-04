@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { AgGridReact } from "ag-grid-react";
 import { useNavigate } from 'react-router-dom'
-import { useUpdateMastersMutation, useDeleteMasterMutation } from './mastersApiSlice'
+import { useUpdateTypesMutation, useDeleteTypeMutation } from './typesApiSlice'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 
-let eMasters = {}
+let eTypes = {}
 // Button definition for buttons in Ag-grid
 const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
 const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
@@ -31,31 +31,32 @@ class BtnCellRenderer extends Component {
         )
     }
 }
-const EditMasterForm = ({ masters, formType }) => {
-    const blankData = { "type": "", "name": "", "capacity": 0, "unit": "", "_id": "", "remarks": "" }
-    //formType = formType ? formType : 'Consumables'
+const FrmTypesForm = ({ types }) => {
+    const blankData = { "category": "", "name": "", "_id": "", "remarks": "" }
     let msgContent = ''
     const msgRef = useRef();
 
-    if (!masters) {
-        msgContent = `New ${formType} database`
+    if (types._id === null) {
+        msgContent = `New Type database`
         msgRef.className = 'resmsg'
-        masters = { blankData }
+        //types = ptypes
     } else {
         msgRef.className = 'offscreen'
         msgContent = ''
     }
-    const [updateMasters, {
+    const [updateTypes, {
         //isLoading,
         isSuccess,
         isError,
         error
-    }] = useUpdateMastersMutation()
-    const [deleteMaster, {
+    }] = useUpdateTypesMutation()
+
+    const [deleteType, {
         isSuccess: isDelSuccess,
         isError: isDelError,
         error: delerror
-    }] = useDeleteMasterMutation()
+    }] = useDeleteTypeMutation()
+
     const navigate = useNavigate()
     const defaultColDef = useMemo(() => {
         return {
@@ -64,34 +65,31 @@ const EditMasterForm = ({ masters, formType }) => {
             width: 150,
         };
     }, []);
-    const masterGridRef = useRef();
-    // const data = useRef()
-    // useMemo(() => {
-    //     data.current = Array.from(masters).map((data, index) => ({
-    //         "type": data.type,
-    //         "name": data.name,
-    //         "capacity": data.capacity ? parseFloat(data.capacity) : 0,
-    //         "unit": data.unit,
-    //         "_id": data._id
-    //     }))
+    const typeGridRef = useRef();
 
-    // }, [formType, masters])
-    let data = Array.from(masters).map((data, index) => ({
+    let data = Array.from(types).map((data, index) => ({
         "_id": data._id,
+        "category": data.category,
         "name": data.name,
-        "type": data.type,
-        "capacity": data.capacity ? parseFloat(data.capacity) : 0,
-        "unit": data.unit,
         "remarks": data.remarks
     }))
-    const [rdMaster, setRdMaster] = useState(data)
-
-    const [masterColDefs] = useState([
+    const [rdType, setRdType] = useState(data)
+    const arrCategory = ['Consumables', 'Equipment', 'Expenses', 'PNG_Faciity', 'PNG_Mobilization', 'PNG_Supervisor']
+    const [typeColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
+        // { field: "category", headerName: 'Category', width: 150, editable: true },
+        {
+            field: 'category',
+            width: 150,
+            editable: true,
+            cellEditor: 'agSelectCellEditor',
+            filter: 'agSetColumnFilter',
+            cellEditorPopup: false,
+            cellEditorParams: {
+                values: arrCategory,
+            },
+        },
         { field: 'name', headerName: 'Name', width: 150, editable: true },
-        { field: "type", headerName: 'Type', width: 150, editable: true },
-        { field: "capacity", headerName: 'Capacity (Amt/Qt)', width: 100, editable: true },
-        { field: "unit", headerName: 'Unit', width: 75, editable: true },
         { field: "remarks", headerName: 'remarks', width: 250, editable: true },
         {
             headerName: 'Actions',
@@ -103,7 +101,7 @@ const EditMasterForm = ({ masters, formType }) => {
                     if (this.data._id) { delRecord(this.data._id) }
                     this.api.applyTransaction({ remove: [this.data] });
                 },
-                Id: "master"
+                Id: "type"
             },
         }
     ])
@@ -113,21 +111,18 @@ const EditMasterForm = ({ masters, formType }) => {
     const errContent = useRef((error?.data?.message || delerror?.data?.message) ?? '');
     const onSaveClicked = async (e) => {
         e.preventDefault()
-        eMasters.data = rdMaster
-        eMasters.formType = formType
-        await updateMasters(eMasters)
+        eTypes.data = rdType
+        await updateTypes(eTypes)
             .then((result) => {
                 console.log(` result = ${JSON.stringify(result)}`)
                 data = result.data.data.map((data, index) => ({
-                    "type": data.type,
+                    "category": data.category,
                     "name": data.name,
-                    "capacity": data.capacity ? parseFloat(data.capacity) : 0,
-                    "unit": data.unit,
                     "remarks": data.remarks,
                     "_id": data._id
                 }))
-                setRdMaster(data)
-                masterGridRef.current.api.refreshCells()
+                setRdType(data)
+                typeGridRef.current.api.refreshCells()
                 errClass = "resmsg"
                 errRef.className = "resmsg"
                 errContent.current = " Saved!"
@@ -139,7 +134,7 @@ const EditMasterForm = ({ masters, formType }) => {
     }
 
     const delRecord = async (_id) => {
-        await deleteMaster({ id: _id, formType: formType })
+        await deleteType({ id: _id })
             .then((result) => {
 
 
@@ -147,21 +142,21 @@ const EditMasterForm = ({ masters, formType }) => {
                 console.log(`error: ${error}`)
             }).finally(() => {
                 let rData = []
-                masterGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdMaster(rData)
+                typeGridRef.current.api.forEachNode(node => rData.push(node.data));
+                setRdType(rData)
             }
             )
     }
     const onValueChanged = (e) => {
-        console.log('onValueChanged-rowData:' + JSON.stringify(rdMaster))
+        console.log('onValueChanged-rowData:' + JSON.stringify(rdType))
     }
     const onNewClicked = (e) => {
         e.preventDefault()
         let newRData =
-            rdMaster ?
-                [...rdMaster, blankData]
+            rdType ?
+                [...rdType, blankData]
                 : [blankData]
-        setRdMaster(newRData)
+        setRdType(newRData)
     }
     const errRef = useRef();
     useEffect(() => {
@@ -169,10 +164,7 @@ const EditMasterForm = ({ masters, formType }) => {
         isSuccess ? errContent.current = " Saved!"
             : errContent.current = "Deleted!"
     }, [isSuccess, isDelSuccess, navigate])
-    // useEffect(() => {
-    //     console.log(`data = ${JSON.stringify(data)}`)
-    //     setRdMaster(data)
-    // }, [data])
+
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
@@ -182,7 +174,7 @@ const EditMasterForm = ({ masters, formType }) => {
                     <br />
                 </div>
                 <div className="row">
-                    <div className="col-sm-12" style={{ border: "0px" }}><h4><b>Edit {formType} </b></h4></div>
+                    <div className="col-sm-12" style={{ border: "0px" }}><h4><b>Edit Types </b></h4></div>
                 </div>
 
                 <div className="row">
@@ -207,13 +199,13 @@ const EditMasterForm = ({ masters, formType }) => {
                     <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
                         <p ref={msgRef} className="" >{msgContent}</p>
                         <AgGridReact
-                            ref={masterGridRef}
+                            ref={typeGridRef}
                             onCellValueChanged={onValueChanged}
                             onGridReady={(event) => event.api.sizeColumnsToFit()}
                             // onRowDataUpdated={(event) => event.current.api.refreshCells()}
                             defaultColDef={defaultColDef}
-                            rowData={rdMaster}
-                            columnDefs={masterColDefs}>
+                            rowData={rdType}
+                            columnDefs={typeColDefs}>
 
                         </AgGridReact>
                     </div>
@@ -229,4 +221,4 @@ const EditMasterForm = ({ masters, formType }) => {
 
 }
 
-export default EditMasterForm
+export default FrmTypesForm

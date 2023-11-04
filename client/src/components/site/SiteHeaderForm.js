@@ -45,6 +45,7 @@ const SiteHeaderForm = () => {
     const onNewDailyReportSelected = () => navigate('/site/dailyReports/new')
     const onDailyReportSelected = () => navigate('/site/dailyReports')
     const onUserSelected = () => navigate('/site/users')
+    const onTypeSelected = () => navigate('/site/types')
     const onFilesClicked = () => navigate('/site/files')
     const onAttendancesClicked = () => navigate('/site/files/attendances')
     const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
@@ -149,7 +150,19 @@ const SiteHeaderForm = () => {
             Users
         </NavDropdown.Item>
     )
-
+    let navTypeMenu = null
+    navTypeMenu = (
+        <NavDropdown.Item href="#types"
+            key={`types`}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Blue}
+            style={navLinkStyle_blue}
+            title="Types"
+            onClick={onTypeSelected}
+        >
+            Types
+        </NavDropdown.Item>
+    )
     // let navActivitiesMenu
     // if (activities) {
 
@@ -372,6 +385,8 @@ const SiteHeaderForm = () => {
                                     {navMasterMenu}
                                     <NavDropdown.Divider />
                                     {navUserMenu}
+                                    <NavDropdown.Divider />
+                                    {navTypeMenu}
                                 </NavDropdown>
                                 <NavDropdown
                                     title={< span style={navLinkStyle_Whitesmoke}
