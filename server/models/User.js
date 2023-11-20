@@ -17,14 +17,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    contactInfo: [
-        {
-            email: String,
-            phone: String,
-            whatsapp: String,
-            _id: false
-        }
-    ],
+    contactInfo:
+    {
+        email: String,
+        phone: String,
+        whatsapp: String,
+        _id: false
+    }
+    ,
     roles: {
         type: [String],
         default: ["Employee"]

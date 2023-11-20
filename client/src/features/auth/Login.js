@@ -53,6 +53,8 @@ const Login = () => {
 
             if (decoded.UserInfo.roles.includes('Site')) {
                 navigate(`/site`)
+            } else if (decoded.UserInfo.roles.includes('CRView')) {
+                navigate(`/crview`)
             } else {
                 navigate(`/dash`)
             }

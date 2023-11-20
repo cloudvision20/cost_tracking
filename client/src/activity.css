@@ -5,6 +5,9 @@
     --BGCOLOR: #212f51;
     --BGCOLOR-DARK: #0F172A;
     --FGCOLOR: lightblue;
+    --CRBGCOLOR: #c01123;
+    --CRBGCOLOR-DARK: #5b0404;
+    --CRFGCOLOR: whitesmoke;
     --BORDER-COLOR: #FFF;
     --COLOR: #FFF;
     --ERROR: firebrick;
@@ -208,7 +211,35 @@ a-dark-bg:focus-visible {
     border: 1px solid var(--INPUT-INVALID);
     outline: 1px solid var(--INPUT-INVALID);
 } */
+/**************************************************************************************************************/
+.cr-header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: var(--CRFGCOLOR);
+    background-color: var(--CRBGCOLOR-DARK);
+    padding: 0 0.5em;
+    border-bottom: 1px solid var(--BORDER-COLOR);
+    width: 100%
+}
 
+.cr-footer {
+    font-size: 0.875rem;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+    color: var(--CRFGCOLOR);
+    background-color: var(--CRBGCOLOR-DARK);
+    padding: 0.25em;
+    border-top: 1px solid var(--BORDER-COLOR);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    gap: 1em;
+    width: 100%
+}
+
+/***************************************************************************************************************/
 th,
 td {
     padding-top: 0px;

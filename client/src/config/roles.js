@@ -3,5 +3,7 @@ export const ROLES = {
     Manager: 'Manager',
     Admin: 'Admin',
     Site: 'Site',
-    HQ: 'HQ'
+    HQ: 'HQ',
+    CRView: 'CRView'
+
 }

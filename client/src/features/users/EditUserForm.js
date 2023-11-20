@@ -7,6 +7,7 @@ import { ROLES } from "../../config/roles"
 
 const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
+const inputStyle = { fontSize: "12px", textAlign: "left" }
 
 const EditUserForm = ({ user }) => {
 
@@ -24,16 +25,18 @@ const EditUserForm = ({ user }) => {
     }] = useDeleteUserMutation()
 
     const navigate = useNavigate()
-
-    const [username, setUsername] = useState(user.username)
+    const isNewUser = (user?._id) ? false : true
+    const [username, setUsername] = useState(user?.username)
     const [validUsername, setValidUsername] = useState(false)
     const [password, setPassword] = useState('')
     const [validPassword, setValidPassword] = useState(false)
-    const [employeeId, setEmployeeId] = useState(user.employeeId)
-    const [employeeName, setEmployeeName] = useState(user.employeeName)
-    const [roles, setRoles] = useState(user.roles)
-    const [active, setActive] = useState(user.active)
-
+    const [employeeId, setEmployeeId] = useState(user?.employeeId)
+    const [employeeName, setEmployeeName] = useState(user?.employeeName)
+    const [roles, setRoles] = useState(user?.roles)
+    const [active, setActive] = useState(user?.active)
+    const [email, setEmail] = useState(user?.contactInfo?.email)
+    const [phone, setPhone] = useState(user?.contactInfo?.phone)
+    const [whatsapp, setWhatsapp] = useState(user?.contactInfo?.whatsapp)
     useEffect(() => {
         setValidUsername(USER_REGEX.test(username))
     }, [username])
@@ -57,7 +60,9 @@ const EditUserForm = ({ user }) => {
     const onPasswordChanged = e => setPassword(e.target.value)
     const onEmployeeIdChanged = e => setEmployeeId(e.target.value)
     const onEmployeeNameChanged = e => setEmployeeName(e.target.value)
-
+    const onEmailChanged = e => setEmail(e.target.value)
+    const onPhoneChanged = e => setPhone(e.target.value)
+    const onWhatsappChanged = e => setWhatsapp(e.target.value)
     const onRolesChanged = e => {
         const values = Array.from(
             e.target.selectedOptions,
@@ -69,10 +74,14 @@ const EditUserForm = ({ user }) => {
     const onActiveChanged = () => setActive(prev => !prev)
 
     const onSaveUserClicked = async (e) => {
+        let contactInfo = {}
+        contactInfo.email = email
+        contactInfo.phone = phone
+        contactInfo.whatsapp = whatsapp
         if (password) {
-            await updateUser({ _id: user.id, id: user.id, username, employeeId, employeeName, password, roles, active })
+            await updateUser({ _id: user.id, id: user.id, username, employeeId, employeeName, password, roles, active, contactInfo })
         } else {
-            await updateUser({ _id: user.id, id: user.id, username, employeeId, employeeName, roles, active })
+            await updateUser({ _id: user.id, id: user.id, username, employeeId, employeeName, roles, active, contactInfo })
         }
     }
 
@@ -110,135 +119,187 @@ const EditUserForm = ({ user }) => {
             <p className={errClass}>{errContent}</p>
 
             <form className="form" onSubmit={e => e.preventDefault()}>
-                <div className="panel">
-                    <h4><b>Edit User</b></h4>
-                    <div className="form-group  ct-header__nav">
-                        <button
-                            className="btn btn-primary"
-                            title="Save"
-                            onClick={onSaveUserClicked}
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                        <button
-                            className="btn btn-danger"
-                            title="Delete"
-                            onClick={onDeleteUserClicked}
-                        >
-                            <FontAwesomeIcon icon={faTrashCan} />
-                        </button>
+                <div className="container grid_system" style={{ fontSize: '12px', border: "1px solid blue", padding: " 10px 10px 10px 10px" }}>
+
+                    <div className=" row" style={{ paddingBottom: "20px" }}>
+                        <div className="col-sm-10" style={{ fontSize: '12px', border: "0px" }}>
+                            <h5><b>{(isNewUser ? 'Create New' : 'Edit')} User</b></h5>
+                        </div>
+                        <div className=" col-sm-2  ct-header__nav" >
+                            <button
+                                className="btn btn-primary btn-sm"
+                                title="Save"
+                                onClick={onSaveUserClicked}
+                                disabled={!canSave}
+                            >
+                                <FontAwesomeIcon icon={faSave} />
+                            </button>
+                            <button
+                                className="btn btn-danger btn-sm"
+                                title="Delete"
+                                onClick={onDeleteUserClicked}
+                            >
+                                <FontAwesomeIcon icon={faTrashCan} />
+                            </button>
+                        </div>
                     </div>
+                    <div className=" row" >
+                        <div className=" col-sm-3" ><b>Employee Id:</b> </div>
+                        <div className=" col-sm-4" >
+                            <input
+                                className="form-control"
+                                id="employeeId"
+                                name="EmployeeId"
+                                style={inputStyle}
+                                type="text"
+                                autoComplete="off"
+                                value={employeeId}
+                                onChange={onEmployeeIdChanged}
+                            />
+                        </div>
+                    </div>
+                    <div className=" row" >
+                        <div className=" col-sm-3" ><b>Employee Name:</b> </div>
+                        <div className=" col-sm-4" >
+                            <input
+                                className="form-control"
+                                id="employeeName"
+                                name="EmployeeName"
+                                style={inputStyle}
+                                type="text"
+                                autoComplete="off"
+                                value={employeeName}
+                                onChange={onEmployeeNameChanged}
+                            />
+                        </div>
+                    </div>
+
+                    <div className=" row" >
+                        <div className=" col-sm-3" ><b>Username:</b> <br />
+                            <span className="user-tip">[3-20 letters]</span>
+                        </div>
+                        <div className=" col-sm-4" >
+                            <input
+                                className="form-control"
+                                id="username"
+                                name="username"
+                                style={inputStyle}
+                                type="text"
+                                autoComplete="off"
+                                value={username}
+                                onChange={onUsernameChanged}
+                            />
+                        </div>
+                    </div>
+                    <div className=" row" >
+                        <div className=" col-sm-3" ><b>Password:</b> <br /> <span className="user-tip">[empty = no change]</span><br /><span className="user-tip">  [4-12 chars incl. !@#$%]</span></div>
+                        <div className=" col-sm-4" >
+                            <input
+                                className="form-control"
+                                id="password"
+                                name="password"
+                                style={inputStyle}
+                                type="password"
+                                value={password}
+                                onChange={onPasswordChanged}
+                            />
+                        </div>
+                    </div>
+                    {/* Contact Info  */}
+                    <div className=" row"  >
+                        <div className=" col-sm-3" >
+                            <b>ContactInfo:</b>
+                        </div>
+                        <div className=" col-sm-8">
+
+                            <div className=" row" >
+                                <div className=" col-sm-2" ><b>Email:</b>
+                                </div>
+                                <div className=" col-sm-4" >
+                                    <input
+                                        className="form-control"
+                                        id="email"
+                                        name="email"
+                                        style={inputStyle}
+                                        type="text"
+                                        autoComplete="off"
+                                        value={email}
+                                        onChange={onEmailChanged}
+                                    />
+                                </div>
+                            </div>
+                            <div className=" row" >
+                                <div className=" col-sm-2" ><b>Phone:</b>
+                                </div>
+                                <div className=" col-sm-4" >
+                                    <input
+                                        className="form-control"
+                                        id="phone"
+                                        name="phone"
+                                        style={inputStyle}
+                                        type="text"
+                                        autoComplete="off"
+                                        value={phone}
+                                        onChange={onPhoneChanged}
+                                    />
+                                </div>
+                            </div>
+                            <div className=" row" >
+                                <div className=" col-sm-2" ><b>Whatsapp:</b>
+                                </div>
+                                <div className=" col-sm-4" >
+                                    <input
+                                        className="form-control"
+                                        id="whatsapp"
+                                        name="whatsapp"
+                                        style={inputStyle}
+                                        type="text"
+                                        autoComplete="off"
+                                        value={whatsapp}
+                                        onChange={onWhatsappChanged}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className=" row" >
+                        <div className=" col-sm-3" > <b>ACTIVE:</b>
+                        </div>
+                        <div className=" col-sm-4 form-check" >
+                            <input
+                                className="form-check-input"
+                                id="user-active"
+                                name="user-active"
+                                type="checkbox"
+                                checked={active}
+                                onChange={onActiveChanged}
+                            />
+                        </div>
+                    </div>
+                    <div className="row" >
+                        <div className=" col-sm-3" ><b> ASSIGNED ROLES:</b>
+                            <br />
+                            <span className="user-tip">{roles.toString().replaceAll(',', ', ')}</span>
+                        </div>
+                        <div className=" col-sm-4" >
+                            <select
+                                id="roles"
+                                name="roles"
+                                className="form-check"
+                                style={{ fontSize: "12px", width: "100%", textAlign: "left" }}
+                                multiple={true}
+                                size="3"
+                                value={roles}
+                                onChange={onRolesChanged}
+                            >
+                                {options}
+                            </select>
+                        </div>
+                    </div>
+
+
+
                 </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Employee Id:</b> </div>
-                    <div className="col-sm-2">
-                        <input
-                            className="form-control"
-                            id="employeeId"
-                            name="EmployeeId"
-                            type="text"
-                            autoComplete="off"
-                            value={employeeId}
-                            onChange={onEmployeeIdChanged}
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Employee Name:</b> </div>
-                    <div className="col-sm-2">
-                        <input
-                            className="form-control"
-                            id="employeeName"
-                            name="EmployeeName"
-                            type="text"
-                            autoComplete="off"
-                            value={employeeName}
-                            onChange={onEmployeeNameChanged}
-                        />
-                    </div>
-                </div>
-
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Username:</b> <br /><span className="user-tip">[3-20 letters]</span>
-                    </div>
-                    <div className="col-sm-2">
-                        <input
-                            className="form-control"
-                            id="username"
-                            name="username"
-                            type="text"
-                            autoComplete="off"
-                            value={username}
-                            onChange={onUsernameChanged}
-                        />
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b>Password:</b> <br /> <span className="user-tip">[empty = no change]</span><br /><span className="user-tip">  [4-12 chars incl. !@#$%]</span></div>
-                    <div className="col-sm-2">
-                        <input
-                            className="form-control"
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={password}
-                            onChange={onPasswordChanged}
-                        />
-                    </div>
-                </div>
-
-
-
-
-                {/* <div className="form-group col-md-2">
-                    <label className="form__label form__checkbox-container" htmlFor="user-active">
-                        ACTIVE:
-                        <input
-                            className="form__checkbox"
-                            id="user-active"
-                            name="user-active"
-                            type="checkbox"
-                            checked={active}
-                            onChange={onActiveChanged}
-                        />
-                    </label>
-                </div> */}
-                <div className="form-group row">
-                    <div className="col-sm-2"> <b>ACTIVE:</b></div>
-                    <div className="col-sm-2 form-check">
-                        {/* <div className="form-check"> */}
-                        <input
-                            className="form-check-input"
-                            id="user-active"
-                            name="user-active"
-                            type="checkbox"
-                            checked={active}
-                            onChange={onActiveChanged}
-                        />
-                        {/* </div> */}
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <div className="col-sm-2"><b> ASSIGNED ROLES:</b></div>
-                    <div className="col-sm-2">
-                        <select
-                            id="roles"
-                            name="roles"
-                            className="form-control"
-                            multiple={true}
-                            size="3"
-                            value={roles}
-                            onChange={onRolesChanged}
-                        >
-                            {options}
-                        </select>
-                    </div>
-                </div>
-
-
-
-
             </form>
         </>
     )

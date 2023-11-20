@@ -78,7 +78,7 @@ const createNewProject = async (req, res) => {
 // @desc Update a project
 // @route PATCH /projects
 // @access Private
-const updateProject = async (req, res) => {
+const update_Project = async (req, res) => {
     let id = req.body.id ? req.body.id
         : req.body._id ? req.body._id
             : undefined
@@ -99,9 +99,85 @@ const updateProject = async (req, res) => {
 
         res.status(500).json({ message: `error -- Project Id: (\'${id}\') update failed`, error: error })
     });
-
-
 }
+
+const updateProject = async (req, res) => {
+    const newData = req.body
+    const response = []
+    const data = []
+    // let project
+    // for (let i = 0; i < newData.length; i++) {
+    let project = {}
+    let png = []
+    let budgetTotals = []
+    let contacts = []
+    let id = newData.id ? newData.id
+        : newData._id ? newData._id.toString()
+            : undefined
+
+    // Hash password 
+    if (newData.title !== undefined) { project.title = newData.title }
+    if (newData.userId !== undefined) { project.userId = newData.userId }
+    if (newData.description !== undefined) { project.description = newData.description }
+    if (newData.uom !== undefined) { project.uom = newData.uom }
+    if (newData.startDate !== undefined) { project.startDate = newData.startDate }
+    if (newData.endDate !== undefined) { project.endDate = newData.endDate }
+    if (newData.png) {
+        png = newData.png
+        project.png = png
+    }
+    if (newData.budgetTotals) {
+        budgetTotals = newData.budgetTotals
+        project.budgetTotals = budgetTotals
+    }
+    if (newData.contacts) {
+        contacts = newData.contacts
+        project.contacts = contacts
+    }
+    if (newData.completed) {
+        project.completed = newData.completed
+    }
+
+
+    if (id) {
+        // Update
+        project._id = id
+        await Project.findOneAndUpdate({ _id: id }, project, { new: true }).then((result) => {
+            if (result === null) {
+                response.push({ message: `Project Id: ${id} not found update failed` })
+            } else {
+                response.push({ message: `Project Id: ${result._id} updated successfully` })
+                data.push(result)
+            }
+        }).catch((error) => {
+            response.push({ message: `error -- Project Id: (\'${id}\') update failed , error: ${error}` })
+        });
+    } else {
+        //create 
+        await Project.create(project)
+            .then((result) => {
+                if (result === null) {
+                    response.push({ message: `Project Title: ${project.title}, fail to create new project` })
+                } else {
+                    response.push({ message: `Project Id: ${result._id} created successfully` })
+                    data.push(result)
+                }
+            }
+            )
+            .catch(
+                (error) => {
+                    console.log(`Project Title: ${project.title}, error =` + error)
+                    response.push({ message: `error -- Project Title: ${project.title} create failed , error: ${error}` })
+                }
+            )
+    }
+    // }
+    // console.log(`response = ${JSON.stringify(response)}`)
+    // console.log(`data = ${JSON.stringify(data)}`)
+    return res.status(202).json({ data: data, response })
+}
+
+
 
 // @desc Delete a project
 // @route DELETE /projects

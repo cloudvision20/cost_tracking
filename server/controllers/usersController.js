@@ -111,22 +111,43 @@ const saveUser = async (req, res) => {
 // @access Private
 const updateUser = async (req, res) => {
     const { username, employeeId, employeeName, currActivityId, contactInfo, roles, active, password } = req.body
-
+    const response = []
+    let data = {}
     let id
     req.body.id ? id = req.body.id
-        : req.body._id ? id = req.body._id
+        : req.body._id ? id = req.body._id.toString()
             : id = undefined
+
+
+
     // Confirm data 
     if (!id) {
-        return res.status(400).json({ message: 'User Id is required' })
+        if (!username || !password) {
+            return res.status(400).json({ message: 'username and password fields are required' })
+        }
+        // Check for duplicate 
+        let duplicate = await User.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+        // Allow updates to the original user 
+        if (duplicate && duplicate?._id.toString() !== id) {
+            return res.status(409).json({ message: `Duplicate username: ${username}` })
+        }
+
+        // Check for duplicate 
+        duplicate = await User.findOne({ employeeName }).collation({ locale: 'en', strength: 2 }).lean().exec()
+
+        // Allow updates to the original user 
+        if (duplicate && duplicate?._id.toString() !== id) {
+            return res.status(409).json({ message: `Duplicate Employee Name: ${employeeName}` })
+        }
     }
 
-    // Does the user exist to update?
-    const userFound = await User.findById(id).exec()
+    // // Does the user exist to update?
+    // const userFound = await User.findById(id).exec()
 
-    if (!userFound) {
-        return res.status(400).json({ message: 'User not found' })
-    }
+    // if (!userFound) {
+    //     return res.status(400).json({ message: 'User not found' })
+    // }
 
     // Check for duplicate 
     const duplicate = await User.findOne({ username }).collation({ locale: 'en', strength: 2 }).lean().exec()
@@ -142,21 +163,69 @@ const updateUser = async (req, res) => {
     if (contactInfo) { user.contactInfo = contactInfo }
     if (roles) { user.roles = roles }
     if (currActivityId) { user.currActivityId = currActivityId }
-    if (active) { user.active = active }
+    if (active !== undefined) { user.active = active }
     if (password) {
         // Hash password 
         user.password = await bcrypt.hash(password, 10) // salt rounds 
     }
 
-    await User.findOneAndUpdate({ _id: id }, user, { new: true }).then((data) => {
-        if (data === null) {
-            throw new Error(`User Id: (\'${id}\') not found update failed `);
-        }
-        res.json({ message: `User Id: (\'${data._id}\'), Username: (\'${data.username}\'), updated successfully` })
-    }).catch((error) => {
+    // await User.findOneAndUpdate({ _id: id }, user, { new: true }).then((data) => {
+    //     if (data === null) {
+    //         throw new Error(`User Id: (\'${id}\') not found update failed `);
+    //     }
+    //     res.json({ message: `User Id: (\'${data._id}\'), Username: (\'${data.username}\'), updated successfully` })
+    // }).catch((error) => {
 
-        res.status(500).json({ message: `error -- User Id: (\'${id}\') update failed`, error: error })
-    });
+    //     res.status(500).json({ message: `error -- User Id: (\'${id}\') update failed`, error: error })
+    // });
+
+
+    if (id) {
+        // Update
+        user._id = id
+        await User.findOneAndUpdate({ _id: id }, user, { new: true }).then((result) => {
+            if (result === null) {
+                response.push({ message: `User Id: ${id} not found update failed` })
+            } else {
+                response.push({ message: `User Id: ${result._id} updated successfully` })
+                data = result
+            }
+        }).catch((error) => {
+            response.push({ message: `error -- User Id: (\'${id}\') update failed , error: ${error}` })
+        });
+    } else {
+        //create 
+        await User.create(user)
+            .then((result) => {
+                if (result === null) {
+                    response.push({ message: `Employee Name: ${user.employeeName}, fail to create new user` })
+                } else {
+                    response.push({ message: `User Id: ${result._id} created successfully` })
+                    data = result
+                }
+            }
+            )
+            .catch(
+                (error) => {
+                    console.log(`Employee Name: ${user.employeeName}, error` + error)
+                    response.push({ message: `error -- Employee Name: ${user.employeeName} create failed , error: ${error}` })
+                }
+            )
+    }
+    return res.status(202).json({ data: data, response })
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -171,7 +240,7 @@ const updateUsers = async (req, res) => {
     for (let i = 0; i < newData.length; i++) {
         user = {}
         let roles = []
-        let contactInfo = []
+        let contactInfo = {}
         let id = newData[i].id ? newData[i].id
             : newData[i]._id ? newData[i]._id.toString()
                 : undefined
@@ -193,7 +262,7 @@ const updateUsers = async (req, res) => {
         if (newData[i]?.currActivityId !== undefined) {
             user.currActivityId = newData[i].currActivityId
         }
-        if (newData[i].active) {
+        if (newData[i].active !== undefined) {
             user.active = newData[i].active
         }
 
@@ -242,7 +311,9 @@ const updateUsers = async (req, res) => {
 // @route DELETE /users
 // @access Private
 const deleteUser = async (req, res) => {
-    const { id } = req.body
+    const id = req?.body?.id ? req?.body?.id
+        : req?.body?._id ? req?.body?._id.toString()
+            : undefined
 
     // Confirm data
     if (!id) {

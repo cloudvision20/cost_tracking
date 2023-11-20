@@ -5,7 +5,7 @@ import useTitle from '../../hooks/useTitle'
 
 const Welcome = () => {
 
-    const { username, isManager, isAdmin, status, location } = useAuth()
+    const { username, employeename, isManager, isAdmin, status, location } = useAuth()
 
     useTitle(`Cost Tracking: ${username}`)
 
@@ -18,7 +18,7 @@ const Welcome = () => {
                 <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                     <p>{today}</p>
 
-                    <h4>Welcome {username}!</h4>
+                    <h4>Welcome {employeename}!</h4>
                     {(location === 'HQ')
                         &&
                         <>

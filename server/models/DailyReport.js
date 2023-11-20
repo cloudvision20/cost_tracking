@@ -42,6 +42,13 @@ const dailyReportSchema = new mongoose.Schema(
             driziling: { type: String },
             sunny: { type: String }
         },
+        tidalChart:{
+            item: {type: Number},
+            date: {type : String},
+            time: {type:String},
+            heght: {type:Number},
+            location: {type:String}
+        },
         meLoading: [{
             load1: { type: String }, // modify field name when clarified
             pax1: { type: Number },

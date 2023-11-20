@@ -79,7 +79,9 @@ const importAttendance = async (file) => {
     }).on("data", function (data) {
         data['_id'] = new mongoose.Types.ObjectId();
         data['userId'] = file.userid;
-
+        dt = data["date"].split("-")
+        tm = data["time"]
+        data["datetime"] = new Date(`${dt[2]}-${dt[1]}-${dt[0]} ${tm} GMT+0800`)
         attendances.push(data);
     }).on("end", function () {
         Attendance.create(attendances, function (err, documents) {

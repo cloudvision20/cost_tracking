@@ -14,6 +14,7 @@ import Form from 'react-bootstrap/Form';
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
+import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
 const Welcome = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
@@ -24,7 +25,11 @@ const Welcome = () => {
     let currActivityName = Activities.current.name
     //console.log(`sitewelcome activities:${JSON.stringify(activities)}`)
     // console.log(`activities.length : ${activities?.length}`)
-
+    const { data: attends, isSuccess, isError, error } = usePostHrsByEIdSEQuery({
+        "eid": "96",
+        "start": "1-07-2023",
+        "end": "18-07-2023"
+    })
     const [updateUsers, {
         //isLoading, isSuccess, isError, error
     }] = useUpdateUsersMutation()
@@ -91,67 +96,9 @@ const Welcome = () => {
 
                     <h4>Welcome {employeename}!</h4>
                     <br />
-                    {(!currActivityId && activities?.length === 0)
-                        &&
-                        <>
-                            <div className="form-group row" style={{ fontSize: '14px' }}>
-                                <div className="col-sm-6"><b>No Activity assigned to {username} </b></div>
-                                <div className="col-sm-6" ><b></b>
-                                </div>
-                            </div>
-                        </>
-                    }
-                    {(currActivityId && activities?.length >= 1)
-                        &&
-                        <>
-                            <div className="form-group row" style={{ fontSize: '14px' }}>
-                                <div className="col-sm-4"><b>Default Activity: </b></div>
-                                <div className="col-sm-6" ><b>{currActivityName}</b>
-                                </div>
-                            </div>
-                        </>
-                    }
-                    {(!currActivityId && activities?.length > 1)
-                        &&
-                        <>
-                            <div className="form-group row">
-                                <div className="col-sm-4"><b>Choose a default Activity to continue</b></div>
-                                <div className="col-sm-8" >
-                                    <Form.Select
-                                        title="-- Select Activity --"
-                                        id="activities"
-                                        className="form-select form-select-sm"
-                                        style={{ fontSize: '11px' }}
-                                        multiple={false}
-                                        size="l"
-                                        onChange={onCurrActivtyChange}
-                                    >
-                                        <option>Choose default Activity:</option>
-                                        {options}
-                                    </Form.Select>
-                                </div>
-                            </div>
-                        </>
-                    }
-                    <br />
-                    {(location === 'Site')
-                        &&
-                        <>
-                            <div className="row" style={{ fontSize: '14px' }}>
-                                <p><Link to="/site/consumables">Consumables </Link></p>
-                                <p><Link to="/site/equipment">Equipment</Link></p>
-                                <p><Link to="/site/expenses">Expenses</Link></p>
-                            </div>
-                        </>
-                    }
-                    {(location === 'HQ' || isManager || isAdmin)
-                        &&
-                        <>
-                            <div className="row" style={{ fontSize: '14px' }}>
-                                <p><Link to="/site/users">View User Settings</Link></p>
-                            </div>
-                        </>
-                    }
+                    <p>
+                        {JSON.stringify(attends)}
+                    </p>
                 </div>
             </div>
         </section >

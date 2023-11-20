@@ -11,12 +11,41 @@ import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 let rowId = 0
-let editProject = {}
+let pngRowId = 0
+class BtnCellRenderer extends Component {
+    constructor(props, Id) {
+        super(props);
+        this.btnClickedHandler = this.btnClickedHandler.bind(this);
+        this.btnDelClickedHandler = this.btnDelClickedHandler.bind(this);
+    }
+    btnClickedHandler() { this.props.clicked(this.props.value); }
+    btnDelClickedHandler(e) { this.props.delClicked(this.props); }
+    render() {
+        return (
+            <div className="form-group ct-header__nav">
+                <button className="btn btn-danger btn-xs" style={{ fontSize: "8px" }} onClick={this.btnDelClickedHandler}>Del</button>
+            </div>
+        )
+    }
+}
 
 const EditProjectForm = ({ activities, project, users }) => {
 
     const { isManager, isAdmin } = useAuth()
+    let png = []
+    const blankPng = {
+        "description": null,
+        "uom": null,
+        "quantity": 0,
+        "rate": 0,
+        "amount": 0
+    }
 
+    if (project?.png) {
+        png = project.png
+    } else {
+        png = [blankPng]
+    }
     const [updateProject, {
         isLoading,
         isSuccess,
@@ -49,16 +78,54 @@ const EditProjectForm = ({ activities, project, users }) => {
         "_id": activity._id,
         "rowId": activity._id
     }))
+
     const activitiesRef = useRef();
     const [rowData, setRowData] = useState(data)
     const [columnDefs] = useState([
 
-        { field: "Status", editable: false },
-        { field: "name", editable: false },
-        { field: "description", editable: false },
-        { field: "username", editable: false }
+        { field: "Status", editable: false, width: 150 },
+        { field: "name", editable: false, headerName: 'Name', width: 300 },
+        { field: "description", editable: false, headerName: 'Description', width: 300 },
+        { field: "username", editable: false, headerName: 'user', width: 150 },
 
     ]);
+
+    const pngData = png.map((item, index) => ({
+
+        "itemNo": index,
+        "description": item.description,
+        "uom": item.uom,
+        "quantity": item.quantity,
+        "rate": item.rate,
+        "amount": item.amount,
+        //"_id": item._id,
+        "rowId": item._id
+
+    }))
+    pngRowId = png.length - 1
+    const pngRef = useRef();
+    const [rdPng, setRdPng] = useState(pngData)
+    const [pngColDefs] = useState([
+
+        { field: "itemNo", editable: false, headerName: 'Item No', width: 75 },
+        { field: "description", editable: true, headerName: 'Description', width: 250 },
+        { field: "uom", editable: true, headerName: 'Unit', width: 75 },
+        { field: "quantity", editable: true, headerName: 'Quantity', width: 150 },
+        { field: "rate", editable: true, headerName: 'Rate', width: 150 },
+        { field: "amount", editable: true, headerName: 'Amount', width: 150 },
+        {
+            headerName: 'Actions',
+            editable: false,
+            width: 75,
+            cellRenderer: BtnCellRenderer,
+            cellRendererParams: {
+                //clicked: function (field) { },
+                delClicked: function () { this.api.applyTransaction({ remove: [this.data] }); },
+                Id: "png"
+            },
+        }
+    ]);
+
 
     const [title, setTitle] = useState(project.title)
     const [description, setDescription] = useState(project.description)
@@ -97,6 +164,12 @@ const EditProjectForm = ({ activities, project, users }) => {
         console.log('onRowClicked-activity:' + JSON.stringify(rowData))
         navigate(`/dash/activities/${e.data._id}`)
     }
+    const onPngCellValueChanged = (e) => {
+        console.log('onPngCellValueChanged-rowData:' + JSON.stringify(rdPng))
+    }
+    const onPngRowDblClicked = (e) => {
+        console.log('onPngRowDblClicked-PNG:' + JSON.stringify(rdPng))
+    }
     const onNewActivityClicked = (e) => {
         e.preventDefault()
         rowId = rowId + 1
@@ -112,24 +185,45 @@ const EditProjectForm = ({ activities, project, users }) => {
         console.log(JSON.stringify(newRowData))
     }
 
+    const onNewPngClicked = (e) => {
+        e.preventDefault()
+        pngRowId = pngRowId + 1
+        let newRdPng = [...rdPng, {
+            "itemNo": pngRowId,
+            "description": null,
+            "uom": null,
+            "quantity": 0,
+            "rate": 0,
+            "amount": 0,
+            "rowId": 'new' + pngRowId.toString()
+        }]
+        setRdPng(newRdPng)
+        console.log(JSON.stringify(newRdPng))
+    }
+
     const canSave = [userId].every(Boolean) && !isLoading
 
     const onSaveProjectClicked = async (e) => {
-        //e.preventDefault()
+        e.preventDefault()
+        let eProject = {}
+        // let ePng = rdPng.map({
+
+        // })
+
         if (canSave) {
-            editProject._id = project._id
-            editProject.title = title
-            editProject.description = description
-            editProject.completed = completed
-            editProject.startDate = startDate
-            editProject.endDate = endDate
-            editProject.userId = userId
+            eProject._id = project._id
+            eProject.title = title
+            eProject.description = description
+            eProject.completed = completed
+            eProject.startDate = startDate
+            eProject.endDate = endDate
+            eProject.userId = userId
+            eProject.png = rdPng
+            //eProject.active = active
 
-            //editProject.active = active
-
-            console.log(editProject)
-            console.log(JSON.stringify(editProject))
-            await updateProject(editProject)
+            console.log(eProject)
+            console.log(JSON.stringify(eProject))
+            await updateProject(eProject)
         }
     }
 
@@ -246,39 +340,56 @@ const EditProjectForm = ({ activities, project, users }) => {
                             </Form.Group>
                         </div>
                     </div>
-
-                    <div className="panel-heading" style={{ border: "0px" }}><b>Activities</b></div>
-                    <div className="container-sm" style={{ border: "0px" }}>
-
-                        <div className="panel-group" style={{ border: "0px" }}>
-                            <div className="panel panel-default">
-                                <div className="form-group  ct-header__nav">
-                                    <button
-                                        className="btn btn-primary"
-                                        title="New Resources"
-                                        onClick={onNewActivityClicked}
-                                    >
-                                        Add Activities
-                                    </button>
-                                </div>
-                                <div className="panel-body">
-                                    <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
-                                        <AgGridReact
-                                            ref={activitiesRef}
-                                            onCellValueChanged={onCellValueChanged}
-                                            onRowDoubleClicked={onRowDblClicked}
-                                            onGridReady={(event) => event.api.sizeColumnsToFit()}
-                                            defaultColDef={defaultColDef}
-                                            rowData={rowData}
-                                            columnDefs={columnDefs}>
-                                        </AgGridReact>
-                                    </div>
-                                </div>
+                    <div className="form-group row" style={{ border: "0px" }}>
+                        <div className="col-sm-10" style={{ border: "0px" }}><h6>P &G</h6></div>
+                        <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
+                            <button
+                                className="btn btn-primary btn-sm"
+                                title="New Resources"
+                                onClick={onNewPngClicked}
+                            >
+                                Add P&G
+                            </button>
+                        </div>
+                        <div className="row">
+                            <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
+                                <AgGridReact
+                                    ref={pngRef}
+                                    onCellValueChanged={onPngCellValueChanged}
+                                    onRowDoubleClicked={onPngRowDblClicked}
+                                    onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                    //defaultColDef={defaultColDef}
+                                    rowData={rdPng}
+                                    columnDefs={pngColDefs}>
+                                </AgGridReact>
                             </div>
                         </div>
                     </div>
-
-
+                    <div className="form-group row" style={{ border: "0px" }}>
+                        <div className="col-sm-10" style={{ border: "0px" }}><h6>Activities</h6></div>
+                        <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
+                            <button
+                                className="btn btn-primary btn-sm"
+                                title="New Resources"
+                                onClick={onNewActivityClicked}
+                            >
+                                Add Activities
+                            </button>
+                        </div>
+                        <div className="row">
+                            <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
+                                <AgGridReact
+                                    ref={activitiesRef}
+                                    onCellValueChanged={onCellValueChanged}
+                                    onRowDoubleClicked={onRowDblClicked}
+                                    onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                    defaultColDef={defaultColDef}
+                                    rowData={rowData}
+                                    columnDefs={columnDefs}>
+                                </AgGridReact>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div className="panel panel-info">

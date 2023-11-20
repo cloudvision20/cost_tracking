@@ -7,7 +7,7 @@ import Welcome from './features/auth/Welcome'
 
 import UsersList from './features/users/UsersList'
 import EditUser from './features/users/EditUser'
-import NewUserForm from './features/users/NewUserForm'
+import NewUser from './features/users/NewUser'
 
 import ProjectsList from './features/projects/ProjectsList'
 import EditProject from './features/projects/EditProject'
@@ -41,6 +41,9 @@ import FrmAttends from './features/attendance/FrmAttends'
 import FrmUsers from './features/users/FrmUsers'
 import FrmTypes from './features/types/FrmTypes'
 
+
+import CRLayout from './components/crview/CRLayout'
+import CRWelcome from './features/cr/CRWelcome'
 function App() {
   useTitle('Cost Tracking')
 
@@ -61,7 +64,9 @@ function App() {
                 <Route path="attendances" element={<AttendancesUpload />} />
                 <Route path="gpsdats" element={<GPSDatsUpload />} />
               </Route>
-
+              <Route path="crview" element={<CRLayout />}>
+                <Route index element={<CRWelcome />} />
+              </Route>
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />
                 <Route path="attends" element={<FrmAttends />} />
@@ -108,7 +113,7 @@ function App() {
                   <Route path="users">
                     <Route index element={<UsersList />} />
                     <Route path=":id" element={<EditUser />} />
-                    <Route path="new" element={<NewUserForm />} />
+                    <Route path="new" element={<NewUser />} />
                   </Route>
                 </Route>
 

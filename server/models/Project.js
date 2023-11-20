@@ -17,9 +17,9 @@ const projectSchema = new mongoose.Schema({
     startDate: { type: Date },
     endDate: { type: Date },
     png: [{ //PnGType facilities:[], mobilization:[], supervisor:[]
-        pngType: { type: String },
+        description: { type: String },
         uom: { type: String },
-        Quantity: { type: Number },
+        quantity: { type: Number },
         rate: { type: Number },
         amount: { type: Number }
     }],

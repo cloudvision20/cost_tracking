@@ -12,7 +12,8 @@ const attendanceSchema = new mongoose.Schema(
         date: { type: String },//"Date"
         time: { type: String }, //"Time"
         weekday: { type: String },//"Weekday"
-        datetime: { type: String }, //DateTime
+        datetime: { type: Date }, //DateTime?
+        dateTime: { type: Date },
         terminal: { type: String } // Login machine reference
     },
     {
