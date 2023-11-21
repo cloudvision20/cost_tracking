@@ -439,11 +439,11 @@ const EditDailyReportForm = ({ res }) => {
                     </div>
                     <div className="row">
                         <div className="col-sm-1 label-back">1.0</div>
-                        <div className="col-sm-11 label-back"><b>ManHours & Weather Record</b></div>
+                        <div className="col-sm-11 label-back"><b>ManHours & Weather & Tidal Record</b></div>
                     </div>
                     <div className="row">
                         <div className="col-sm-6 label-back">Man - Hour Expenditure</div>
-                        <div className="col-sm-6 label-back">Weather Chart</div>
+                        <div className="col-sm-6 label-back">Weather & Tidal Chart</div>
                     </div>
                     <div className="row">
                         <div className="col-sm-6" style={{ padding: "0px" }} >
@@ -483,7 +483,10 @@ const EditDailyReportForm = ({ res }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-6"></div>
+                        <div className="col-sm-6">
+                            <div className=" col-sm-12">Weather chart</div>
+                            <div className=" col-sm-12">Tidal chart</div>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-6">
