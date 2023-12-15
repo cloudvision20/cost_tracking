@@ -46,9 +46,9 @@ const CRHeaderForm = () => {
     // const onDailyReportSelected = () => navigate('/crview/dailyReports')
     // const onUserSelected = () => navigate('/crview/users')
     // const onTypeSelected = () => navigate('/crview/types')
-    // const onFilesClicked = () => navigate('/crview/files')
-    // const onAttendancesClicked = () => navigate('/crview/files/attendances')
-    // const onGpsdatsClicked = () => navigate('/crview/files/gpsdats')
+    const onConsumablesClicked = () => navigate('/crview/consumables')
+    const onManhourClicked = () => navigate('/crview/manhour')
+    const onExpensesClicked = () => navigate('/crview/expenses')
     // const onMastersSelected = (item) => {
     //     switch (item) {
     //         case 'Consumables':
@@ -100,7 +100,7 @@ const CRHeaderForm = () => {
     //     switch (item) {
 
     //         case 'upload':
-    //             navigate('/crview/files/attendances')
+    //             navigate('/crview/files/manHour')
     //             break;
     //         case 'record':
     //             navigate('/crview/attends')
@@ -252,47 +252,49 @@ const CRHeaderForm = () => {
     //     )
     // })
 
-    // let filesNavLink = null
-    // filesNavLink = (
-    //     <Nav.Link
-    //         className={navLnkStyle_Btn}
-    //         onClick={onFilesClicked}
-    //         onMouseOver={onMouseOverNavLink}
-    //         onMouseOut={onMouseOutNavLink_Whitesmoke}
-    //         style={navLinkStyle_Whitesmoke}
-    //         title="File uploads"
-    //     >
-    //         Files
-    //     </Nav.Link>
-    // )
+    let consumablesNavLink = null
+    consumablesNavLink = (
+        <Nav.Link
+            className={navLnkStyle_Btn}
+            onClick={onConsumablesClicked}
+            nMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            title="Consumables"
+        >
+            Consumables
+        </Nav.Link>
+    )
 
-    // let attendancesNavLink = null
-    // attendancesNavLink = (
-    //     <Nav.Link
-    //         className={navLnkStyle_Btn}
-    //         onClick={onAttendancesClicked}
-    //         onMouseOver={onMouseOverNavLink}
-    //         onMouseOut={onMouseOutNavLink_Whitesmoke}
-    //         style={navLinkStyle_Whitesmoke}
-    //         title="Attendance Files Upload"
-    //     >
-    //         Attendances
-    //     </Nav.Link>
-    // )
+    let manhourNavLink = null
+    manhourNavLink = (
+        <Nav.Link
+            className={navLnkStyle_Btn}
+            onClick={onManhourClicked}
+            onMouseOver={onMouseOverNavLink}
 
-    // let gpsdatsNavLink = null
-    // gpsdatsNavLink = (
-    //     <Nav.Link
-    //         className={navLnkStyle_Btn}
-    //         onClick={onGpsdatsClicked}
-    //         onMouseOver={onMouseOverNavLink}
-    //         onMouseOut={onMouseOutNavLink_Whitesmoke}
-    //         style={navLinkStyle_Whitesmoke}
-    //         title="Garmin GPS file upload"
-    //     >
-    //         GPS Data
-    //     </Nav.Link>
-    // )
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            title="Man hour"
+        >
+            Man hour
+
+        </Nav.Link>
+    )
+
+    let expensesNavLink = null
+    expensesNavLink = (
+        <Nav.Link
+            className={navLnkStyle_Btn}
+            onClick={onExpensesClicked}
+            onMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            title="Expenses"
+        >
+            Expenses
+        </Nav.Link>
+    )
 
     const logoutNavLink = (
         <Nav.Link
@@ -332,17 +334,18 @@ const CRHeaderForm = () => {
 
     let navLinkContent
     if (isLoading) {
+
         navLinkContent = <PulseLoader color={"#FFF"} />
     } else {
         navLinkContent = (
             <>
                 {backNavLink}
-                {/* {attendancesNavLink} */}
+                {manhourNavLink}
+                {consumablesNavLink}
+                {expensesNavLink}
+                {/* {equipmentNavLink} */}
 
-                {/* {gpsdatsNavLink} */}
-                {/* {equipmentNavLink}
-                {consumablesNavLink} */}
-                {/* {filesNavLink} */}
+                {/* {consumablesNavLink} */}
 
             </>
         )

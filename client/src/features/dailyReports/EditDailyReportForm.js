@@ -420,7 +420,11 @@ const EditDailyReportForm = ({ res }) => {
                     <div className="row">
                         <div className="col-sm-4"><br /><br /><br /></div>
                         <div className="col-sm-4"><br /><b>DAILY PROGRESS REPORT</b><br /><br /></div>
-                        <div className="col-sm-4"><AttendancesUpload /></div>
+                        <div className="col-sm-4">
+                            <div className="container-fluid" style={{ fontSize: '12px', padding: '0px' }}>
+                                <AttendancesUpload />
+                            </div>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-1 label-back">Date</div>
@@ -497,20 +501,21 @@ const EditDailyReportForm = ({ res }) => {
                             </div>
                         </div>
                         <div className="col-sm-6" >
-                            <div className="row container-fluid" style={{ border: "0px" }}>
-                                <div className="bottom_row   col-sm-3 label-back">Legend:</div>
+                            <div className="row  container-fluid" style={{ border: "0px", margin: "0px", padding: "0px" }}>
+                                <div className="  col-sm-3 label-back" style={{ padding: "0px" }}><b>Legend:</b></div>
+                                <div className="bottom_row   col-sm-2 label-back" style={{ padding: "0px", fontSize: "12px" }}>Raining</div>
                                 <div className="bottom_row   col-sm-1" style={{ padding: "0px" }}>
                                     <input id="raining" name="raining" type="text" autoComplete="off" value={raining} onChange={(e) => onTextChanged(e, 'raining')} />
                                 </div>
-                                <div className="bottom_row   col-sm-2 label-back">Raining</div>
+                                <div className="bottom_row   col-sm-2 label-back" style={{ padding: "0px", fontSize: "12px" }}>Driziling</div>
                                 <div className="bottom_row   col-sm-1" style={{ padding: "0px" }}>
                                     <input id="driziling" name="driziling" type="text" autoComplete="off" value={driziling} onChange={(e) => onTextChanged(e, 'driziling')} />
                                 </div>
-                                <div className="bottom_row   col-sm-2 label-back">Dazzling</div>
-                                <div className="bottom_row   col-sm-1" style={{ padding: "0px" }}>
+                                <div className="bottom_row   col-sm-2 label-back" style={{ padding: "0px", fontSize: "12px", }}>Sunny/Fne</div>
+                                <div className="   col-sm-1" style={{ padding: "0px" }}>
                                     <input id="sunny" name="sunny" type="text" autoComplete="off" value={sunny} onChange={(e) => onTextChanged(e, 'sunny')} />
                                 </div>
-                                <div className="  col-sm-2 label-back">Sunny/Fine</div>
+                                {/* <div className="  col-sm-2 label-back">Sunny/Fine</div> */}
                             </div>
                         </div>
                     </div>

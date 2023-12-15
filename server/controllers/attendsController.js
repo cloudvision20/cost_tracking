@@ -98,7 +98,10 @@ const getAllAttendsByEId = asyncHandler(async (req, res) => {
     console.log('response =' + JSON.stringify(response))
     res.status(200).json(response)
 })
-// @desc Get all attends by Employee id
+// @desc Get all attends by 
+// 1. Employee id
+// 2. start date
+// 3. end date
 // @route POST /attends/employeeSE
 // @access Private
 const postHrsByEIdSE = asyncHandler(async (req, res) => {

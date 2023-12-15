@@ -43,7 +43,10 @@ import FrmTypes from './features/types/FrmTypes'
 
 
 import CRLayout from './components/crview/CRLayout'
-import CRWelcome from './features/cr/CRWelcome'
+import CRWelcome from './features/crview/CRWelcome'
+import CRManhour from './features/crview/CRManhour'
+import CRConsumables from './features/crview/CRConsumables'
+import CRExpenses from './features/crview/CRExpenses'
 function App() {
   useTitle('Cost Tracking')
 
@@ -66,6 +69,9 @@ function App() {
               </Route>
               <Route path="crview" element={<CRLayout />}>
                 <Route index element={<CRWelcome />} />
+                <Route path="manhour" element={<CRManhour />} />
+                <Route path="consumables" element={<CRConsumables />} />
+                <Route path="expenses" element={<CRExpenses />} />
               </Route>
               <Route path="site" element={<SiteLayout />}>
                 <Route index element={<SiteWelcome />} />

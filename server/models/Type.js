@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const typeSchema = new mongoose.Schema({
-    category: { // budget , png, 
+    category: { // budget , png, file 
         type: String,
         required: true
     },
