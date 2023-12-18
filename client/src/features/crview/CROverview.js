@@ -15,9 +15,23 @@ import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
 import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
+import { useGetActivitiesQuery } from '../activities/activitiesApiSlice'
 const Welcome = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
+
+    const {
+        data: activities1,
+        isLoading
+        // ,
+        // isSuccess,
+        // isError,
+        // error
+    } = useGetActivitiesQuery('activitiesList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    })
 
     const Activities = useSelector(selectActivity)
     const activities = Activities.activities
@@ -128,6 +142,13 @@ const Welcome = () => {
                                 Expenses
                             </div>
 
+                        </div>
+                        <div className='row'>
+                            <div className='col-sm-12'>
+                            <p>
+                        {JSON.stringify(activities1)}
+                    </p>
+                            </div>
                         </div>
                     </div>
                 </div>
