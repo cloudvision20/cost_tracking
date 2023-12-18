@@ -45,7 +45,7 @@ const CRHeaderForm = () => {
     // const onNewDailyReportSelected = () => navigate('/crview/dailyReports/new')
     // const onDailyReportSelected = () => navigate('/crview/dailyReports')
     // const onUserSelected = () => navigate('/crview/users')
-    // const onTypeSelected = () => navigate('/crview/types')
+    const onOverviewClicked = () => navigate('/crview/overview')
     const onConsumablesClicked = () => navigate('/crview/consumables')
     const onManhourClicked = () => navigate('/crview/manhour')
     const onExpensesClicked = () => navigate('/crview/expenses')
@@ -252,6 +252,20 @@ const CRHeaderForm = () => {
     //     )
     // })
 
+    let overviewNavLink = null
+    overviewNavLink = (
+        <Nav.Link
+            className={navLnkStyle_Btn}
+            onClick={onOverviewClicked}
+            nMouseOver={onMouseOverNavLink}
+            onMouseOut={onMouseOutNavLink_Whitesmoke}
+            style={navLinkStyle_Whitesmoke}
+            title="Overview"
+        >
+            Overview
+        </Nav.Link>
+    )
+
     let consumablesNavLink = null
     consumablesNavLink = (
         <Nav.Link
@@ -340,6 +354,7 @@ const CRHeaderForm = () => {
         navLinkContent = (
             <>
                 {backNavLink}
+                {overviewNavLink}
                 {manhourNavLink}
                 {consumablesNavLink}
                 {expensesNavLink}

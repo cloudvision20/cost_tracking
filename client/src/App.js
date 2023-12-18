@@ -44,6 +44,7 @@ import FrmTypes from './features/types/FrmTypes'
 
 import CRLayout from './components/crview/CRLayout'
 import CRWelcome from './features/crview/CRWelcome'
+import CROverview from './features/crview/CROverview'
 import CRManhour from './features/crview/CRManhour'
 import CRConsumables from './features/crview/CRConsumables'
 import CRExpenses from './features/crview/CRExpenses'
@@ -69,6 +70,7 @@ function App() {
               </Route>
               <Route path="crview" element={<CRLayout />}>
                 <Route index element={<CRWelcome />} />
+                <Route path="overview" element={<CROverview />} />
                 <Route path="manhour" element={<CRManhour />} />
                 <Route path="consumables" element={<CRConsumables />} />
                 <Route path="expenses" element={<CRExpenses />} />

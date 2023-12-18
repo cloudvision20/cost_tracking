@@ -91,10 +91,12 @@ const Welcome = () => {
     let content = (
         <section className="welcome">
             <div className="container" style={{ fontSize: '12px' }}>
-                <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  
+                <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-2">
+                <div className="LeftBox col-sm-3">left box</div>
                     <p>{today}</p>
 
-                    <h4>Welcome to Control Room View :{employeename}!</h4>
+                    <h4>Welcome to Control Room Overview !</h4>
                     <br />
 
                     <p> Select Project -- activity</p>
