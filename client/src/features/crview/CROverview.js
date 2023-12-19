@@ -16,6 +16,7 @@ import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
 import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
 import { useGetActivitiesQuery } from '../activities/activitiesApiSlice'
+import { useGetProjectsQuery } from '../projects/projectsApiSlice'
 const Welcome = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
@@ -32,7 +33,18 @@ const Welcome = () => {
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
     })
-
+    const {
+        data: projects
+        //, isLoading
+        // ,
+        // isSuccess,
+        // isError,
+        // error
+    } = useGetActivitiesQuery('activitiesList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    })
     const Activities = useSelector(selectActivity)
     const activities = Activities.activities
     let currActivityId = Activities.current.activityId
@@ -146,7 +158,7 @@ const Welcome = () => {
                         <div className='row'>
                             <div className='col-sm-12'>
                             <p>
-                        {JSON.stringify(activities1)}
+                        {JSON.stringify(activities1.entities)}
                     </p>
                             </div>
                         </div>

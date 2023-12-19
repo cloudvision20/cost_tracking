@@ -23,6 +23,28 @@ const getAllActivities = asyncHandler(async (req, res) => {
     res.json(activities)
 })
 
+// @desc Get all activities group by project aggregrate
+// @route GET /actsgbyprojs
+// @access Private
+const getActivitiesGBProjs= asyncHandler(async (req, res) => {
+    const filter = [
+        {
+            $group: {
+                _id: "projectId",
+                employeeName: { $first: "$employeeName" }
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                employeeId: "$_id",
+                employeeName: 1
+            }
+        }
+    ]
+    let response = {}
+}
+)
 const getActivityById = asyncHandler(async (req, res) => {
     const id = req.params.id
     // retrieve Activity by Id and include usename corresponsing to userId
