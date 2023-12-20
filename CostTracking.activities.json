@@ -1,0 +1,436 @@
+[
+  {
+    "_id": "654b195f6c9c492b04def7e7",
+    "activities": [
+      {
+        "_id": "64e0f3b2ecbaa145475119b6",
+        "projectId": "654b195f6c9c492b04def7e7",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "PISTA Project Clearing New #1",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "process": { "uom": "m3", "quantity": 16800 },
+        "duration": { "uom": "month", "quantity": 1 },
+        "resources": [
+          {
+            "type": "Labour",
+            "details": "Test Labour Details",
+            "job": "Welder",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 15,
+            "qtyAssign": 100,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "652278222811d7c30565954f", "budget": 10 }
+            ],
+            "_id": "64e0f3b2ecbaa145475119b7"
+          },
+          {
+            "type": "Equipment",
+            "details": "excavator",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "ex-010", "budget": 10 },
+              { "resourcesId": "ex-011", "budget": 10 }
+            ],
+            "_id": "64e0f3b2ecbaa145475119b8"
+          },
+          {
+            "type": "Equipment",
+            "details": "vehicle",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 10 }],
+            "_id": "64e0f3b2ecbaa145475119b9"
+          },
+          {
+            "type": "Consumable",
+            "details": "diesel",
+            "job": "Earth Clearing",
+            "costType": "volume",
+            "uom": "l",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 100 }],
+            "_id": "64e0f3b2ecbaa145475119ba"
+          }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:54:10.196Z",
+        "updatedAt": "2023-11-02T11:53:50.461Z",
+        "__v": 0,
+        "endDate": "2023-09-08T00:00:00.000Z",
+        "startDate": "2023-08-04T00:00:00.000Z",
+        "active": true
+      },
+      {
+        "_id": "64e0f480ecbaa145475119da",
+        "projectId": "654b195f6c9c492b04def7e7",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "Pitsa Clearing New",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "process": { "uom": "m3", "quantity": 16800 },
+        "duration": { "uom": "month", "quantity": 1 },
+        "resources": [
+          {
+            "type": "Equipment",
+            "details": "excavator",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "ex-010", "budget": 10 },
+              { "resourcesId": "ex-011", "budget": 10 }
+            ],
+            "_id": "64e0f480ecbaa145475119dc"
+          },
+          {
+            "type": "Equipment",
+            "details": "vehicle",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 10 }],
+            "_id": "64e0f480ecbaa145475119dd"
+          },
+          {
+            "type": "Consumable",
+            "details": "diesel",
+            "job": "Earth Clearing",
+            "costType": "volume",
+            "uom": "l",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 100 }],
+            "_id": "64e0f480ecbaa145475119de"
+          },
+          {
+            "type": "Labour",
+            "details": "Test Labour Details",
+            "job": "Welder",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 15,
+            "qtyAssign": 100,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "64c76e149a9f1104a69419b3", "budget": 10 }
+            ],
+            "_id": "64e0f480ecbaa145475119db"
+          }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:57:36.354Z",
+        "updatedAt": "2023-11-02T11:54:30.450Z",
+        "__v": 1,
+        "active": true
+      },
+      {
+        "_id": "65263fe0f6afbaa14140f16e",
+        "projectId": "654b195f6c9c492b04def7e7",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "Pitsa Clearing New updated",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "process": { "uom": "m3", "quantity": 16800 },
+        "duration": { "uom": "month", "quantity": 1 },
+        "resources": [
+          {
+            "type": "Labour",
+            "details": "Test Labour Details",
+            "job": "Welder",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 15,
+            "qtyAssign": 100,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "64c76e149a9f1104a69419b3", "budget": 10 },
+              { "resourcesId": "653b62413869e2b6f9bafd5a", "budget": 200 }
+            ],
+            "_id": "64e0f480ecbaa145475119db"
+          },
+          {
+            "type": "Equipment",
+            "details": "excavator",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "6524e31a563a5ab03cc67608", "budget": 10 },
+              { "resourcesId": "6524e2d6563a5ab03cc67605", "budget": 10 }
+            ],
+            "_id": "64e0f480ecbaa145475119dc"
+          },
+          {
+            "type": "Equipment",
+            "details": "vehicle",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "6524e2d6563a5ab03cc67605", "budget": 10 }
+            ],
+            "_id": "64e0f480ecbaa145475119dd"
+          },
+          {
+            "type": "Consumable",
+            "details": "diesel",
+            "job": "Earth Clearing",
+            "costType": "volume",
+            "uom": "l",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "6524e3a2563a5ab03cc67610", "budget": 100 }
+            ],
+            "_id": "64e0f480ecbaa145475119de"
+          }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:57:36.354Z",
+        "updatedAt": "2023-11-02T11:54:59.808Z",
+        "active": true
+      },
+      {
+        "_id": "64e0f491ecbaa145475119e1",
+        "projectId": "654b195f6c9c492b04def7e7",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "PISTA Clearing",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "process": { "uom": "m3", "quantity": 16800 },
+        "duration": { "uom": "month", "quantity": 1 },
+        "resources": [
+          {
+            "type": "Labour",
+            "details": "Test Labour Details",
+            "job": "Welder",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 15,
+            "qtyAssign": 100,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "64c0a3409bb3abaaa39603b3", "budget": 10 }
+            ],
+            "_id": "64e0f491ecbaa145475119e2"
+          },
+          {
+            "type": "Equipment",
+            "details": "excavator",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "ex-010", "budget": 10 },
+              { "resourcesId": "ex-011", "budget": 10 }
+            ],
+            "_id": "64e0f491ecbaa145475119e3"
+          },
+          {
+            "type": "Equipment",
+            "details": "vehicle",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 10 }],
+            "_id": "64e0f491ecbaa145475119e4"
+          },
+          {
+            "type": "Consumable",
+            "details": "diesel",
+            "job": "Earth Clearing",
+            "costType": "volume",
+            "uom": "l",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 100 }],
+            "_id": "64e0f491ecbaa145475119e5"
+          }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:57:53.778Z",
+        "updatedAt": "2023-11-02T11:57:07.595Z",
+        "__v": 0,
+        "active": true
+      },
+      {
+        "_id": "654347a78b2421877b0608e1",
+        "projectId": "654b195f6c9c492b04def7e7",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "PISTA Project Clearing New #1 -- testing",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "process": { "uom": "m3", "quantity": 16800 },
+        "duration": { "uom": "month", "quantity": 1 },
+        "resources": [
+          {
+            "type": "Labour",
+            "details": "Test Labour Details",
+            "job": "Welder",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 15,
+            "qtyAssign": 100,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "652278222811d7c30565954f", "budget": 10 }
+            ],
+            "_id": "64e0f3b2ecbaa145475119b7"
+          },
+          {
+            "type": "Equipment",
+            "details": "excavator",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "652659595c9ef31e74f2b191", "budget": 10 },
+              { "resourcesId": "6524e2d6563a5ab03cc67605", "budget": 10 }
+            ],
+            "_id": "64e0f3b2ecbaa145475119b8"
+          },
+          {
+            "type": "Equipment",
+            "details": "vehicle",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 10 }],
+            "_id": "64e0f3b2ecbaa145475119b9"
+          },
+          {
+            "type": "Consumable",
+            "details": "diesel",
+            "job": "Earth Clearing",
+            "costType": "volume",
+            "uom": "l",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 100 }],
+            "_id": "64e0f3b2ecbaa145475119ba"
+          }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:54:10.196Z",
+        "updatedAt": "2023-12-10T23:47:26.832Z",
+        "__v": 0,
+        "endDate": "2023-09-08T00:00:00.000Z",
+        "startDate": "2023-08-04T00:00:00.000Z",
+        "active": true
+      }
+    ]
+  },
+  {
+    "_id": "64d0af27d0322e0e4780c2bb",
+    "activities": [
+      {
+        "_id": "65813e2c276bea16b8f1722a",
+        "projectId": "64d0af27d0322e0e4780c2bb",
+        "userId": "64c0a3409bb3abaaa39603b3",
+        "name": "PISTA Project Clearing New #1 -- testing",
+        "description": "Removal of Unsuitable material\nExcavate to depth 1.5m depth of unsuitable\nmaterial and dispose off site\n",
+        "process": { "uom": "m3", "quantity": 16800 },
+        "duration": { "uom": "month", "quantity": 1 },
+        "resources": [
+          {
+            "type": "Labour",
+            "details": "Test Labour Details",
+            "job": "Welder",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 15,
+            "qtyAssign": 100,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "652278222811d7c30565954f", "budget": 10 }
+            ],
+            "_id": "64e0f3b2ecbaa145475119b7"
+          },
+          {
+            "type": "Equipment",
+            "details": "excavator",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [
+              { "resourcesId": "652659595c9ef31e74f2b191", "budget": 10 },
+              { "resourcesId": "6524e2d6563a5ab03cc67605", "budget": 10 }
+            ],
+            "_id": "64e0f3b2ecbaa145475119b8"
+          },
+          {
+            "type": "Equipment",
+            "details": "vehicle",
+            "job": "Earth Clearing",
+            "costType": "hourly",
+            "uom": "rm",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 10 }],
+            "_id": "64e0f3b2ecbaa145475119b9"
+          },
+          {
+            "type": "Consumable",
+            "details": "diesel",
+            "job": "Earth Clearing",
+            "costType": "volume",
+            "uom": "l",
+            "rate": 100,
+            "qtyAssign": 1000,
+            "remarks": "",
+            "assignment": [{ "resourcesId": "ex-hilux01", "budget": 100 }],
+            "_id": "64e0f3b2ecbaa145475119ba"
+          }
+        ],
+        "completed": false,
+        "createdAt": "2023-08-19T16:54:10.196Z",
+        "updatedAt": "2023-12-10T23:47:26.832Z",
+        "__v": 0,
+        "endDate": "2023-09-08T00:00:00.000Z",
+        "startDate": "2023-08-04T00:00:00.000Z",
+        "active": true
+      }
+    ]
+  }
+]

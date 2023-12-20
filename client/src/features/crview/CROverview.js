@@ -15,7 +15,7 @@ import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
 import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
-import { useGetActivitiesQuery } from '../activities/activitiesApiSlice'
+import { useGetActivitiesQuery, useGetActivitiesGBProjsQuery } from '../activities/activitiesApiSlice'
 import { useGetProjectsQuery } from '../projects/projectsApiSlice'
 const Welcome = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
@@ -33,18 +33,8 @@ const Welcome = () => {
         refetchOnFocus: true,
         refetchOnMountOrArgChange: true
     })
-    const {
-        data: projects
-        //, isLoading
-        // ,
-        // isSuccess,
-        // isError,
-        // error
-    } = useGetActivitiesQuery('activitiesList', {
-        pollingInterval: 15000,
-        refetchOnFocus: true,
-        refetchOnMountOrArgChange: true
-    })
+    const { data: projects } = useGetActivitiesGBProjsQuery()
+
     const Activities = useSelector(selectActivity)
     const activities = Activities.activities
     let currActivityId = Activities.current.activityId
@@ -110,16 +100,57 @@ const Welcome = () => {
             })
         }
     }
+    let projectList
+    if (projects) {
+        projectList = projects?.map((project, index) => {
+            // let actList = project.activities.map(activity => {
+            //     return (
+
+            //         <div
+            //             key={activity._id}
+            //             value={activity._id}
+
+            //         > {activity.name}</div >
+
+
+            //     )
+            // })
+            return (
+                <div className='row'>
+                    <div className='col-sm-1'>
+                        {index + 1}
+                    </div>
+
+                    <div className='col-sm-3'> {project.title}</div >
+                    <div className='col-sm-7'>
+
+                        {project.activities.map((activity, index) => {
+                            return (
+                                <div className='row'>
+                                    <div className='col-sm-1'> {index + 1} </div>
+                                    <div className='col-sm-11'> {activity.name}</div >
+                                </div>
+
+
+                            )
+                        })}
+
+                    </div>
+                </div>
+
+            )
+
+        });
+    }
 
     const date = new Date()
     const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
 
     let content = (
         <section className="welcome">
-            <div className="container" style={{ fontSize: '12px' }}>
-  
+            <div className="ct-container" style={{ fontSize: '12px' }}>
+
                 <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-2">
-                <div className="LeftBox col-sm-3">left box</div>
                     <p>{today}</p>
 
                     <h4>Welcome to Control Room Overview !</h4>
@@ -130,18 +161,20 @@ const Welcome = () => {
                     <p> Select Employee -- all or Single</p>
 
                     <p><Link to="/crview/manhour">show manhour</Link></p>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col-sm-1'>
-                                #
-                            </div>
-                            <div className='col-sm-1'>
-                                Project
-                            </div>
-                            <div className='col-sm-2'>
-                                Activity
-                            </div>
-                            <div className='col-sm-2'>
+
+                </div>
+                <div className='ct-container'>
+                    <div className='row'>
+                        <div className='col-sm-1'>
+                            #
+                        </div>
+                        <div className='col-sm-4'>
+                            Project Title
+                        </div>
+                        <div className='col-sm-6'>
+                            Activities
+                        </div>
+                        {/* <div className='col-sm-2'>
                                 Employee
                             </div>
                             <div className='col-sm-2'>
@@ -152,17 +185,21 @@ const Welcome = () => {
                             </div>
                             <div className='col-sm-2'>
                                 Expenses
-                            </div>
+                            </div> */}
 
-                        </div>
-                        <div className='row'>
-                            <div className='col-sm-12'>
-                            <p>
-                        {JSON.stringify(activities1.entities)}
-                    </p>
-                            </div>
-                        </div>
                     </div>
+                    {/* <div className='row'> */}
+                    {/* <div className='col-sm-12'></div> */}
+                    {projectList}
+
+                    {/* </div> */}
+                    {/* <div className='row'>
+                            <div className='col-sm-12'>
+                                <p>
+                                    {JSON.stringify(projects)}
+                                </p>
+                            </div>
+                        </div> */}
                 </div>
             </div>
         </section >

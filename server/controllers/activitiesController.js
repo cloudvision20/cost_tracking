@@ -26,23 +26,73 @@ const getAllActivities = asyncHandler(async (req, res) => {
 // @desc Get all activities group by project aggregrate
 // @route GET /actsgbyprojs
 // @access Private
-const getActivitiesGBProjs= asyncHandler(async (req, res) => {
-    const filter = [
-        {
-            $group: {
-                _id: "projectId",
-                employeeName: { $first: "$employeeName" }
-            }
-        },
-        {
-            $project: {
-                _id: 0,
-                employeeId: "$_id",
-                employeeName: 1
-            }
-        }
-    ]
+const getActivitiesGBProjs = asyncHandler(async (req, res) => {
     let response = {}
+    const activities = await Activity.aggregate(
+        [
+            {
+                $group: {
+                    _id: '$projectId',
+                    projects: { $push: '$$ROOT' }
+                }
+            },
+            {
+                $lookup: {
+                    from: 'projects',
+                    localField: '_id',
+                    foreignField: '_id',
+                    as: 'project'
+                }
+            },
+            { $unwind: '$project' },
+            {
+                $replaceRoot: {
+                    newRoot: {
+                        $mergeObjects: [
+                            '$project',
+                            { activities: '$projects' }
+                        ]
+                    }
+                }
+            }
+        ],
+        { maxTimeMS: 60000, allowDiskUse: true }
+    );
+    // const activities = await Activity.aggregate(
+    //     [
+    //         {
+    //             $group: {
+    //                 _id: '$projectId',
+    //                 activities: { $push: '$$ROOT' }
+    //             }
+    //         },
+    //         {
+    //             $lookup: {
+    //                 from: 'projects',
+    //                 localField: '_id',
+    //                 foreignField: '_id',
+    //                 as: 'project'
+    //             }
+    //         }
+    //     ],
+    //     { maxTimeMS: 60000, allowDiskUse: true }
+    // );
+    // const activities = await Activity.aggregate(
+    //     [
+    //         {
+    //           $group: {
+    //             _id: '$projectId',
+    //             activities: { $push: '$$ROOT' }
+    //           }
+    //         }
+    //       ],
+    //       { maxTimeMS: 60000, allowDiskUse: true }
+    //   );
+
+    response = activities
+
+    res.status(200).json(response)
+
 }
 )
 const getActivityById = asyncHandler(async (req, res) => {
@@ -182,6 +232,7 @@ const deleteActivity = asyncHandler(async (req, res) => {
 
 module.exports = {
     getAllActivities,
+    getActivitiesGBProjs,
     getActivityById,
     getActivityByUserId,
     createNewActivity,
