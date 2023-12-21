@@ -24,11 +24,11 @@ const getAllActivities = asyncHandler(async (req, res) => {
 })
 
 // @desc Get all activities group by project aggregrate
-// @route GET /actsgbyprojs
+// @route GET /actsbyprojs
 // @access Private
 const getActivitiesGBProjs = asyncHandler(async (req, res) => {
     let response = {}
-    const activities = await Activity.aggregate(
+    const projects = await Activity.aggregate(
         [
             {
                 $group: {
@@ -89,8 +89,34 @@ const getActivitiesGBProjs = asyncHandler(async (req, res) => {
     //       { maxTimeMS: 60000, allowDiskUse: true }
     //   );
 
-    response = activities
+    response = projects
+    const proj = projects.map((project) => {
+        let totalLabour = 0
+        let ttlEquipment = 0
+        let ttlConsumable = 0
+        let ttlExpense = 0
+        const actLabour = project.activities.map((activity) => {
 
+            const resLabour = activity.resources.filter((resource) => resource.type === 'Labour').map((filteredResources) => {
+                const data = filteredResources.assignment
+                const totalLabour = data.reduce((a, v) => a = a + v.budget, 0)
+                totalLabour = totalLabour + totalLabour
+                // return {
+                //     totalLabour
+                // }
+            })
+            // return {
+            //     resLabour
+            // }
+        })
+
+        return {
+            // actLabour,
+            "_id": project._id,
+            "title": project.title,
+            totalLabour
+        }
+    })
     res.status(200).json(response)
 
 }

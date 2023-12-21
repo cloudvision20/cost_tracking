@@ -11,7 +11,7 @@ router.route('/')
 // router.route('/forms/:type')
 //     .get(activitiesController.getActivityByType)
 
-router.route('/actsgbyprojs')
+router.route('/actsbyprojs')
     .get(activitiesController.getActivitiesGBProjs)
 
 router.route('/:id')

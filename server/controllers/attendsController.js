@@ -217,6 +217,126 @@ const postHrsByEIdSE = asyncHandler(async (req, res) => {
     res.status(200).json(response)
 })
 
+// @desc Get all attends by 
+// WorkWork in Progress
+// 1.Project
+// 2. start date
+// 3. end date
+// @route POST /attends/employeeSE
+// @access Private
+const postAllHrsByProj = asyncHandler(async (req, res) => {
+    const employeeId = req.body.eid
+    const startDate = req.body.start
+    const endDate = req.body.end
+    // [
+    //     {
+    //         $match: {
+    //             employeeId: employeeId,
+    //             date: {
+    //                 $gte: startDate,
+    //                 $lte: endDate
+    //             }
+    //         }
+    //     },
+    //     {
+    //         $group: {
+    //             _id: '$date',
+    //             documents: { $push: '$$ROOT' }
+    //         }
+    //     }
+    // ]
+    const filter = [
+        {
+            $match: {
+                employeeId: employeeId,
+                date: {
+                    $gte: startDate,
+                    $lte: endDate
+                }
+            }
+        },
+        {
+            $group: {
+                _id: {
+                    date: '$date',
+                    employeeName: '$employeeName',
+                    employeeId: '$employeeId',
+                    userId: '$userId'
+                    // clockType: '$clockType'
+                },
+                documents: { $push: '$$ROOT' }
+            }
+        },
+        { $sort: { time: 1 } }
+    ]
+    let response = {}
+    let attends = {}
+    await Attend.aggregate(filter).then((result) => {
+        if (result === null) {
+            console.log(`Attendance data not found for Employee ID =${employeeId}`)
+        }
+        console.log('result =' + JSON.stringify(result))
+        attends = result
+        // response.attends = result.map((emp) => {
+        //     return {
+        //         username: emp.employeeName.toLowerCase().replace(/ /g, "_"),
+        //         password: emp.employeeName.toLowerCase().replace(/ /g, "_"),
+        //         employeeId: emp.employeeId,
+        //         employeeName: emp.employeeName,
+        //         roles: ["Employee", "Site"],
+        //         active: true
+        //     }
+        // })
+    }).catch((error => {
+        console.log(`error : Loading Error`)
+    }))
+    let dts, dte
+    let tms, tme
+
+    //response.attends = attends
+    response.employeeName = attends[0]?._id?.employeeName
+    response.employeeId = attends[0]?._id?.employeeId
+    response.userId = attends[0]?._id?.userId
+    const attendsDetails = attends.map((att) => {
+        dts = att.documents[att.documents.length - 1].date.split("-")
+        dte = att.documents[0].date.split("-")
+
+        tms = att.documents[att.documents.length - 1].time //.split(":")
+        tme = att.documents[0].time //.split(":")
+        const times = new Date(`${dts[2]}-${dts[1]}-${dts[0]} ${tms} GMT+0800`)
+        const timee = new Date(`${dte[2]}-${dte[1]}-${dte[0]} ${tme} GMT+0800`)
+        const diff = Math.abs(dateFns.differenceInMinutes(times, timee))
+        return {
+
+
+            // newTime: new Date(dts[2], dts[1], dts[0], tms[1], tms[0]),
+            // new0Time: new Date(parseInt(dts[2]), parseInt(dts[1]), parseInt(dts[0]), parseInt(tms[1]), parseInt(tms[0])),
+            new1Time: timee.toLocaleString(),
+            //tstTime: dateFns.parseJSON(new Date()),
+            inTime: att.documents[att.documents.length - 1].datetime,
+            outTime: att.documents[0].datetime,
+            diff: diff,
+            hrDiff: parseInt(diff / 60),//Math.floor(dateFns.differenceInMinutes(times, timee) / 60),
+            minDiff: diff % 60,
+            workHour: parseInt(diff / 60) - 1
+            // consolelogdts: JSON.stringify(dts),
+            // consolelogtms: JSON.stringify(tms),
+
+
+
+        }
+    })
+    let totalWorkHrs = attendsDetails.reduce(function (prev, current) {
+        return prev + +current.workHour
+    }, 0);
+    response.totalWorkHrs = totalWorkHrs
+    response.attendsDetails = attendsDetails
+    console.log('dts =' + JSON.stringify(dts))
+    console.log('tms =' + JSON.stringify(tms))
+    console.log('response =' + JSON.stringify(response))
+    res.status(200).json(response)
+})
+
 // @desc test attendance aggregate
 // @route get /attends/filterdate
 // @access Private
