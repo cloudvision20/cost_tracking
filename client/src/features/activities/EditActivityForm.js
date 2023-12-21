@@ -88,8 +88,8 @@ const EditActivityForm = ({ res }) => {
     const equipmentCodes = extractKeys(equipmentMapping);
     const consumablesMapping = Object.fromEntries(consumables.map(consumable => ([consumable._id, consumable.name])));
     const consumablesCodes = extractKeys(consumablesMapping);
-    const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumable': consumablesMapping }
-    const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumable': consumablesCodes }
+    const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumables': consumablesMapping }
+    const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumables': consumablesCodes }
 
     const assignValueGetter = (params) => {
         const lst = (params.data?.assignment) ?
@@ -152,7 +152,7 @@ const EditActivityForm = ({ res }) => {
             filter: 'agSetColumnFilter',
             cellEditorPopup: false,
             cellEditorParams: {
-                values: ['Labour', 'Equipment', 'Consumable'],
+                values: ['Labour', 'Equipment', 'Consumables'],
             },
         },
         { field: "details", editable: true },
