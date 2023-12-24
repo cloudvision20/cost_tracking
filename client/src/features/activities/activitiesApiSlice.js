@@ -50,7 +50,7 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
         // }),
         getActivitiesGBProjs: builder.query({
             query: () => ({
-                url: `/activities/actsgbyprojs`,
+                url: `/activities/actsbyprojs`,
                 validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError
                 },
@@ -65,7 +65,7 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
             //     } else return [{ type: 'Activity', id: 'PRJ' }]
             // }
         }),
- 
+
         getActivitiesByUserId: builder.query({
             query: (id) => ({
                 url: `/activities/userid/${id}`,
@@ -103,8 +103,8 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
                     ...initialActivity,
                 }
             }),
-            invalidatesTags: (result, error, arg) => [
-                { type: 'Activity', id: arg.id }
+            invalidatesTags: [
+                { type: 'Activity', id: "LIST" }
             ]
         }),
         deleteActivity: builder.mutation({

@@ -82,7 +82,7 @@ const EditActivityForm = ({ res }) => {
 
 
     const { isManager, isAdmin } = useAuth()
-    const usersMapping = Object.fromEntries(users.map(user => ([user._id, user.username])));
+    const usersMapping = Object.fromEntries(users.map(user => ([user.employeeId, user.username])));
     const usersCodes = extractKeys(usersMapping);
     const equipmentMapping = Object.fromEntries(equipment.map(equipmnt => ([equipmnt._id, equipmnt.name])));
     const equipmentCodes = extractKeys(equipmentMapping);

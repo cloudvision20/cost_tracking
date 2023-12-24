@@ -6,11 +6,11 @@ import { selectActivity } from './siteSlice'
 const SiteFooter = () => {
 
   const activities = useSelector(selectActivity)
-  const { userid, username, status } = useAuth()
+  const { userid, username, employeename, status } = useAuth()
   let content
 
   if (activities) {
-    content = <SiteFooterForm userid={userid} username={username} status={status} activities={activities} />
+    content = <SiteFooterForm userid={userid} username={username} employeename={employeename} status={status} activities={activities} />
   }
 
 

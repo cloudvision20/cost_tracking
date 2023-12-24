@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHouse } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate, useLocation } from 'react-router-dom'
 
-const SiteFooter = ({ userid, username, status, activities }) => {
+const SiteFooter = ({ userid, username, employeename, status, activities }) => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
 

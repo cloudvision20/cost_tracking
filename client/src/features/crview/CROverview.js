@@ -103,40 +103,58 @@ const Welcome = () => {
     let projectList
     if (projects) {
         projectList = projects?.map((project, index) => {
-            // let actList = project.activities.map(activity => {
-            //     return (
-
-            //         <div
-            //             key={activity._id}
-            //             value={activity._id}
-
-            //         > {activity.name}</div >
-
-
-            //     )
-            // })
             return (
-                <div className='row'>
-                    <div className='col-sm-1'>
-                        {index + 1}
-                    </div>
+                <>
+                    <div className='row' style={{ borderTop: "1px solid black" }}>
+                        <div className='col-sm-1'>
+                            {index + 1}
+                        </div>
 
-                    <div className='col-sm-3'> {project.title}</div >
-                    <div className='col-sm-7'>
-
-                        {project.activities.map((activity, index) => {
-                            return (
-                                <div className='row'>
-                                    <div className='col-sm-1'> {index + 1} </div>
-                                    <div className='col-sm-11'> {activity.name}</div >
+                        <div className='col-sm-2'> <b>{project.title}</b> </div >
+                        <div className='col-sm-6' >
+                            <div className='row'>
+                                <div className='col-sm-3'>
+                                    <div> <b> Labour </b></div>
+                                    <div> <b> Equipment </b></div>
+                                    <div> <b> Consumables </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div>  {project.ttlPlanLabour}</div>
+                                    <div> {project.ttlPlanEquipment}</div>
+                                    <div> {project.ttlPlanConsumables}</div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> {project.ttlActualLabour}</div>
+                                    <div> </div>
+                                    <div> </div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> {project.percentLabour}</div>
+                                    <div> </div>
+                                    <div> </div>
                                 </div>
 
+                            </div>
+                        </div>
 
-                            )
-                        })}
+                        <div className='col-sm-3'>
 
-                    </div>
-                </div>
+                            {project.activities.map((activity, index) => {
+                                return (
+                                    <div className='row'>
+                                        <div className='col-sm-1'> {index + 1} </div>
+                                        <div className='col-sm-11'> {activity.name}</div >
+                                    </div>
+
+
+                                )
+                            })}
+
+                        </div>
+
+                    </div >
+                    <div className='row'><p>  </p></div>
+                </>
 
             )
 
@@ -153,44 +171,54 @@ const Welcome = () => {
                 <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-2">
                     <p>{today}</p>
 
-                    <h4>Welcome to Control Room Overview !</h4>
-                    <br />
+                    <h4>Control Room Overview !</h4>
+                    {/* <br />
 
                     <p> Select Project -- activity</p>
                     <p> get a list of all project - activities.</p>
                     <p> Select Employee -- all or Single</p>
 
-                    <p><Link to="/crview/manhour">show manhour</Link></p>
+                    <p><Link to="/crview/manhour">show manhour</Link></p> */}
 
                 </div>
-                <div className='ct-container'>
-                    <div className='row'>
+                <div className='container' style={{ border: "1px solid black" }}>
+                    <div className='row' >
                         <div className='col-sm-1'>
-                            #
+                            <b>#</b>
                         </div>
-                        <div className='col-sm-4'>
-                            Project Title
+                        <div className='col-sm-2'>
+                            <b>Project Title</b>
                         </div>
                         <div className='col-sm-6'>
-                            Activities
+                            <div className='row'>
+                                <b>Project Status</b>
+                            </div>
+                            <div className='row'>
+                                <div className='col-sm-3'>
+                                    <div> <b>  </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> <b> Plan / Budget </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> <b> Actual </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> <b> Percent Completion </b></div>
+                                </div>
+
+                            </div>
                         </div>
-                        {/* <div className='col-sm-2'>
-                                Employee
-                            </div>
-                            <div className='col-sm-2'>
-                                Man Hour
-                            </div>
-                            <div className='col-sm-2'>
-                                Consumables
-                            </div>
-                            <div className='col-sm-2'>
-                                Expenses
-                            </div> */}
+                        <div className='col-sm-3'>
+                            <b>Activities Lists</b>
+                        </div>
 
                     </div>
-                    {/* <div className='row'> */}
-                    {/* <div className='col-sm-12'></div> */}
-                    {projectList}
+
+                    <div>
+                        {projectList}
+                    </div>
+
 
                     {/* </div> */}
                     {/* <div className='row'>

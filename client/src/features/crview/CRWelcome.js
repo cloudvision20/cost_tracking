@@ -15,9 +15,25 @@ import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
 import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
+import { useGetActivitiesQuery, useGetActivitiesGBProjsQuery } from '../activities/activitiesApiSlice'
+import { useGetProjectsQuery } from '../projects/projectsApiSlice'
 const Welcome = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
+
+    const {
+        data: activities1,
+        isLoading
+        // ,
+        // isSuccess,
+        // isError,
+        // error
+    } = useGetActivitiesQuery('activitiesList', {
+        pollingInterval: 15000,
+        refetchOnFocus: true,
+        refetchOnMountOrArgChange: true
+    })
+    const { data: projects } = useGetActivitiesGBProjsQuery()
 
     const Activities = useSelector(selectActivity)
     const activities = Activities.activities
@@ -84,50 +100,134 @@ const Welcome = () => {
             })
         }
     }
+    let projectList
+    if (projects) {
+        projectList = projects?.map((project, index) => {
+            return (
+                <>
+                    <div className='row' style={{ borderTop: "1px solid black" }}>
+                        <div className='col-sm-1'>
+                            {index + 1}
+                        </div>
+
+                        <div className='col-sm-2'> <b>{project.title}</b> </div >
+                        <div className='col-sm-6' >
+                            <div className='row'>
+                                <div className='col-sm-3'>
+                                    <div> <b> Labour </b></div>
+                                    <div> <b> Equipment </b></div>
+                                    <div> <b> Consumables </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div>  {project.ttlPlanLabour}</div>
+                                    <div> {project.ttlPlanEquipment}</div>
+                                    <div> {project.ttlPlanConsumables}</div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> {project.ttlActualLabour}</div>
+                                    <div> </div>
+                                    <div> </div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> {project.percentLabour}</div>
+                                    <div> </div>
+                                    <div> </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div className='col-sm-3'>
+
+                            {project.activities.map((activity, index) => {
+                                return (
+                                    <div className='row'>
+                                        <div className='col-sm-1'> {index + 1} </div>
+                                        <div className='col-sm-11'> {activity.name}</div >
+                                    </div>
+
+
+                                )
+                            })}
+
+                        </div>
+
+                    </div >
+                    <div className='row'><p>  </p></div>
+                </>
+
+            )
+
+        });
+    }
 
     const date = new Date()
     const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
 
     let content = (
         <section className="welcome">
-            <div className="container" style={{ fontSize: '12px' }}>
-                <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div className="ct-container" style={{ fontSize: '12px' }}>
+
+                <div id="welcome" style={{ marginTop: "50px" }} className="mainbox col-md-6 col-md-offset-3 col-sm-12 col-sm-offset-2">
                     <p>{today}</p>
 
-                    <h4>Welcome to Control Room View :{employeename}!</h4>
-                    <br />
+                    <h4>Control Room Overview !</h4>
+                    {/* <br />
 
                     <p> Select Project -- activity</p>
                     <p> get a list of all project - activities.</p>
                     <p> Select Employee -- all or Single</p>
 
-                    <p><Link to="/crview/manhour">show manhour</Link></p>
-                    <div className='container'>
-                        <div className='row'>
-                            <div className='col-sm-1'>
-                                #
-                            </div>
-                            <div className='col-sm-1'>
-                                Project
-                            </div>
-                            <div className='col-sm-2'>
-                                Activity
-                            </div>
-                            <div className='col-sm-2'>
-                                Employee
-                            </div>
-                            <div className='col-sm-2'>
-                                Man Hour
-                            </div>
-                            <div className='col-sm-2'>
-                                Consumables
-                            </div>
-                            <div className='col-sm-2'>
-                                Expenses
-                            </div>
+                    <p><Link to="/crview/manhour">show manhour</Link></p> */}
 
+                </div>
+                <div className='container' style={{ border: "1px solid black" }}>
+                    <div className='row' >
+                        <div className='col-sm-1'>
+                            <b>#</b>
                         </div>
+                        <div className='col-sm-2'>
+                            <b>Project Title</b>
+                        </div>
+                        <div className='col-sm-6'>
+                            <div className='row'>
+                                <b>Project Status</b>
+                            </div>
+                            <div className='row'>
+                                <div className='col-sm-3'>
+                                    <div> <b>  </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> <b> Plan / Budget </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> <b> Actual </b></div>
+                                </div>
+                                <div className='col-sm-3'>
+                                    <div> <b> Percent Completion </b></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className='col-sm-3'>
+                            <b>Activities Lists</b>
+                        </div>
+
                     </div>
+
+                    <div>
+                        {projectList}
+                    </div>
+
+
+                    {/* </div> */}
+                    {/* <div className='row'>
+                            <div className='col-sm-12'>
+                                <p>
+                                    {JSON.stringify(projects)}
+                                </p>
+                            </div>
+                        </div> */}
                 </div>
             </div>
         </section >

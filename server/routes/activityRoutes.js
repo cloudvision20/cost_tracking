@@ -12,7 +12,7 @@ router.route('/')
 //     .get(activitiesController.getActivityByType)
 
 router.route('/actsbyprojs')
-    .get(activitiesController.getActivitiesGBProjs)
+    .get(activitiesController.getActivitiesByProjs)
 
 router.route('/:id')
     .get(activitiesController.getActivityById)

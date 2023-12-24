@@ -372,7 +372,7 @@ const CRHeaderForm = () => {
             <div className="cr-header">
                 <div className="container-xl  ct-header__container">
                     <Navbar expand="lg"  >
-                        <Navbar.Brand href="/crviewview" style={navLinkStyle_Whitesmoke} >
+                        <Navbar.Brand href="/crview" style={navLinkStyle_Whitesmoke} >
                             <div>
                                 <span style={{ fontSize: '20px' }}> <b>Cost Tracking Control Room</b></span>
                                 {/* <span style={{ fontSize: '14px' }}> --- {pathname}</span> */}
