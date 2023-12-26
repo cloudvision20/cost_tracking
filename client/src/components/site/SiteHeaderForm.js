@@ -395,7 +395,7 @@ const SiteHeaderForm = () => {
                                     >Records Menu</span>}
                                     id="basic-nav-dropdown">
                                     {navFormsMenu}
-                                    {navFormMenu}
+                                    {/* {navFormMenu} */}
                                     <NavDropdown.Divider />
                                     {dailyReportMenu}
                                     {newDailyReportMenu}
