@@ -65,6 +65,18 @@ const activitySchema = new mongoose.Schema(
             type: Boolean,
             default: true
         },
+
+        mainActivityId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: false,
+            ref: 'Activity'
+        },      
+        
+        activityType:{
+            type: String,
+        }
+        
+        
         // workProgress: { // remove?
         //     type: Boolean,
         //     required: false
