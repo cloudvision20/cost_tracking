@@ -1,12 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { setCredentials } from '../../features/auth/authSlice'
-//const baseURL = 'http://localhost:3500'
+let baseURL = 'http://localhost:3500'
 //const baseURL = 'https://zxd72s15-3500.asse.devtunnels.ms'
-//const baseURL = 'http://192.168.0.125:3500'
-const baseURL = 'https://dk8qlj1g-3500.asse.devtunnels.ms'
-// https://dk8qlj1g-3000.asse.devtunnels.ms/
-//https://dk8qlj1g-3500.asse.devtunnels.ms
-//const baseURL = 'https://dk8qlj1g-3500.asse.devtunnels.ms'
+// const baseURL = 'http://192.168.56.1:3500'
+baseURL = 'https://ubiquitous-disco-7xr5j67qprxhpx7x-3500.app.github.dev'
+baseURL = 'https://ubiquitous-disco-7xr5j67qprxhpx7x-3500.preview.app.github.dev'
+baseURL = 'https://dk8qlj1g-3500.asse.devtunnels.ms'
+//baseURL = 'https://zxd72s15-3500.asse.devtunnels.ms'
+//baseURL = 'http://192.168.0.109:3500'
 const baseQuery = fetchBaseQuery({
     baseUrl: baseURL,
     credentials: 'include',

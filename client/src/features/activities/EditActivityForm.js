@@ -499,7 +499,7 @@ const EditActivityForm = ({ res }) => {
                                             id="userid"
                                             name="userid"
                                             className="form-control"
-                                            value={projectId}
+                                            value={projectId._id}
                                             onChange={onProjectIdChanged}
                                         >
                                             {prjOptions}
@@ -710,7 +710,7 @@ const EditActivityForm = ({ res }) => {
                                 id="userid"
                                 name="userid"
                                 className="form-control"
-                                value={userId}
+                                value={userId._id}
                                 onChange={onUserIdChanged}
                             >
                                 {options}

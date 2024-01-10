@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import EditProjectForm from './EditProjectForm'
+import EditProjectForm from './EditProjectFormGood'
 import { useGetProjectByIdQuery, useGetProjectsQuery } from './projectsApiSlice'
 
 import useAuth from '../../hooks/useAuth'
@@ -28,7 +28,7 @@ const EditProject = () => {
             }
         }
 
-        content = <EditProjectForm statActivities={res.activities} project={res.project[0]} users={res.users} />
+        content = <EditProjectForm activities={res.activities} project={res.project[0]} users={res.users} />
     }
 
     return content

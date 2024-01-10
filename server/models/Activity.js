@@ -72,7 +72,8 @@ const activitySchema = new mongoose.Schema(
             ref: 'Activity'
         },      
         
-        activityType:{
+        activityType:{ 
+            //Budget, Works, Dredging／Earth, Piling(with sub Activities)
             type: String,
         }
         

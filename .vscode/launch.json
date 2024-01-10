@@ -7,35 +7,35 @@
         //     "reAttach": true,
         //     "name": "Launch firefox",
         //     "url":"https://dk8qlj1g-3000.asse.devtunnels.ms",// "http://localhost:3000",
-        //     "webRoot": "${workspaceFolder}\\client"
+        //     "webRoot": "${workspaceFolder}/client"
         // },
                 {
             "name": "Launch Local Chrome",
             "request": "launch",
             "type": "chrome",
             "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}\\client"
+            "webRoot": "${workspaceFolder}/client"
         },
         {
             "name": "Launch Chrome",
             "request": "launch",
             "type": "chrome",
             "url": "https://dk8qlj1g-3000.asse.devtunnels.ms",//"http://localhost:3000",
-            "webRoot": "${workspaceFolder}\\client"
+            "webRoot": "${workspaceFolder}/client"
         },
         {
             "type": "node-terminal",
             "name": "Run Client: start",
             "request": "launch",
             "command": "npm run start",
-            "cwd": "${workspaceFolder}\\client"
+            "cwd": "${workspaceFolder}/client"
         },
         {
             "type": "node-terminal",
             "name": "Run Server: dev",
             "request": "launch",
             "command": "npm run dev",
-            "cwd": "${workspaceFolder}\\server"
+            "cwd": "${workspaceFolder}/server"
         }
     ]
 }

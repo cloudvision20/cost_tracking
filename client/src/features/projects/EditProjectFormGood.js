@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { useUpdateProjectMutation, useDeleteProjectMutation } from "./projectsApiSlice"
-import { useAddNewActivityMutation } from "../activities/activitiesApiSlice"
-import NewActProp from "./NewActPop"
+import { useUpdateActivityMutation, useAddNewActivityMutation } from "../activities/activitiesApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
@@ -31,9 +30,8 @@ class BtnCellRenderer extends Component {
     }
 }
 
-const EditProjectForm = ({ startActivities, project, users }) => {
+const EditProjectForm = ({ activities, project, users }) => {
 
-    let activities = startActivities
     const { isManager, isAdmin } = useAuth()
     let png = []
     const blankPng = {
@@ -55,6 +53,12 @@ const EditProjectForm = ({ startActivities, project, users }) => {
         isError,
         error
     }] = useUpdateProjectMutation()
+    const [addNewActivity, {
+        isLoading: isNActLoading,
+        isSuccess: isNActSuccess,
+        isError: isNActError,
+        error: nActError
+    }] = useAddNewActivityMutation()
 
     const [deleteProject, {
         isSuccess: isDelSuccess,
@@ -72,14 +76,6 @@ const EditProjectForm = ({ startActivities, project, users }) => {
             width: 50,
         };
     }, []);
-
-
-    const [addNewActivity, {
-        isLoading: isNewActLoading,
-        isSuccess: isNewActSuccess,
-        isError: isNewActError,
-        error: newActError
-    }] = useAddNewActivityMutation()
 
     const data = Array.from(activities).map((activity, index) => ({
         "Status": activity.completed ? "Completed" : "Open",
@@ -173,7 +169,9 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     }
     const onRowDblClicked = (e) => {
         console.log('onRowClicked-activity:' + JSON.stringify(rdAct))
-        navigate(`/dash/activities/${e.data._id}`)
+        e.data._id ? navigate(`/dash/activities/${e.data._id}`)
+            : navigate('/dash/activities/new')
+
     }
     const onPngCellValueChanged = (e) => {
         console.log('onPngCellValueChanged-rowData:' + JSON.stringify(rdPng))
@@ -181,7 +179,7 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     const onPngRowDblClicked = (e) => {
         console.log('onPngRowDblClicked-PNG:' + JSON.stringify(rdPng))
     }
-    const onNewActPropClicked_good = (e) => {
+    const onNewActivityClicked = (e) => {
         e.preventDefault()
         rowId = rowId + 1
         let newRdAct = [...rdAct, {
@@ -189,41 +187,11 @@ const EditProjectForm = ({ startActivities, project, users }) => {
             "name": null,
             "description": null,
             "username": null,
-            "_id": "new",
+
             "rowId": 'new' + rowId.toString()
         }]
         setRdAct(newRdAct)
         console.log(JSON.stringify(newRdAct))
-    }
-    const [seen, setSeen] = useState(false)
-
-    function togglePop() {
-        setSeen(!seen);
-    };
-    const onSaveActivityClicked = async (e) => {
-        let process = {}
-        let duration = {}
-        let eActivity = {}
-
-        e.preventDefault()
-        // if (canSave) {
-        // eActivity.name = name
-        // eActivity.description = description
-        // eActivity.startDate = startDate
-        // eActivity.endDate = endDate
-        // eActivity.completed = completed
-        // eActivity.userId = userId
-        // process.uom = processUOM
-        // process.quantity = processQuantity
-        // eActivity.process = process
-        // duration.uom = durationUOM
-        // duration.quantity = durationQuantity
-        // eActivity.duration = duration
-        // eActivity.resources = rowData
-        // console.log(eActivity)
-        // console.log(JSON.stringify(eActivity))
-        // await addNewActProp(eActivity)
-        // }
     }
 
     const onNewPngClicked = (e) => {
@@ -270,6 +238,25 @@ const EditProjectForm = ({ startActivities, project, users }) => {
 
     const onDeleteProjectClicked = async () => {
         await deleteProject({ id: project._id })
+    }
+
+    let eActivity = {}
+    const onSaveActivityClicked = async (e) => {
+        let process = {}
+        let duration = {}
+        e.preventDefault()
+        if (canSave) {
+            //eActivity.name = name
+            //eActivity.description = description
+            // eActivity.startDate = startDate
+            // eActivity.endDate = endDate
+            // eActivity.completed = completed
+            eActivity.userId = userId
+            eActivity.projectId = project._id
+            console.log(eActivity)
+            console.log(JSON.stringify(eActivity))
+            await addNewActivity(eActivity)
+        }
     }
 
     const created = new Date(project.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })
@@ -409,15 +396,13 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                     <div className="form-group row" style={{ border: "0px" }}>
                         <div className="col-sm-10" style={{ border: "0px" }}><h6>Activities</h6></div>
                         <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
-
                             <button
                                 className="btn btn-primary btn-sm"
                                 title="New Resources"
-                                onClick={togglePop}
+                                onClick={onNewActivityClicked}
                             >
                                 Add Activities
                             </button>
-                            {seen ? <NewActProp toggle={togglePop} /> : null}
                         </div>
                         <div className="row">
                             <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
