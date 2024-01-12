@@ -415,9 +415,14 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                                 title="New Resources"
                                 onClick={togglePop}
                             >
-                                Add Activities
+                                New Activity
                             </button>
+
+                        </div>
+                        < div className="row">
+
                             {seen ? <NewActProp toggle={togglePop} /> : null}
+
                         </div>
                         <div className="row">
                             <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
