@@ -34,7 +34,6 @@ const NewActPop = ({ userId, projectId, props }) => {
     const onDurationUOMChanged = (e) => setDurationUOM(e.target.value)
     const onDurationQuantityChanged = (e) => setDurationQuantity(e.target.value)
 
-
     const onStartDateChanged = (e) => setStartDate(e.target.value)
     const onEndDateChanged = (e) => setEndDate(e.target.value)
 
