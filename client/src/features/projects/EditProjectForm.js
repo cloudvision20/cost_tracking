@@ -381,16 +381,20 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                             </Form.Group>
                         </div>
                     </div>
-                    <div className="form-group row" style={{ border: "0px" }}>
-                        <div className="col-sm-10" style={{ border: "0px" }}><h6>P &G</h6></div>
-                        <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
-                            <button
-                                className="btn btn-primary btn-sm"
-                                title="New Resources"
-                                onClick={onNewPngClicked}
-                            >
-                                Add P&G
-                            </button>
+                    {/* starting P&G  */}
+                    <div className="container grid_system" style={{ fontSize: '12px', border: "0PX" }}>
+                        <br />
+                        <div className="form-group row" style={{ border: "0px" }}>
+                            <div className="col-sm-10" style={{ border: "0px" }}><h6>P &G</h6></div>
+                            <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
+                                <button
+                                    className="btn btn-primary btn-sm"
+                                    title="New Resources"
+                                    onClick={onNewPngClicked}
+                                >
+                                    Add P&G
+                                </button>
+                            </div>
                         </div>
                         <div className="row">
                             <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
@@ -405,25 +409,32 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                                 </AgGridReact>
                             </div>
                         </div>
+                        <br />
                     </div>
-                    <div className="form-group row" style={{ border: "0px" }}>
-                        <div className="col-sm-10" style={{ border: "0px" }}><h6>Activities</h6></div>
-                        <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
+                    <br />
+                    {/* starting activities section */}
+                    <div className="container grid_system" style={{ fontSize: '12px', border: "1px solid lightblue" }}>
+                        <br />
+                        <div className="form-group row" style={{ border: "0px" }}>
+                            <div className="col-sm-10" style={{ border: "0px" }}><h6>Activities</h6></div>
+                            <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
 
-                            <button
-                                className="btn btn-primary btn-sm"
-                                title="New Resources"
-                                onClick={togglePop}
-                            >
-                                New Activity
-                            </button>
+                                <button
+                                    className="btn btn-primary btn-sm"
+                                    title="New Resources"
+                                    onClick={togglePop}
+                                >
+                                    New Activity
+                                </button>
+
+                            </div>
+                        </div>
+                        < div className="row" style={{ marginLeft: "20px", marginRight: "20px" }}>
+
+                            {seen ? <NewActProp userId={project.userId._id} projectId={project._id} toggle={togglePop} /> : null}
 
                         </div>
-                        < div className="row">
-
-                            {seen ? <NewActProp toggle={togglePop} /> : null}
-
-                        </div>
+                        <br />
                         <div className="row">
                             <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
                                 <AgGridReact
@@ -437,6 +448,7 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                                 </AgGridReact>
                             </div>
                         </div>
+                        <br />
                     </div>
 
 
@@ -494,6 +506,8 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                     </div>
 
                 </form>
+                <br />
+
             </div>
         </>
     )

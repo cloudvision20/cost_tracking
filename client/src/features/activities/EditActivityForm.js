@@ -288,7 +288,7 @@ const EditActivityForm = ({ res }) => {
     const [completed, setCompleted] = useState(activity.completed)
     const [userId, setUserId] = useState(activity.userId)
     const [projectId, setProjectId] = useState(activity.projectId)
-    const [processUOM, setProcessUOM] = useState(activity.process.uom)
+    const [processUOM, setProcessUOM] = useState(activity.process.uom ? activity.process.uom : '')
     const [processQuantity, setProcessQuantity] = useState(activity.process.quantity)
     const [durationUOM, setDurationUOM] = useState(activity.duration.uom)
     const [durationQuantity, setDurationQuantity] = useState(activity.duration.quantity)
