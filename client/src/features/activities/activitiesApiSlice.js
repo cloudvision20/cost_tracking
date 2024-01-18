@@ -83,6 +83,23 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
             //     return activities
             // },
         }),
+        getActivitiesByProjId: builder.query({
+            query: (id) => ({
+                url: `/activities/projectid/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+            // transformResponse: responseData => {
+            //     const activities = responseData.map((activity) => {
+            //         return {
+            //             ...activity,
+            //             resources: activity.resources.filter((res) => res.type === 'Labour')
+            //         }
+            //     });
+            //     return activities
+            // },
+        }),
         addNewActivity: builder.mutation({
             query: initialActivity => ({
                 url: '/activities',

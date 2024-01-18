@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { useUpdateProjectMutation, useDeleteProjectMutation } from "./projectsApiSlice"
-import { useAddNewActivityMutation } from "../activities/activitiesApiSlice"
+import { useGetActivityByIdQuery } from "../activities/activitiesApiSlice"
 import NewActProp from "./NewActPop"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -74,12 +74,9 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     }, []);
 
 
-    const [addNewActivity, {
-        isLoading: isNewActLoading,
-        isSuccess: isNewActSuccess,
-        isError: isNewActError,
-        error: newActError
-    }] = useAddNewActivityMutation()
+    let  { data: updatedActivities,
+        isSuccess: isNewActSuccess
+    } = useGetActivityByIdQuery(project._id);
 
     const data = Array.from(activities).map((activity, index) => ({
         "Status": activity.completed ? "Completed" : "Open",
@@ -200,31 +197,31 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     function togglePop() {
         setSeen(!seen);
     };
-    const onSaveActivityClicked = async (e) => {
-        let process = {}
-        let duration = {}
-        let eActivity = {}
+    // const onSaveActivityClicked = async (e) => {
+    //     let process = {}
+    //     let duration = {}
+    //     let eActivity = {}
 
-        e.preventDefault()
-        // if (canSave) {
-        // eActivity.name = name
-        // eActivity.description = description
-        // eActivity.startDate = startDate
-        // eActivity.endDate = endDate
-        // eActivity.completed = completed
-        // eActivity.userId = userId
-        // process.uom = processUOM
-        // process.quantity = processQuantity
-        // eActivity.process = process
-        // duration.uom = durationUOM
-        // duration.quantity = durationQuantity
-        // eActivity.duration = duration
-        // eActivity.resources = rowData
-        // console.log(eActivity)
-        // console.log(JSON.stringify(eActivity))
-        // await addNewActProp(eActivity)
-        // }
-    }
+    //     e.preventDefault()
+    //     // if (canSave) {
+    //     // eActivity.name = name
+    //     // eActivity.description = description
+    //     // eActivity.startDate = startDate
+    //     // eActivity.endDate = endDate
+    //     // eActivity.completed = completed
+    //     // eActivity.userId = userId
+    //     // process.uom = processUOM
+    //     // process.quantity = processQuantity
+    //     // eActivity.process = process
+    //     // duration.uom = durationUOM
+    //     // duration.quantity = durationQuantity
+    //     // eActivity.duration = duration
+    //     // eActivity.resources = rowData
+    //     // console.log(eActivity)
+    //     // console.log(JSON.stringify(eActivity))
+    //     // await addNewActProp(eActivity)
+    //     // }
+    // }
 
     const onNewPngClicked = (e) => {
         e.preventDefault()

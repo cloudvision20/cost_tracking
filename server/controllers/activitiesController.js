@@ -336,6 +336,15 @@ const getActivityByUserId = asyncHandler(async (req, res) => {
     res.json(response)
 })
 
+const getActivityByProjId = asyncHandler(async (req, res) => {
+    const id = req.params.id
+    const activities = await Activity.find({ "projectId": id }).populate({ path: 'userId', select: 'username' }).exec()
+    if (!activities?.length) {
+        return res.status(400).json({ message: 'No activities found' })
+    }
+    res.json(activities)
+})
+
 
 // @desc Create new activity
 // @route POST /activities
@@ -412,6 +421,7 @@ module.exports = {
     getActivitiesByProjs,
     getActivityById,
     getActivityByUserId,
+    getActivityByProjId,
     createNewActivity,
     updateActivity,
     deleteActivity

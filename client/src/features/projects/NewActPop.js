@@ -5,7 +5,7 @@ import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { FormControl, Form } from 'react-bootstrap';
 import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
 
-const NewActPop = ({ userId, projectId, props }) => {
+const NewActPop = ({ userId, projectId, toggle }) => {
 
 
     const [addNewActivity, {
@@ -37,11 +37,11 @@ const NewActPop = ({ userId, projectId, props }) => {
     const onStartDateChanged = (e) => setStartDate(e.target.value)
     const onEndDateChanged = (e) => setEndDate(e.target.value)
 
-    function handleLogin(e) {
-        e.preventDefault()
-        // Code to handle login goes here
-        props.toggle()
-    }
+    // function handleLogin(e) {
+    //     e.preventDefault()
+    //     // Code to handle login goes here
+    //     // props.toggle()
+    // }
     const clearForm = () => {
         setName('')
         setDescription('')
@@ -75,14 +75,15 @@ const NewActPop = ({ userId, projectId, props }) => {
         // eActivity.resources = rowData
         console.log(eActivity)
         console.log(JSON.stringify(eActivity))
-        await addNewActivity(eActivity).then(() => {
-            props.toggle()
+        await addNewActivity(eActivity).then((result) => {
+            // props.toggle()
+            // console.log('New activity creation success ' + JSON.stringify(result))
         })
         // }
     }
     if (isSuccess) {
         clearForm()
-        props.toggle()
+        toggle()
     }
     return (
         <div className="container grid_system" style={{ fontSize: '11px', border: "1px solid lightgray" }}>

@@ -20,4 +20,6 @@ router.route('/:id')
 router.route('/userid/:id')
     .get(activitiesController.getActivityByUserId)
 
+router.route('/projectid/:id')
+    .get(activitiesController.getActivityByProjId)
 module.exports = router
