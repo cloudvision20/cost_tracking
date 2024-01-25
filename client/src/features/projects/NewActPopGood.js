@@ -9,14 +9,14 @@ const NewActPop = ({ userId, projectId, toggle }) => {
 
 
     const [addNewActivity, {
-        isLoading: isLoadingNewActivity,
-        isSuccess: isSuccessNewActivity,
-        isError: isErrorNewActivity,
-        error: errorNewQActivity
+        isLoading,
+        isSuccess,
+        isError,
+        error
     }] = useAddNewActivityMutation()
 
     const [name, setName] = useState('')
-    const [aDescription, setADescription] = useState('')
+    const [description, setDescription] = useState('')
     const [completed, setCompleted] = useState(false)
     // const [userId, setUserId] = useState(usersId)
     // const [projectId, setProjectId] = useState(projectId)
@@ -24,18 +24,18 @@ const NewActPop = ({ userId, projectId, toggle }) => {
     const [processQuantity, setProcessQuantity] = useState('')
     const [durationUOM, setDurationUOM] = useState('')
     const [durationQuantity, setDurationQuantity] = useState('')
-    const [aStartDate, setAStartDate] = useState('')
-    const [aEndDate, setAEndDate] = useState('')
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState('')
 
     const onNameChanged = (e) => setName(e.target.value)
-    const onADescriptionChanged = (e) => setADescription(e.target.value)
+    const onDescriptionChanged = (e) => setDescription(e.target.value)
     const onProcessUOMChanged = (e) => setProcessUOM(e.target.value)
     const onProcessQuantityChanged = (e) => setProcessQuantity(e.target.value)
     const onDurationUOMChanged = (e) => setDurationUOM(e.target.value)
     const onDurationQuantityChanged = (e) => setDurationQuantity(e.target.value)
 
-    const onAStartDateChanged = (e) => setAStartDate(e.target.value)
-    const onAEndDateChanged = (e) => setAEndDate(e.target.value)
+    const onStartDateChanged = (e) => setStartDate(e.target.value)
+    const onEndDateChanged = (e) => setEndDate(e.target.value)
 
     // function handleLogin(e) {
     //     e.preventDefault()
@@ -44,13 +44,13 @@ const NewActPop = ({ userId, projectId, toggle }) => {
     // }
     const clearForm = () => {
         setName('')
-        setADescription('')
+        setDescription('')
         setProcessUOM('')
         setProcessQuantity('')
         setDurationQuantity('')
         setDurationUOM('')
-        setAStartDate('')
-        setAEndDate('')
+        setStartDate('')
+        setEndDate('')
 
     }
     const onSaveActivityClicked = async (e) => {
@@ -60,9 +60,9 @@ const NewActPop = ({ userId, projectId, toggle }) => {
         e.preventDefault()
         // if (canSave) {
         eActivity.name = name
-        eActivity.Description = aDescription
-        eActivity.StartDate = aStartDate ? aStartDate : ''
-        eActivity.EndDate = aEndDate ? aEndDate : ''
+        eActivity.description = description
+        eActivity.startDate = startDate ? startDate : ''
+        eActivity.endDate = endDate ? endDate : ''
         eActivity.completed = completed
         eActivity.userId = userId
         eActivity.projectId = projectId
@@ -81,7 +81,7 @@ const NewActPop = ({ userId, projectId, toggle }) => {
         })
         // }
     }
-    if (isSuccessNewActivity) {
+    if (isSuccess) {
         clearForm()
         toggle()
     }
@@ -127,16 +127,16 @@ const NewActPop = ({ userId, projectId, toggle }) => {
 
                             </div>
                             <div className="form-group row">
-                                <div className=" col-sm-2"><b>ADescription:</b></div>
+                                <div className=" col-sm-2"><b>Description:</b></div>
                                 <div className=" col-sm-10">
                                     <textarea
                                         className="form-control"
-                                        id="activity-aDescription"
-                                        name="aDescription"
+                                        id="activity-description"
+                                        name="description"
                                         rows="3"
                                         style={{ fontSize: '11px' }}
-                                        value={aDescription}
-                                        onChange={onADescriptionChanged}
+                                        value={description}
+                                        onChange={onDescriptionChanged}
                                     />
                                 </div>
                             </div>
@@ -176,24 +176,24 @@ const NewActPop = ({ userId, projectId, toggle }) => {
                             <div className="form-group row">
                                 <div className=" col-sm-2"><b>Start / End Dates:</b></div>
                                 <div className=" col-md-5" >
-                                    <Form.Group controlId="aStartDate">
+                                    <Form.Group controlId="startDate">
                                         <Form.Control
                                             type="date"
                                             style={{ fontSize: '11px' }}
-                                            value={aStartDate ? dateForPicker(aStartDate) : ''}
-                                            placeholder={aStartDate ? dateForPicker(aStartDate) : "dd-mm-yyyy"}
-                                            onChange={onAStartDateChanged}
+                                            value={startDate ? dateForPicker(startDate) : ''}
+                                            placeholder={startDate ? dateForPicker(startDate) : "dd-mm-yyyy"}
+                                            onChange={onStartDateChanged}
                                         />
                                     </Form.Group>
                                 </div>
                                 <div className=" col-md-5">
-                                    <Form.Group controlId="aEndDate">
+                                    <Form.Group controlId="endDate">
                                         <Form.Control
                                             type="date"
                                             style={{ fontSize: '11px' }}
-                                            value={aEndDate ? dateForPicker(aEndDate) : ''}
-                                            placeholder={aEndDate ? dateForPicker(aEndDate) : "dd-mm-yyyy"}
-                                            onChange={onAEndDateChanged}
+                                            value={endDate ? dateForPicker(endDate) : ''}
+                                            placeholder={endDate ? dateForPicker(endDate) : "dd-mm-yyyy"}
+                                            onChange={onEndDateChanged}
                                         />
                                     </Form.Group>
                                 </div>

@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, Component } from "react"
 import { useUpdateProjectMutation, useDeleteProjectMutation } from "./projectsApiSlice"
-import { useAddNewActivityMutation } from "../activities/activitiesApiSlice"
-// import NewActProp from "./NewActPop"
+// import { useGetActivityByIdQuery } from "../activities/activitiesApiSlice"
+import NewActProp from "./NewActPop"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
@@ -136,7 +136,7 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     const [title, setTitle] = useState(project.title)
     const [description, setDescription] = useState(project.description)
     const [completed, setCompleted] = useState(project.completed)
-    const [userId, setUserId] = useState(project.userId._id)
+    const [userId, setUserId] = useState(project.userId)
     const [startDate, setStartDate] = useState(project.startDate)
     const [endDate, setEndDate] = useState(project.endDate)
 
@@ -176,126 +176,62 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     const onPngRowDblClicked = (e) => {
         console.log('onPngRowDblClicked-PNG:' + JSON.stringify(rdPng))
     }
-    /********************************************************************
-     * 
-     *     New Activity
-     * 
-     *******************************************************************/
-    const [addNewActivity, {
-        isLoading: isLoadingNewActivity,
-        isSuccess: isSuccessNewActivity,
-        isError: isErrorNewActivity,
-        error: errorNewQActivity
-    }] = useAddNewActivityMutation()
-
-    const [name, setName] = useState('')
-    const [aDescription, setADescription] = useState('')
-    const [aCompleted, setACompleted] = useState(false)
-    // const [userId, setUserId] = useState(usersId)
-    // const [projectId, setProjectId] = useState(projectId)
-    const [processUOM, setProcessUOM] = useState('')
-    const [processQuantity, setProcessQuantity] = useState('')
-    const [durationUOM, setDurationUOM] = useState('')
-    const [durationQuantity, setDurationQuantity] = useState('')
-    const [aStartDate, setAStartDate] = useState('')
-    const [aEndDate, setAEndDate] = useState('')
-
-    const onNameChanged = (e) => setName(e.target.value)
-    const onADescriptionChanged = (e) => setADescription(e.target.value)
-    const onProcessUOMChanged = (e) => setProcessUOM(e.target.value)
-    const onProcessQuantityChanged = (e) => setProcessQuantity(e.target.value)
-    const onDurationUOMChanged = (e) => setDurationUOM(e.target.value)
-    const onDurationQuantityChanged = (e) => setDurationQuantity(e.target.value)
-
-    const onAStartDateChanged = (e) => setAStartDate(e.target.value)
-    const onAEndDateChanged = (e) => setAEndDate(e.target.value)
-
-
-    const clearForm = () => {
-        setName('')
-        setADescription('')
-        setProcessUOM('')
-        setProcessQuantity('')
-        setDurationQuantity('')
-        setDurationUOM('')
-        setAStartDate('')
-        setAEndDate('')
-
-    }
-
-    const onSaveActivityClicked = async (e) => {
-        let eActivity = {}
-        let process = {}
-        let duration = {}
-        e.preventDefault()
-        // if (canSave) {
-        eActivity.name = name
-        eActivity.description = aDescription
-        eActivity.startDate = aStartDate ? aStartDate : ''
-        eActivity.endDate = aEndDate ? aEndDate : ''
-        eActivity.completed = aCompleted
-        eActivity.userId = userId
-        eActivity.projectId = project._id
-        process.uom = processUOM ? processUOM : ''
-        process.quantity = processQuantity ? processQuantity : 0
-        eActivity.process = process
-        duration.uom = durationUOM ? durationUOM : ''
-        duration.quantity = durationQuantity ? durationQuantity : 0
-        eActivity.duration = duration
-        // eActivity.resources = rowData
-        console.log(eActivity)
-        console.log(JSON.stringify(eActivity))
-        await addNewActivity(eActivity).then((result) => {
-
-
-
-            eActivity = {}
-
-            const dat = Array.from([...activities, result.data.act]).map((activity, index) => ({
-                "Status": activity.completed ? "Completed" : "Open",
-                "name": activity.name,
-                "description": activity.description,
-                "username": activity.userId.username,
-                "_id": activity._id,
-                "rowId": activity._id
-            }))
-            setRdAct(dat)
-            activitiesRef.current.api.refreshCells()
-            setActivities([...activities, result.data.act])
-
-            clearForm()
-            togglePop()
-        })
-        // }
-    }
-
+    // const onNewActPropClicked_good = (e) => {
+    //     e.preventDefault()
+    //     rowId = rowId + 1
+    //     let newRdAct = [...rdAct, {
+    //         "Status": null,
+    //         "name": null,
+    //         "description": null,
+    //         "username": null,
+    //         "_id": "new",
+    //         "rowId": 'new' + rowId.toString()
+    //     }]
+    //     setRdAct(newRdAct)
+    //     console.log(JSON.stringify(newRdAct))
+    // }
     const [seen, setSeen] = useState(false)
 
     function togglePop() {
-
-        // clearForm()
-        setSeen(!seen)
+        setSeen(!seen);
         // console.log(JSON.stringify(ActvitiesByProj(project._id)))
     };
-    // function loadActivities() {
-    //     let [acts, setActs] = ActvitiesByProj(project._id)
-    //     setActivities(acts)
-    // }
+    function loadActivities() {
+        let [acts, setActs] = ActvitiesByProj(project._id)
+        setActivities(acts)
+    }
 
     const onNewResourcesClicked = async (e) => {
         e.preventDefault()
-        // loadActivities()
+        loadActivities()
         togglePop()
-        activitiesRef.current.api.refreshCells()
     }
+    // const onSaveActivityClicked = async (e) => {
+    //     let process = {}
+    //     let duration = {}
+    //     let eActivity = {}
 
-    // if (isSuccessNewActivity) {
-    //     //setActivities([...activities,result])
-    //     clearForm()
-    //     togglePop()
+    //     e.preventDefault()
+    //     // if (canSave) {
+    //     // eActivity.name = name
+    //     // eActivity.description = description
+    //     // eActivity.startDate = startDate
+    //     // eActivity.endDate = endDate
+    //     // eActivity.completed = completed
+    //     // eActivity.userId = userId
+    //     // process.uom = processUOM
+    //     // process.quantity = processQuantity
+    //     // eActivity.process = process
+    //     // duration.uom = durationUOM
+    //     // duration.quantity = durationQuantity
+    //     // eActivity.duration = duration
+    //     // eActivity.resources = rowData
+    //     // console.log(eActivity)
+    //     // console.log(JSON.stringify(eActivity))
+    //     // await addNewActProp(eActivity)
+    //     // }
     // }
 
-    /**************************************************************** */
     const onNewPngClicked = (e) => {
         e.preventDefault()
         pngRowId = pngRowId + 1
@@ -501,166 +437,8 @@ const EditProjectForm = ({ startActivities, project, users }) => {
                         </div>
                         < div className="row" style={{ marginLeft: "20px", marginRight: "20px" }}>
 
-                            {/* {seen ? (<NewActProp userId={project.userId._id} projectId={project._id} toggle={togglePop} />) : null} */}
+                            {seen ? (<NewActProp userId={project.userId._id} projectId={project._id} toggle={togglePop} />) : null}
                             {/* <p>{JSON.stringify(ActvitiesByProj(project._id))}</p> */}
-                            {(seen)
-                                &&
-                                <div className="container grid_system" style={{ fontSize: '11px', border: "1px solid lightgray" }}>
-                                    {/* <form onSubmit={e => e.preventDefault()}> */}
-                                    <br />
-                                    <div className="form-group row" style={{ border: "0px" }}>
-                                        <div className="col-sm-10" style={{ border: "0px" }}><b>Add New Activity</b></div>
-                                        <div className="col-sm-2 " style={{ border: "0px", paddingBottom: "10px", paddingRight: "35px" }} >
-
-                                            <div className="form-group ct-header__nav">
-                                                <button
-                                                    className="btn btn-primary btn-sm"
-                                                    title="Save"
-                                                    onClick={onSaveActivityClicked}
-                                                //disabled={!canSave}
-                                                >
-                                                    <FontAwesomeIcon icon={faSave} />
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="container grid_system_no_border" style={{ fontSize: '11px' }}>
-                                        <div className="row">
-                                            <div className=" col-sm-6">
-                                                <div className="container-fluid" style={{ border: "0px" }}>
-                                                    <div className="form-group row">
-                                                        <div className=" col-sm-2"><b>Name:</b></div>
-                                                        <div className=" col-sm-10">
-                                                            <input
-                                                                className="form-control"
-                                                                id="activity-name"
-                                                                name="Name"
-                                                                type="text"
-                                                                placeholder="Name"
-                                                                autoComplete="off"
-                                                                style={{ fontSize: '11px' }}
-                                                                value={name}
-                                                                onChange={onNameChanged}
-                                                            />
-                                                        </div>
-
-                                                    </div>
-                                                    <div className="form-group row">
-                                                        <div className=" col-sm-2"><b>Description:</b></div>
-                                                        <div className=" col-sm-10">
-                                                            <textarea
-                                                                className="form-control"
-                                                                id="activity-aDescription"
-                                                                name="aDescription"
-                                                                rows="3"
-                                                                style={{ fontSize: '11px' }}
-                                                                value={aDescription}
-                                                                onChange={onADescriptionChanged}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className=" col-sm-6">
-                                                <div className="container-fluid" style={{ border: "0px" }}>
-                                                    <div className="form-group row">
-                                                        <div className=" col-sm-2"><b>Activity Process:</b></div>
-                                                        <div className=" col-sm-5">
-                                                            <input
-                                                                className="form-control"
-                                                                id="process-unit"
-                                                                name="process-unit"
-                                                                type="text"
-                                                                placeholder="Process Unit"
-                                                                autoComplete="off"
-                                                                style={{ fontSize: '11px' }}
-                                                                value={processUOM}
-                                                                onChange={onProcessUOMChanged}
-                                                            />
-                                                        </div>
-                                                        <div className=" col-sm-5">
-                                                            <input
-                                                                className="form-control"
-                                                                id="process-quantity"
-                                                                name="process-quantity"
-                                                                type="text"
-                                                                placeholder="Process Quantity"
-                                                                autoComplete="off"
-                                                                style={{ fontSize: '11px' }}
-                                                                value={processQuantity}
-                                                                onChange={onProcessQuantityChanged}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                    <div className="form-group row">
-                                                        <div className=" col-sm-2"><b>Start / End Dates:</b></div>
-                                                        <div className=" col-md-5" >
-                                                            <Form.Group controlId="aStartDate">
-                                                                <Form.Control
-                                                                    type="date"
-                                                                    style={{ fontSize: '11px' }}
-                                                                    value={aStartDate ? dateForPicker(aStartDate) : ''}
-                                                                    placeholder={aStartDate ? dateForPicker(aStartDate) : "dd-mm-yyyy"}
-                                                                    onChange={onAStartDateChanged}
-                                                                />
-                                                            </Form.Group>
-                                                        </div>
-                                                        <div className=" col-md-5">
-                                                            <Form.Group controlId="aEndDate">
-                                                                <Form.Control
-                                                                    type="date"
-                                                                    style={{ fontSize: '11px' }}
-                                                                    value={aEndDate ? dateForPicker(aEndDate) : ''}
-                                                                    placeholder={aEndDate ? dateForPicker(aEndDate) : "dd-mm-yyyy"}
-                                                                    onChange={onAEndDateChanged}
-                                                                />
-                                                            </Form.Group>
-                                                        </div>
-                                                    </div>
-                                                    <div className="form-group row">
-                                                        <div className=" col-sm-2"><b>Activity Duration:</b></div>
-                                                        <div className=" col-sm-5">
-                                                            <input
-                                                                className="form-control"
-                                                                id="duration-unit"
-                                                                name="duration-unit"
-                                                                type="text"
-                                                                placeholder="Duration Unit"
-                                                                autoComplete="off"
-                                                                style={{ fontSize: '11px' }}
-                                                                value={durationUOM}
-                                                                onChange={onDurationUOMChanged}
-                                                            />
-                                                        </div>
-                                                        <div className=" col-sm-5">
-                                                            <input
-                                                                className="form-control"
-                                                                id="duration-quantity"
-                                                                name="duration-quantity"
-                                                                type="text"
-                                                                placeholder="Duration Quantity"
-                                                                autoComplete="off"
-                                                                style={{ fontSize: '11px' }}
-                                                                value={durationQuantity}
-                                                                onChange={onDurationQuantityChanged}
-                                                            />
-                                                        </div>
-                                                    </div>
-                                                </div> {/* container-fluid */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-                                    {/* </form> */}
-                                </div>
-                            }
-                            {(!seen)
-                                &&
-                                <></>
-                            }
-
-
-
                         </div>
                         <br />
                         <div className="row">

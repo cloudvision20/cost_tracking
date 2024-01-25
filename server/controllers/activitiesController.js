@@ -361,9 +361,9 @@ const createNewActivity = asyncHandler(async (req, res) => {
 
     // Create and store new activity 
     const activity = await Activity.create(req.body)
-
-    if (activity) { //created 
-        res.status(201).json({ message: `New activity ${name} created` })
+    const act = await Activity.findById(activity._id).populate({ path: 'userId', select: 'username' }).exec()
+    if (activity) { //create
+        res.status(201).json({ message: `New activity ${name} created`, act })
     } else {
         res.status(400).json({ message: 'Invalid activity data received' })
     }

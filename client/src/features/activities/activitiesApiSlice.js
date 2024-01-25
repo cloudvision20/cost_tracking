@@ -143,6 +143,7 @@ export const {
     useGetActivitiesGBProjsQuery,
     // useGetActivityByTypeQuery,
     // useLazyGetActivityByTypeQuery,
+    useGetActivitiesByProjIdQuery,
     useGetActivitiesByUserIdQuery,
     useAddNewActivityMutation,
     useUpdateActivityMutation,
