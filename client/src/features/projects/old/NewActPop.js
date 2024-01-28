@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { useAddNewActivityMutation } from "../activities/activitiesApiSlice"
+import { useAddNewActivityMutation } from "../../activities/activitiesApiSlice"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
 import { Form } from 'react-bootstrap';
-import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
+import { dateForPicker, dateFromDateString } from "../../../hooks/useDatePicker"
 
 const NewActPop = ({ userId, projectId, toggle }) => {
 

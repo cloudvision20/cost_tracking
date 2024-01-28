@@ -1,13 +1,13 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
-import { useUpdateProjectMutation, useDeleteProjectMutation } from "./projectsApiSlice"
-import { useUpdateActivityMutation, useAddNewActivityMutation } from "../activities/activitiesApiSlice"
+import { useUpdateProjectMutation, useDeleteProjectMutation } from "../projectsApiSlice"
+import { useUpdateActivityMutation, useAddNewActivityMutation } from "../../activities/activitiesApiSlice"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
-import useAuth from "../../hooks/useAuth"
+import useAuth from "../../../hooks/useAuth"
 import { FormControl, Form } from 'react-bootstrap';
 import { AgGridReact } from "ag-grid-react";
-import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
+import { dateForPicker, dateFromDateString } from "../../../hooks/useDatePicker"
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";

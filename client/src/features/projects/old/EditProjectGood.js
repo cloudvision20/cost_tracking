@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom'
 import EditProjectForm from './EditProjectFormGood'
-import { useGetProjectByIdQuery, useGetProjectsQuery } from './projectsApiSlice'
+import { useGetProjectByIdQuery, useGetProjectsQuery } from '../projectsApiSlice'
 
-import useAuth from '../../hooks/useAuth'
+import useAuth from '../../../hooks/useAuth'
 import PulseLoader from 'react-spinners/PulseLoader'
-import useTitle from '../../hooks/useTitle'
+import useTitle from '../../../hooks/useTitle'
 
 const EditProject = () => {
     useTitle('Cost Tracking: Edit Project')

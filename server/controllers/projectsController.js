@@ -172,8 +172,8 @@ const updateProject = async (req, res) => {
             )
     }
     // }
-    // console.log(`response = ${JSON.stringify(response)}`)
-    // console.log(`data = ${JSON.stringify(data)}`)
+    console.log(`response = ${JSON.stringify(response)}`)
+    console.log(`data = ${JSON.stringify(data)}`)
     return res.status(202).json({ data: data, response })
 }
 

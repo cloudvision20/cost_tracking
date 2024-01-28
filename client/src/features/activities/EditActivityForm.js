@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo, useRef, Component } from "react"
 import { useUpdateActivityMutation, useDeleteActivityMutation } from "./activitiesApiSlice"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useLocation } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import useAuth from "../../hooks/useAuth"
@@ -72,6 +72,7 @@ const lookupKey = (mappings, name) => {
 };
 
 const EditActivityForm = ({ res }) => {
+    const location = useLocation();
     const projects = res.projects
     const activity = res.activity[0]
     const users = res.users
@@ -298,9 +299,18 @@ const EditActivityForm = ({ res }) => {
     useEffect(() => {
         if (isSuccess || isDelSuccess) {
             errRef.className = "resmsg"
-            isSuccess ? errContent.current = " Saved!"
-                : errContent.current = "Deleted!"
+            // isSuccess ? errContent.current = " Saved!"
+            //     : errContent.current = "Deleted!"
+            if (isSuccess) {
+                window.alert("Activity Saved!")
+                errContent.current = " Saved!"
+                if (location?.state?.url) {
+                    navigate(location.state.url, { state: { load: true } })
+                }
+            }
             if (isDelSuccess) {
+                window.alert("Activity Deleted!")
+                errContent.current = " Deleted!"
                 setName('')
                 setDescription('')
                 setCompleted(false)
@@ -311,7 +321,7 @@ const EditActivityForm = ({ res }) => {
                 setDurationQuantity('')
                 setStartDate('')
                 setEndDate('')
-                navigate('/dash/activities')
+                navigate(-1) //navigate('/dash/activities')
             }
         }
     }, [isSuccess, isDelSuccess, navigate])
@@ -415,7 +425,9 @@ const EditActivityForm = ({ res }) => {
     }
 
     const onDeleteActivityClicked = async () => {
-        await deleteActivity({ id: activity._id })
+        if (window.confirm("Confirm Delete Activity?")) {
+            await deleteActivity({ id: activity._id })
+        }
     }
 
     const created = new Date(activity.createdAt).toLocaleString('en-US', { day: 'numeric', month: 'long', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' })

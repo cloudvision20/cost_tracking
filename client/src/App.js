@@ -127,19 +127,19 @@ function App() {
 
                 <Route path="projects">
                   <Route index element={<ProjectsList />} />
-                  <Route path=":id" element={<EditProject />} />
+                  <Route path=":id" element={<EditProject forceRefresh={true} />} />
                   <Route path="new" element={<NewProject />} />
                 </Route>
 
                 <Route path="activities">
                   <Route index element={<ActivitiesList />} />
-                  <Route path=":id" element={<EditActivity />} />
+                  <Route path=":id" element={<EditActivity forceRefresh={true} />} />
                   <Route path="new" element={<NewActivity />} />
                 </Route>
 
                 <Route path="dailyReports">
                   <Route index element={<DailyReportsList />} />
-                  <Route path=":id" element={<EditDailyReport />} />
+                  <Route path=":id" element={<EditDailyReport forceRefresh={true} />} />
                   <Route path="new" element={<NewDailyReport />} />
                   <Route path="new/:activityId" element={<NewDailyReport />} />
                 </Route>
