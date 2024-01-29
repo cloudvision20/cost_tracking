@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth"
 import { Form } from 'react-bootstrap';
 import { AgGridReact } from "ag-grid-react";
 import { dateForPicker, dateFromDateString } from "../../hooks/useDatePicker"
-import { ActvitiesByProj } from "../../hooks/useActivities"
+//import { ActvitiesByProj } from "../../hooks/useActivities"
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
@@ -69,7 +69,7 @@ const EditProjectForm = ({ startActivities, project, users }) => {
 
     const navigate = useNavigate()
     const location = useLocation()
-    let loadState = location?.state?.load
+    // let loadState = location?.state?.load
 
     const defaultColDef = useMemo(() => {
         return {
@@ -100,25 +100,25 @@ const EditProjectForm = ({ startActivities, project, users }) => {
         { field: "username", editable: false, headerName: 'user', width: 150 },
 
     ]);
-    let acts = {}
-    if (loadState === true) {
-        if (!acts) { acts = ActvitiesByProj(project._id) }
-        // window.alert(JSON.stringify(acts))
-        if (acts?.activities) {
-            const dat = Array.from(acts.activities).map((activity, index) => ({
-                "Status": activity.completed ? "Completed" : "Open",
-                "name": activity.name,
-                "description": activity.description,
-                "username": activity.userId.username,
-                "_id": activity._id,
-                "rowId": activity._id
-            }))
-            setRdAct(dat)
-            activitiesRef.current.api.refreshCells()
-            loadState = false
-        }
+    // let acts = {}
+    // if (loadState === true) {
+    //     if (!acts) { acts = ActvitiesByProj(project._id) }
+    //     // window.alert(JSON.stringify(acts))
+    //     if (acts?.activities) {
+    //         const dat = Array.from(acts.activities).map((activity, index) => ({
+    //             "Status": activity.completed ? "Completed" : "Open",
+    //             "name": activity.name,
+    //             "description": activity.description,
+    //             "username": activity.userId.username,
+    //             "_id": activity._id,
+    //             "rowId": activity._id
+    //         }))
+    //         setRdAct(dat)
+    //         activitiesRef.current.api.refreshCells()
+    //         loadState = false
+    //     }
 
-    }
+    // }
     const pngData = png.map((item, index) => ({
 
         "itemNo": index,
@@ -163,24 +163,24 @@ const EditProjectForm = ({ startActivities, project, users }) => {
     const [startDate, setStartDate] = useState(project.startDate)
     const [endDate, setEndDate] = useState(project.endDate)
 
-    // useEffect(() => {
-    //     // if (location?.state?.load === true) {
-    //     //     //window.location.reload()
-    //     //     navigate(location.pathname, {});
-    //     // }
-    //     //window.location.reload();
+    useEffect(() => {
+        if (location?.state?.load === true) {
+            window.location.reload()
+            navigate(location.pathname, {});
+        }
+        //window.location.reload();
 
-    //     // if (isSuccess || isDelSuccess) {
-    //     //     // setTitle('')
-    //     //     // setDescription('')
-    //     //     // setCompleted(false)
-    //     //     // setUserId('')
-    //     //     // setStartDate('')
-    //     //     // setEndDate('')
-    //     //     // navigate('/dash/projects')
-    //     // }
+        // if (isSuccess || isDelSuccess) {
+        //     // setTitle('')
+        //     // setDescription('')
+        //     // setCompleted(false)
+        //     // setUserId('')
+        //     // setStartDate('')
+        //     // setEndDate('')
+        //     // navigate('/dash/projects')
+        // }
 
-    // }, [navigate])
+    }, [])
 
     const onTitleChanged = e => setTitle(e.target.value)
     const onDescriptionChanged = e => setDescription(e.target.value)
