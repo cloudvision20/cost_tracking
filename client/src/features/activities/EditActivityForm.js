@@ -186,7 +186,7 @@ const EditActivityForm = ({ res }) => {
                     setColumnAssignDefs(columnAssignDefs)
                     assignGridRef.current.api.setColumnDefs(columnAssignDefs)
 
-                    document.getElementById("resourceDIV").style.display = "block";
+                    document.getElementById("resAssignDIV").style.display = "block";
                 }, delClicked: function () {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
                     this.api.applyTransaction({ remove: [this.data] });
@@ -295,6 +295,7 @@ const EditActivityForm = ({ res }) => {
     const [durationQuantity, setDurationQuantity] = useState(activity.duration.quantity)
     const [startDate, setStartDate] = useState(activity.startDate)
     const [endDate, setEndDate] = useState(activity.endDate)
+    const [activityType, setActivityType] = useState(activity?.activityType ? activity.activityType : 'mobilization')
 
     useEffect(() => {
         if (isSuccess || isDelSuccess) {
@@ -394,7 +395,7 @@ const EditActivityForm = ({ res }) => {
         newRowData[rowData.findIndex((data) => data.rowId === currResId)].assignment = rData
         setRowData(newRowData)
         resGridRef.current.api.refreshCells()
-        document.getElementById("resourceDIV").style.display = "none";
+        document.getElementById("resAssignDIV").style.display = "none";
     }
     const canSave = [activity._id].every(Boolean) && !isLoading
 
@@ -467,7 +468,142 @@ const EditActivityForm = ({ res }) => {
             </button>
         )
     }
+    // document.getElementById("procureDIV").style.display = "none";
+    // if (!activity?.resources) {
+    //     //document.getElementById("resDIV").style.display = "none";
+    // }
+    const procureDiv = (
+        <div id="procureDIV" >
+            <div className="panel-heading"><b>Procurement Plans</b></div>
+            <div className="container-sm" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
+                <br />
+                <div className="panel-group">
+                    <div className="panel panel-default">
+                        <div className="panel-heading">Procurement List</div>
+                        <div className="form-group  ct-header__nav">
+                            <button
+                                className="btn btn-primary"
+                                title="New Resources"
+                                onClick={onNewResourcesClicked}
+                            >
+                                Add Procure
+                            </button>
+                        </div>
+                        <br />
+                        {(rowData.length > 0)
+                            &&
+                            <div className="panel-body" id="resDIV">
+                                <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
+                                    <AgGridReact
+                                        ref={resGridRef}
+                                        onCellValueChanged={onCellValueChanged}
+                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                        defaultColDef={defaultColDef}
+                                        rowData={rowData}
+                                        columnDefs={columnDefs}>
+                                    </AgGridReact>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <br />
+                    <div className="panel panel-default" id="resAssignDIV" style={{ display: "none" }}>
+                        <div className="panel-heading">Resource Assignments</div>
+                        <div className="form-group  ct-header__nav">
+                            <button
+                                className="btn btn-primary"
+                                title="New Resources"
+                                onClick={onNewAssignmentClicked}
+                            >
+                                New
+                            </button>
+                            <button
+                                className="btn btn-primary"
+                                title="Update Resources"
+                                onClick={onUpdateAssignmentClicked}
+                            >
+                                Confirm
+                            </button>
+                        </div>
+                        <div className="panel-body">
+                            <div className="ag-theme-balham" style={{ height: 200, width: "100%" }}>
+                                <AgGridReact
+                                    ref={assignGridRef}
+                                    onCellValueChanged={onAssignValueChanged}
+                                    onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                    defaultColDef={defaultColDef}
+                                    readOnlyEdit={false}
+                                    rowData={rdAssignData}
+                                    columnDefs={columnAssignDefs}>
+                                </AgGridReact>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
+    )
+    const mobilizationDiv = (
+        <div id="mobilizationDiv">
+            <div className="panel-heading"><b>Resources Plans and assignment</b></div>
+
+            <div className="container-sm" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
+                <br />
+                <div className="panel-group">
+                    <div className="panel panel-default">
+                        <div className="panel-heading">Resources List</div>
+                        <div className="form-group  ct-header__nav">
+                            <button className="btn btn-primary" title="New Resources"
+                                onClick={onNewResourcesClicked}
+                            > Add Resouces </button>
+                        </div>
+                        <br />
+                        {(rowData.length > 0)
+                            &&
+                            <div className="panel-body" id="resDIV">
+                                <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
+                                    <AgGridReact
+                                        ref={resGridRef}
+                                        onCellValueChanged={onCellValueChanged}
+                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                        defaultColDef={defaultColDef}
+                                        rowData={rowData}
+                                        columnDefs={columnDefs}>
+                                    </AgGridReact>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <br />
+                    <div className="panel panel-default" id="resAssignDIV" style={{ display: "none" }}>
+                        <div className="panel-heading">Resource Assignments</div>
+                        <div className="form-group  ct-header__nav">
+                            <button className="btn btn-primary" title="New Resources"
+                                onClick={onNewAssignmentClicked}
+                            > New </button>
+                            <button className="btn btn-primary" title="Update Resources"
+                                onClick={onUpdateAssignmentClicked}
+                            > Confirm </button>
+                        </div>
+                        <div className="panel-body">
+                            <div className="ag-theme-balham" style={{ height: 200, width: "100%" }}>
+                                <AgGridReact
+                                    ref={assignGridRef}
+                                    onCellValueChanged={onAssignValueChanged}
+                                    onGridReady={(event) => event.api.sizeColumnsToFit()}
+                                    defaultColDef={defaultColDef}
+                                    readOnlyEdit={false}
+                                    rowData={rdAssignData}
+                                    columnDefs={columnAssignDefs}>
+                                </AgGridReact>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
     const content = (
         <>
             <p ref={errRef} className={errClass}>{errContent.current}</p>
@@ -613,7 +749,7 @@ const EditActivityForm = ({ res }) => {
                         <div className="col-sm-6">
                             <div className="container-fluid" style={{ border: "0px" }}>
                                 <div className="form-group row" style={{ display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }}>
-                                    <div className="col-sm-3"><b> Daily Dairy List:</b></div>
+                                    <div className="col-sm-3" style={{ marginLeft: "10px" }}><b> Daily Dairy List:</b></div>
                                     <div className="com-sm-2">
                                         <button className="btn btn-primary btn-xs" style={{ padding: "2px", height: "80%", fontSize: "11px" }} onClick={onNewDailyReportClicked}>Add</button>
                                     </div >
@@ -635,69 +771,8 @@ const EditActivityForm = ({ res }) => {
                     </div>
                 </div>
                 <br />
-                <div className="panel-heading"><b>Resources Plans and assignment</b></div>
-                <div className="container-sm">
-                    <br />
-                    <div className="panel-group">
-                        <div className="panel panel-default">
-                            <div className="panel-heading">Resources List</div>
-                            <div className="form-group  ct-header__nav">
-                                <button
-                                    className="btn btn-primary"
-                                    title="New Resources"
-                                    onClick={onNewResourcesClicked}
-                                >
-                                    Add Resouces
-                                </button>
-                            </div>
-                            <div className="panel-body">
-                                <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
-                                    <AgGridReact
-                                        ref={resGridRef}
-                                        onCellValueChanged={onCellValueChanged}
-                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
-                                        defaultColDef={defaultColDef}
-                                        rowData={rowData}
-                                        columnDefs={columnDefs}>
-                                    </AgGridReact>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div className="panel panel-default" id="resourceDIV" style={{ display: "none" }}>
-                            <div className="panel-heading">Resource Assignments</div>
-                            <div className="form-group  ct-header__nav">
-                                <button
-                                    className="btn btn-primary"
-                                    title="New Resources"
-                                    onClick={onNewAssignmentClicked}
-                                >
-                                    New
-                                </button>
-                                <button
-                                    className="btn btn-primary"
-                                    title="Update Resources"
-                                    onClick={onUpdateAssignmentClicked}
-                                >
-                                    Confirm
-                                </button>
-                            </div>
-                            <div className="panel-body">
-                                <div className="ag-theme-balham" style={{ height: 200, width: "100%" }}>
-                                    <AgGridReact
-                                        ref={assignGridRef}
-                                        onCellValueChanged={onAssignValueChanged}
-                                        onGridReady={(event) => event.api.sizeColumnsToFit()}
-                                        defaultColDef={defaultColDef}
-                                        readOnlyEdit={false}
-                                        rowData={rdAssignData}
-                                        columnDefs={columnAssignDefs}>
-                                    </AgGridReact>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {(activityType === 'procure') ? procureDiv : null}
+                {(activityType === 'mobilization') ? mobilizationDiv : null}
                 <div className="panel panel-info">
 
                     <div className="form-group row">
