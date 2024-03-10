@@ -7,6 +7,7 @@ import { faSave, faPlusSquare } from "@fortawesome/free-solid-svg-icons"
 import { Form } from 'react-bootstrap';
 import { date2Weekday, dateForPicker } from "../../hooks/useDatePicker"
 import useAuth from "../../hooks/useAuth"
+import FrmRecordConsumable from './FrmRecordConsumable'
 
 let eRecords = {}
 // Button definition for buttons in Ag-grid
@@ -84,7 +85,7 @@ const EditRecordForm = ({ res }) => {
 
     let data = Array.from(records).map((data, index) => ({
         "userId": data.userId._id,
-        "activityId": data.activityId,
+        "activityId": data?.activityId?._id,
         "type": data.type,
         "details": data.details,
         "description": data.description,
@@ -97,6 +98,7 @@ const EditRecordForm = ({ res }) => {
     const [recordColDefs] = useState([
         { field: 'userId', headerName: 'user Id', width: 150, hide: true },
         { field: '_id', headerName: 'Id', width: 150 },
+        { field: 'activityId', headerName: 'Activity Id', width: 150, editable: true },
         { field: "type", headerName: 'Type', width: 150, editable: true },
         { field: 'details', headerName: 'Details', width: 150, editable: true },
         { field: "description", headerName: 'Description', width: 300, editable: true },
@@ -173,19 +175,26 @@ const EditRecordForm = ({ res }) => {
     }
     const errRef = useRef();
     useEffect(() => {
-        errRef.className = "resmsg"
-        isSuccess ? errContent.current = " Saved!"
-            : errContent.current = "Deleted!"
+        // errRef.className = "resmsg"
+        // isSuccess ? errContent.current = " Saved!"
+        //     : isDelSuccess ? errContent.current = " Deleted!"
+        //         : errContent.current = ""
+        if (isSuccess) (window.alert(" Saved!"))
+        if (isDelSuccess) (window.alert(" Deleted!"))
     }, [isSuccess, isDelSuccess, navigate])
 
     // useEffect(() => {
     //     console.log('useEffect-rowData: \n' + JSON.stringify(rdRecord))
     // })
-    const content = (
+    const newRecord = (
         <>
-            <p ref={errRef} className={errClass}>{errContent.current}</p>
+            <FrmRecordConsumable formType={formType} />
+            <br />
+        </>
+    )
 
-
+    const showRecords = (
+        <>
             <div className="container grid_system" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
 
                 <div className="row">
@@ -228,6 +237,15 @@ const EditRecordForm = ({ res }) => {
                     </div>
                 </div>
             </div>
+        </>
+    )
+    const content = (
+        <>
+            <p ref={errRef} className={errClass}>{errContent.current}</p>
+
+            {newRecord}
+            {showRecords}
+
         </>
     )
 

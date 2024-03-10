@@ -22,6 +22,14 @@ export const typesApiSlice = apiSlice.injectEndpoints({
             //     } else return [{ type: 'Type', id: 'LIST' }]
             // }
         }),
+        getTypesByCat: builder.query({
+            query: (category) => ({
+                url: `/types/${category}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
         // getTypeById: builder.query({
         //     query: (id) => ({
         //         url: `/types/${id}`,
@@ -57,6 +65,7 @@ export const typesApiSlice = apiSlice.injectEndpoints({
 
 export const {
     useGetTypesQuery,
+    useGetTypesByCatQuery,
     useUpdateTypesMutation,
     useDeleteTypeMutation,
 } = typesApiSlice

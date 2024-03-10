@@ -57,6 +57,20 @@ const activitySchema = new mongoose.Schema(
                 assignment: [{ resourcesId: { type: String }, budget: { type: Number }, current: { type: Boolean }, _id: false }]
             }
         ],
+        procurements: [
+            {
+                item: { type: String },
+                details: { type: String },
+                job: { type: String },
+                ETADate: { type: Date },
+                payment: { type: Number },
+                uom: { type: String },
+                rate: { type: Number },
+                qtyAssign: { type: Number },
+                remarks: { type: String },
+                assignment: [{ resourcesId: { type: String }, budget: { type: Number }, current: { type: Boolean }, _id: false }]
+            }
+        ],
         completed: {
             type: Boolean,
             default: false
@@ -70,14 +84,14 @@ const activitySchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             required: false,
             ref: 'Activity'
-        },      
-        
-        activityType:{ 
+        },
+
+        activityType: {
             //Budget, Works, Dredging／Earth, Piling(with sub Activities)
             type: String,
         }
-        
-        
+
+
         // workProgress: { // remove?
         //     type: Boolean,
         //     required: false

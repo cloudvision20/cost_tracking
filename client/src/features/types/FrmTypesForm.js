@@ -74,7 +74,7 @@ const FrmTypesForm = ({ types }) => {
         "remarks": data.remarks
     }))
     const [rdType, setRdType] = useState(data)
-    const arrCategory = ['Consumables', 'Equipment', 'Expenses', 'PNG_Faciity', 'PNG_Mobilization', 'PNG_Supervisor']
+    const arrCategory = ['Consumables', 'Equipment', 'Expenses', 'PNG_Faciity', 'PNG_Mobilization', 'PNG_Supervisor', 'ActivityType', 'ResourcesType']
     const [typeColDefs] = useState([
         { field: '_id', headerName: 'Id', width: 150 },
         // { field: "category", headerName: 'Category', width: 150, editable: true },

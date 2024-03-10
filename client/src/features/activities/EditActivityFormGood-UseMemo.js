@@ -10,7 +10,6 @@ import { dateForPicker } from "../../hooks/useDatePicker"
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
-import AggridDatePicker from "../../components/AggridDatePicker"
 //import { config } from "@fortawesome/fontawesome-svg-core"
 
 let rowId = 0
@@ -97,7 +96,7 @@ const EditActivityForm = ({ res }) => {
     const assignValueGetter = (params) => {
         const lst = (params.data?.assignment) ?
             params.data.assignment.map(assign => {
-                //console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
+                console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
                 return (`${lookupValue(mapping[params.data.type], assign.resourcesId)}:${assign.budget},\n `)
             })
             : ""
@@ -146,10 +145,6 @@ const EditActivityForm = ({ res }) => {
     const resGridRef = useRef();
     const [rowData, setRowData] = useState(data)
     const [currResId, setCurrResId] = useState('')
-    const resourcesType = res.resourcesType.map(item => {
-        return (item.name
-        )
-    })
     const [columnDefs] = useState([
         {
             field: 'type',
@@ -159,7 +154,7 @@ const EditActivityForm = ({ res }) => {
             filter: 'agSetColumnFilter',
             cellEditorPopup: false,
             cellEditorParams: {
-                values: resourcesType,
+                values: ['Labour', 'Equipment', 'Consumables'],
             },
         },
         { field: "details", editable: true },
@@ -271,13 +266,11 @@ const EditActivityForm = ({ res }) => {
     /********************************************************************************************
      *                      Procurement List
      ********************************************************************************************/
-    const components = useMemo(() => ({ agDateInput: AggridDatePicker }), []);
     const procureData = useMemo(() => Array.from(activity?.procurements).map((procure, index) => ({
         "type": procure.type,
         "details": procure.details,
         "job": procure.job,
-        "ETADate": new Date(procure.ETADate),
-        "payment": procure.payment,
+        "costType": procure.costType,
         "uom": procure.uom,
         "rate": procure.rate,
         "qtyAssign": procure.qtyAssign,
@@ -304,8 +297,7 @@ const EditActivityForm = ({ res }) => {
         // },
         { field: "details", editable: true },
         { field: "job", editable: true },
-        { field: "ETADate", editable: true },
-        { field: "payment", editable: true },
+        { field: "costType", editable: true },
         { field: "uom", width: 50, editable: true },
         { field: "rate", width: 50, editable: true },
         { field: "qtyAssign", width: 50, editable: true },
@@ -835,8 +827,6 @@ const EditActivityForm = ({ res }) => {
                                         defaultColDef={defaultColDef}
                                         rowData={rdProcureData}
                                         columnDefs={columnProcureDefs}>
-                                        components={components}
-                                        reactiveCustomComponents
                                     </AgGridReact>
                                 </div>
                             </div>

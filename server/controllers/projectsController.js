@@ -1,6 +1,7 @@
 const Project = require('../models/Project')
 const Activity = require('../models/Activity')
 const User = require('../models/User')
+const Type = require('../models/Type')
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 
@@ -27,6 +28,7 @@ const getProjectById = asyncHandler(async (req, res) => {
     let project = await Project.find({ "_id": id }).populate({ path: 'userId', select: 'username' }).exec()
     let users
     let activities
+    let types
 
     // If no project 
     if (!project?.length) {
@@ -35,6 +37,7 @@ const getProjectById = asyncHandler(async (req, res) => {
         // options
         users = (await User.find().select("_id, username"))
         activities = await Activity.find({ "projectId": id }).populate({ path: 'userId', select: 'username' }).exec()
+        types = await Type.find({ "category": 'ActivityType' }).exec()
     }
 
     let response = {}
@@ -42,6 +45,7 @@ const getProjectById = asyncHandler(async (req, res) => {
     response.project = project
     response.users = users
     response.activities = activities
+    response.types = types
     res.json(response)
 })
 

@@ -7,14 +7,14 @@
  * - update to user and refresh.
  *******************************************************************************/
 import { Link } from 'react-router-dom'
-import useAuth from '../../hooks/useAuth'
-import useTitle from '../../hooks/useTitle'
+import useAuth from '../../../hooks/useAuth'
+import useTitle from '../../../hooks/useTitle'
 // import { useEffect, useState, useContext } from "react"
 import Form from 'react-bootstrap/Form';
 import { useSelector } from 'react-redux'
-import { selectActivity } from '../../components/site/siteSlice'
-import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
-import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
+import { selectActivity } from '../../../components/site/siteSlice'
+import { useUpdateUsersMutation, useUpdateUserMutation } from '../../users/usersApiSlice';
+import { usePostHrsByEIdSEQuery } from '../../attendance/attendsApiSlice'
 const Welcome = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)

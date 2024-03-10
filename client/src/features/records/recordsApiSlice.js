@@ -29,9 +29,26 @@ export const recordsApiSlice = apiSlice.injectEndpoints({
                 } else return [{ type: 'Record', id: 'LIST' }]
             }
         }),
+        // getRecordsByType: builder.query({
+        //     query: (formType) => ({
+        //         url: `/records/${formType}`,
+        //         validateStatus: (response, result) => {
+        //             return response.status === 200 && !result.isError
+        //         },
+        //     })
+        // }),
         getRecordsByType: builder.query({
             query: (formType) => ({
-                url: `/records/${formType}`,
+                // url: `/records/${formType}`,
+                url: `/records/type/${formType}/activityid/`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
+        getRecordsByTypeActId: builder.query({
+            query: (typeactid) => ({
+                url: `/records/type/${typeactid.formType}/activityid/${typeactid.activityId}`,
                 validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError
                 },
@@ -40,6 +57,26 @@ export const recordsApiSlice = apiSlice.injectEndpoints({
         getRecordById: builder.query({
             query: (id) => ({
                 url: `/records/${id}`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
+        // getRecordsByEIdSE: builder.query({
+        //     query: (params) => ({
+        //         url: `/records/formtype/${params.formtype}/eid/${params.eid}/start/${params.start}/end/${params.end}`,
+        //         validateStatus: (response, result) => {
+        //             return response.status === 200 && !result.isError
+        //         },
+        //     })
+        // }),
+        postRecordsByTypeRIdSE:builder.query({
+            query: (req) => ({
+                url: `/records/recordsSE`,
+                method: 'POST',
+                body:{
+                    ...req,
+                },
                 validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError
                 },
@@ -85,7 +122,9 @@ export const recordsApiSlice = apiSlice.injectEndpoints({
 export const {
     useGetRecordsQuery,
     useGetRecordsByTypeQuery,
+    useGetRecordsByTypeActIdQuery,
     useGetRecordByIdQuery,
+    usePostRecordsByTypeEIdSEQuery,
     useAddNewRecordMutation,
     useUpdateRecordsMutation,
     useDeleteRecordMutation,

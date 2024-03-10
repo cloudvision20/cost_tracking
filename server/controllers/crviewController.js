@@ -1,35 +1,37 @@
 const Activity = require('../models/Activity')
 const User = require('../models/User')
-const Project = require('../models/Project')
-const DailyReport = require('../models/DailyReport')
-const Equipment = require('../models/Equipment')
-const Consumable = require('../models/Consumable')
-const Expense = require('../models/Expense')
+
+const ConsJrnl = require('../models/ConsumableJournal')
+const EquipJrnl = require('../models/EquipmentJournal')
+const ExpenseJrnl = require('../models/ExpenseJournal')
+
 const Attend = require('../models/Attendance')
 const Type = require('../models/Type')
+
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcrypt')
 const { format, daysToWeeks } = require('date-fns')
 const dateFns = require('date-fns')
 
-
-// @desc Get all activities
-// @route GET /activities
-// @access Private
-const getAllActivities = asyncHandler(async (req, res) => {
-    // Get all activities from MongoDB
-    const activities = await Activity.find().lean()
-    // If no activities 
-    if (!activities?.length) {
-        return res.status(400).json({ message: 'No activities found' })
-    }
-    res.json(activities)
-})
-
 // @desc Get all activities group by project aggregrate
 // @route GET /actsbyprojs
 // @access Private
+// const postActivitiesByProjs = asyncHandler(async (req, res) => {
+//     // const employeeId = req.body.eid
+//     const startDate = req.body.start
+//     const endDate = req.body.end
+//     const s = req.body.start.split('-')
+//     const e = req.body.end.split('-')
+
 const getActivitiesByProjs = asyncHandler(async (req, res) => {
+    const startDate = req.params?.startDate ? req.params.startDate : '01-07-2023'
+    const endDate = req.params?.endDate ? req.params.endDate : '07-11-2023'
+    const s = startDate.split('-')
+    const e = endDate.split('-')
+
+
+    const sDate = new Date(+s[2], +s[1] - 1, +s[0], +0, +0, +0) //+year, +month - 1, +day
+    const eDate = new Date(+e[2], +e[1] - 1, +e[0], +23, +59, +59)
     let response = {}
     const projects = await Activity.aggregate(
         [
@@ -104,15 +106,26 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
         let ttlPlanEquipment = 0
         let ttlPlanConsumables = 0
         let ttlPlanExpenses = 0
+
         const labourIds = [] // collect all user ids
         const equipmentIds = [] // collect all equipment ids
         const consumableIds = [] // collect all consukmable ids
+        const expenseIds = [] // collect all expense ids
         const attendances = []
+
+        let consumableDetails = {}
+        let equipmentDetails = {}
+        let expenseDetails = {}
+
+        let ttlActualConsumables = 0
+        let ttlActualExpenses = 0
+        let ttlActualEquipment = 0
 
         const acts = project.activities.map((activity) => {
             const labour = [] // collect all user ids
             const equipment = [] // collect all equipment ids
-            const consumable = [] // collect all consukmable ids
+            const consumable = [] // collect all consumable ids
+            const expense = [] // collect all expense ids
             const resLabour = activity.resources.filter((resource) => resource.type === 'Labour').map((filteredResources) => {
                 const data = filteredResources.assignment
                 data.map(dt => {
@@ -134,8 +147,8 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
                     equipmentIds.push(dt.resourcesId)
                     //console.log("resourcesId = " + dt.resourcesId)
                 })
-                const ttlEquipment = data.reduce((a, v) => a = a + v.budget, 0)
-                ttlPlanEquipment = ttlPlanEquipment + ttlEquipment
+                const ttlPEquipment = data.reduce((a, v) => a = a + v.budget, 0)
+                ttlPlanEquipment = ttlPlanEquipment + ttlPEquipment
                 // return {
                 //     ttlPlanLabour
                 // }
@@ -147,18 +160,33 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
                     consumableIds.push(dt.resourcesId)
                     //console.log("resourcesId = " + dt.resourcesId)
                 })
-                const ttlConsumables = data.reduce((a, v) => a = a + v.budget, 0)
-                ttlPlanConsumables = ttlPlanConsumables + ttlConsumables
+                const ttlPConsumables = data.reduce((a, v) => a = a + v.budget, 0)
+                ttlPlanConsumables = ttlPlanConsumables + ttlPConsumables
+                // return {
+                //     ttlPlanLabour
+                // }
+            })
+            const resExpense = activity.resources.filter((resource) => resource.type === 'Expenses').map((filteredResources) => {
+                const data = filteredResources.assignment
+                data.map(dt => {
+                    expense.push(dt.resourcesId)
+                    expenseIds.push(dt.resourcesId)
+                    //console.log("resourcesId = " + dt.resourcesId)
+                })
+                const ttlPExpenses = data.reduce((a, v) => a = a + v.budget, 0)
+                ttlPlanExpenses = ttlPlanExpenses + ttlPExpenses
                 // return {
                 //     ttlPlanLabour
                 // }
             })
 
+
             return {
                 "name": activity.name,
                 "labour_ids": labour,
                 "equipment_ids": equipment,
-                "consumable_ids": consumable
+                "consumable_ids": consumable,
+                "expense_ids": expense
             }
         }
         )
@@ -175,8 +203,8 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
         //     // console.log(`error : Loading Error`)
         // }))
         //----------------------------------------------------------------------------------------------
-        const startDate = '01-07-2023'
-        const endDate = '07-07-2023'
+        // const startDate = '01-07-2023'
+        // const endDate = '07-07-2023'
         const filter =
             [
                 {
@@ -202,7 +230,7 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
                 },
                 { $sort: { time: 1 } }
             ]
-        let response = {}
+        // let response = {}
         let attends = {}
         await Attend.aggregate(filter).then((result) => {
             if (result === null) {
@@ -245,23 +273,145 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
         let ttlActualLabour = attendsDetails.reduce(function (prev, current) {
             return prev + +current.workHour
         }, 0);
-        let percentLabour = (ttlActualLabour / ttlPlanLabour) * 100
+        let percentLabour = Math.round(((ttlActualLabour / ttlPlanLabour) * 100 + Number.EPSILON) * 100) / 100
         //----------------------------------------------------------------------------------------------
+        /*****************************************************************************************************
+        * 
+        *  Consumables Journal, Equipment Journal, Expenses Journal
+        * 
+        *****************************************************************************************************/
+
+        const filterJrnls = [
+            {
+                $match: {
+                    //           employeeId: employeeId,
+                    dateTime: {
+                        $gte: sDate,
+                        $lte: eDate
+                    }
+                }
+            },
+            {
+                $group: {
+                    _id: {
+                        // date: '$dateTime',
+                        details: '$details',
+                        // employeeId: '$employeeId',
+                        // userId: '$userId'
+                        // clockType: '$clockType'
+                    },
+                    documents: { $push: '$$ROOT' }
+                }
+            },
+            { $sort: { time: 1 } }
+        ]
+
+        await ConsJrnl.aggregate(filterJrnls).then((result) => {
+            if (result === null) {
+                console.log(`Consumables Not found for Period starting: ${startDate} and ending ${endDate}`)
+            }
+            console.log('result =' + JSON.stringify(result))
+            consumableDetails = result.map((detail => {
+                let sum = 0
+                detail.documents.map((doc => {
+                    sum = sum + doc.amount
+                }))
+                ttlActualConsumables = ttlActualConsumables + sum
+                return {
+                    detailCount: detail.documents.length,
+                    detailName: detail._id.details,
+                    detailTotal: sum
+                }
+            }))
+
+
+        }).catch((error => {
+            console.log(`error : Loading Error`)
+        }))
+        let p = Math.round(((ttlActualConsumables / ttlPlanConsumables) * 100 + Number.EPSILON) * 100) / 100
+        let percentConsumables = p ? p : 0
+
+
+        await EquipJrnl.aggregate(filterJrnls).then((result) => {
+            if (result === null) {
+                console.log(`Equipment Not found for Period starting: ${startDate} and ending ${endDate}`)
+            }
+            console.log('result =' + JSON.stringify(result))
+            equipmentDetails = result.map((detail => {
+                let sum = 0
+                detail.documents.map((doc => {
+                    sum = sum + doc.amount
+                }))
+                ttlActualEquipment = ttlActualEquipment + sum
+                return {
+                    detailCount: detail.documents.length,
+                    detailName: detail._id.details,
+                    detailTotal: sum
+                }
+            }))
+
+
+        }).catch((error => {
+            console.log(`error : Loading Error`)
+        }))
+        p = Math.round(((ttlActualEquipment / ttlPlanEquipment) * 100 + Number.EPSILON) * 100) / 100
+        let percentEquipment = p ? p : 0
+
+        await ExpenseJrnl.aggregate(filterJrnls).then((result) => {
+            if (result === null) {
+                console.log(`Expenses Not found for Period starting: ${startDate} and ending ${endDate}`)
+            }
+            console.log('result =' + JSON.stringify(result))
+            expenseDetails = result.map((detail => {
+                let sum = 0
+                detail.documents.map((doc => {
+                    sum = sum + doc.amount
+                }))
+                ttlActualExpenses = ttlActualExpenses + sum
+                return {
+                    detailCount: detail.documents.length,
+                    detailName: detail._id.details,
+                    detailTotal: sum
+                }
+            }))
+
+        }).catch((error => {
+            console.log(`error : Loading Error`)
+        }))
+        p = Math.round(((ttlActualExpenses / ttlPlanExpenses) * 100 + Number.EPSILON) * 100) / 100
+        let percentExpenses = p ? p : 0
+
         //----------------------------------------------------------------------------------------------
         return {
             // actLabour,
             "_id": project._id,
             "title": project.title,
             "activities": acts,
+
             "allLabour_ids": labourIds,
-            "allEquipment_ids": equipmentIds,
-            "allConsumable_ids": consumableIds,
             attendsDetails,
             ttlPlanLabour,
             ttlActualLabour,
             percentLabour,
+
+            "allConsumable_ids": consumableIds,
+            consumableDetails,
+            ttlActualConsumables,
+            ttlPlanConsumables,
+            percentConsumables,
+
+            "allEquipment_ids": equipmentIds,
+            equipmentDetails,
+            ttlActualEquipment,
             ttlPlanEquipment,
-            ttlPlanConsumables
+            percentEquipment,
+
+            "allExpense_ids": expenseIds,
+            expenseDetails,
+            ttlActualExpenses,
+            ttlPlanExpenses,
+            percentExpenses
+
         }
     }
     )
@@ -272,165 +422,6 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
 })
 
 
-const getActivityById = asyncHandler(async (req, res) => {
-    const id = req.params.id
-    // retrieve Activity by Id and include usename corresponsing to userId
-    let activity = await Activity.find({ "_id": id }).populate({ path: 'userId', select: 'username' }).populate({ path: 'projectId' }).exec()
-    let projects
-    let users
-    let equipment
-    let consumables
-    let dailyReports
-    let types
-    let resourcesType
-
-    // If no activity 
-    if (!activity?.length) {
-        return res.status(400).json({ message: `Activity id: ${id} not found` })
-    } else {
-        // options
-        projects = await Project.find().lean()
-        users = (await User.find().lean())//.select('_id, username, employeeId, employeeName'))
-        equipment = (await Equipment.find().select("_id, name"))
-        consumables = (await Consumable.find().select("_id, name"))
-        dailyReports = await DailyReport.find({ "activityId": id }).populate({ path: 'userId', select: 'username' }).exec()
-        types = await Type.find({ "category": 'ActivityType' }).exec()
-        resourcesType = await Type.find({ "category": 'ResourcesType' }).select({ name: 1, _id: 0 }).exec()
-    }
-
-    let response = {}
-
-    response.activity = activity
-    response.projects = projects
-    response.users = users
-    response.dailyReports = dailyReports
-    response.equipment = equipment
-    response.consumables = consumables
-    response.types = types
-    response.resourcesType = resourcesType
-    res.json(response)
-})
-
-const getActivityByUserId = asyncHandler(async (req, res) => {
-    const id = req.params.id
-    //const activities = await (Activity.find({ "resources.type": "Labour", "active": true }).find({ "resources.assignment.resourcesId": id })).exec()
-
-    const user = await User.find({ "_id": id }).select('-password').populate({ path: 'currActivityId', select: 'name' }).lean()
-    let activities = await (Activity.find({ "resources.assignment.resourcesId": user[0].employeeId, "active": true })).exec()
-    let response = {}
-
-    let current = {}
-    if (user[0]) {
-        current.activityId = user[0]?.currActivityId?._id ? user[0].currActivityId._id : null
-        current.name = user[0]?.currActivityId?.name ? user[0].currActivityId.name : null
-    }
-    if (activities.length === 1 && user[0]?.currActivityId?._id !== null) {
-        current.activityId = activities[0]._id
-        current.name = activities[0].name
-
-        await User.findOneAndUpdate({ _id: id }, { "currActivityId": activities[0].id }, { new: true }).then((data) => {
-            if (data === null) {
-                console.log(` getActivityByUserId: error -- User Id: (${id}) not found update failed `);
-            }
-            console.log(` getActivityByUserId: User Id: (\'${id}\'), currActivityId: (${activities[0].id}), updated successfully`)
-        }).catch((error) => {
-
-            console.log(` getActivityByUserId: error -- User Id: (${id}) update failed error: ${error}`)
-        });
-    }
-    response.activities = activities
-    response.current = current
-    res.json(response)
-})
-
-const getActivityByProjId = asyncHandler(async (req, res) => {
-    const id = req.params.id
-    const activities = await Activity.find({ "projectId": id }).populate({ path: 'userId', select: 'username' }).exec()
-    if (!activities?.length) {
-        return res.status(400).json({ message: 'No activities found' })
-    }
-    res.json(activities)
-})
-
-
-// @desc Create new activity
-// @route POST /activities
-// @access Private
-const createNewActivity = asyncHandler(async (req, res) => {
-    const { name } = req.body
-
-    // Check for duplicate name
-    const duplicate = await Activity.findOne({ name }).lean().exec()
-
-    if (duplicate) {
-        return res.status(409).json({ message: 'Duplicate name' })
-    }
-
-    // Create and store new activity 
-    const activity = await Activity.create(req.body)
-    const act = await Activity.findById(activity._id).populate({ path: 'userId', select: 'username' }).exec()
-    if (activity) { //create
-        res.status(201).json({ message: `New activity ${name} created`, act })
-    } else {
-        res.status(400).json({ message: 'Invalid activity data received' })
-    }
-})
-
-// @desc Update a activity
-// @route PATCH /activities
-// @access Private
-const updateActivity = asyncHandler(async (req, res) => {
-    let id = req.body.id ? req.body.id
-        : req.body._id ? req.body._id
-            : undefined
-
-    // Does the activity exists for update?
-    let activity = await Activity.findById(id).exec()
-
-    if (!activity) {
-        return res.status(400).json({ message: 'Activity not found' })
-    }
-
-    await Activity.findOneAndUpdate({ _id: id }, req.body, { new: true }).then((data) => {
-        if (data === null) {
-            throw new Error(`Activity Id: (\'${id}\') not found update failed `);
-        }
-        res.json({ message: `Activity Id: (\'${data._id}\'), Activity (name: \'${data.name}\') updated successfully` })
-    }).catch((error) => {
-
-        res.status(500).json({ message: `error -- Activity Id: (\'${id}\') update failed`, error: error })
-    });
-})
-
-// @desc Delete a activity
-// @route DELETE /activities
-// @access Private
-const deleteActivity = asyncHandler(async (req, res) => {
-    const { id } = req.body
-    // Confirm data -- check if id is  available
-    if (!id) {
-        return res.status(400).json({ message: 'Activity ID Required' })
-    }
-
-    try {
-        const data = await Activity.findOneAndDelete({ _id: id });
-        if (!data) {
-            return res.status(400).json({ message: `Activity Id: (\'${id}\') not found delete failed ` });
-        }
-        return res.status(200).json({ message: `Activity Id: (\'${data._id}\'), name: (\'${data.name}\'), deleted successfully` });
-    } catch (err) {
-        return res.status(400).json({ message: `error -- Activity Id: (\'${id}\') delete failed`, error: err })
-    }
-})
-
 module.exports = {
-    getAllActivities,
-    getActivitiesByProjs,
-    getActivityById,
-    getActivityByUserId,
-    getActivityByProjId,
-    createNewActivity,
-    updateActivity,
-    deleteActivity
-    // ,getActivityByType
+    getActivitiesByProjs
 }

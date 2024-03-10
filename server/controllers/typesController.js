@@ -1,4 +1,5 @@
 const Type = require('../models/Type')
+const asyncHandler = require('express-async-handler')
 // const Note = require('../models/DailyReport')
 const bcrypt = require('bcrypt')
 
@@ -16,6 +17,20 @@ const getAllTypes = async (req, res) => {
     res.status(200).json(types)
 }
 
+const getTypesByCat = asyncHandler(async (req, res) => {
+    const cat = req.params.category
+    // get types by Category
+    let types = await Type.find({ "category": cat }).exec()
+    // If no record found
+    if (!types?.length) {
+        return res.status(400).json({ message: `Category: ${cat} not found for types` })
+    }
+
+    let response = {}
+    response.types = types
+    response.category = cat
+    res.json(response)
+})
 // // @desc Update a type
 // // @route PATCH /types
 // // @access Private
@@ -100,6 +115,7 @@ const deleteType = async (req, res) => {
 
 module.exports = {
     getAllTypes,
+    getTypesByCat,
     updateTypes,
     deleteType
 }

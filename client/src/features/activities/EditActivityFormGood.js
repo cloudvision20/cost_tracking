@@ -7,14 +7,13 @@ import useAuth from "../../hooks/useAuth"
 import { Form } from 'react-bootstrap';
 import { AgGridReact } from "ag-grid-react";
 import { dateForPicker } from "../../hooks/useDatePicker"
+// import EditDailyReportForm from '../dailyReports/EditDailyReportForm'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
-import AggridDatePicker from "../../components/AggridDatePicker"
 //import { config } from "@fortawesome/fontawesome-svg-core"
 
 let rowId = 0
-let procureRowId = 0
 let editedActivity = {}
 //const errContent = useRef('');
 // Button definition for buttons in Ag-grid
@@ -36,7 +35,7 @@ class BtnCellRenderer extends Component {
     }
     render() {
         return (
-            this.props.Id === "resources" || this.props.Id === "procurements" ?
+            this.props.Id === "resources" ?
                 <div className="form-group ct-header__nav" style={divButton}>
                     <button className="btn btn-primary btn-sm" style={btnStyle} onClick={this.btnClickedHandler}>Assign</button>
                     <button className="btn btn-danger btn-sm" style={btnStyle} onClick={this.btnDelClickedHandler}>Del</button>
@@ -85,11 +84,11 @@ const EditActivityForm = ({ res }) => {
 
     const { isManager, isAdmin } = useAuth()
     const usersMapping = Object.fromEntries(users.map(user => ([user.employeeId, user.username])));
-    const usersCodes = useMemo(() => extractKeys(usersMapping), [usersMapping]);
+    const usersCodes = extractKeys(usersMapping);
     const equipmentMapping = Object.fromEntries(equipment.map(equipmnt => ([equipmnt._id, equipmnt.name])));
-    const equipmentCodes = useMemo(() => extractKeys(equipmentMapping), [equipmentMapping]);
+    const equipmentCodes = extractKeys(equipmentMapping);
     const consumablesMapping = Object.fromEntries(consumables.map(consumable => ([consumable._id, consumable.name])));
-    const consumablesCodes = useMemo(() => extractKeys(consumablesMapping), [consumablesMapping]);
+    const consumablesCodes = extractKeys(consumablesMapping);
     const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumables': consumablesMapping }
     const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumables': consumablesCodes }
 
@@ -97,7 +96,7 @@ const EditActivityForm = ({ res }) => {
     const assignValueGetter = (params) => {
         const lst = (params.data?.assignment) ?
             params.data.assignment.map(assign => {
-                //console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
+                console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
                 return (`${lookupValue(mapping[params.data.type], assign.resourcesId)}:${assign.budget},\n `)
             })
             : ""
@@ -129,7 +128,7 @@ const EditActivityForm = ({ res }) => {
         };
     }, []);
 
-    const data = useMemo(() => Array.from(activity.resources).map((resource, index) => ({
+    const data = Array.from(activity.resources).map((resource, index) => ({
         "type": resource.type,
         "details": resource.details,
         "job": resource.job,
@@ -141,15 +140,11 @@ const EditActivityForm = ({ res }) => {
         "assignment": resource.assignment,
         "_id": resource._id,
         "rowId": resource._id
-    })), [activity])
+    }))
 
     const resGridRef = useRef();
     const [rowData, setRowData] = useState(data)
     const [currResId, setCurrResId] = useState('')
-    const resourcesType = res.resourcesType.map(item => {
-        return (item.name
-        )
-    })
     const [columnDefs] = useState([
         {
             field: 'type',
@@ -159,7 +154,7 @@ const EditActivityForm = ({ res }) => {
             filter: 'agSetColumnFilter',
             cellEditorPopup: false,
             cellEditorParams: {
-                values: resourcesType,
+                values: ['Labour', 'Equipment', 'Consumables'],
             },
         },
         { field: "details", editable: true },
@@ -192,7 +187,7 @@ const EditActivityForm = ({ res }) => {
                     setColumnAssignDefs(columnAssignDefs)
                     assignGridRef.current.api.setColumnDefs(columnAssignDefs)
 
-                    document.getElementById("resAssignDiv").style.display = "block";
+                    document.getElementById("resAssignDIV").style.display = "block";
                 }, delClicked: function () {
                     //alert(`${JSON.stringify(this.data)} was clicked`);
                     this.api.applyTransaction({ remove: [this.data] });
@@ -268,148 +263,7 @@ const EditActivityForm = ({ res }) => {
         }
     ])
 
-    /********************************************************************************************
-     *                      Procurement List
-     ********************************************************************************************/
-    const components = useMemo(() => ({ agDateInput: AggridDatePicker }), []);
-    const procureData = useMemo(() => Array.from(activity?.procurements).map((procure, index) => ({
-        "type": procure.type,
-        "details": procure.details,
-        "job": procure.job,
-        "ETADate": new Date(procure.ETADate),
-        "payment": procure.payment,
-        "uom": procure.uom,
-        "rate": procure.rate,
-        "qtyAssign": procure.qtyAssign,
-        "remarks": procure.remarks,
-        "assignment": procure.assignment,
-        "_id": procure._id,
-        "rowId": procure._id
-    })), [activity?.procurements])
 
-    const procureGridRef = useRef();
-    const [rdProcureData, setRdProcureData] = useState(procureData)
-    const [currProcureId, setCurrProcureId] = useState('')
-    const [columnProcureDefs] = useState([
-        // {
-        //     field: 'type',
-        //     width: 100,
-        //     editable: true,
-        //     cellEditor: 'agSelectCellEditor',
-        //     filter: 'agSetColumnFilter',
-        //     cellEditorPopup: false,
-        //     cellEditorParams: {
-        //         values: ['Labour', 'Equipment', 'Consumables'],
-        //     },
-        // },
-        { field: "details", editable: true },
-        { field: "job", editable: true },
-        { field: "ETADate", editable: true },
-        { field: "payment", editable: true },
-        { field: "uom", width: 50, editable: true },
-        { field: "rate", width: 50, editable: true },
-        { field: "qtyAssign", width: 50, editable: true },
-        { field: "remarks", editable: true },
-        {
-            field: "assignment",
-            width: 100,
-            editable: false,
-            headerName: 'Assign Employee / Equipment',
-            valueGetter: assignValueGetter,
-        },
-        {
-            //field: 'type',
-            headerName: 'Actions',
-            cellRenderer: BtnCellRenderer,
-            cellRendererParams: {
-                clicked: function (field) {
-                    //alert(`${JSON.stringify(this.data)} was clicked`);
-                    setRdAssignData(this.data.assignment)
-                    setCurrProcureId(this.data.rowId)
-                    curResType = this.data.type
-                    //console.log('curResType: ' + curResType)
-
-                    columnProcureAssignDefs[0] = ProcureAssignDefCol00(curResType)
-                    setColumnProcureAssignDefs(columnProcureAssignDefs)
-                    procureAssignGridRef.current.api.setColumnDefs(columnProcureAssignDefs)
-
-                    document.getElementById("procureAssignDiv").style.display = "block";
-                }, delClicked: function () {
-                    //alert(`${JSON.stringify(this.data)} was clicked`);
-                    this.api.applyTransaction({ remove: [this.data] });
-                },
-                Id: "procurements"
-            },
-        }
-    ]);
-
-    const procureAssignGridRef = useRef();
-    const procureAssignData = { "resourceId": "", "budget": 0 }
-    const [rdProcureAssignData, setRdProcureAssignData] = useState([procureAssignData])
-    const ProcureAssignDefCol00 = (type) => {
-        return ({
-            field: 'resourcesId',
-            width: 150,
-            editable: true,
-            enableCellTextSelection: true,
-            ensureDomOrder: true,
-            cellEditor: 'agSelectCellEditor',
-            filter: 'agSetColumnFilter',
-            cellEditorPopup: false,
-            cellEditorParams: {
-                values: codes[type],
-            },
-            valueFormatter: (params) => {
-                return lookupValue(mapping[type], params.value);
-            },
-            valueSetter: params => {
-                console.log('index =' + params.node.rowindex)
-                console.log('valueParser')
-                params.node.data = { "resourcesId": params.newValue, "budget": params.node.data.budget }
-                console.log('data =' + JSON.stringify(params.node.data))
-                let rData = []
-                procureAssignGridRef.current.api.forEachNode(node => rData.push(node.data));
-                setRdProcureAssignData(rData)
-            },
-            valueParser: params => {
-                return lookupKey(mapping[type], params.newValue);
-            }
-
-        })
-    }
-    const [columnProcureAssignDefs, setColumnProcureAssignDefs] = useState([
-        {
-            field: 'resourcesId',
-            width: 150,
-            editable: true,
-        },
-        { field: "budget", width: 150, editable: true },
-        {
-            headerName: 'Actions',
-            width: 150,
-            cellRenderer: BtnCellRenderer,
-            cellRendererParams: {
-                delClicked: function (eprops) {
-                    //alert(`${JSON.stringify(this.data)} was clicked`);
-                    this.api.applyTransaction({ remove: [this.data] });
-                    const otherRowData = rowData.filter((row) =>
-                        row.rowId !== currProcureId
-                    )
-                    const dirtyRowData = rowData.filter((row) =>
-                        row.rowId === currProcureId
-                    )
-                    let rData = []
-                    procureAssignGridRef.current.api.forEachNode(node => rData.push(node.data));
-                    dirtyRowData[0].assignment = rData
-                    setRdProcureData([...otherRowData, dirtyRowData[0]])
-                    //document.getElementById("resGrid").api.refreshCells();
-                },
-                Id: "procureAssign"
-            },
-        }
-    ])
-
-    /****************************************************************************************** */
     const dailyReportGridRef = useRef();
     const dailyReportData = dailyReports.map(dailyReport => {
         return ({
@@ -472,7 +326,7 @@ const EditActivityForm = ({ res }) => {
                 navigate(-1) //navigate('/dash/activities')
             }
         }
-    }, [isSuccess, isDelSuccess, navigate, location?.state?.url])
+    }, [isSuccess, isDelSuccess, navigate])
 
     const onNameChanged = (e) => setName(e.target.value)
     const onDescriptionChanged = (e) => setDescription(e.target.value)
@@ -488,11 +342,7 @@ const EditActivityForm = ({ res }) => {
     const onCellValueChanged = (e) => {
         // console.log('onCellValueChanged-rowData:' + JSON.stringify(rowData))
     }
-    const onProcureValueChanged = (e) => { }
     const onAssignValueChanged = (e) => {
-        // console.log('onAssignValueChanged-rdAssignData:' + JSON.stringify(rdAssignData))
-    }
-    const onProcureAssignValueChanged = (e) => {
         // console.log('onAssignValueChanged-rdAssignData:' + JSON.stringify(rdAssignData))
     }
     const onDRValueChanged = (e) => {
@@ -521,7 +371,7 @@ const EditActivityForm = ({ res }) => {
             "rowId": 'new' + rowId.toString()
         }]
         setRowData(newRowData)
-        //console.log(JSON.stringify(newRowData))
+        console.log(JSON.stringify(newRowData))
     }
 
     const onNewAssignmentClicked = (e) => {
@@ -536,35 +386,6 @@ const EditActivityForm = ({ res }) => {
         setRdAssignData(newRdAssignData)
     }
 
-    const onNewProcureClicked = (e) => {
-        e.preventDefault()
-        procureRowId = procureRowId + 1
-        let newRdProcureData = [...rdProcureData, {
-            "type": "",
-            "details": "",
-            "job": "",
-            "costType": "",
-            "uom": "",
-            "rate": null,
-            "qtyAssign": null,
-            "remarks": "",
-            "rowId": 'new' + procureRowId.toString()
-        }]
-        setRdProcureData(newRdProcureData)
-        //console.log(JSON.stringify(newRowData))
-    }
-
-    const onNewProcureAssignmentClicked = (e) => {
-        e.preventDefault()
-        let newRdProcureAssignData =
-            rdProcureAssignData ?
-                [...rdProcureAssignData, {
-                    "resourcesId": "",
-                    "budget": 0
-                }]
-                : [procureAssignData]
-        setRdProcureAssignData(newRdProcureAssignData)
-    }
     const onNewDailyReportClicked = (e) => {
         navigate(`/dash/dailyReports/new/${activity._id}`)
     }
@@ -575,16 +396,7 @@ const EditActivityForm = ({ res }) => {
         newRowData[rowData.findIndex((data) => data.rowId === currResId)].assignment = rData
         setRowData(newRowData)
         resGridRef.current.api.refreshCells()
-        document.getElementById("resAssignDiv").style.display = "none";
-    }
-    const onUpdateProcureAssignmentClicked = (e) => {
-        let rData = []
-        const newRowData = rdProcureData
-        procureAssignGridRef.current.api.forEachNode(node => rData.push(node.data));
-        newRowData[rdProcureData.findIndex((data) => data.rowId === currProcureId)].assignment = rData
-        setRdProcureData(newRowData)
-        procureGridRef.current.api.refreshCells()
-        document.getElementById("procureAssignDiv").style.display = "none";
+        document.getElementById("resAssignDIV").style.display = "none";
     }
     const canSave = [activity._id].every(Boolean) && !isLoading
 
@@ -608,7 +420,6 @@ const EditActivityForm = ({ res }) => {
             duration.quantity = durationQuantity
             editedActivity.duration = duration
             editedActivity.resources = rowData
-            editedActivity.procurements = rdProcureData
             // console.log(editedActivity)
             // console.log(JSON.stringify(editedActivity))
             await updateActivity(editedActivity)
@@ -632,6 +443,10 @@ const EditActivityForm = ({ res }) => {
         return (<option key={project._id} value={project._id} > {project.title}</option >)
     })
 
+    // const activityTypes = [
+    //     { '_id': 'procure', 'name': 'procure' },
+    //     { '_id': 'mobilization', 'name': 'mobilization' }
+    // ]
     const typeOptions = res?.types.map(item => {
         return (<option key={item._id} value={item.name}> {item.name}</option>)
     })
@@ -694,6 +509,9 @@ const EditActivityForm = ({ res }) => {
                         </div>
                     </div>
                 </div>
+
+
+
 
                 <div className="row">
                     <div className="col-sm-6">
@@ -811,7 +629,7 @@ const EditActivityForm = ({ res }) => {
         </div >
     )
     const procureDiv = (
-        <div id="procureDiv" >
+        <div id="procureDIV" >
             <div className="panel-heading"><b>Procurement Plans</b></div>
             <div className="container-sm" style={{ fontSize: '12px', borderTop: "1px solid blue", borderLeft: "1px solid blue", borderBottom: "1px solid blue", borderRight: "1px solid blue" }}>
                 <br />
@@ -819,46 +637,44 @@ const EditActivityForm = ({ res }) => {
                     <div className="panel panel-default">
                         <div className="panel-heading">Procurement List</div>
                         <div className="form-group  ct-header__nav">
-                            <button className="btn btn-primary" title="New Procure"
-                                onClick={onNewProcureClicked}
+                            <button className="btn btn-primary" title="New Resources"
+                                onClick={onNewResourcesClicked}
                             > Add Procure </button>
                         </div>
                         <br />
-                        {(rdProcureData.length > 0)
+                        {(rowData.length > 0)
                             &&
                             <div className="panel-body" id="resDIV">
                                 <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
                                     <AgGridReact
-                                        ref={procureGridRef}
-                                        onCellValueChanged={onProcureValueChanged}
+                                        ref={resGridRef}
+                                        onCellValueChanged={onCellValueChanged}
                                         onGridReady={(event) => event.api.sizeColumnsToFit()}
                                         defaultColDef={defaultColDef}
-                                        rowData={rdProcureData}
-                                        columnDefs={columnProcureDefs}>
-                                        components={components}
-                                        reactiveCustomComponents
+                                        rowData={rowData}
+                                        columnDefs={columnDefs}>
                                     </AgGridReact>
                                 </div>
                             </div>
                         }
                     </div>
                     <br />
-                    <div className="panel panel-default" id="procureAssignDiv" style={{ display: "none" }}>
+                    <div className="panel panel-default" id="resAssignDIV" style={{ display: "none" }}>
                         <div className="panel-heading">Resource Assignments</div>
                         <div className="form-group  ct-header__nav">
-                            <button className="btn btn-primary" title="New Resources" onClick={onNewProcureAssignmentClicked} > New </button>
-                            <button className="btn btn-primary" title="Update Resources" onClick={onUpdateProcureAssignmentClicked} > Confirm </button>
+                            <button className="btn btn-primary" title="New Resources" onClick={onNewAssignmentClicked} > New </button>
+                            <button className="btn btn-primary" title="Update Resources" onClick={onUpdateAssignmentClicked} > Confirm </button>
                         </div>
                         <div className="panel-body">
                             <div className="ag-theme-balham" style={{ height: 300, width: "100%" }}>
                                 <AgGridReact
-                                    ref={procureAssignGridRef}
-                                    onCellValueChanged={onProcureAssignValueChanged}
+                                    ref={assignGridRef}
+                                    onCellValueChanged={onAssignValueChanged}
                                     onGridReady={(event) => event.api.sizeColumnsToFit()}
                                     defaultColDef={defaultColDef}
                                     readOnlyEdit={false}
-                                    rowData={rdProcureAssignData}
-                                    columnDefs={columnProcureAssignDefs}>
+                                    rowData={rdAssignData}
+                                    columnDefs={columnAssignDefs}>
                                 </AgGridReact>
                             </div>
                         </div>
@@ -898,7 +714,7 @@ const EditActivityForm = ({ res }) => {
                         }
                     </div>
                     <br />
-                    <div className="panel panel-default" id="resAssignDiv" style={{ display: "none" }}>
+                    <div className="panel panel-default" id="resAssignDIV" style={{ display: "none" }}>
                         <div className="panel-heading">Resource Assignments</div>
                         <div className="form-group  ct-header__nav">
                             <button className="btn btn-primary" title="New Resources" onClick={onNewAssignmentClicked} > New </button>
@@ -950,8 +766,8 @@ const EditActivityForm = ({ res }) => {
                                 />
                             </div>
                         </div>
-                        <div className="col-sm-1"><b>ASSIGNED:</b></div>
-                        <div className="col-sm-2">
+                        <div className="col-sm-1"><b>ASSIGNED TO:</b></div>
+                        <div className="col-sm-3">
                             <select
                                 id="userid"
                                 name="userid"
@@ -963,7 +779,7 @@ const EditActivityForm = ({ res }) => {
                                 {options}
                             </select>
                         </div>
-                        <div className="col-sm-7"><span>Created: {created}</span><span style={{ padding: "15px" }} /><span>Updated: {updated}</span></div>
+                        <div className="col-sm-5"><span>Created: {created}</span><span style={{ padding: "15px" }} /><span>Updated: {updated}</span></div>
                     </div>
                 </div>
 

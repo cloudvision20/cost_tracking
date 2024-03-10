@@ -9,4 +9,6 @@ router.route('/')
     .get(typesController.getAllTypes)
     .delete(typesController.deleteType)
     .patch(typesController.updateTypes)
+router.route('/:category')
+    .get(typesController.getTypesByCat)
 module.exports = router

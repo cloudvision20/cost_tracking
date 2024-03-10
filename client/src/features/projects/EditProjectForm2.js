@@ -15,9 +15,6 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 // let rowId = 0
 let pngRowId = 0
-// const btnStyle = { padding: "2px", height: "70%", fontSize: "11px" }
-// const divButton = { display: "flex", flexFlow: "row nowrap", justifyContent: "flex-start", padding: "1px", gap: "0.5em" }
-
 class BtnCellRenderer extends Component {
     constructor(props, Id) {
         super(props);
@@ -28,16 +25,9 @@ class BtnCellRenderer extends Component {
     btnDelClickedHandler(e) { this.props.delClicked(this.props); }
     render() {
         return (
-            this.props.Id === "png" ?
-                <div className="form-group ct-header__nav">
-                    <button className="btn btn-danger btn-xs" style={{ fontSize: "8px" }} onClick={this.btnDelClickedHandler}>Del</button>
-                </div>
-                : this.props.Id === "act" ?
-                    <div className="form-group ct-header__nav">
-                        <button className="btn btn-primary btn-xs" style={{ fontSize: "8px" }} onClick={this.btnClickedHandler}>Edit</button>
-                        {/* <button className="btn btn-danger btn-xs" style={{ fontSize: "8px" }} onClick={this.btnDelClickedHandler}>Del</button> */}
-                    </div>
-                    : null
+            <div className="form-group ct-header__nav">
+                <button className="btn btn-danger btn-xs" style={{ fontSize: "8px" }} onClick={this.btnDelClickedHandler}>Del</button>
+            </div>
         )
     }
 }
@@ -105,30 +95,14 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
 
     const activitiesRef = useRef();
     const [rdAct, setRdAct] = useState(data)
-    const [currActId, setCurrActId] = useState('')
     const [columnDefs] = useState([
 
-        { field: "Status", editable: false, width: 75 },
-        { field: "activityType", editable: false, headerName: 'Activity Type', width: 75 },
-        { field: "name", editable: false, headerName: 'Name', width: 200 },
-        { field: "description", editable: false, headerName: 'Description', width: 400 },
-        { field: "username", editable: false, headerName: 'user', width: 75 },
-        {
-            headerName: 'Actions',
-            editable: false,
-            width: 75,
-            cellRenderer: BtnCellRenderer,
-            cellRendererParams: {
-                clicked: function (field) {
-                    onRowDblClicked(this)
-                    if (isSaveSuccess) {
-                        navigate(`/dash/activities/${currActId}`, { state: { url: location.pathname } })
-                    }
-                },
-                // delClicked: function () { this.api.applyTransaction({ remove: [this.data] }); },
-                Id: "act"
-            },
-        }
+        { field: "Status", editable: false, width: 150 },
+        { field: "activityType", editable: false, headerName: 'Activity Type', width: 150 },
+        { field: "name", editable: false, headerName: 'Name', width: 300 },
+        { field: "description", editable: false, headerName: 'Description', width: 300 },
+        { field: "username", editable: false, headerName: 'user', width: 150 },
+
     ]);
     // let acts = {}
     // if (loadState === true) {
@@ -211,11 +185,7 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
         // }
 
     }, [])
-    useEffect(() => {
-        if (isSaveSuccess) {
-            navigate(`/dash/activities/${currActId}`, { state: { url: location.pathname } })
-        }
-    }, [isSaveSuccess])
+
     const onTitleChanged = e => setTitle(e.target.value)
     const onDescriptionChanged = e => setDescription(e.target.value)
     const onCompletedChanged = e => setCompleted(prev => !prev)
@@ -232,7 +202,6 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
     const onRowDblClicked = async (e) => {
         console.log('onRowDblClicked-activity:' + JSON.stringify(rdAct))
         let eProject = {}
-        setCurrActId(e.data._id)
         // if (canSave) {
         eProject._id = project._id
         eProject.title = title
@@ -245,9 +214,9 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
         //eProject.active = active
         await saveProject(eProject)    // }
 
-        // if (isSaveSuccess) {
-        //     navigate(`/dash/activities/${e.data._id}`, { state: { url: location.pathname } })
-        // }
+        if (isSaveSuccess) {
+            navigate(`/dash/activities/${e.data._id}`, { state: { url: location.pathname } })
+        }
     }
     const onPngCellValueChanged = (e) => {
         console.log('onPngCellValueChanged-rowData:' + JSON.stringify(rdPng))
@@ -328,8 +297,8 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
         eActivity.activityType = activityType
         eActivity.duration = duration
         // eActivity.resources = rowData
-        // console.log(eActivity)
-        // console.log(JSON.stringify(eActivity))
+        console.log(eActivity)
+        console.log(JSON.stringify(eActivity))
         await addNewActivity(eActivity).then((result) => {
 
 
@@ -771,7 +740,7 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
                                 <AgGridReact
                                     ref={activitiesRef}
                                     onCellValueChanged={onCellValueChanged}
-                                    // onRowDoubleClicked={onRowDblClicked}
+                                    onRowDoubleClicked={onRowDblClicked}
                                     onGridReady={(event) => event.api.sizeColumnsToFit()}
                                     defaultColDef={defaultColDef}
                                     rowData={rdAct}
@@ -781,7 +750,62 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
                         </div>
                         <br />
                     </div>
+
+
+                    {/* <div className="panel panel-info">
+
+                        <div className="form-group row" style={{ border: "0px" }}>
+                            <div className="col-sm-2" style={{ border: "0px" }}> <b>WORK COMPLETE:</b></div>
+                            <div className="col-sm-10" style={{ border: "0px" }}>
+                                <div className="form-check" style={{ border: "0px" }}>
+                                    <input
+                                        className="form-check-input"
+                                        id="project-completed"
+                                        name="completed"
+                                        type="checkbox"
+                                        checked={completed}
+                                        onChange={onCompletedChanged}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        {(!userId)
+                            &&
+                            <>
+                                <div className="form-group row" style={{ border: "0px" }}>
+                                    <div className="col-sm-2" style={{ border: "0px" }}> <b>ASSIGNED TO:</b></div>
+                                    <div className="col-sm-2" style={{ border: "0px" }}>
+                                        <select
+                                            id="username"
+                                            name="username"
+                                            className="form-select"
+                                            value={userId}
+                                            onChange={onUserIdChanged}
+                                        >
+                                            {options}
+                                        </select>
+                                    </div>
+                                </div>
+                            </>
+                        }
+
+                        {(userId)
+                            &&
+                            <>
+                                <div className="form-group row" style={{ border: "0px" }}>
+                                    <div className="col-sm-2" style={{ border: "0px" }}> <b>ASSIGNED TO:</b></div>
+                                    <div className="col-sm-2" style={{ border: "0px" }}>
+                                        <b><label value={userId}>{userId.username}</label></b>
+                                    </div>
+                                </div>
+                            </>
+                        }
+                        <div className="panel" style={{ border: "0px" }}>
+                            <p className=""><span>Created: {created}</span><span style={{ padding: "15px" }} /><span>Updated: {updated}</span></p>
+                        </div>
+                    </div> */}
                     <div className="panel panel-info" style={{ fontSize: '12px' }}>
+
                         <div className="form-group row">
                             <div className=" col-sm-1"> <b>COMPLETED:</b></div>
                             <div className=" col-sm-1">
@@ -796,8 +820,8 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
                             <div className=" col-sm-1"><b>ASSIGNED:</b></div>
                             <div className=" col-sm-2">
                                 <select
-                                    id="user_id"
-                                    name="user_id"
+                                    id="userid"
+                                    name="userid"
                                     style={{ border: '0px', fontSize: '12px', padding: '0px' }}
                                     className="form-control"
                                     value={userId._id}

@@ -7,10 +7,10 @@ import useAuth from "../../hooks/useAuth"
 import { Form } from 'react-bootstrap';
 import { AgGridReact } from "ag-grid-react";
 import { dateForPicker } from "../../hooks/useDatePicker"
+// import EditDailyReportForm from '../dailyReports/EditDailyReportForm'
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import "ag-grid-community/styles/ag-theme-balham.css";
-import AggridDatePicker from "../../components/AggridDatePicker"
 //import { config } from "@fortawesome/fontawesome-svg-core"
 
 let rowId = 0
@@ -85,11 +85,11 @@ const EditActivityForm = ({ res }) => {
 
     const { isManager, isAdmin } = useAuth()
     const usersMapping = Object.fromEntries(users.map(user => ([user.employeeId, user.username])));
-    const usersCodes = useMemo(() => extractKeys(usersMapping), [usersMapping]);
+    const usersCodes = extractKeys(usersMapping);
     const equipmentMapping = Object.fromEntries(equipment.map(equipmnt => ([equipmnt._id, equipmnt.name])));
-    const equipmentCodes = useMemo(() => extractKeys(equipmentMapping), [equipmentMapping]);
+    const equipmentCodes = extractKeys(equipmentMapping);
     const consumablesMapping = Object.fromEntries(consumables.map(consumable => ([consumable._id, consumable.name])));
-    const consumablesCodes = useMemo(() => extractKeys(consumablesMapping), [consumablesMapping]);
+    const consumablesCodes = extractKeys(consumablesMapping);
     const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumables': consumablesMapping }
     const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumables': consumablesCodes }
 
@@ -97,7 +97,7 @@ const EditActivityForm = ({ res }) => {
     const assignValueGetter = (params) => {
         const lst = (params.data?.assignment) ?
             params.data.assignment.map(assign => {
-                //console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
+                console.log('mapping labour :' + JSON.stringify(mapping[params.data.type] + '  type:' + params.data.type))
                 return (`${lookupValue(mapping[params.data.type], assign.resourcesId)}:${assign.budget},\n `)
             })
             : ""
@@ -129,7 +129,7 @@ const EditActivityForm = ({ res }) => {
         };
     }, []);
 
-    const data = useMemo(() => Array.from(activity.resources).map((resource, index) => ({
+    const data = Array.from(activity.resources).map((resource, index) => ({
         "type": resource.type,
         "details": resource.details,
         "job": resource.job,
@@ -141,15 +141,11 @@ const EditActivityForm = ({ res }) => {
         "assignment": resource.assignment,
         "_id": resource._id,
         "rowId": resource._id
-    })), [activity])
+    }))
 
     const resGridRef = useRef();
     const [rowData, setRowData] = useState(data)
     const [currResId, setCurrResId] = useState('')
-    const resourcesType = res.resourcesType.map(item => {
-        return (item.name
-        )
-    })
     const [columnDefs] = useState([
         {
             field: 'type',
@@ -159,7 +155,7 @@ const EditActivityForm = ({ res }) => {
             filter: 'agSetColumnFilter',
             cellEditorPopup: false,
             cellEditorParams: {
-                values: resourcesType,
+                values: ['Labour', 'Equipment', 'Consumables'],
             },
         },
         { field: "details", editable: true },
@@ -271,13 +267,11 @@ const EditActivityForm = ({ res }) => {
     /********************************************************************************************
      *                      Procurement List
      ********************************************************************************************/
-    const components = useMemo(() => ({ agDateInput: AggridDatePicker }), []);
-    const procureData = useMemo(() => Array.from(activity?.procurements).map((procure, index) => ({
+    const procureData = Array.from(activity?.procurements).map((procure, index) => ({
         "type": procure.type,
         "details": procure.details,
         "job": procure.job,
-        "ETADate": new Date(procure.ETADate),
-        "payment": procure.payment,
+        "costType": procure.costType,
         "uom": procure.uom,
         "rate": procure.rate,
         "qtyAssign": procure.qtyAssign,
@@ -285,7 +279,7 @@ const EditActivityForm = ({ res }) => {
         "assignment": procure.assignment,
         "_id": procure._id,
         "rowId": procure._id
-    })), [activity?.procurements])
+    }))
 
     const procureGridRef = useRef();
     const [rdProcureData, setRdProcureData] = useState(procureData)
@@ -304,8 +298,7 @@ const EditActivityForm = ({ res }) => {
         // },
         { field: "details", editable: true },
         { field: "job", editable: true },
-        { field: "ETADate", editable: true },
-        { field: "payment", editable: true },
+        { field: "costType", editable: true },
         { field: "uom", width: 50, editable: true },
         { field: "rate", width: 50, editable: true },
         { field: "qtyAssign", width: 50, editable: true },
@@ -472,7 +465,7 @@ const EditActivityForm = ({ res }) => {
                 navigate(-1) //navigate('/dash/activities')
             }
         }
-    }, [isSuccess, isDelSuccess, navigate, location?.state?.url])
+    }, [isSuccess, isDelSuccess, navigate])
 
     const onNameChanged = (e) => setName(e.target.value)
     const onDescriptionChanged = (e) => setDescription(e.target.value)
@@ -835,8 +828,6 @@ const EditActivityForm = ({ res }) => {
                                         defaultColDef={defaultColDef}
                                         rowData={rdProcureData}
                                         columnDefs={columnProcureDefs}>
-                                        components={components}
-                                        reactiveCustomComponents
                                     </AgGridReact>
                                 </div>
                             </div>

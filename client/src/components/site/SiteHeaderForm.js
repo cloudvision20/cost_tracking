@@ -43,22 +43,22 @@ const SiteHeaderForm = () => {
 
 
     const onNewDailyReportSelected = () => navigate('/site/dailyReports/new')
-    const onDailyReportSelected = () => navigate('/site/dailyReports')
-    const onUserSelected = () => navigate('/site/users')
-    const onTypeSelected = () => navigate('/site/types')
-    const onFilesClicked = () => navigate('/site/files')
-    const onAttendancesClicked = () => navigate('/site/files/attendances')
-    const onGpsdatsClicked = () => navigate('/site/files/gpsdats')
+    const onDailyReportSelected = () => navigate('/site/dailyReports', { state: { load: true } })
+    const onUserSelected = () => navigate('/site/users', { state: { load: true } })
+    const onTypeSelected = () => navigate('/site/types', { state: { load: true } })
+    const onFilesClicked = () => navigate('/site/files', { state: { load: true } })
+    const onAttendancesClicked = () => navigate('/site/files/attendances', { state: { load: true } })
+    const onGpsdatsClicked = () => navigate('/site/files/gpsdats', { state: { load: true } })
     const onMastersSelected = (item) => {
         switch (item) {
             case 'Consumables':
-                navigate('/site/consumables')
+                navigate('/site/consumables', { state: { load: true } })
                 break;
             case 'Equipment':
-                navigate('/site/equipment')
+                navigate('/site/equipment', { state: { load: true } })
                 break;
             case 'Expenses':
-                navigate('/site/expenses')
+                navigate('/site/expenses', { state: { load: true } })
                 break;
             default:
                 break;
@@ -68,13 +68,13 @@ const SiteHeaderForm = () => {
         switch (item) {
 
             case 'Consumables':
-                navigate('/site/records/consumable')
+                navigate('/site/records/consumable', { state: { load: true } })
                 break;
             case 'Equipment':
-                navigate('/site/records/equip')
+                navigate('/site/records/equip', { state: { load: true } })
                 break;
             case 'Expenses':
-                navigate('/site/records/expense')
+                navigate('/site/records/expense', { state: { load: true } })
                 break;
             default:
                 break;
@@ -84,13 +84,13 @@ const SiteHeaderForm = () => {
         switch (item) {
 
             case 'Consumables':
-                navigate('/site/records/consumables')
+                navigate('/site/records/consumables', { state: { load: true } })
                 break;
             case 'Equipment':
-                navigate('/site/records/equipment')
+                navigate('/site/records/equipment', { state: { load: true } })
                 break;
             case 'Expenses':
-                navigate('/site/records/expenses')
+                navigate('/site/records/expenses', { state: { load: true } })
                 break;
             default:
                 break;
@@ -100,10 +100,10 @@ const SiteHeaderForm = () => {
         switch (item) {
 
             case 'upload':
-                navigate('/site/files/attendances')
+                navigate('/site/files/attendances', { state: { load: true } })
                 break;
             case 'record':
-                navigate('/site/attends')
+                navigate('/site/attends', { state: { load: true } })
                 break;
             default:
                 break;
@@ -396,6 +396,7 @@ const SiteHeaderForm = () => {
                                     id="basic-nav-dropdown">
                                     {navFormsMenu}
                                     {/* {navFormMenu} */}
+                                    {navFormMenu}
                                     <NavDropdown.Divider />
                                     {dailyReportMenu}
                                     {newDailyReportMenu}

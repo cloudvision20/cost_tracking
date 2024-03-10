@@ -14,69 +14,75 @@ import Form from 'react-bootstrap/Form';
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
-import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
-import { useGetActivitiesQuery, useGetActivitiesGBProjsQuery } from '../activities/activitiesApiSlice'
-import { useGetProjectsQuery } from '../projects/projectsApiSlice'
-const Welcome = () => {
+// import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
+import { useGetActsGBProjsQuery } from '../crview/crviewsApiSlice'
+
+const Overview = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
 
-    const {
-        data: activities1,
-        isLoading
-        // ,
-        // isSuccess,
-        // isError,
-        // error
-    } = useGetActivitiesQuery('activitiesList', {
-        pollingInterval: 15000,
-        refetchOnFocus: true,
-        refetchOnMountOrArgChange: true
+    // const {
+    //     data: activities1,
+    //     isLoading
+    //     // ,
+    //     // isSuccess,
+    //     // isError,
+    //     // error
+    // } = useGetActivitiesQuery('activitiesList', {
+    //     pollingInterval: 15000,
+    //     refetchOnFocus: true,
+    //     refetchOnMountOrArgChange: true
+    // })
+    const { data: projects } = useGetActsGBProjsQuery({
+        "start": "1-07-2023",
+        "end": "18-11-2023"
     })
-    const { data: projects } = useGetActivitiesGBProjsQuery()
-
+    // const { data: projects, isSuccess, isError, error } = usePostHrsByEIdSEQuery({
+    //     "start": "1-07-2023",
+    //     "end": "18-07-2023"
+    // })
     const Activities = useSelector(selectActivity)
     const activities = Activities.activities
     let currActivityId = Activities.current.activityId
     let currActivityName = Activities.current.name
     //console.log(`sitewelcome activities:${JSON.stringify(activities)}`)
     // console.log(`activities.length : ${activities?.length}`)
-    const { data: attends, isSuccess, isError, error } = usePostHrsByEIdSEQuery({
-        "eid": "96",
-        "start": "1-07-2023",
-        "end": "18-07-2023"
-    })
+    // const { data: attends, isSuccess, isError, error } = usePostHrsByEIdSEQuery({
+    //     "eid": "96",
+    //     "start": "1-07-2023",
+    //     "end": "18-07-2023"
+    // })
     const [updateUsers, {
         //isLoading, isSuccess, isError, error
     }] = useUpdateUsersMutation()
 
-    const onCurrActivtyChange = (e) => {
-        e.preventDefault()
-        const value = Array.from(
-            e.target.selectedOptions,
-            (option) => option.value
-        )
-        setTimeout(() => {
-            try {
-                updateDefaultActivity(e.target[e.target.selectedIndex].value)
-            } catch (err) {
-                console.log(`siteWelcome updateDefaultActivity error: ${err}`)
-            }
-        }, 500)
-    }
-    const updateDefaultActivity = (activityId) => {
-        let user = {}
-        user._id = userid
-        user.currActivityId = activityId
-        let req = {}
-        req.data = [user]
-        updateUsers(req)
-            .then((result) => {
-                window.location.reload(false);
-            }).catch((error) => {
-                console.log(`error: ${error}`)
-            })
-    }
+    // const onCurrActivtyChange = (e) => {
+    //     e.preventDefault()
+    //     const value = Array.from(
+    //         e.target.selectedOptions,
+    //         (option) => option.value
+    //     )
+    //     setTimeout(() => {
+    //         try {
+    //             updateDefaultActivity(e.target[e.target.selectedIndex].value)
+    //         } catch (err) {
+    //             console.log(`siteWelcome updateDefaultActivity error: ${err}`)
+    //         }
+    //     }, 500)
+    // }
+    // const updateDefaultActivity = (activityId) => {
+    //     let user = {}
+    //     user._id = userid
+    //     user.currActivityId = activityId
+    //     let req = {}
+    //     req.data = [user]
+    //     updateUsers(req)
+    //         .then((result) => {
+    //             window.location.reload(false);
+    //         }).catch((error) => {
+    //             console.log(`error: ${error}`)
+    //         })
+    // }
     let options
     if (activities) {
         options = activities?.map(activity => {
@@ -126,7 +132,7 @@ const Welcome = () => {
                                 <div className='col-sm-3'>
                                     <div> {project.ttlActualLabour}</div>
                                     <div> </div>
-                                    <div> </div>
+                                    <div>{project.ttlActualConsumables} </div>
                                 </div>
                                 <div className='col-sm-3'>
                                     <div> {project.percentLabour}</div>
@@ -234,4 +240,4 @@ const Welcome = () => {
     )
     return content
 }
-export default Welcome
+export default Overview

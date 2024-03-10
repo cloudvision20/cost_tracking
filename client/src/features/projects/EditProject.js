@@ -28,7 +28,7 @@ const EditProject = () => {
             }
         }
 
-        content = <EditProjectForm startActivities={res.activities} project={res.project[0]} users={res.users} />
+        content = <EditProjectForm startActivities={res.activities} project={res.project[0]} users={res.users} types={res.types} />
     }
 
     return content

@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
 import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
+import { usePostRecordsByTypeEIdSEQuery } from '../records/recordsApiSlice';
 const Consumables = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
