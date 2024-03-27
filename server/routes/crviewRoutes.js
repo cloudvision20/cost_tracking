@@ -6,5 +6,7 @@ const crviewController = require('../controllers/crviewController')
 router.route('/actsbyprojs/:startDate/:endDate')
     .get(crviewController.getActivitiesByProjs)
 
+router.route('/employeeSE')
+    .post(crviewController.postHrsByEIdSE)
 
 module.exports = router

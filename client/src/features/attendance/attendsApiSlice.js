@@ -37,18 +37,18 @@ export const attendsApiSlice = apiSlice.injectEndpoints({
                 },
             })
         }),
-        postHrsByEIdSE: builder.query({
-            query: (req) => ({
-                url: `/attends/employeeSE`,
-                method: 'POST',
-                body: {
-                    ...req,
-                },
-                validateStatus: (response, result) => {
-                    return response.status === 200 && !result.isError
-                },
-            })
-        }),
+        // postHrsByEIdSE: builder.query({
+        //     query: (req) => ({
+        //         url: `/attends/employeeSE`,
+        //         method: 'POST',
+        //         body: {
+        //             ...req,
+        //         },
+        //         validateStatus: (response, result) => {
+        //             return response.status === 200 && !result.isError
+        //         },
+        //     })
+        // }),
         // getAttendById: builder.query({
         //     query: (id) => ({
         //         url: `/attends/${id}`,
@@ -99,7 +99,7 @@ export const {
     // useGetAttendsByTypeQuery,
     // useGetAttendByIdQuery,
     // useAddNewAttendMutation,
-    usePostHrsByEIdSEQuery,
+    // usePostHrsByEIdSEQuery,
     useGetAttendsByEIdQuery,
     useUpdateAttendsMutation,
     useDeleteAttendMutation,

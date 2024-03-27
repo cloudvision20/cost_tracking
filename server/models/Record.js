@@ -17,6 +17,12 @@ const recordSchema = new mongoose.Schema(
             required: false,
             ref: 'Activity'
         },
+        resourcesId: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: false
+            // ,
+            // ref: 'Activity'
+        },
         /*       projectId: {
                    type: mongoose.Schema.Types.ObjectId,
                    required: false,

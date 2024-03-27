@@ -192,6 +192,7 @@ const updateRecord = asyncHandler(async (req, res) => {
     record.userId = req.body.userId
     record.type = req.body.type
     record.details = req.body.details
+    record.resourcesId = req.body.resourcesId
     record.description = req.body.description
     record.dateTime = req.body.dateTime//format(Date(req.body.startDate), 'yyyy-MM-dd') + 'T23:59:59.999Z' //Date(req.body.startDate)
     //record.endDate = req.body.endDate//format(Date(req.body.endDate), 'yyyy-MM-dd') + 'T23:59:59.999Z'
@@ -227,6 +228,8 @@ const updateRecords = async (req, res) => {
         record.employeeId = newData[i].employeeId ? newData[i].employeeId : null
         record.type = newData[i].type ? newData[i].type : null
         record.details = newData[i].details ? newData[i].details : null
+        record.resourcesId = newData[i].resourcesId ? newData[i].resourcesId : null
+
         record.job = newData[i].job ? newData[i].job : null
         record.terminal = newData[i].terminal ? newData[i].terminal : null
         record.userId = newData[i].userId ? newData[i].userId : null

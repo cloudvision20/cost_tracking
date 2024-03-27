@@ -69,7 +69,7 @@ export const crviewsApiSlice = apiSlice.injectEndpoints({
         // }),
         postHrsByEIdSE: builder.query({
             query: (req) => ({
-                url: `/crviews/recordsSE`,
+                url: `/crviews/employeeSE`,
                 method: 'POST',
                 body: {
                     ...req,

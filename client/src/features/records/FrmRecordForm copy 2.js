@@ -55,7 +55,7 @@ const EditRecordForm = ({ res, formType }) => {
                 value={item.name}
                 itemType={item.type}
                 itemUnit={item.unit}
-                resourcesId={item._id}
+                resourceId={item._id}
             > {item.name}</option >
         )
     })
@@ -96,7 +96,7 @@ const EditRecordForm = ({ res, formType }) => {
     const [employeeId, setEmployeeId] = useState(null)
     const [type, setType] = useState('')
     const [details, setDetails] = useState('')
-    const [resourcesId, setResourcesId] = useState('')
+    const [resourceId, setResourceId] = useState('')
     const [job, setJob] = useState(null)
     const [terminal, setTerminal] = useState(null)
     const [userId, setUserId] = useState(userid)
@@ -123,7 +123,7 @@ const EditRecordForm = ({ res, formType }) => {
         setDetails(e.target.value)
         setType(e.target.options[e.target.options.selectedIndex].attributes.itemType.value)
         setUnit(e.target.options[e.target.options.selectedIndex].attributes.itemUnit.value)
-        setResourcesId(e.target.options[e.target.options.selectedIndex].attributes.resourcesId.value)
+        setResourceId(e.target.options[e.target.options.selectedIndex].attributes.resourceId.value)
         typeRef.value = e.target.options[e.target.options.selectedIndex].attributes.itemtype.value
         console.log('details clicked: -- type prop :' + e.target.options[e.target.options.selectedIndex].attributes.itemtype.value)
     }
@@ -140,7 +140,7 @@ const EditRecordForm = ({ res, formType }) => {
         dataRecords.employeeId = !employeeId ? '' : employeeId
         dataRecords.type = !type ? '' : type
         dataRecords.details = !details ? '' : details
-        dataRecords.resourcesId = !resourcesId ? '' : resourcesId
+        dataRecords.resourceId = !resourceId ? '' : resourceId
         dataRecords.job = !job ? '' : job
         dataRecords.terminal = !terminal ? '' : terminal
         dataRecords.userId = !userId ? '' : userId
@@ -167,7 +167,7 @@ const EditRecordForm = ({ res, formType }) => {
                     "employeeId": dt.employeeId,
                     "type": dt.type,
                     "details": dt.details,
-                    "resourcesId": dt.resourcesId,
+                    "resourceId": dt.resourceId,
                     "job": dt.job,
                     "terminal": dt.terminal,
                     "userId": dt.userId,
@@ -188,7 +188,7 @@ const EditRecordForm = ({ res, formType }) => {
                     setEmployeeId(data[0].employeeId)
                     setType(data[0].type)
                     setDetails(data[0].details)
-                    setResourcesId(data[0].resourcesId)
+                    setResourceId(data[0].resourceId)
                     setJob(data[0].job)
                     setTerminal(data[0].terminal)
                     setUserId(data[0].userId)
@@ -234,7 +234,7 @@ const EditRecordForm = ({ res, formType }) => {
         setEmployeeId(null)
         setType('')
         setDetails('')
-        setResourcesId('')
+        setResourceId('')
         setJob(null)
         setTerminal(null)
         setUserId(userId)

@@ -14,7 +14,8 @@ import Form from 'react-bootstrap/Form';
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 import { useUpdateUsersMutation, useUpdateUserMutation } from '../users/usersApiSlice';
-import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
+import { usePostHrsByEIdSEQuery } from '../crview/crviewsApiSlice'
+// import { usePostHrsByEIdSEQuery } from '../attendance/attendsApiSlice'
 const Manhour = () => {
     const { userid, username, employeename, isManager, isAdmin, status, location } = useAuth()
     useTitle(`Site: ${username}`)
@@ -28,7 +29,7 @@ const Manhour = () => {
     const { data: attends, isSuccess, isError, error } = usePostHrsByEIdSEQuery({
         "eid": "96",
         "start": "1-07-2023",
-        "end": "18-07-2023"
+        "end": "18-12-2023"
     })
     const [updateUsers, {
         //isLoading, isSuccess, isError, error
