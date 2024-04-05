@@ -35,6 +35,7 @@ import SiteWelcome from './features/auth/SiteWelcome'
 
 import FrmRecords from './features/records/FrmRecords'
 import FrmRecord from './features/records/FrmRecord'
+import FrmRecordsAll from './features/records/FrmRecordsAll'
 
 import EditMasters from './features/masters/EditMasters'
 import FrmAttends from './features/attendance/FrmAttends'
@@ -90,6 +91,11 @@ function App() {
                   <Route path="consumable" element={<FrmRecord formType={`Consumables`} />} />
                   <Route path="equip" element={<FrmRecord formType={`Equipment`} />} />
                   <Route path="expense" element={<FrmRecord formType={`Expenses`} />} />
+                </Route>
+                <Route path="recordsall">
+                  <Route path="consumables" element={<FrmRecordsAll formType={`Consumables`} />} />
+                  <Route path="equipment" element={<FrmRecordsAll formType={`Equipment`} />} />
+                  <Route path="expenses" element={<FrmRecordsAll formType={`Expenses`} />} />
                 </Route>
                 {/* <Route path="consumables">
                   <Route index element={<EditMasters formType={`Consumables`} />} />

@@ -1,0 +1,9591 @@
+[{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038522"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:32",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:32:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038538"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:35",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038537"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038527"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038535"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038529"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.430Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038523"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.431Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038524"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:34",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.431Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038526"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:26",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:26:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.431Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038532"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:36",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.431Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038534"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:27",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303853b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303853c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:36",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303853e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:39",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303852d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303852f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.432Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303853f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303853d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038540"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:38",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038541"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303852a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:33",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038543"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.433Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038544"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:31",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:31:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038533"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038542"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:39",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038545"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038546"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:35",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038531"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:07",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:07:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038547"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:36",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303852c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "07:32",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-07T23:32:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038525"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038536"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:29",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:29:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303852b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.434Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303852e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:37",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038530"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:35",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038548"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038528"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:28",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:28:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.599Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038549"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:46",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:46:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.435Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303854a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303854e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303854d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:36",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303854f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:39",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303854c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038550"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:46",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:46:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303854b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038552"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "07:39",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-06-30T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038551"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.436Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038554"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:36",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038553"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "17:02",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-01T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038555"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:04",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:04:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038556"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:35",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038559"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.437Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303855a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:34",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038558"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:36",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303855b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303855c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:39",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038557"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303855e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "07:25",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-07T23:25:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038561"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303855f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038560"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:34",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.438Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303855d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.601Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038564"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:34",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038563"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:05",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:05:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038562"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:37",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038566"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:37",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038565"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:02",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038568"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:32",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:32:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.439Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038567"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303856a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:35",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303856c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:37",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303856b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038569"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303856d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "15:21",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T07:21:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.440Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303856f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038570"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:36",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038574"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:34",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038575"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038572"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:34",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303856e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "15:25",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T07:25:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.602Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.441Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038578"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "11:53",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T03:53:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038539"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303857e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:22",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:22:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303857b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:24",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:24:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038579"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038571"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303857a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:28",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:28:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303857c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:35",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.442Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038573"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038590"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:34",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038582"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:27",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038581"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303858f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038594"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:37",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038585"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.445Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038583"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038588"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:38",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.445Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038593"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303858a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:37",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303857f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.445Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038577"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "11:52",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T03:52:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038591"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303858c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:39",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038587"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038586"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:41",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:41:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.445Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303858d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038592"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:42",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:42:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038589"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303858e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:43",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303857d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038580"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.443Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303858b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.444Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038584"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:32",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:32:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.604Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.446Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303853a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "3",
+  "employeeName": "ROSLI SARBINI",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:31",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:31:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.600Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303859a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:37",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038599"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038597"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.447Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038596"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:40",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:40:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303859e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:36",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303859c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:38",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303859b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.450Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:35",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.448Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038598"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:36",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.450Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.450Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385aa"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "07:34",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-06-30T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.450Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:44",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:44:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.450Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303859f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:29",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:29:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.450Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303859d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ac"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:30",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:30:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ad"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385a2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:36",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ab"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "17:03",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-01T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385af"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.451Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:26",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:26:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ae"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:33",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:43",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.452Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:51",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:51:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "07:27",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-07T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385b2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:48",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:48:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.606Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385bb"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:04",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:04:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.453Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385be"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:36",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:47",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:47:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385bf"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ba"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:36",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:41",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:41:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038576"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "5",
+  "employeeName": "KOH PEK SIONG",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:37",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.603Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.454Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385bc"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:37",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385bd"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "16:06",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T08:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:31",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:31:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:37",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ca"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385cb"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:33",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385cc"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385db"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:38",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:40",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:40:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385da"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ce"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:33",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:43",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.456Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:42",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:42:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385cf"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:38",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385cd"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:45",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:45:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385df"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:39",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:43",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.457Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385d7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:42",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:42:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.458Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:05",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:05:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "07:21",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-07T23:21:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385dd"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:38",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385de"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385dc"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:43",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:33",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.459Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:02",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:40",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:40:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ee"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ed"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:42",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:42:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ff"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:36",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385fe"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385eb"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:34",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:37",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038601"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:36",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ec"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385fd"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:36",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038602"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385fa"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038600"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385fb"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:36",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385fc"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.463Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ea"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385ef"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:37",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "09:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T01:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385e7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:35",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.608Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:38",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.461Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.460Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385f9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:29",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:29:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.609Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.462Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038603"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:29",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:29:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038605"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:45",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:45:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038604"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "12:10",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T04:10:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038607"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "07:22",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-06-30T23:22:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038608"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "17:02",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-01T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038609"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:34",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.464Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303860b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:27",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303860e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038613"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "07:35",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-07T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038612"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038610"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038606"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "33",
+  "employeeName": "SABERI ABDULLAH",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038611"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:36",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.465Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038616"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "09-07-2023",
+  "time": "12:39",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-09T04:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038617"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:36",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038615"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "09-07-2023",
+  "time": "07:34",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-08T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303860a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303860d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:27",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303860f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:41",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:41:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303861b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:25",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:25:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303860c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:02",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.466Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038619"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:39",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038614"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:05",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:05:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303861c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:03",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303861a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038618"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303861d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:30",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:30:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303861f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303861e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:07",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:07:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038621"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:33",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.467Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038620"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:03",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038595"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "24",
+  "employeeName": "HAMIDON WAHAP",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.605Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038623"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:25",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:25:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038627"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:35",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038626"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038625"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:28",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:28:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730385c4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "31",
+  "employeeName": "WARREN",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:41",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:41:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.607Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303862a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:27",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038628"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "14:57",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T06:57:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038624"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038629"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:03",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.468Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303862e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:24",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:24:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303862f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:06",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038631"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:05",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:05:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038633"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038634"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:23",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:23:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.469Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303862d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "22-07-2023",
+  "time": "17:03",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-22T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038635"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:02",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303862c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "22-07-2023",
+  "time": "07:27",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-21T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038630"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:27",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038637"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:06",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038636"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:29",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:29:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038632"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:17",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:17:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.470Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038638"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:19",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:19:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303863a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "30-07-2023",
+  "time": "07:34",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-29T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038639"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:02",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303863c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:25",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:25:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303863d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303863b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "30-07-2023",
+  "time": "17:03",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-30T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.471Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038648"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:46",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:46:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038640"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:34",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038647"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038642"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:52",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:52:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038641"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303863e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "07:46",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-06-30T23:46:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038646"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:14",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:14:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038645"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038649"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303863f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "17:02",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-01T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038644"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:39",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.473Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303864c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303864a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038643"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.613Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303864b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:49",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:49:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.474Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303864f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:36",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303864d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:48",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:48:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303864e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:26",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:26:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038650"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038652"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038651"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:12",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:12:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038655"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303865b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303865e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:27",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:27:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303865d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303866f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "07:30",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-02T23:30:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.475Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038666"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:50",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:50:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303865a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:49",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:49:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038659"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303866d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "07:33",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-06-30T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038658"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:39",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303866b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038657"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038667"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038662"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:45",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:45:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303866a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:06",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038664"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:25",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:25:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038660"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:33",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303866e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "01-07-2023",
+  "time": "17:02",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-01T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303865c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:54",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:54:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038670"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "03-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-03T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303866c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038654"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:33",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038653"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.476Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038665"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038668"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:06",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038656"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:17",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:17:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.477Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038663"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.478Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303865f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038661"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.614Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038671"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "07:30",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-03T23:30:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038669"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "95",
+  "employeeName": "LAI CHEN ANN",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.615Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.479Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038676"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-06T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038672"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "04-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-04T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038675"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "06-07-2023",
+  "time": "07:42",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-05T23:42:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038677"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "07:35",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-06T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038673"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "07:33",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-04T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038679"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "07:35",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-07T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303867c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "09-07-2023",
+  "time": "12:39",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-09T04:39:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303867d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "07:35",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-09T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038684"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-13T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038674"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "05-07-2023",
+  "time": "17:01",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-05T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.616Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303867e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "10-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-10T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303867f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "07:38",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-10T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038683"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "13-07-2023",
+  "time": "07:32",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-12T23:32:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038680"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "11-07-2023",
+  "time": "17:01",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-11T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038686"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-14T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038681"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "07:30",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-11T23:30:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.480Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303867b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "09-07-2023",
+  "time": "07:34",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-08T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038682"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "12-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-12T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.481Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038685"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "14-07-2023",
+  "time": "07:38",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-13T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038678"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "07-07-2023",
+  "time": "17:01",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-07T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303867a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "08-07-2023",
+  "time": "17:05",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-08T09:05:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.617Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303868b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:38",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:38:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.482Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038689"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "07:36",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-16T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303868c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303868a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038688"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303868d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "07:35",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-19T23:35:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038687"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "07:34",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-14T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303868e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "20-07-2023",
+  "time": "17:01",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-20T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038690"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:02",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038691"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "22-07-2023",
+  "time": "07:32",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-21T23:32:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303868f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:43",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.618Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.483Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038692"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:33",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038693"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038694"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "07:41",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-24T23:41:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038699"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303869b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:02",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303869c"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:36",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:36:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038698"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:34",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:34:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.484Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303869a"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303869d"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038695"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "25-07-2023",
+  "time": "17:03",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-25T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303869e"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "30-07-2023",
+  "time": "07:33",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-29T23:33:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.485Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:05",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:05:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038622"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "15-07-2023",
+  "time": "17:01",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-15T09:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.611Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038696"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "07:40",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-25T23:40:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd3173038697"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "26-07-2023",
+  "time": "17:00",
+  "weekday": "Wednesday",
+  "datetime": {
+    "$date": "2023-07-26T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.619Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.486Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:02",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:20",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:20:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:22",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:22:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303869f"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "96",
+  "employeeName": "RIDO",
+  "clockType": "IN",
+  "date": "30-07-2023",
+  "time": "17:03",
+  "weekday": "Sunday",
+  "datetime": {
+    "$date": "2023-07-30T09:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386ac"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386aa"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386ab"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:16",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:16:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.487Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386ad"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:01",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:01:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:18",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:18:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386ae"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386af"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:02",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:02:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "17:00",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-18T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "17:00",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-27T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b4"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "27-07-2023",
+  "time": "07:22",
+  "weekday": "Thursday",
+  "datetime": {
+    "$date": "2023-07-26T23:22:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.488Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b8"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:03",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:03:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b5"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:00",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b6"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "07:16",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-28T23:16:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386ba"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "17-07-2023",
+  "time": "17:09",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-17T09:09:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b9"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:00",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.489Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386bc"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:14",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:14:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386b7"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "98",
+  "employeeName": "SUHAIDI",
+  "clockType": "IN",
+  "date": "29-07-2023",
+  "time": "17:00",
+  "weekday": "Saturday",
+  "datetime": {
+    "$date": "2023-07-29T09:00:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386be"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "17:23",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-24T09:23:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386bd"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "24-07-2023",
+  "time": "07:26",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-23T23:26:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386c0"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "17:06",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-28T09:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386bf"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "28-07-2023",
+  "time": "07:43",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-27T23:43:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386bb"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "07:37",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-20T23:37:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.621Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386c2"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "17:17",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-31T09:17:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd317303862b"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "94",
+  "employeeName": "USNI",
+  "clockType": "IN",
+  "date": "21-07-2023",
+  "time": "17:06",
+  "weekday": "Friday",
+  "datetime": {
+    "$date": "2023-07-21T09:06:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.612Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.490Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386a3"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "97",
+  "employeeName": "JONATHAN",
+  "clockType": "IN",
+  "date": "18-07-2023",
+  "time": "07:18",
+  "weekday": "Tuesday",
+  "datetime": {
+    "$date": "2023-07-17T23:18:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.620Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.491Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6553feb4cec4bd31730386c1"
+  },
+  "userId": "64c76e149a9f1104a69419b3",
+  "employeeId": "99",
+  "employeeName": "MAGDALANE",
+  "clockType": "IN",
+  "date": "31-07-2023",
+  "time": "07:29",
+  "weekday": "Monday",
+  "datetime": {
+    "$date": "2023-07-30T23:29:00.000Z"
+  },
+  "terminal": "1",
+  "createdAt": {
+    "$date": "2023-11-14T23:11:48.622Z"
+  },
+  "updatedAt": {
+    "$date": "2023-11-14T23:12:53.491Z"
+  },
+  "__v": 0
+}]

@@ -36,7 +36,8 @@ export const filesApiSlice = apiSlice.injectEndpoints({
                 const body = new FormData();
                 body.append('Content-Type', file.type);
                 body.append('file', file);
-                body.append('userid', file.userid)
+                body.append('userid', file.userid);
+                body.append('activityid', file.activityid);
 
                 return {
                     url: '/files/attendances',

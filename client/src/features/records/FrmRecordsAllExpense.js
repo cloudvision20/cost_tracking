@@ -1,14 +1,18 @@
 import { useGetRecordsByTypeActIdQuery } from './recordsApiSlice'
-import FrmRecordsForm from './FrmRecordsForm'
+import FrmRecordsForm from './FrmRecordsAllForm'
 import useTitle from '../../hooks/useTitle'
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'
 
 const FrmRecords = ({ formType }) => {
 
+    // const activities = useSelector(selectActivity)
+    // const form_Type = formType ? formType : 'Consumables'
+    // useTitle(`Cost Tracking: ${form_Type} Record`)
+    // const { data: res, isSuccess, isError, error } = useGetRecordsByTypeQuery(form_Type);
+
     const activities = useSelector(selectActivity)
     const activityId = activities?.current?.activityId ? activities?.current?.activityId : ''
-    //const activityId = ''
     const form_Type = formType ? formType : 'Consumables'
     let param = {}
     param.activityId = activityId

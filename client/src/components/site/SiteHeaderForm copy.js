@@ -251,24 +251,6 @@ const SiteHeaderForm = () => {
         )
     })
 
-    const formsall = [
-        { '_id': 'Consumables', 'name': 'All Consumables form' },
-        { '_id': 'Equipment', 'name': 'All Equipment form' },
-        { '_id': 'Expenses', 'name': 'All Expenses form' }]
-    let navFormsAllMenu
-    navFormsAllMenu = formsall.map(item => {
-        return (
-            <NavDropdown.Item
-                key={item._id}
-                onMouseOver={onMouseOverNavLink}
-                onMouseOut={onMouseOutNavLink_Blue}
-                onClick={() => onFormsAllSelected(item._id)}
-            >
-                {item.name}
-            </NavDropdown.Item>
-        )
-    })
-
     const attends = [
         { '_id': 'upload', 'name': 'Upload Attendance csv file' },
         { '_id': 'record', 'name': 'view attendance' }]
@@ -431,8 +413,6 @@ const SiteHeaderForm = () => {
                                     {navFormsMenu}
                                     {/* {navFormMenu} */}
                                     {navFormMenu}
-                                    <NavDropdown.Divider />
-                                    {navFormsAllMenu}
                                     <NavDropdown.Divider />
                                     {dailyReportMenu}
                                     {newDailyReportMenu}

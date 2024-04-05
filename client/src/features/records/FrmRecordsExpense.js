@@ -47,7 +47,7 @@ const FrmRecords = ({ formType }) => {
             const newRes = {}
             newRes.records = records
             newRes.formType = formType
-            newRes.activities = activities
+            newRes.activities = activities.activities
             content = <FrmRecordsForm res={newRes} />
             return content
         } else {

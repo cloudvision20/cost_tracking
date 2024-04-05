@@ -79,7 +79,8 @@ const getRecordsByTypeActId = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: `Record for form type: ${formType} not found` })
     } else {
         // options
-        activities = await (Activity.find({ "resources.type": formType }).find({ "resources.assignment.resourcesId": records._Id })).exec()
+        // activities = await (Activity.find({ "resources.type": formType }).find({ "resources.assignment.resourcesId": records.resourcesId })).exec()
+        activities = await (Activity.find({ "resources.type": formType })).exec()
         //users = (await User.find().select("_id, username"))
         //dailyReports = await DailyReport.find({ "recordId": _id }).populate({ path: 'userId', select: 'username' }).exec()
     }

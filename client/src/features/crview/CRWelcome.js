@@ -22,7 +22,7 @@ const Welcome = () => {
     useTitle(`Site: ${username}`)
     const { data: projects } = useGetActsGBProjsQuery({
         "start": "1-07-2023",
-        "end": "18-11-2023"
+        "end": "18-11-2024"
     })
 
     const Activities = useSelector(selectActivity)
@@ -90,10 +90,10 @@ const Welcome = () => {
                                     <div>{project.ttlActualExpenses} </div>
                                 </div>
                                 <div className='col-sm-3'>
-                                    <div> {project?.percentLabour.toString() + '%'}</div>
-                                    <div> {project?.percentConsumables.toString() + '%'}</div>
-                                    <div> {project?.percentEquipment.toString() + '%'}</div>
-                                    <div> {project?.percentExpenses.toString() + '%'}</div>
+                                    <div> {project?.percentLabour ? project?.percentLabour.toString() + '%' : '%'}</div>
+                                    <div> {project?.percentConsumables ? project?.percentConsumables.toString() + '%' : '%'}</div>
+                                    <div> {project?.percentEquipment ? project?.percentEquipment.toString() + '%' : '%'}</div>
+                                    <div> {project?.percentExpenses ? project?.percentExpenses.toString() + '%' : '%'}</div>
                                 </div>
 
                             </div>
@@ -160,7 +160,7 @@ const Welcome = () => {
                                     <div> <b>  </b></div>
                                 </div>
                                 <div className='col-sm-3'>
-                                    <div> <b> Plan / Budget </b></div>
+                                    <div> <b> Assigned Plan / Budget </b></div>
                                 </div>
                                 <div className='col-sm-3'>
                                     <div> <b> Actual </b></div>

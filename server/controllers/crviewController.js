@@ -13,7 +13,7 @@ const bcrypt = require('bcrypt')
 const { format, daysToWeeks } = require('date-fns')
 const dateFns = require('date-fns')
 
-
+// const ObjectId = require('mongodb').ObjectId
 
 /*****************************************************************************************************
  * 
@@ -42,6 +42,12 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
     let response = {}
     const projects = await Activity.aggregate(
         [
+            // {
+            //     $match: {
+            //         projectId: ObjectId('64d0af27d0322e0e4780c2bb'),
+            //     }
+            // },
+
             {
                 $group: {
                     _id: '$projectId',
@@ -119,6 +125,7 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
         const consumableIds = [] // collect all consukmable ids
         const expenseIds = [] // collect all expense ids
         const attendances = []
+        const activityIds = [] // collects all activities Ids
 
         let consumableDetails = {}
         let equipmentDetails = {}
@@ -133,6 +140,8 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
             const equipment = [] // collect all equipment ids
             const consumable = [] // collect all consumable ids
             const expense = [] // collect all expense ids
+            // activityIds.push(new ObjectId(" + activity._id + "))
+            activityIds.push(activity._id)
             const resLabour = activity.resources.filter((resource) => resource.type === 'Labour').map((filteredResources) => {
                 const data = filteredResources.assignment
                 data.map(dt => {
@@ -215,6 +224,7 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
                 {
                     $match: {
                         employeeId: { $in: labourIds },
+                        activityId: { $in: activityIds },
                         date: {
                             $gte: startDate,
                             $lte: endDate
@@ -290,6 +300,12 @@ const getActivitiesByProjs = asyncHandler(async (req, res) => {
             {
                 $match: {
                     //           employeeId: employeeId,
+                    activityId: {
+                        // $in: activityIds.map(aid => { ObjectId(aid) }),
+                        $in: activityIds,
+                        // $in: [ObjectId('64e0f3b2ecbaa145475119b6'), ObjectId('64e0f480ecbaa145475119da')]
+                    },
+
                     dateTime: {
                         $gte: sDate,
                         $lte: eDate

@@ -79,9 +79,11 @@ const importAttendance = async (file) => {
     }).on("data", function (data) {
         data['_id'] = new mongoose.Types.ObjectId();
         data['userId'] = file.userid;
+        data['activityId'] = mongoose.Types.ObjectId(file.activityid)
         dt = data["date"].split("-")
         tm = data["time"]
         data["datetime"] = new Date(`${dt[2]}-${dt[1]}-${dt[0]} ${tm} GMT+0800`)
+
         attendances.push(data);
     }).on("end", function () {
         Attendance.create(attendances, function (err, documents) {
@@ -103,6 +105,7 @@ const upload = async (req, res) => {
 
     let file = req.files.file;
     file.userid = req.body.userid
+    file.activityid = req.body.activityid
     switch (req.path) {
         case '/attendances':
             results = await importAttendance(file);

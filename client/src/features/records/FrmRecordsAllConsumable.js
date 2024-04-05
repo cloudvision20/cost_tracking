@@ -1,5 +1,5 @@
 import { useGetRecordsByTypeActIdQuery } from './recordsApiSlice'
-import FrmRecordsForm from './FrmRecordsForm'
+import FrmRecordsForm from './FrmRecordsAllForm'
 import useTitle from '../../hooks/useTitle'
 import { useSelector } from 'react-redux'
 import { selectActivity } from '../../components/site/siteSlice'

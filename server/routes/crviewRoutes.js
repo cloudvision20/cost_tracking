@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const crviewController = require('../controllers/crviewController')
 
+router.route('/actsbyprojs')
+    .get(crviewController.getActivitiesByProjs)
 
 router.route('/actsbyprojs/:startDate/:endDate')
     .get(crviewController.getActivitiesByProjs)

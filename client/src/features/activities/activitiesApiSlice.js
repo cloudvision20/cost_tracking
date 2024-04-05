@@ -31,6 +31,14 @@ export const activitiesApiSlice = apiSlice.injectEndpoints({
                 } else return [{ type: 'Activity', id: 'LIST' }]
             }
         }),
+        getActivitiesAll: builder.query({
+            query: (id) => ({
+                url: `/activities`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
         getActivityById: builder.query({
             query: (id) => ({
                 url: `/activities/${id}`,
@@ -141,6 +149,7 @@ export const {
     useGetActivitiesQuery,
     useGetActivityByIdQuery,
     useGetActivitiesGBProjsQuery,
+    useGetActivitiesAllQuery,
     // useGetActivityByTypeQuery,
     // useLazyGetActivityByTypeQuery,
     useGetActivitiesByProjIdQuery,
