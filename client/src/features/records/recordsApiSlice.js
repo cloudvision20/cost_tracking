@@ -29,14 +29,14 @@ export const recordsApiSlice = apiSlice.injectEndpoints({
                 } else return [{ type: 'Record', id: 'LIST' }]
             }
         }),
-        // getRecordsByType: builder.query({
-        //     query: (formType) => ({
-        //         url: `/records/${formType}`,
-        //         validateStatus: (response, result) => {
-        //             return response.status === 200 && !result.isError
-        //         },
-        //     })
-        // }),
+        getRecordsOptions: builder.query({
+            query: () => ({
+                url: `/records/options`,
+                validateStatus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            })
+        }),
         getRecordsByType: builder.query({
             query: (formType) => ({
                 // url: `/records/${formType}`,
@@ -70,11 +70,11 @@ export const recordsApiSlice = apiSlice.injectEndpoints({
         //         },
         //     })
         // }),
-        postRecordsByTypeRIdSE:builder.query({
+        postRecordsByTypeRIdSE: builder.query({
             query: (req) => ({
                 url: `/records/recordsSE`,
                 method: 'POST',
-                body:{
+                body: {
                     ...req,
                 },
                 validateStatus: (response, result) => {
@@ -124,7 +124,8 @@ export const {
     useGetRecordsByTypeQuery,
     useGetRecordsByTypeActIdQuery,
     useGetRecordByIdQuery,
-    usePostRecordsByTypeEIdSEQuery,
+    useGetRecordsOptionsQuery,
+    // usePostRecordsByTypeEIdSEQuery,
     useAddNewRecordMutation,
     useUpdateRecordsMutation,
     useDeleteRecordMutation,

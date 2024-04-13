@@ -79,6 +79,7 @@ const EditActivityForm = ({ res }) => {
     const users = res.users
     const equipment = res.equipment
     const consumables = res.consumables
+    const expenses = res.expenses
     const dailyReports = res.dailyReports
     let errRef = useRef()
 
@@ -90,8 +91,10 @@ const EditActivityForm = ({ res }) => {
     const equipmentCodes = useMemo(() => extractKeys(equipmentMapping), [equipmentMapping]);
     const consumablesMapping = Object.fromEntries(consumables.map(consumable => ([consumable._id, consumable.name])));
     const consumablesCodes = useMemo(() => extractKeys(consumablesMapping), [consumablesMapping]);
-    const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumables': consumablesMapping }
-    const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumables': consumablesCodes }
+    const expensesMapping = Object.fromEntries(expenses.map(expense => ([expense._id, expense.name])));
+    const expensesCodes = useMemo(() => extractKeys(expensesMapping), [expensesMapping]);
+    const mapping = { 'Labour': usersMapping, 'Equipment': equipmentMapping, 'Consumables': consumablesMapping, 'Expenses': expensesMapping }
+    const codes = { 'Labour': usersCodes, 'Equipment': equipmentCodes, 'Consumables': consumablesCodes, 'Expenses': expensesCodes }
 
     const textStyle = { textAlign: 'left', fontSize: '12px' }
     const assignValueGetter = (params) => {

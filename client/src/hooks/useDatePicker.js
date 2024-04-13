@@ -7,6 +7,9 @@ export const dateFromDateString = (dateString) => {
 export const dateForPicker = (dateString) => {
     return moment(new Date(dateString)).format('YYYY-MM-DD')
 };
+export const dateForPickerDMY = (dateString) => {
+    return moment(new Date(dateString)).format('DD-MM-YYYY')
+};
 export const todayForPicker = () => {
     return moment(new Date()).format('YYYY-MM-DD')
 };

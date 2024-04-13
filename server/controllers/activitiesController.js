@@ -26,252 +26,255 @@ const getAllActivities = asyncHandler(async (req, res) => {
     res.json(activities)
 })
 
-// @desc Get all activities group by project aggregrate
-// @route GET /actsbyprojs
+// // @desc Get all activities group by project aggregrate
+// // @route GET /actsbyprojs
+// // @access Private
+// const getActivitiesByProjs = asyncHandler(async (req, res) => {
+//     let response = {}
+//     const projects = await Activity.aggregate(
+//         [
+//             {
+//                 $group: {
+//                     _id: '$projectId',
+//                     projects: { $push: '$$ROOT' }
+//                 }
+//             },
+//             {
+//                 $lookup: {
+//                     from: 'projects',
+//                     localField: '_id',
+//                     foreignField: '_id',
+//                     as: 'project'
+//                 }
+//             },
+//             { $unwind: '$project' },
+//             {
+//                 $replaceRoot: {
+//                     newRoot: {
+//                         $mergeObjects: [
+//                             '$project',
+//                             { activities: '$projects' }
+//                         ]
+//                     }
+//                 }
+//             },
+//             {
+//                 $sort: {
+//                     projectId: 1,
+//                     startDate: 1,
+//                 },
+//             },
+//         ],
+//         { maxTimeMS: 60000, allowDiskUse: true }
+//     );
+//     // const activities = await Activity.aggregate(
+//     //     [
+//     //         {
+//     //             $group: {
+//     //                 _id: '$projectId',
+//     //                 activities: { $push: '$$ROOT' }
+//     //             }
+//     //         },
+//     //         {
+//     //             $lookup: {
+//     //                 from: 'projects',
+//     //                 localField: '_id',
+//     //                 foreignField: '_id',
+//     //                 as: 'project'
+//     //             }
+//     //         }
+//     //     ],
+//     //     { maxTimeMS: 60000, allowDiskUse: true }
+//     // );
+//     // const activities = await Activity.aggregate(
+//     //     [
+//     //         {
+//     //           $group: {
+//     //             _id: '$projectId',
+//     //             activities: { $push: '$$ROOT' }
+//     //           }
+//     //         }
+//     //       ],
+//     //       { maxTimeMS: 60000, allowDiskUse: true }
+//     //   );
+
+//     // response.projects = projects
+//     const proj = await Promise.all(projects.map(async (project) => {
+//         let ttlPlanLabour = 0
+//         let ttlPlanEquipment = 0
+//         let ttlPlanConsumables = 0
+//         let ttlPlanExpenses = 0
+//         const labourIds = [] // collect all user ids
+//         const equipmentIds = [] // collect all equipment ids
+//         const consumableIds = [] // collect all consukmable ids
+//         const attendances = []
+
+//         const acts = project.activities.map((activity) => {
+//             const labour = [] // collect all user ids
+//             const equipment = [] // collect all equipment ids
+//             const consumable = [] // collect all consukmable ids
+//             const resLabour = activity.resources.filter((resource) => resource.type === 'Labour').map((filteredResources) => {
+//                 const data = filteredResources.assignment
+//                 data.map(dt => {
+//                     labour.push(dt.resourcesId)
+//                     labourIds.push(dt.resourcesId)
+//                     //console.log("resourcesId = " + dt.resourcesId)
+//                 })
+//                 const ttlLabour = data.reduce((a, v) => a = a + v.budget, 0)
+
+//                 ttlPlanLabour = ttlPlanLabour + ttlLabour
+//                 // return {
+//                 //     ttlPlanLabour
+//                 // }
+//             })
+//             const resEquipment = activity.resources.filter((resource) => resource.type === 'Equipment').map((filteredResources) => {
+//                 const data = filteredResources.assignment
+//                 data.map(dt => {
+//                     equipment.push(dt.resourcesId)
+//                     equipmentIds.push(dt.resourcesId)
+//                     //console.log("resourcesId = " + dt.resourcesId)
+//                 })
+//                 const ttlEquipment = data.reduce((a, v) => a = a + v.budget, 0)
+//                 ttlPlanEquipment = ttlPlanEquipment + ttlEquipment
+//                 // return {
+//                 //     ttlPlanLabour
+//                 // }
+//             })
+//             const resConsumable = activity.resources.filter((resource) => resource.type === 'Consumables').map((filteredResources) => {
+//                 const data = filteredResources.assignment
+//                 data.map(dt => {
+//                     consumable.push(dt.resourcesId)
+//                     consumableIds.push(dt.resourcesId)
+//                     //console.log("resourcesId = " + dt.resourcesId)
+//                 })
+//                 const ttlConsumables = data.reduce((a, v) => a = a + v.budget, 0)
+//                 ttlPlanConsumables = ttlPlanConsumables + ttlConsumables
+//                 // return {
+//                 //     ttlPlanLabour
+//                 // }
+//             })
+
+//             return {
+//                 "name": activity.name,
+//                 "labour_ids": labour,
+//                 "equipment_ids": equipment,
+//                 "consumable_ids": consumable
+//             }
+//         }
+//         )
+//         //----------------------------------------------------------------------------------------------
+//         //----------------------------------------------------------------------------------------------
+//         //Get attendance
+//         //----------------------------------------------------------------------------------------------
+//         // await Attend.find({ userId: { $in: labourIds } }).then((result) => {
+//         //     if (result === null) {
+//         //         console.log(`Attendance data not found`)
+//         //     }
+//         //     attendances.push(result)
+//         // }).catch((error => {
+//         //     // console.log(`error : Loading Error`)
+//         // }))
+//         //----------------------------------------------------------------------------------------------
+//         const startDate = '01-07-2023'
+//         const endDate = '07-07-2023'
+//         const filter =
+//             [
+//                 {
+//                     $match: {
+//                         employeeId: { $in: labourIds },
+//                         date: {
+//                             $gte: startDate,
+//                             $lte: endDate
+//                         }
+//                     }
+//                 },
+//                 {
+//                     $group: {
+//                         _id: {
+//                             date: '$date',
+//                             employeeName: '$employeeName',
+//                             employeeId: '$employeeId',
+//                             userId: '$userId'
+//                             // clockType: '$clockType'
+//                         },
+//                         documents: { $push: '$$ROOT' }
+//                     }
+//                 },
+//                 { $sort: { time: 1 } }
+//             ]
+//         let response = {}
+//         let attends = {}
+//         await Attend.aggregate(filter).then((result) => {
+//             if (result === null) {
+//                 console.log(`Attendance data not found for Employee ID =${employeeId}`)
+//             }
+//             console.log('result =' + JSON.stringify(result))
+//             attends = result
+//         }).catch((error => {
+//             console.log(`error : Loading Error`)
+//         }))
+//         const attendsDetails = attends.map((att) => {
+//             dts = att.documents[att.documents.length - 1].date.split("-")
+//             dte = att.documents[0].date.split("-")
+
+//             tms = att.documents[att.documents.length - 1].time //.split(":")
+//             tme = att.documents[0].time //.split(":")
+//             const times = new Date(`${dts[2]}-${dts[1]}-${dts[0]} ${tms} GMT+0800`)
+//             const timee = new Date(`${dte[2]}-${dte[1]}-${dte[0]} ${tme} GMT+0800`)
+//             const diff = Math.abs(dateFns.differenceInMinutes(times, timee))
+//             return {
+
+
+//                 // newTime: new Date(dts[2], dts[1], dts[0], tms[1], tms[0]),
+//                 // new0Time: new Date(parseInt(dts[2]), parseInt(dts[1]), parseInt(dts[0]), parseInt(tms[1]), parseInt(tms[0])),
+//                 new1Time: timee.toLocaleString(),
+//                 //tstTime: dateFns.parseJSON(new Date()),
+//                 inTime: att.documents[att.documents.length - 1].datetime,
+//                 outTime: att.documents[0].datetime,
+//                 diff: diff,
+//                 hrDiff: parseInt(diff / 60),//Math.floor(dateFns.differenceInMinutes(times, timee) / 60),
+//                 minDiff: diff % 60,
+//                 workHour: parseInt(diff / 60) - 1
+//                 // consolelogdts: JSON.stringify(dts),
+//                 // consolelogtms: JSON.stringify(tms),
+
+
+
+//             }
+//         })
+//         let ttlActualLabour = attendsDetails.reduce(function (prev, current) {
+//             return prev + +current.workHour
+//         }, 0);
+//         let percentLabour = (ttlActualLabour / ttlPlanLabour) * 100
+//         //----------------------------------------------------------------------------------------------
+//         //----------------------------------------------------------------------------------------------
+//         return {
+//             // actLabour,
+//             "_id": project._id,
+//             "title": project.title,
+//             "activities": acts,
+//             "allLabour_ids": labourIds,
+//             "allEquipment_ids": equipmentIds,
+//             "allConsumable_ids": consumableIds,
+//             attendsDetails,
+//             ttlPlanLabour,
+//             ttlActualLabour,
+//             percentLabour,
+//             ttlPlanEquipment,
+//             ttlPlanConsumables
+//         }
+//     }
+//     )
+//     ) //all Promise
+//     response = proj
+//     res.status(200).json(response)
+
+// })
+
+
+// @desc Get all activities group by activity id
+// @route GET /:id
 // @access Private
-const getActivitiesByProjs = asyncHandler(async (req, res) => {
-    let response = {}
-    const projects = await Activity.aggregate(
-        [
-            {
-                $group: {
-                    _id: '$projectId',
-                    projects: { $push: '$$ROOT' }
-                }
-            },
-            {
-                $lookup: {
-                    from: 'projects',
-                    localField: '_id',
-                    foreignField: '_id',
-                    as: 'project'
-                }
-            },
-            { $unwind: '$project' },
-            {
-                $replaceRoot: {
-                    newRoot: {
-                        $mergeObjects: [
-                            '$project',
-                            { activities: '$projects' }
-                        ]
-                    }
-                }
-            },
-            {
-                $sort: {
-                    projectId: 1,
-                    startDate: 1,
-                },
-            },
-        ],
-        { maxTimeMS: 60000, allowDiskUse: true }
-    );
-    // const activities = await Activity.aggregate(
-    //     [
-    //         {
-    //             $group: {
-    //                 _id: '$projectId',
-    //                 activities: { $push: '$$ROOT' }
-    //             }
-    //         },
-    //         {
-    //             $lookup: {
-    //                 from: 'projects',
-    //                 localField: '_id',
-    //                 foreignField: '_id',
-    //                 as: 'project'
-    //             }
-    //         }
-    //     ],
-    //     { maxTimeMS: 60000, allowDiskUse: true }
-    // );
-    // const activities = await Activity.aggregate(
-    //     [
-    //         {
-    //           $group: {
-    //             _id: '$projectId',
-    //             activities: { $push: '$$ROOT' }
-    //           }
-    //         }
-    //       ],
-    //       { maxTimeMS: 60000, allowDiskUse: true }
-    //   );
-
-    // response.projects = projects
-    const proj = await Promise.all(projects.map(async (project) => {
-        let ttlPlanLabour = 0
-        let ttlPlanEquipment = 0
-        let ttlPlanConsumables = 0
-        let ttlPlanExpenses = 0
-        const labourIds = [] // collect all user ids
-        const equipmentIds = [] // collect all equipment ids
-        const consumableIds = [] // collect all consukmable ids
-        const attendances = []
-
-        const acts = project.activities.map((activity) => {
-            const labour = [] // collect all user ids
-            const equipment = [] // collect all equipment ids
-            const consumable = [] // collect all consukmable ids
-            const resLabour = activity.resources.filter((resource) => resource.type === 'Labour').map((filteredResources) => {
-                const data = filteredResources.assignment
-                data.map(dt => {
-                    labour.push(dt.resourcesId)
-                    labourIds.push(dt.resourcesId)
-                    //console.log("resourcesId = " + dt.resourcesId)
-                })
-                const ttlLabour = data.reduce((a, v) => a = a + v.budget, 0)
-
-                ttlPlanLabour = ttlPlanLabour + ttlLabour
-                // return {
-                //     ttlPlanLabour
-                // }
-            })
-            const resEquipment = activity.resources.filter((resource) => resource.type === 'Equipment').map((filteredResources) => {
-                const data = filteredResources.assignment
-                data.map(dt => {
-                    equipment.push(dt.resourcesId)
-                    equipmentIds.push(dt.resourcesId)
-                    //console.log("resourcesId = " + dt.resourcesId)
-                })
-                const ttlEquipment = data.reduce((a, v) => a = a + v.budget, 0)
-                ttlPlanEquipment = ttlPlanEquipment + ttlEquipment
-                // return {
-                //     ttlPlanLabour
-                // }
-            })
-            const resConsumable = activity.resources.filter((resource) => resource.type === 'Consumables').map((filteredResources) => {
-                const data = filteredResources.assignment
-                data.map(dt => {
-                    consumable.push(dt.resourcesId)
-                    consumableIds.push(dt.resourcesId)
-                    //console.log("resourcesId = " + dt.resourcesId)
-                })
-                const ttlConsumables = data.reduce((a, v) => a = a + v.budget, 0)
-                ttlPlanConsumables = ttlPlanConsumables + ttlConsumables
-                // return {
-                //     ttlPlanLabour
-                // }
-            })
-
-            return {
-                "name": activity.name,
-                "labour_ids": labour,
-                "equipment_ids": equipment,
-                "consumable_ids": consumable
-            }
-        }
-        )
-        //----------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------
-        //Get attendance
-        //----------------------------------------------------------------------------------------------
-        // await Attend.find({ userId: { $in: labourIds } }).then((result) => {
-        //     if (result === null) {
-        //         console.log(`Attendance data not found`)
-        //     }
-        //     attendances.push(result)
-        // }).catch((error => {
-        //     // console.log(`error : Loading Error`)
-        // }))
-        //----------------------------------------------------------------------------------------------
-        const startDate = '01-07-2023'
-        const endDate = '07-07-2023'
-        const filter =
-            [
-                {
-                    $match: {
-                        employeeId: { $in: labourIds },
-                        date: {
-                            $gte: startDate,
-                            $lte: endDate
-                        }
-                    }
-                },
-                {
-                    $group: {
-                        _id: {
-                            date: '$date',
-                            employeeName: '$employeeName',
-                            employeeId: '$employeeId',
-                            userId: '$userId'
-                            // clockType: '$clockType'
-                        },
-                        documents: { $push: '$$ROOT' }
-                    }
-                },
-                { $sort: { time: 1 } }
-            ]
-        let response = {}
-        let attends = {}
-        await Attend.aggregate(filter).then((result) => {
-            if (result === null) {
-                console.log(`Attendance data not found for Employee ID =${employeeId}`)
-            }
-            console.log('result =' + JSON.stringify(result))
-            attends = result
-        }).catch((error => {
-            console.log(`error : Loading Error`)
-        }))
-        const attendsDetails = attends.map((att) => {
-            dts = att.documents[att.documents.length - 1].date.split("-")
-            dte = att.documents[0].date.split("-")
-
-            tms = att.documents[att.documents.length - 1].time //.split(":")
-            tme = att.documents[0].time //.split(":")
-            const times = new Date(`${dts[2]}-${dts[1]}-${dts[0]} ${tms} GMT+0800`)
-            const timee = new Date(`${dte[2]}-${dte[1]}-${dte[0]} ${tme} GMT+0800`)
-            const diff = Math.abs(dateFns.differenceInMinutes(times, timee))
-            return {
-
-
-                // newTime: new Date(dts[2], dts[1], dts[0], tms[1], tms[0]),
-                // new0Time: new Date(parseInt(dts[2]), parseInt(dts[1]), parseInt(dts[0]), parseInt(tms[1]), parseInt(tms[0])),
-                new1Time: timee.toLocaleString(),
-                //tstTime: dateFns.parseJSON(new Date()),
-                inTime: att.documents[att.documents.length - 1].datetime,
-                outTime: att.documents[0].datetime,
-                diff: diff,
-                hrDiff: parseInt(diff / 60),//Math.floor(dateFns.differenceInMinutes(times, timee) / 60),
-                minDiff: diff % 60,
-                workHour: parseInt(diff / 60) - 1
-                // consolelogdts: JSON.stringify(dts),
-                // consolelogtms: JSON.stringify(tms),
-
-
-
-            }
-        })
-        let ttlActualLabour = attendsDetails.reduce(function (prev, current) {
-            return prev + +current.workHour
-        }, 0);
-        let percentLabour = (ttlActualLabour / ttlPlanLabour) * 100
-        //----------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------
-        return {
-            // actLabour,
-            "_id": project._id,
-            "title": project.title,
-            "activities": acts,
-            "allLabour_ids": labourIds,
-            "allEquipment_ids": equipmentIds,
-            "allConsumable_ids": consumableIds,
-            attendsDetails,
-            ttlPlanLabour,
-            ttlActualLabour,
-            percentLabour,
-            ttlPlanEquipment,
-            ttlPlanConsumables
-        }
-    }
-    )
-    ) //all Promise
-    response = proj
-    res.status(200).json(response)
-
-})
-
-
 const getActivityById = asyncHandler(async (req, res) => {
     const id = req.params.id
     // retrieve Activity by Id and include usename corresponsing to userId
@@ -280,6 +283,7 @@ const getActivityById = asyncHandler(async (req, res) => {
     let users
     let equipment
     let consumables
+    let expenses
     let dailyReports
     let types
     let resourcesType
@@ -293,6 +297,7 @@ const getActivityById = asyncHandler(async (req, res) => {
         users = (await User.find().lean())//.select('_id, username, employeeId, employeeName'))
         equipment = (await Equipment.find().select("_id, name"))
         consumables = (await Consumable.find().select("_id, name"))
+        expenses = (await Expense.find().select("_id, name"))
         dailyReports = await DailyReport.find({ "activityId": id }).populate({ path: 'userId', select: 'username' }).exec()
         types = await Type.find({ "category": 'ActivityType' }).exec()
         resourcesType = await Type.find({ "category": 'ResourcesType' }).select({ name: 1, _id: 0 }).exec()
@@ -306,6 +311,7 @@ const getActivityById = asyncHandler(async (req, res) => {
     response.dailyReports = dailyReports
     response.equipment = equipment
     response.consumables = consumables
+    response.expenses = expenses
     response.types = types
     response.resourcesType = resourcesType
     res.json(response)
@@ -425,7 +431,7 @@ const deleteActivity = asyncHandler(async (req, res) => {
 
 module.exports = {
     getAllActivities,
-    getActivitiesByProjs,
+    // getActivitiesByProjs,
     getActivityById,
     getActivityByUserId,
     getActivityByProjId,

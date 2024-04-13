@@ -201,29 +201,29 @@ const EditRecordForm = ({ res }) => {
 
 
     }
-    // let actOptions
-    // if (activities) {
-    //     actOptions = activities?.map(activity => {
-    //         console.log(JSON.stringify(activity))
-    //         return (
-    //             <option
-    //                 key={activity._id}
-    //                 value={activity._id}
-    //             > {activity.name}</option >
-    //         )
-    //     })
-    // }
-    // else {
-    //     actOptions = <option
-    //         key={''}
-    //         value={''}
-    //     > {''}</option >
-    // }
+    let actOptions
+    if (activities) {
+        actOptions = activities?.map(activity => {
+            console.log(JSON.stringify(activity))
+            return (
+                <option
+                    key={activity._id}
+                    value={activity._id}
+                > {activity.name}</option >
+            )
+        })
+    }
+    else {
+        actOptions = <option
+            key={''}
+            value={''}
+        > {''}</option >
+    }
 
     let recordDetails = (
 
         <>
-            {/* <div> reload by activityId selected</div> */}
+            <div> reload by activityId selected</div>
             <div className="container-sm ag-theme-balham" style={{ height: 400, width: "100%", fontSize: '12px' }}>
                 <p ref={msgRef} className="" >{msgContent}</p>
                 <AgGridReact
@@ -250,7 +250,7 @@ const EditRecordForm = ({ res }) => {
 
                 <div className="row" > */}
                     <div className="form-group  ct-header__nav">
-                        {/* <select
+                        <select
                             id="activity"
                             name="activity"
                             style={{ fontSize: '11px' }}
@@ -259,7 +259,7 @@ const EditRecordForm = ({ res }) => {
                             onChange={onActivityIdChanged}
                         >
                             {actOptions}
-                        </select> */}
+                        </select>
                         <button
                             className="btn btn-primary"
                             title="New"

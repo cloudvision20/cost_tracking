@@ -12,15 +12,19 @@ router.route('/')
 // router.route('/forms/:type')
 //     .get(recordsController.getMastersByType)
 
-router.route('/:formType')
-    .get(recordsController.getRecordsByType)
-    .patch(recordsController.updateRecords)
+// router.route('/:formType')
+//     .get(recordsController.getRecordsByType)
+//     .patch(recordsController.updateRecords)
 
 router.route('/type/:formType/activityid/')
     .get(recordsController.getRecordsByTypeActId)
 
 router.route('/type/:formType/activityid/:activityId')
     .get(recordsController.getRecordsByTypeActId)
+
+
+router.route('/options')
+    .get(recordsController.getRecordsOptions)
 
 //  router.route('/recordsSE')
 //     .post(recordsController.postRecordsByTypeRIdSE)
