@@ -8,7 +8,7 @@ baseURL = 'https://ubiquitous-disco-7xr5j67qprxhpx7x-3500.preview.app.github.dev
 baseURL = 'https://dk8qlj1g-3500.asse.devtunnels.ms'
 // baseURL = 'https://zxd72s15-3500.asse.devtunnels.ms'
 // baseURL = 'http://192.168.0.109:3500'
-// baseURL = 'http://localhost:3500'
+baseURL = 'http://localhost:3500'
 const baseQuery = fetchBaseQuery({
     baseUrl: baseURL,
     credentials: 'include',

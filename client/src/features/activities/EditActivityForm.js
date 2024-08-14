@@ -169,7 +169,10 @@ const EditActivityForm = ({ res }) => {
         { field: "job", editable: true },
         { field: "costType", editable: true },
         { field: "uom", width: 50, editable: true },
-        { field: "rate", width: 50, editable: true },
+        {
+            field: "rate", width: 50, editable: true,
+            headerName: 'Rate (RM)',
+        },
         { field: "qtyAssign", width: 50, editable: true },
         { field: "remarks", editable: true },
         {
@@ -310,7 +313,10 @@ const EditActivityForm = ({ res }) => {
         { field: "ETADate", editable: true },
         { field: "payment", editable: true },
         { field: "uom", width: 50, editable: true },
-        { field: "rate", width: 50, editable: true },
+        {
+            field: "rate", width: 50, editable: true,
+            headerName: 'Rate (RM)',
+        },
         { field: "qtyAssign", width: 50, editable: true },
         { field: "remarks", editable: true },
         {

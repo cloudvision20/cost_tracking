@@ -548,7 +548,7 @@ const EditProjectForm = ({ startActivities, project, users, types }) => {
                     <div className="container grid_system" style={{ fontSize: '12px', border: "0PX" }}>
                         <br />
                         <div className="form-group row" style={{ border: "0px" }}>
-                            <div className="col-sm-10" style={{ border: "0px" }}><h6>P &G</h6></div>
+                            <div className="col-sm-10" style={{ border: "0px" }}><h6>P & G</h6></div>
                             <div className="col-sm-2 ct-header__nav" style={{ border: "0px", paddingBottom: "2px", paddingRight: "35px" }} >
                                 <button
                                     className="btn btn-primary btn-sm"

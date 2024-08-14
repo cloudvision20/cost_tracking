@@ -39,10 +39,15 @@ const FrmRecords = ({ formType }) => {
         // activitySelectRef
     }
     const { data: res, isSuccess, isError, error } = useGetRecordsOptionsQuery();
+    let actOptions = []
+    const activityOptions = useMemo(() => {
+        console.log(actOptions[projectId])
+        return actOptions[projectId]
+    }, [projectId]) // rerun function in useMemo on projectId changes
 
     if (isSuccess) {
         let projOptions
-        let actOptions = []
+        actOptions = []
         if (res.projects) {
 
             projOptions = res.projects?.map((project, idx) => {
@@ -81,6 +86,11 @@ const FrmRecords = ({ formType }) => {
             > {''}</option >
         }
 
+
+
+
+
+
         const header = (
             <>
                 <div>
@@ -106,6 +116,7 @@ const FrmRecords = ({ formType }) => {
                                     id="activity" name="activity"
                                     style={{ fontSize: '11px' }}
                                     className="form-select form-select-sm"
+                                    options={activityOptions}
                                 // value={unit}
                                 // onChange={onDetailsChanged}
                                 >
