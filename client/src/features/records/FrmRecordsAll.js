@@ -9,6 +9,8 @@ import FrmRecordsExpense from './FrmRecordsAllExpense'
 const FrmRecords = ({ formType }) => {
 
     let params = {}
+    let projOptions
+    let actOptions = []
     params.formType = formType
     params.projectId = ''
     params.activityId = ''
@@ -22,6 +24,8 @@ const FrmRecords = ({ formType }) => {
     const [fromDate, setFromDate] = useState(new Date(fDate))
     const [toDate, setToDate] = useState(new Date(tDate))
     const [projectId, setProjectId] = useState('')
+    const [activityOptions, setActivityOptions] = useState([])
+
 
     const onFromDateChanged = (e) => {
         setFromDate(dateFromDateString(e.target.value))
@@ -36,24 +40,30 @@ const FrmRecords = ({ formType }) => {
     const onProjectIdChanged = (e) => {
         console.log(e.target.value)
         setProjectId(e.target.value)
+        setActivityOptions(actOptions[e.target.value])
         // activitySelectRef
     }
     const { data: res, isSuccess, isError, error } = useGetRecordsOptionsQuery();
-    let actOptions = []
-    const activityOptions = useMemo(() => {
-        console.log(actOptions[projectId])
-        return actOptions[projectId]
-    }, [projectId]) // rerun function in useMemo on projectId changes
+    // let actOptions 
+    // const activityOptions = useMemo(() => {
+    //     console.log(actOptions[projectId])
+    //     return actOptions[projectId]
+    // }, [projectId, actOptions]) // rerun function in useMemo on projectId changes
 
     if (isSuccess) {
-        let projOptions
-        actOptions = []
+        // let projOption
+        // let actOptions = []
         if (res.projects) {
-
+            projOptions = <option
+                key={''}
+                value={''}
+            > {''}</option >
+            actOptions[''] =
+                <option
+                    key={''}
+                    value={''}
+                > {''}</option >
             projOptions = res.projects?.map((project, idx) => {
-
-
-
                 actOptions[project._id] = project?.activities?.map(activity => {
                     return (
                         <option
@@ -63,29 +73,32 @@ const FrmRecords = ({ formType }) => {
                         > {activity.name}</option >
                     )
                 })
+
                 return (
                     <option
                         key={project._id}
                         value={project._id}
                     > {project.title}</option >
                 )
-
-
             })
-
-
-        }
-        else {
-            projOptions = <option
+            // setProjectId(res.projects[0]._id)
+            projOptions = [<option
                 key={''}
                 value={''}
-            > {''}</option >
-            actOptions = <option
-                key={''}
-                value={''}
-            > {''}</option >
-        }
+            > {''}</option >, ...projOptions]
 
+        }
+        // else {
+        //     projOptions = <option
+        //         key={''}
+        //         value={''}
+        //     > {''}</option >
+        //     actOptions = 
+        //     <option
+        //         key={''}
+        //         value={''}
+        //     > {''}</option >
+        // }
 
 
 
@@ -94,23 +107,35 @@ const FrmRecords = ({ formType }) => {
         const header = (
             <>
                 <div>
-                    <span style={{ fontSize: '15px' }}> <b>filter options</b></span>
-                    <div className="container grid_system" style={{ fontSize: '12px', paddingRight: '25px', borderTop: "1px solid gray", borderLeft: "1px solid gray", borderBottom: "1px solid gray", borderRight: "1px solid gray" }}>
+                    {/* <span style={{ fontSize: '15px' }}> <b>Filter Options</b></span>
+                        <div className="container grid_system" style={{ fontSize: '12px', paddingRight: '25px', borderTop: "1px solid gray", borderLeft: "1px solid gray", borderBottom: "1px solid gray", borderRight: "1px solid gray" }}> */}
+                    <div className="container grid_system" style={{ fontSize: '12px', border: "0px" }}>
+
+                        <div className="form-group row" >
+                            <div className="col-sm-1" style={{ fontSize: '15px', border: "0px" }}><b>Filter Options</b></div>
+                            <div className="col-sm-11" style={{ fontSize: '15px', border: "0px" }}></div>
+                        </div>
+
+                        <div className="form-group row" >
+                            <div className="col-sm-12" style={{ fontSize: '15px', border: "0px" }}>&nbsp; </div>
+                        </div>
                         <div className="form-group row" >
                             <div className="col-sm-1" style={{ border: "0px" }}><b>Project: </b></div>
-                            <div className="col-sm-1" style={{ border: "0px" }}>
+                            <div className="col-sm-2" style={{ border: "0px" }}>
                                 <select
                                     id="project" name="project"
                                     style={{ fontSize: '11px' }}
                                     className="form-select form-select-sm"
                                     value={projectId}
                                     onChange={onProjectIdChanged}
+                                    onLoad={onProjectIdChanged}
+
                                 >
                                     {projOptions}
                                 </select>
                             </div>
                             <div className="col-sm-1" style={{ border: "0px" }}><b>Activity: </b></div>
-                            <div className="col-sm-1" style={{ border: "0px" }}>
+                            <div className="col-sm-2" style={{ border: "0px" }}>
                                 <select
                                     ref={activitySelectRef}
                                     id="activity" name="activity"
@@ -120,11 +145,11 @@ const FrmRecords = ({ formType }) => {
                                 // value={unit}
                                 // onChange={onDetailsChanged}
                                 >
-                                    {actOptions}
+                                    {activityOptions}
                                 </select>
                             </div>
                             <div className="col-sm-1" style={{ border: "0px" }}><b>FormType: </b></div>
-                            <div className="col-sm-1" style={{ border: "0px" }}>
+                            <div className="col-sm-2" style={{ border: "0px" }}>
                                 <select
                                     id="formType" name="formType"
                                     style={{ fontSize: '11px' }}
@@ -159,6 +184,11 @@ const FrmRecords = ({ formType }) => {
                                 </Form.Group>
                             </div>
                         </div>
+
+
+
+
+
                     </div>
                 </div>
             </>
@@ -191,9 +221,10 @@ const FrmRecords = ({ formType }) => {
                 <div className="form-group row" >                    {form_Type}                </div> */}
 
                     {header}
-                    {content}
+                    {/* {content} */}
                     {form_Type}
-                </div>
+                    <br />
+                </div >
             </>
 
         )
